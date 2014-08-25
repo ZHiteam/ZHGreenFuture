@@ -1,0 +1,25 @@
+PODS:
+  - AFNetworking (1.3.3)
+  - FEFramework (0.0.1)
+  - SDWebImage (3.6):
+    - SDWebImage/Core
+  - SDWebImage/Core (3.6)
+  - SVPullToRefresh (0.4.1)
+
+DEPENDENCIES:
+  - AFNetworking (= 1.3.3)
+  - FEFramework (from `git@github.com:FerrariXX/FEFramework.git`)
+  - SDWebImage (= 3.6.0)
+  - SVPullToRefresh
+
+EXTERNAL SOURCES:
+  FEFramework:
+    :git: git@github.com:FerrariXX/FEFramework.git
+
+SPEC CHECKSUMS:
+  AFNetworking: 5f5b2a731d6fc2082b8abc63d40fcaed5482c42f
+  FEFramework: 59e2eae89f80017fd72cc5c5797f7ecc725eeb02
+  SDWebImage: c6989652c1cdf27cbdf3f56957e2030f825af5bc
+  SVPullToRefresh: d5161ebc833a38b465364412e5e307ca80bbb190
+
+COCOAPODS: 0.33.1

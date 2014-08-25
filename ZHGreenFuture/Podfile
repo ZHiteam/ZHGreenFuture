@@ -1,0 +1,8 @@
+target 'ZHGreenFuture' do
+	platform:ios, '6.0'
+
+  	pod 'FEFramework',:git => 'git@github.com:FerrariXX/FEFramework.git'
+    pod "SDWebImage",               '3.6.0'  #"SDWebImage/WebP"
+    pod "AFNetworking",             '1.3.3'
+    pod "SVPullToRefresh"
+end
