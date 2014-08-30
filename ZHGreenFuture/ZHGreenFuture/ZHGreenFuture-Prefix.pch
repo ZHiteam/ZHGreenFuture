@@ -14,6 +14,8 @@
     #import <UIKit/UIKit.h>
     #import <Foundation/Foundation.h>
 
+    #import <AFNetworking/AFNetworking.h>
+
     #import <SystemConfiguration/SystemConfiguration.h>
     #import <MobileCoreServices/MobileCoreServices.h>
 
@@ -28,4 +30,12 @@
 
     #import "HttpClient.h"
     #import "ModelManager.h"
+
+
+    #import "NavigationViewController.h"
+    #import "TabbarViewController.h"
+
+    #import "ZHConst.h"
+
+
 #endif

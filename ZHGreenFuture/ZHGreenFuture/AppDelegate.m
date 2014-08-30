@@ -7,11 +7,18 @@
 //
 
 #import "AppDelegate.h"
+#import "ZHRootViewController.h"
+
+
 
 @implementation AppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+    self.rootViewController = [[ZHRootViewController alloc] init];
+    self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
+    self.window.rootViewController = self.rootViewController;
+    [self.window makeKeyAndVisible];
     // Override point for customization after application launch.
     return YES;
 }

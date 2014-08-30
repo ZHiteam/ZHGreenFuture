@@ -3,6 +3,7 @@ target 'ZHGreenFuture' do
 
   	pod 'FEFramework',:git => 'git@github.com:FerrariXX/FEFramework.git'
     pod "SDWebImage",               '3.6.0'  #"SDWebImage/WebP"
-    pod "AFNetworking",             '1.3.3'
+    pod "AFNetworking",             '2.3.0'
     pod "SVPullToRefresh"
+    pod "JSONKit",					'1.5pre'
 end

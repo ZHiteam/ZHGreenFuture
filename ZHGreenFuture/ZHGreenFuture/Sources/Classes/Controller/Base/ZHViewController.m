@@ -43,7 +43,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
+    self.view.backgroundColor = [[UIColor orangeColor] colorWithAlphaComponent:0.5];
     self.swipeBack = [[UISwipeGestureRecognizer alloc]initWithTarget:self action:@selector(_back)];
     [self.view addGestureRecognizer:self.swipeBack];
     
