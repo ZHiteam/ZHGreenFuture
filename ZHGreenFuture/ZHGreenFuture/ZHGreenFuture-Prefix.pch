@@ -13,4 +13,19 @@
 #ifdef __OBJC__
     #import <UIKit/UIKit.h>
     #import <Foundation/Foundation.h>
+
+    #import <SystemConfiguration/SystemConfiguration.h>
+    #import <MobileCoreServices/MobileCoreServices.h>
+
+    #import "Constant.h"
+    #import "Config.h"
+    #import "MemoryStorage.h"
+    #import "NSString+ZHitem.h"
+    #import "UILabel+ZHitem.h"
+    #import "UIView+ZHitem.h"
+    #import "UIControl+ZHitem.h"
+    #import "UIImage+ZHitem.h"
+
+    #import "HttpClient.h"
+    #import "ModelManager.h"
 #endif
