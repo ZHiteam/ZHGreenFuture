@@ -14,6 +14,7 @@
 
 @property (nonatomic, strong) UIView*       leftBarItem;
 @property (nonatomic, strong) UIView*       rightBarItem;
+
 @end
 
 @interface UIButton(NavigationBar)

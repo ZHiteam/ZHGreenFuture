@@ -77,8 +77,32 @@
     [_barItems removeAllObjects];
     
     /// 设置背景图片
+    BOOL deal = NO;
     if ([_dataSource respondsToSelector:@selector(backgroundImage)]) {
+        
+        UIImage* image= [_dataSource backgroundImage];
+        if (image) {
+            deal = YES;
+        }
         self.backgroundColor = [UIColor colorWithPatternImage:[_dataSource backgroundImage]];
+    }
+    
+    if (!deal && [_dataSource respondsToSelector:@selector(backgroundView)]) {
+        UIView* bgView = [_dataSource backgroundView];
+        if (bgView){
+            bgView.frame = self.bounds;
+            [self addSubview:bgView];
+            
+            deal = YES;
+        }
+    }
+    
+    if (!deal) {
+        self.backgroundColor = RGBA(0xff, 0xff, 0xff, 0.5);
+        
+        UIView* line = [[UIView alloc]initWithFrame:CGRectMake(0, 0, self.width, 1)];
+        line.backgroundColor = RGB(176, 176, 176);
+        [self addSubview:line];
     }
     
     /// 设置选中背景
@@ -114,10 +138,14 @@
         [self addSubview:item];
     }
     
+#pragma -mark 根据不同展示类型
     /// 设置选中View
-    _selectedView.frame = ((UIView*)_barItems[_selectedIndex]).frame;
-    [self addSubview:_selectedView];
-    [self sendSubviewToBack:_selectedView];
+//    _selectedView.frame = ((UIView*)_barItems[_selectedIndex]).frame;
+//    [self addSubview:_selectedView];
+//    [self sendSubviewToBack:_selectedView];
+    
+    TabbarItem* selectItem = [_barItems objectAtIndex:_selectedIndex];
+    selectItem.selected = YES;
 }
 
 -(void)selectItem:(TabbarItem*)item{
@@ -150,12 +178,29 @@
 
 -(void)_animationToIndex:(NSUInteger)toIndex{
     @try {
-        [UIView animateWithDuration:ANIMATE_DURATION animations:^{
-            _selectedView.frame = ((UIView*)[_barItems objectAtIndex:toIndex]).frame;
-        } completion:^(BOOL finished) {
+//        [UIView animateWithDuration:ANIMATE_DURATION animations:^{
+//            _selectedView.frame = ((UIView*)[_barItems objectAtIndex:toIndex]).frame;
+//        } completion:^(BOOL finished) {
+//            
+//            [self _selectToIndexDone:toIndex];
+//        }];
+        
+//        [UIView animateWithDuration:ANIMATE_DURATION animations:^{
+//
+//            
+//            TabbarItem* curItem = [_barItems objectAtIndex:_selectedIndex];
+//            curItem.alpha = 0.5;
+//            
+//        } completion:^(BOOL finished) {
+            TabbarItem* curItem = [_barItems objectAtIndex:_selectedIndex];
+            TabbarItem* nextItem = [_barItems objectAtIndex:toIndex];
+            
+//            curItem.alpha = 1.0;
+            curItem.selected = NO;
+            nextItem.selected  =YES;
             
             [self _selectToIndexDone:toIndex];
-        }];
+//        }];
     }
     @catch (NSException *exception) {
         ZHLOG(@"%@",exception);

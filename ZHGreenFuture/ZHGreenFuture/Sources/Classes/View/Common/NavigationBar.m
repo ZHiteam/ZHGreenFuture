@@ -32,10 +32,15 @@
 {
     self = [super initWithFrame:frame];
     if (self) {
-        self.backgroundColor = WHITE_BACKGROUND;
+        self.backgroundColor = RGB(102, 170, 0);
         _backgroundView = [[UIImageView alloc]initWithFrame:CGRectMake(0, STATUS_BAR_HEIGHT, self.width, NAVIGATION_ITEM_HEIGHT)];
-        _backgroundView.image = [UIImage themeImageNamed:@"navigation_bar_bg.png"];
+//        _backgroundView.image = [UIImage themeImageNamed:@"navigation_bar_bg.png"];
         [self addSubview:_backgroundView];
+        
+        
+        UIView* line = [[UIView alloc]initWithFrame:CGRectMake(0, self.height-1, self.width, 1)];
+        line.backgroundColor = RGB(176, 176, 176);
+        [self addSubview:line];
     }
     return self;
 }

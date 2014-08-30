@@ -15,6 +15,13 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+    if (IOS_VERSION_7) {
+        [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
+    }
+    else{
+        [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleBlackOpaque;
+    }
+    
     self.rootViewController = [[ZHRootViewController alloc] init];
     self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
     self.window.rootViewController = self.rootViewController;

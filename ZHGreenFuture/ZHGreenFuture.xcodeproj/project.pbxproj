@@ -25,8 +25,11 @@
 		84EA64D319B1991300C446A5 /* ZHShoppingVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 84EA64D219B1991300C446A5 /* ZHShoppingVC.m */; };
 		84EA64D619B1992600C446A5 /* ZHRecipeVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 84EA64D519B1992600C446A5 /* ZHRecipeVC.m */; };
 		84EA64D919B1993700C446A5 /* ZHProfileVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 84EA64D819B1993700C446A5 /* ZHProfileVC.m */; };
-		84EA64DC19B19F1D00C446A5 /* tabbar_item_selected@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 84EA64DA19B19F1D00C446A5 /* tabbar_item_selected@2x.png */; };
-		84EA64DD19B19F1D00C446A5 /* tabbar_bg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 84EA64DB19B19F1D00C446A5 /* tabbar_bg@2x.png */; };
+		9C3862B219B1BDC600679C48 /* MessageCenter.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C3862B119B1BDC600679C48 /* MessageCenter.m */; };
+		9C3862B719B1CB0400679C48 /* bar_item_01@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9C3862B519B1CB0400679C48 /* bar_item_01@2x.png */; };
+		9C3862B819B1CB0400679C48 /* bar_item_selected_01@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9C3862B619B1CB0400679C48 /* bar_item_selected_01@2x.png */; };
+		9C3862BB19B1D6D300679C48 /* bar_item_02@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9C3862B919B1D6D300679C48 /* bar_item_02@2x.png */; };
+		9C3862BC19B1D6D300679C48 /* bar_item_selected_02@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9C3862BA19B1D6D300679C48 /* bar_item_selected_02@2x.png */; };
 		9C9778A019B1900F00D49E69 /* NSData+AESEncryption.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C97782D19B1900F00D49E69 /* NSData+AESEncryption.m */; };
 		9C9778A119B1900F00D49E69 /* NSDictionary+ZHitem.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C97782F19B1900F00D49E69 /* NSDictionary+ZHitem.m */; };
 		9C9778A219B1900F00D49E69 /* NSObject+Instance.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C97783119B1900F00D49E69 /* NSObject+Instance.m */; };
@@ -94,8 +97,12 @@
 		84EA64D519B1992600C446A5 /* ZHRecipeVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZHRecipeVC.m; sourceTree = "<group>"; };
 		84EA64D719B1993700C446A5 /* ZHProfileVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZHProfileVC.h; sourceTree = "<group>"; };
 		84EA64D819B1993700C446A5 /* ZHProfileVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZHProfileVC.m; sourceTree = "<group>"; };
-		84EA64DA19B19F1D00C446A5 /* tabbar_item_selected@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tabbar_item_selected@2x.png"; sourceTree = "<group>"; };
-		84EA64DB19B19F1D00C446A5 /* tabbar_bg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tabbar_bg@2x.png"; sourceTree = "<group>"; };
+		9C3862B019B1BDC600679C48 /* MessageCenter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MessageCenter.h; sourceTree = "<group>"; };
+		9C3862B119B1BDC600679C48 /* MessageCenter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MessageCenter.m; sourceTree = "<group>"; };
+		9C3862B519B1CB0400679C48 /* bar_item_01@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bar_item_01@2x.png"; sourceTree = "<group>"; };
+		9C3862B619B1CB0400679C48 /* bar_item_selected_01@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bar_item_selected_01@2x.png"; sourceTree = "<group>"; };
+		9C3862B919B1D6D300679C48 /* bar_item_02@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bar_item_02@2x.png"; sourceTree = "<group>"; };
+		9C3862BA19B1D6D300679C48 /* bar_item_selected_02@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bar_item_selected_02@2x.png"; sourceTree = "<group>"; };
 		9C97782C19B1900F00D49E69 /* NSData+AESEncryption.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSData+AESEncryption.h"; sourceTree = "<group>"; };
 		9C97782D19B1900F00D49E69 /* NSData+AESEncryption.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSData+AESEncryption.m"; sourceTree = "<group>"; };
 		9C97782E19B1900F00D49E69 /* NSDictionary+ZHitem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDictionary+ZHitem.h"; sourceTree = "<group>"; };
@@ -287,6 +294,34 @@
 			path = ZHHomePage;
 			sourceTree = "<group>";
 		};
+		9C3862AF19B1BC3D00679C48 /* Tools */ = {
+			isa = PBXGroup;
+			children = (
+				9C3862B019B1BDC600679C48 /* MessageCenter.h */,
+				9C3862B119B1BDC600679C48 /* MessageCenter.m */,
+			);
+			path = Tools;
+			sourceTree = "<group>";
+		};
+		9C3862B319B1CB0400679C48 /* images */ = {
+			isa = PBXGroup;
+			children = (
+				9C3862B419B1CB0400679C48 /* tabbar */,
+			);
+			path = images;
+			sourceTree = "<group>";
+		};
+		9C3862B419B1CB0400679C48 /* tabbar */ = {
+			isa = PBXGroup;
+			children = (
+				9C3862B919B1D6D300679C48 /* bar_item_02@2x.png */,
+				9C3862BA19B1D6D300679C48 /* bar_item_selected_02@2x.png */,
+				9C3862B519B1CB0400679C48 /* bar_item_01@2x.png */,
+				9C3862B619B1CB0400679C48 /* bar_item_selected_01@2x.png */,
+			);
+			path = tabbar;
+			sourceTree = "<group>";
+		};
 		9C97782819B1900F00D49E69 /* Sources */ = {
 			isa = PBXGroup;
 			children = (
@@ -311,6 +346,7 @@
 		9C97782A19B1900F00D49E69 /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				9C3862AF19B1BC3D00679C48 /* Tools */,
 				9C97782B19B1900F00D49E69 /* Category */,
 				9C97783C19B1900F00D49E69 /* Config */,
 				9C97784019B1900F00D49E69 /* Network */,
@@ -460,8 +496,7 @@
 		9C97789D19B1900F00D49E69 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				84EA64DA19B19F1D00C446A5 /* tabbar_item_selected@2x.png */,
-				84EA64DB19B19F1D00C446A5 /* tabbar_bg@2x.png */,
+				9C3862B319B1CB0400679C48 /* images */,
 				9C97789E19B1900F00D49E69 /* Property.plist */,
 				9C97789F19B1900F00D49E69 /* system.config */,
 			);
@@ -547,8 +582,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				849F7F6619AB81EE00962BB1 /* Images.xcassets in Resources */,
-				84EA64DD19B19F1D00C446A5 /* tabbar_bg@2x.png in Resources */,
-				84EA64DC19B19F1D00C446A5 /* tabbar_item_selected@2x.png in Resources */,
+				9C3862B819B1CB0400679C48 /* bar_item_selected_01@2x.png in Resources */,
+				9C3862B719B1CB0400679C48 /* bar_item_01@2x.png in Resources */,
+				9C3862BB19B1D6D300679C48 /* bar_item_02@2x.png in Resources */,
+				9C3862BC19B1D6D300679C48 /* bar_item_selected_02@2x.png in Resources */,
 				849F7F5519AB81EE00962BB1 /* InfoPlist.strings in Resources */,
 				9C9778D219B1900F00D49E69 /* system.config in Resources */,
 				9C9778D119B1900F00D49E69 /* Property.plist in Resources */,
@@ -610,6 +647,7 @@
 				9C9778AD19B1900F00D49E69 /* TabbarViewController.m in Sources */,
 				9C9778A419B1900F00D49E69 /* UIControl+ZHitem.m in Sources */,
 				9C9778A319B1900F00D49E69 /* NSString+ZHitem.m in Sources */,
+				9C3862B219B1BDC600679C48 /* MessageCenter.m in Sources */,
 				9C9778A619B1900F00D49E69 /* UILabel+ZHitem.m in Sources */,
 				9C9778A119B1900F00D49E69 /* NSDictionary+ZHitem.m in Sources */,
 				9C9778A219B1900F00D49E69 /* NSObject+Instance.m in Sources */,

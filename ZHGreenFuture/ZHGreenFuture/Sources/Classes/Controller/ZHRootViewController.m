@@ -56,6 +56,8 @@
 
 -(void)prepare{
     [MemoryStorage setValue:self forKey:k_NAVIGATIONCTL];
+    
+    self.hasNavitaiongBar = NO;
 
 }
 
@@ -82,13 +84,6 @@
 }
 
 #pragma mark - Override
--(UIImage*)selectedImage{
-    return [UIImage themeImageNamed:@"tabbar_item_selected.png"];
-}
-
--(UIImage*)backgroundImage{
-    return [UIImage themeImageNamed:@"tabbar_bg.png"];
-}
 
 #pragma - mark TabbarDataSource
 -(NSUInteger)numberOfItems{
@@ -101,38 +96,38 @@
         return nil;
     }
     
-    NSString*   title = @"";
-    NSString*   subTitle = @"";
+    NSString*   image = @"";
+    NSString*   selectedImage = @"";
+    
     switch (index) {
         case 0:
         {
-            title       =   @"首页";
-            subTitle    =   @"";
-            
+            image = @"bar_item_01";
+            selectedImage = @"bar_item_selected_01";
         }
             break;
         case 1:
         {
-            title       =   @"逛商品";
-            subTitle    =   @"";
+            image = @"bar_item_02";
+            selectedImage = @"bar_item_selected_02";
         }
             break;
         case 2:
         {
-            title       =   @"养生食谱";
-            subTitle    =   @"";
+            image = @"bar_item_01";
+            selectedImage = @"bar_item_selected_01";
         }
             break;
         case 3:
         {
-            title       =   @"我的";
-            subTitle    =   @"";
+            image = @"bar_item_01";
+            selectedImage = @"bar_item_selected_01";
         }
             break;
         default:
             break;
     }
-    TabbarItem* item = [[TabbarItem alloc]initWithFrame:CGRectMake(0, 0, 0, 0) title:title subTitle:subTitle];
+    TabbarItem* item = [[TabbarItem alloc]initWithFrame:CGRectMake(0, 0, 0, 0) image:[UIImage themeImageNamed:image] selectedImage:[UIImage themeImageNamed:selectedImage]];
     
     return item;
 }
@@ -143,6 +138,7 @@
         ZHViewController* vc = [self.tabbarVCItems objectAtIndex:aIndex];
         vc.viewFrame = CGRectMake(0, 0, self.view.width,self.view.height-tabbarCtl.tabbarHeight);
 
+//        vc.hasNavitaiongBar = NO;
         return vc;
     }
     return nil;

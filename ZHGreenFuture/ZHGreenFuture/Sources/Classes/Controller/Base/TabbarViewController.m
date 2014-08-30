@@ -118,6 +118,13 @@
     return nil;
 }
 
+-(UIView*)backgroundView{
+    if ([_dataSource respondsToSelector:@selector(backgroundView)]) {
+        return [_dataSource backgroundView];
+    }
+    return nil;
+}
+
 #pragma -mark TabbarDelegate
 -(BOOL)tabbar:(TabbarView *)tabbar shouldSelectedAtIndex:(NSUInteger)aIndex{
     

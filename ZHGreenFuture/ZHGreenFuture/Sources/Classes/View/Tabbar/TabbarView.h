@@ -36,6 +36,8 @@
 -(UIImage*)selectedImage;
 
 -(UIImage*)backgroundImage;
+
+-(UIView*)backgroundView;
 @end
 
 @protocol TabbarDelegate <NSObject>

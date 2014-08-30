@@ -10,8 +10,8 @@
 
 @interface TabbarItem : UIControl
 
-@property (nonatomic ,assign) NSString*     title;
-@property (nonatomic ,assign) NSString*     subTitle;
+@property (nonatomic ,strong) UIImage*      defaultImage;
+@property (nonatomic ,strong) UIImage*      selectedImage;
 
--(id)initWithFrame:(CGRect)frame title:(NSString*)title subTitle:(NSString*)subTitle;
+-(id)initWithFrame:(CGRect)frame image:(UIImage*)image selectedImage:(UIImage*)selectedImage;
 @end
