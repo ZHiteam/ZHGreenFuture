@@ -15,7 +15,11 @@
 
 @interface ZHHomePageVC ()<UITableViewDelegate, UITableViewDataSource>
 @property(nonatomic, strong)UITableView     *tableView;
-@property(nonatomic, strong)ZHHomePageModel *homePageModel;
+@property(nonatomic, strong)ZHHomePageModel       *homePageModel;
+@property(nonatomic, strong)ZHBannerTableViewCell   *bannerTableviewCell;
+@property(nonatomic, strong)ZHCategoryTableViewCell *categoryTableviewCell;
+@property(nonatomic, strong)ZHRecommendTableViewCell*recommendTableViewCell;
+
 
 @end
 
@@ -54,7 +58,6 @@
         _tableView.delegate = self;
         _tableView.dataSource = self;
         _tableView.backgroundColor = [UIColor lightGrayColor];
-        //[_tableView setContentInset:UIEdgeInsetsMake(64, 0,76, 0)];
         _tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
         _tableView.autoresizesSubviews = UIViewAutoresizingFlexibleWidth|UIViewAutoresizingFlexibleHeight;
     }
@@ -87,6 +90,29 @@
     [button addTarget:self action:@selector(rightItemPressed:) forControlEvents:UIControlEventTouchUpInside];
     self.navigationBar.rightBarItem = button;
 }
+
+- (ZHBannerTableViewCell *)bannerTableviewCell{
+    if (_bannerTableviewCell == nil) {
+      _bannerTableviewCell = [ZHBannerTableViewCell tableViewCell];
+    }
+    return _bannerTableviewCell;
+}
+
+- (ZHCategoryTableViewCell *)categoryTableviewCell{
+    if (_categoryTableviewCell == nil) {
+        _categoryTableviewCell = [ZHCategoryTableViewCell tableViewCell];
+
+    }
+    return _categoryTableviewCell;
+}
+
+- (ZHRecommendTableViewCell *)recommendTableViewCell{
+    if (_recommendTableViewCell == nil) {
+        _recommendTableViewCell = [ZHRecommendTableViewCell tableViewCell];
+    }
+    return _recommendTableViewCell;
+}
+
 
 #pragma mark - Event Handler
 - (void)leftItemPressed:(id)sender{
@@ -137,13 +163,8 @@
         switch (indexPath.row) {
             case 0:
             {
-                static NSString *CellIdentifier = @"kBannerTableViewCell";
-                ZHBannerTableViewCell*cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-                if (cell == nil){
-                    cell = [ZHBannerTableViewCell tableViewCell];
-                }
+                ZHBannerTableViewCell*cell = self.bannerTableviewCell;
                 __weak __typeof(self) weakSelf = self;
-
                 [cell.bannerScrollView setImageItems:self.homePageModel.bannerItems selectedBlock:^(FEImageItem *sender) {
                     //do nothing here now
                     [weakSelf bannerItemPressed:sender.tag];
@@ -153,11 +174,7 @@
                 break;
             case 1:
             {
-                static NSString *CellIdentifier = @"kCategoryTableViewCell";
-                ZHCategoryTableViewCell*cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-                if (cell == nil){
-                    cell = [ZHCategoryTableViewCell tableViewCell];
-                }
+                ZHCategoryTableViewCell*cell = self.categoryTableviewCell;
                 __weak __typeof(self) weakSelf = self;
                 [cell layoutWithCategoryItem:self.homePageModel.categoryItems clickedBlock:^(NSInteger index) {
                     [weakSelf categoryItemPressed:index];
@@ -167,11 +184,7 @@
                 break;
             case 2:
             {
-                static NSString *CellIdentifier = @"kRecommendTableViewCell";
-                ZHRecommendTableViewCell*cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-                if (cell == nil){
-                    cell = [ZHRecommendTableViewCell tableViewCell];
-                }
+                ZHRecommendTableViewCell*cell = self.recommendTableViewCell;
                 cell.dateLabel.text = self.homePageModel.calenderItem.date;
                 cell.titleLabel.text = self.homePageModel.calenderItem.title;
                 cell.subTitleLabel.text = self.homePageModel.calenderItem.subTitle;
