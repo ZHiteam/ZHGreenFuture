@@ -11,3 +11,5 @@
 #define TABBAR_COUNT 4
 
 #define k_NAVIGATIONCTL @"k_navigation_controller"
+
+typedef void(^ZHCompletionBlock)(BOOL isSuccess);
