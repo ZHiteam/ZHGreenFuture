@@ -74,6 +74,7 @@
 }
 
 - (void)configureNaivBar{
+    [self.navigationBar setTitle:@"首页"];
     UIButton *button = [[UIButton alloc] initWithFrame:CGRectMake(0, 20, 60 , 44)];
     button.backgroundColor = [UIColor clearColor];
     [button setImage:[UIImage imageNamed:@"qr_code"] forState:UIControlStateNormal];
