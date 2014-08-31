@@ -27,14 +27,26 @@
 {
     [super viewDidLoad];
     
-    
-    // Do any additional setup after loading the view.
+    [self loadContent];
 }
 
--(void)action{
-    NavigationViewController* navi = [MemoryStorage valueForKey:k_NAVIGATIONCTL];
-    [navi pushViewController:self];
+
+-(void)loadContent{    
+//    UIButton* btn = [UIButton buttonWithType:UIButtonTypeContactAdd];
+//    
+//    [btn addTarget:self action:@selector(action) forControlEvents:UIControlEventTouchUpInside];
+//    
+//    self.navigationBar.rightBarItem = btn;
     
+    self.navigationBar.rightBarItem = [UIButton barItemWithTitle:nil image:[UIImage themeImageNamed:@"btn_search"] action:self selector:@selector(action)];
+    [self.navigationBar setTitle:@"粮仓分类"];
+
+}
+
+
+-(void)action{
+    [[MessageCenter instance]performActionWithUserInfo:@{@"controller": @"ZHViewController",
+                                                         @"title":@"测试"}];
 }
 - (void)didReceiveMemoryWarning
 {

@@ -118,6 +118,7 @@
     
     _rightBarItem = rightBarItem;
     _rightBarItem.right = FULL_WIDTH-BAR_ITEM_SPAN;
+    _rightBarItem.top = STATUS_BAR_HEIGHT;
     
     _rightSpan.right = _rightBarItem.left;
     

@@ -35,6 +35,7 @@
     #import "NavigationViewController.h"
     #import "TabbarViewController.h"
 
+    #import "MessageCenter.h"
     #import "ZHConst.h"
 
 

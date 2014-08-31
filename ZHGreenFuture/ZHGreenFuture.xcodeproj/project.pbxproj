@@ -30,6 +30,8 @@
 		9C3862B819B1CB0400679C48 /* bar_item_selected_01@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9C3862B619B1CB0400679C48 /* bar_item_selected_01@2x.png */; };
 		9C3862BB19B1D6D300679C48 /* bar_item_02@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9C3862B919B1D6D300679C48 /* bar_item_02@2x.png */; };
 		9C3862BC19B1D6D300679C48 /* bar_item_selected_02@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9C3862BA19B1D6D300679C48 /* bar_item_selected_02@2x.png */; };
+		9C3862BE19B2C7F800679C48 /* btn_search@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9C3862BD19B2C7F800679C48 /* btn_search@2x.png */; };
+		9C3862C019B2C99300679C48 /* btn_back@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9C3862BF19B2C99300679C48 /* btn_back@2x.png */; };
 		9C9778A019B1900F00D49E69 /* NSData+AESEncryption.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C97782D19B1900F00D49E69 /* NSData+AESEncryption.m */; };
 		9C9778A119B1900F00D49E69 /* NSDictionary+ZHitem.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C97782F19B1900F00D49E69 /* NSDictionary+ZHitem.m */; };
 		9C9778A219B1900F00D49E69 /* NSObject+Instance.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C97783119B1900F00D49E69 /* NSObject+Instance.m */; };
@@ -103,6 +105,8 @@
 		9C3862B619B1CB0400679C48 /* bar_item_selected_01@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bar_item_selected_01@2x.png"; sourceTree = "<group>"; };
 		9C3862B919B1D6D300679C48 /* bar_item_02@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bar_item_02@2x.png"; sourceTree = "<group>"; };
 		9C3862BA19B1D6D300679C48 /* bar_item_selected_02@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bar_item_selected_02@2x.png"; sourceTree = "<group>"; };
+		9C3862BD19B2C7F800679C48 /* btn_search@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "btn_search@2x.png"; sourceTree = "<group>"; };
+		9C3862BF19B2C99300679C48 /* btn_back@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "btn_back@2x.png"; sourceTree = "<group>"; };
 		9C97782C19B1900F00D49E69 /* NSData+AESEncryption.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSData+AESEncryption.h"; sourceTree = "<group>"; };
 		9C97782D19B1900F00D49E69 /* NSData+AESEncryption.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSData+AESEncryption.m"; sourceTree = "<group>"; };
 		9C97782E19B1900F00D49E69 /* NSDictionary+ZHitem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDictionary+ZHitem.h"; sourceTree = "<group>"; };
@@ -306,6 +310,8 @@
 		9C3862B319B1CB0400679C48 /* images */ = {
 			isa = PBXGroup;
 			children = (
+				9C3862BF19B2C99300679C48 /* btn_back@2x.png */,
+				9C3862BD19B2C7F800679C48 /* btn_search@2x.png */,
 				9C3862B419B1CB0400679C48 /* tabbar */,
 			);
 			path = images;
@@ -320,6 +326,13 @@
 				9C3862B619B1CB0400679C48 /* bar_item_selected_01@2x.png */,
 			);
 			path = tabbar;
+			sourceTree = "<group>";
+		};
+		9C3862C119B2CA6E00679C48 /* ZHShopping */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ZHShopping;
 			sourceTree = "<group>";
 		};
 		9C97782819B1900F00D49E69 /* Sources */ = {
@@ -460,6 +473,7 @@
 		9C97785819B1900F00D49E69 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				9C3862C119B2CA6E00679C48 /* ZHShopping */,
 				9C97785919B1900F00D49E69 /* Common */,
 				9C97785C19B1900F00D49E69 /* Tabbar */,
 			);
@@ -581,11 +595,13 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9C3862C019B2C99300679C48 /* btn_back@2x.png in Resources */,
 				849F7F6619AB81EE00962BB1 /* Images.xcassets in Resources */,
 				9C3862B819B1CB0400679C48 /* bar_item_selected_01@2x.png in Resources */,
 				9C3862B719B1CB0400679C48 /* bar_item_01@2x.png in Resources */,
 				9C3862BB19B1D6D300679C48 /* bar_item_02@2x.png in Resources */,
 				9C3862BC19B1D6D300679C48 /* bar_item_selected_02@2x.png in Resources */,
+				9C3862BE19B2C7F800679C48 /* btn_search@2x.png in Resources */,
 				849F7F5519AB81EE00962BB1 /* InfoPlist.strings in Resources */,
 				9C9778D219B1900F00D49E69 /* system.config in Resources */,
 				9C9778D119B1900F00D49E69 /* Property.plist in Resources */,
