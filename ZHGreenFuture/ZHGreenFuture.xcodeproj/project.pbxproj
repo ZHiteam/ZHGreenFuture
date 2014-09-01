@@ -62,6 +62,13 @@
 		9C3862C719B2CECE00679C48 /* CatagoryModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C3862C619B2CECE00679C48 /* CatagoryModel.m */; };
 		9C3862CC19B2CEFD00679C48 /* SecondCatagoryModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C3862CB19B2CEFD00679C48 /* SecondCatagoryModel.m */; };
 		9C3862CF19B2D00400679C48 /* ZHCatagoryCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C3862CE19B2D00400679C48 /* ZHCatagoryCell.m */; };
+		9C89836719B451F5009CB910 /* temp_liang@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9C89836619B451F5009CB910 /* temp_liang@2x.png */; };
+		9C89836A19B46202009CB910 /* ZHView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C89836919B46202009CB910 /* ZHView.m */; };
+		9C89836D19B474E7009CB910 /* ZHCatagoryVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C89836C19B474E7009CB910 /* ZHCatagoryVC.m */; };
+		9C89837019B47998009CB910 /* ZHCatagoryDetail.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C89836F19B47998009CB910 /* ZHCatagoryDetail.m */; };
+		9C89837319B47C58009CB910 /* ZHProductItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C89837219B47C58009CB910 /* ZHProductItem.m */; };
+		9C89837619B4845C009CB910 /* ZHSegmentView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C89837519B4845C009CB910 /* ZHSegmentView.m */; };
+		9C89837919B48C1E009CB910 /* ZHSwipSegment.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C89837819B48C1E009CB910 /* ZHSwipSegment.m */; };
 		9C9778A019B1900F00D49E69 /* NSData+AESEncryption.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C97782D19B1900F00D49E69 /* NSData+AESEncryption.m */; };
 		9C9778A119B1900F00D49E69 /* NSDictionary+ZHitem.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C97782F19B1900F00D49E69 /* NSDictionary+ZHitem.m */; };
 		9C9778A219B1900F00D49E69 /* NSObject+Instance.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C97783119B1900F00D49E69 /* NSObject+Instance.m */; };
@@ -179,6 +186,19 @@
 		9C3862CB19B2CEFD00679C48 /* SecondCatagoryModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SecondCatagoryModel.m; sourceTree = "<group>"; };
 		9C3862CD19B2D00400679C48 /* ZHCatagoryCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZHCatagoryCell.h; sourceTree = "<group>"; };
 		9C3862CE19B2D00400679C48 /* ZHCatagoryCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZHCatagoryCell.m; sourceTree = "<group>"; };
+		9C89836619B451F5009CB910 /* temp_liang@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "temp_liang@2x.png"; sourceTree = "<group>"; };
+		9C89836819B46202009CB910 /* ZHView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZHView.h; sourceTree = "<group>"; };
+		9C89836919B46202009CB910 /* ZHView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZHView.m; sourceTree = "<group>"; };
+		9C89836B19B474E7009CB910 /* ZHCatagoryVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZHCatagoryVC.h; sourceTree = "<group>"; };
+		9C89836C19B474E7009CB910 /* ZHCatagoryVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZHCatagoryVC.m; sourceTree = "<group>"; };
+		9C89836E19B47998009CB910 /* ZHCatagoryDetail.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZHCatagoryDetail.h; sourceTree = "<group>"; };
+		9C89836F19B47998009CB910 /* ZHCatagoryDetail.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZHCatagoryDetail.m; sourceTree = "<group>"; };
+		9C89837119B47C58009CB910 /* ZHProductItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZHProductItem.h; sourceTree = "<group>"; };
+		9C89837219B47C58009CB910 /* ZHProductItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZHProductItem.m; sourceTree = "<group>"; };
+		9C89837419B4845C009CB910 /* ZHSegmentView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZHSegmentView.h; sourceTree = "<group>"; };
+		9C89837519B4845C009CB910 /* ZHSegmentView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZHSegmentView.m; sourceTree = "<group>"; };
+		9C89837719B48C1E009CB910 /* ZHSwipSegment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZHSwipSegment.h; sourceTree = "<group>"; };
+		9C89837819B48C1E009CB910 /* ZHSwipSegment.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZHSwipSegment.m; sourceTree = "<group>"; };
 		9C97782C19B1900F00D49E69 /* NSData+AESEncryption.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSData+AESEncryption.h"; sourceTree = "<group>"; };
 		9C97782D19B1900F00D49E69 /* NSData+AESEncryption.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSData+AESEncryption.m"; sourceTree = "<group>"; };
 		9C97782E19B1900F00D49E69 /* NSDictionary+ZHitem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDictionary+ZHitem.h"; sourceTree = "<group>"; };
@@ -390,6 +410,8 @@
 			children = (
 				84EA64D119B1991300C446A5 /* ZHShoppingVC.h */,
 				84EA64D219B1991300C446A5 /* ZHShoppingVC.m */,
+				9C89836B19B474E7009CB910 /* ZHCatagoryVC.h */,
+				9C89836C19B474E7009CB910 /* ZHCatagoryVC.m */,
 			);
 			path = ZHShopping;
 			sourceTree = "<group>";
@@ -429,6 +451,7 @@
 		9C3862B319B1CB0400679C48 /* images */ = {
 			isa = PBXGroup;
 			children = (
+				9C89836519B451F5009CB910 /* temp */,
 				9C3862BF19B2C99300679C48 /* btn_back@2x.png */,
 				9C3862BD19B2C7F800679C48 /* btn_search@2x.png */,
 				84B9604119B3638A0042A670 /* profile */,
@@ -456,6 +479,8 @@
 				9C3862C319B2CBBE00679C48 /* ZHShoppingCatagory.m */,
 				9C3862CD19B2D00400679C48 /* ZHCatagoryCell.h */,
 				9C3862CE19B2D00400679C48 /* ZHCatagoryCell.m */,
+				9C89836E19B47998009CB910 /* ZHCatagoryDetail.h */,
+				9C89836F19B47998009CB910 /* ZHCatagoryDetail.m */,
 			);
 			path = ZHShopping;
 			sourceTree = "<group>";
@@ -467,6 +492,8 @@
 				9C3862C619B2CECE00679C48 /* CatagoryModel.m */,
 				9C3862CA19B2CEFD00679C48 /* SecondCatagoryModel.h */,
 				9C3862CB19B2CEFD00679C48 /* SecondCatagoryModel.m */,
+				9C89837119B47C58009CB910 /* ZHProductItem.h */,
+				9C89837219B47C58009CB910 /* ZHProductItem.m */,
 			);
 			name = Catagory;
 			sourceTree = "<group>";
@@ -480,6 +507,14 @@
 				9C97785719B1900F00D49E69 /* ModelManager.m */,
 			);
 			name = Base;
+			sourceTree = "<group>";
+		};
+		9C89836519B451F5009CB910 /* temp */ = {
+			isa = PBXGroup;
+			children = (
+				9C89836619B451F5009CB910 /* temp_liang@2x.png */,
+			);
+			path = temp;
 			sourceTree = "<group>";
 		};
 		9C97782819B1900F00D49E69 /* Sources */ = {
@@ -627,6 +662,12 @@
 			children = (
 				9C97785A19B1900F00D49E69 /* NavigationBar.h */,
 				9C97785B19B1900F00D49E69 /* NavigationBar.m */,
+				9C89836819B46202009CB910 /* ZHView.h */,
+				9C89836919B46202009CB910 /* ZHView.m */,
+				9C89837419B4845C009CB910 /* ZHSegmentView.h */,
+				9C89837519B4845C009CB910 /* ZHSegmentView.m */,
+				9C89837719B48C1E009CB910 /* ZHSwipSegment.h */,
+				9C89837819B48C1E009CB910 /* ZHSwipSegment.m */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -744,6 +785,7 @@
 				84B9603819B35B5C0042A670 /* ZHOrderTableViewCell.xib in Resources */,
 				9C3862BB19B1D6D300679C48 /* bar_item_02@2x.png in Resources */,
 				9C3862BC19B1D6D300679C48 /* bar_item_selected_02@2x.png in Resources */,
+				9C89836719B451F5009CB910 /* temp_liang@2x.png in Resources */,
 				9C3862BE19B2C7F800679C48 /* btn_search@2x.png in Resources */,
 				84A7A5B619B2C02F0050CACD /* surprise@2x.png in Resources */,
 				84A7A5B719B2C02F0050CACD /* rice@2x.png in Resources */,
@@ -812,8 +854,11 @@
 				84A7A5CB19B2C9930050CACD /* ZHProductTableViewCell.m in Sources */,
 				84EA64D319B1991300C446A5 /* ZHShoppingVC.m in Sources */,
 				9C9778A519B1900F00D49E69 /* UIImage+ZHitem.m in Sources */,
+				9C89837619B4845C009CB910 /* ZHSegmentView.m in Sources */,
+				9C89837019B47998009CB910 /* ZHCatagoryDetail.m in Sources */,
 				9C9778A819B1900F00D49E69 /* Config.m in Sources */,
 				9C9778B419B1900F00D49E69 /* TabbarView.m in Sources */,
+				9C89837319B47C58009CB910 /* ZHProductItem.m in Sources */,
 				9C9778AD19B1900F00D49E69 /* TabbarViewController.m in Sources */,
 				9C9778A419B1900F00D49E69 /* UIControl+ZHitem.m in Sources */,
 				9C9778A319B1900F00D49E69 /* NSString+ZHitem.m in Sources */,
@@ -831,6 +876,7 @@
 				9C9778A719B1900F00D49E69 /* UIView+ZHitem.m in Sources */,
 				849F7F5B19AB81EE00962BB1 /* AppDelegate.m in Sources */,
 				9C9778A019B1900F00D49E69 /* NSData+AESEncryption.m in Sources */,
+				9C89836D19B474E7009CB910 /* ZHCatagoryVC.m in Sources */,
 				84EA64D919B1993700C446A5 /* ZHProfileVC.m in Sources */,
 				9C9778AE19B1900F00D49E69 /* ZHViewController.m in Sources */,
 				9C3862C419B2CBBE00679C48 /* ZHShoppingCatagory.m in Sources */,
@@ -843,9 +889,11 @@
 				84EA64D619B1992600C446A5 /* ZHRecipeVC.m in Sources */,
 				9C9778B219B1900F00D49E69 /* NavigationBar.m in Sources */,
 				84EA64C819B192D700C446A5 /* ZHRootViewController.m in Sources */,
+				9C89837919B48C1E009CB910 /* ZHSwipSegment.m in Sources */,
 				9C9778AF19B1900F00D49E69 /* BaseModel.m in Sources */,
 				849F7F5719AB81EE00962BB1 /* main.m in Sources */,
 				9C3862C719B2CECE00679C48 /* CatagoryModel.m in Sources */,
+				9C89836A19B46202009CB910 /* ZHView.m in Sources */,
 				84EA64D019B198FE00C446A5 /* ZHHomePageVC.m in Sources */,
 				84B9603319B35A9A0042A670 /* ZHProfileModel.m in Sources */,
 				9C9778B119B1900F00D49E69 /* ModelManager.m in Sources */,

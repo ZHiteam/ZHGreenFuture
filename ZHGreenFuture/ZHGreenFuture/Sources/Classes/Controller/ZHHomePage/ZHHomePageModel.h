@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "ZHProductItem.h"
 
 
 @interface ZHBannerItem : NSObject <FEImageItemProtocol>
@@ -39,17 +40,6 @@
 @property(nonatomic ,strong)NSString *imageURL;
 @property(nonatomic ,strong)NSString *clickImageURL;
 @end
-
-
-@interface ZHProductItem : NSObject
-@property(nonatomic ,strong)NSString *imageURL;
-@property(nonatomic ,strong)NSString *title;
-@property(nonatomic ,strong)NSString *subTitle;
-@property(nonatomic ,strong)NSString *price;
-@property(nonatomic ,strong)NSString *buyCount;
-@property(nonatomic ,strong)NSString *productId;
-@end
-
 
 @interface ZHHomePageModel : NSObject
 @property(nonatomic, strong)NSArray *bannerItems;   //ZHBannerItem

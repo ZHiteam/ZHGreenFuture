@@ -8,8 +8,9 @@
 
 #import "ZHViewController.h"
 #import "NavigationViewController.h"
+#import "ZHView.h"
 
-@interface ZHViewController ()
+@interface ZHViewController ()<ZHViewMoniter>
 
 -(void)_initNavigationBar;
 -(void)addNavigationBar;
@@ -29,7 +30,10 @@
 }
 
 -(void)loadView{
-    [super loadView];
+    
+    /// 增加subView监听，保持NavigationBar在最前
+    self.view = [[ZHView alloc]initWithFrame:[UIScreen mainScreen].bounds];
+    ((ZHView*)(self.view)).moniter = self;
     
     if (!CGRectEqualToRect(self.viewFrame, CGRectZero)) {
         self.view.frame = self.viewFrame;
@@ -89,5 +93,14 @@
     return interface&toInterfaceOrientation;
 }
 //#endif
+
+#pragma -mark ZHViewMoniter
+-(void)subViewAdded:(UIView *)addedView{
+    if (self.hasNavitaiongBar){
+        if (addedView != self.navigationBar){
+            [self.view bringSubviewToFront:self.navigationBar];
+        }
+    }
+}
 
 @end

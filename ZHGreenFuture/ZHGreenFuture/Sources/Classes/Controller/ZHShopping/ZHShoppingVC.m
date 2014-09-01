@@ -39,11 +39,16 @@
     [self.navigationBar setTitle:@"粮仓分类"];
     
     [self.view addSubview:self.catagory];
+    
+    
+//    [self.view bringSubviewToFront:self.navigationBar];
 
 }
 
 -(ZHShoppingCatagory *)catagory{
-    _catagory = [[ZHShoppingCatagory alloc]initWithFrame:self.contentBounds];
+    if(!_catagory){
+        _catagory = [[ZHShoppingCatagory alloc]initWithFrame:self.contentBounds];
+    }
     
     return _catagory;
 }

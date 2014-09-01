@@ -98,7 +98,7 @@
     }
     
     if (!deal) {
-        self.backgroundColor = RGBA(0xff, 0xff, 0xff, 0.5);
+        self.backgroundColor = RGBA(0xff, 0xff, 0xff, 0.8);
         
         UIView* line = [[UIView alloc]initWithFrame:CGRectMake(0, 0, self.width, 1)];
         line.backgroundColor = RGB(176, 176, 176);

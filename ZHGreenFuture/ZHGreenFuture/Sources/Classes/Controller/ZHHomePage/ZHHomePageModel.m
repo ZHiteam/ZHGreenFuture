@@ -32,10 +32,6 @@
 
 @end
 
-@implementation ZHProductItem
-
-
-@end
 
 @implementation ZHHomePageModel
 - (instancetype)init

@@ -78,9 +78,6 @@
 #define FULL_WIDTH          FULL_FRAME.size.width
 #define FULL_HEIGHT         FULL_FRAME.size.height
 
-#define WHITE_BACKGROUND    RGB(255,255,255)
-#define WHITE_TEXT          RGB(255,255,255)
-
 #define k_BASE_THEME_PATH   @"baseThemePath"                /// 主题路径
 
 #endif
