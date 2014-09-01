@@ -15,6 +15,7 @@
 @property (nonatomic, strong) UIView*       leftBarItem;
 @property (nonatomic, strong) UIView*       rightBarItem;
 
+-(void)setTitleColor:(UIColor*)color;
 @end
 
 @interface UIButton(NavigationBar)

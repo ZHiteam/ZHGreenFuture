@@ -16,15 +16,6 @@
 
 @implementation ZHCatagoryVC
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
-{
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self) {
-        // Custom initialization
-    }
-    return self;
-}
-
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -42,6 +33,8 @@
     self.view.backgroundColor = RGB(238, 238, 238);
     
     self.navigationBar.title = @"XXX分类";
+
+    [self whithNavigationBarStyle];
     
     [self.view addSubview:self.catagoryView];
 }

@@ -58,6 +58,12 @@
 
 }
 
+-(void)setTitleColor:(UIColor *)color{
+    if (_titleLabel){
+        _titleLabel.textColor = color;
+    }
+}
+
 -(void)setTitle:(NSString *)title{
     [self _initTitleLabel];
     

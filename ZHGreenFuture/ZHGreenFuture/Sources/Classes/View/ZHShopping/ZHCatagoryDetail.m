@@ -52,6 +52,17 @@
     
     [self addSubview:self.catagoryList];
     
+//    [self addSubview:self.segmentPanel];
+//    
+//    UISwipeGestureRecognizer* upGesture = [[UISwipeGestureRecognizer alloc]initWithTarget:self action:@selector(hideSegment)];
+//    
+//    upGesture.direction = UISwipeGestureRecognizerDirectionUp;
+//    
+//    UISwipeGestureRecognizer* downGesture = [[UISwipeGestureRecognizer alloc]initWithTarget:self action:@selector(showSegment)];
+//    downGesture.direction = UISwipeGestureRecognizerDirectionDown;
+//    
+//    [self addGestureRecognizer:upGesture];
+//    [self addGestureRecognizer:downGesture];
 }
 
 -(ZHSwipSegment *)catagoryList{
@@ -143,11 +154,13 @@
 }
 
 -(UIView*)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
+//    [self bringSubviewToFront:self.segmentPanel];
+//    return nil;
     return self.segmentPanel;
 }
 
 -(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
-    return 52;
+    return self.segmentPanel.height;
 }
 #pragma -mark rewrite methods
 -(void)reloadData{
@@ -210,6 +223,24 @@
     if (scrollView.contentOffset.y > 50){
 //        self.sectionHeaderHeight = 0;
     }
+}
+
+#pragma -mark segment animation
+-(void)hideSegment{
+    [UIView animateWithDuration:0.5 animations:^{
+        self.segmentPanel.bottom = 0;
+    } completion:^(BOOL finished) {
+        self.segmentPanel.hidden = YES;
+    }];
+}
+
+-(void)showSegment{
+    self.segmentPanel.hidden = NO;
+    [UIView animateWithDuration:0.5 animations:^{
+        self.segmentPanel.top = 0;
+    } completion:^(BOOL finished) {
+        
+    }];
 }
 
 #pragma -mark ZHSegmentViewDelegate

@@ -103,4 +103,9 @@
     }
 }
 
+-(void)whithNavigationBarStyle{
+    [self.navigationBar setTitleColor:GREEN_COLOR];
+    self.navigationBar.backgroundColor = WHITE_BACKGROUND;
+    self.navigationBar.leftBarItem = [UIButton barItemWithTitle:@"" image:[UIImage themeImageNamed:@"btn_back_green"] action:self.navigationCtl selector:@selector(pop)];
+}
 @end

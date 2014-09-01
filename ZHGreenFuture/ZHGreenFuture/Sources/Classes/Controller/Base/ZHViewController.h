@@ -33,4 +33,6 @@ typedef enum  {
 @property (nonatomic,strong)UISwipeGestureRecognizer *swipeBack;        /// 手势返回
 -(NSUInteger)interfaceOrientations;
 
+-(void)whithNavigationBarStyle;
+
 @end

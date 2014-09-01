@@ -69,6 +69,7 @@
 		9C89837319B47C58009CB910 /* ZHProductItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C89837219B47C58009CB910 /* ZHProductItem.m */; };
 		9C89837619B4845C009CB910 /* ZHSegmentView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C89837519B4845C009CB910 /* ZHSegmentView.m */; };
 		9C89837919B48C1E009CB910 /* ZHSwipSegment.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C89837819B48C1E009CB910 /* ZHSwipSegment.m */; };
+		9C89837B19B49AF0009CB910 /* btn_back_green@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9C89837A19B49AF0009CB910 /* btn_back_green@2x.png */; };
 		9C9778A019B1900F00D49E69 /* NSData+AESEncryption.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C97782D19B1900F00D49E69 /* NSData+AESEncryption.m */; };
 		9C9778A119B1900F00D49E69 /* NSDictionary+ZHitem.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C97782F19B1900F00D49E69 /* NSDictionary+ZHitem.m */; };
 		9C9778A219B1900F00D49E69 /* NSObject+Instance.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C97783119B1900F00D49E69 /* NSObject+Instance.m */; };
@@ -199,6 +200,7 @@
 		9C89837519B4845C009CB910 /* ZHSegmentView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZHSegmentView.m; sourceTree = "<group>"; };
 		9C89837719B48C1E009CB910 /* ZHSwipSegment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZHSwipSegment.h; sourceTree = "<group>"; };
 		9C89837819B48C1E009CB910 /* ZHSwipSegment.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZHSwipSegment.m; sourceTree = "<group>"; };
+		9C89837A19B49AF0009CB910 /* btn_back_green@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "btn_back_green@2x.png"; sourceTree = "<group>"; };
 		9C97782C19B1900F00D49E69 /* NSData+AESEncryption.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSData+AESEncryption.h"; sourceTree = "<group>"; };
 		9C97782D19B1900F00D49E69 /* NSData+AESEncryption.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSData+AESEncryption.m"; sourceTree = "<group>"; };
 		9C97782E19B1900F00D49E69 /* NSDictionary+ZHitem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDictionary+ZHitem.h"; sourceTree = "<group>"; };
@@ -453,6 +455,7 @@
 			children = (
 				9C89836519B451F5009CB910 /* temp */,
 				9C3862BF19B2C99300679C48 /* btn_back@2x.png */,
+				9C89837A19B49AF0009CB910 /* btn_back_green@2x.png */,
 				9C3862BD19B2C7F800679C48 /* btn_search@2x.png */,
 				84B9604119B3638A0042A670 /* profile */,
 				84A7A5AE19B2BE770050CACD /* homePage */,
@@ -793,6 +796,7 @@
 				84A7A5BD19B2C7E90050CACD /* ZHBannerTableViewCell.xib in Resources */,
 				84B9603D19B35B790042A670 /* ZHNormalTableViewCell.xib in Resources */,
 				84B9604719B36A120042A670 /* setting@2x.png in Resources */,
+				9C89837B19B49AF0009CB910 /* btn_back_green@2x.png in Resources */,
 				849F7F5519AB81EE00962BB1 /* InfoPlist.strings in Resources */,
 				84A7A5B519B2C02F0050CACD /* credits@2x.png in Resources */,
 				84A7A5C719B2C90E0050CACD /* ZHRecommendTableViewCell.xib in Resources */,
