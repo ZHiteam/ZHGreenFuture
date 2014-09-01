@@ -66,5 +66,13 @@
 	@returns 合法email地址返回YES，否则返回NO
  */
 - (BOOL) validateEmail: (NSString *) candidate;
+/**
+ *  根据字体，返回文字对应宽度
+ *
+ *  @param font 字体
+ *
+ *  @return <#return value description#>
+ */
+- (CGSize)sizeWithFontExact:(UIFont*)font;
 
 @end

@@ -174,4 +174,14 @@ finish:
     return [emailTest evaluateWithObject:candidate];
 }
 
+- (CGSize)sizeWithFontExact:(UIFont*)font{
+    CGSize contentSize = CGSizeZero;
+    if ([[[UIDevice currentDevice] systemVersion] floatValue] <7.0){
+        contentSize = [self sizeWithFont:font];
+    } else {
+        contentSize = [self sizeWithAttributes:@{NSFontAttributeName:font}];
+    }
+    return contentSize;
+}
+
 @end

@@ -1,1 +1,7 @@
 #import "NSArray+FEExtension.h"
+#import "UIScreen+FEFrame.h"
+#import "NSObject+FENib.h"
+#import "FEScrollPageView.h"
+#import "UIView+FETouchBlocks.h"
+#import "NSString+FEExtension.h"
+#import "UIScrollView+FECover.h"

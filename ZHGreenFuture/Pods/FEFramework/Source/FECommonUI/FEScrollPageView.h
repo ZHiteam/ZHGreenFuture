@@ -15,6 +15,8 @@ typedef void(^FEScrollPageSelectedBlock)(FEImageItem* sender);
 - (NSString*)title;
 - (NSString*)imageURL;
 - (NSInteger)tag;
+@optional
+- (NSString*)placeholderImage;
 @end
 
 @interface FEImageItem : NSObject <FEImageItemProtocol>

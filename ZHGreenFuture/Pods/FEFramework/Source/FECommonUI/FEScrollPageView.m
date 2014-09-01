@@ -143,8 +143,10 @@
         if ([imageItem conformsToProtocol:@protocol(FEImageItemProtocol)]) {
             UIImageView* imageView = [[UIImageView alloc] initWithFrame:CGRectZero];
             imageView.frame = CGRectMake(originX + self.edgeInsets.left, 0, self.itemWidth - self.edgeInsets.left - self.edgeInsets.right, self.frame.size.height);
-            if (imageItem.imageURL) {
-                [imageView setImageWithURL:[NSURL URLWithString:imageItem.imageURL] placeholderImage:nil];
+            //if (imageItem.imageURL)
+            {
+                NSString *placeHolder = [imageItem respondsToSelector:@selector(placeholderImage)]?[imageItem placeholderImage]:nil;
+                [imageView setImageWithURL:[NSURL URLWithString:imageItem.imageURL] placeholderImage:[UIImage imageNamed:placeHolder]];
             }
             [self.scrollView addSubview:imageView];
             originX += self.itemWidth;
@@ -208,7 +210,7 @@
 }
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView{
-    NSLog(@">>>%@",NSStringFromCGPoint(scrollView.contentOffset));
+    //NSLog(@">>>%@",NSStringFromCGPoint(scrollView.contentOffset));
     CGFloat targetX = scrollView.contentOffset.x;
     if (targetX >=0 && targetX <= (scrollView.contentSize.width - self.itemWidth/*self.bounds.size.width*/) ) {
         NSInteger index  = floor(targetX / self.itemWidth/*self.bounds.size.width*/) ;
