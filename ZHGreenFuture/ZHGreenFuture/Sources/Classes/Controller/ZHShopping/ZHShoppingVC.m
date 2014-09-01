@@ -7,9 +7,11 @@
 //
 
 #import "ZHShoppingVC.h"
+#import "ZHShoppingCatagory.h"
 
 @interface ZHShoppingVC ()
 
+@property (nonatomic,strong) ZHShoppingCatagory*    catagory;
 @end
 
 @implementation ZHShoppingVC
@@ -31,38 +33,30 @@
 }
 
 
--(void)loadContent{    
-//    UIButton* btn = [UIButton buttonWithType:UIButtonTypeContactAdd];
-//    
-//    [btn addTarget:self action:@selector(action) forControlEvents:UIControlEventTouchUpInside];
-//    
-//    self.navigationBar.rightBarItem = btn;
+-(void)loadContent{
     
     self.navigationBar.rightBarItem = [UIButton barItemWithTitle:nil image:[UIImage themeImageNamed:@"btn_search"] action:self selector:@selector(action)];
     [self.navigationBar setTitle:@"粮仓分类"];
+    
+    [self.view addSubview:self.catagory];
 
 }
 
+-(ZHShoppingCatagory *)catagory{
+    _catagory = [[ZHShoppingCatagory alloc]initWithFrame:self.contentBounds];
+    
+    return _catagory;
+}
 
 -(void)action{
     [[MessageCenter instance]performActionWithUserInfo:@{@"controller": @"ZHViewController",
                                                          @"title":@"测试"}];
 }
+
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
-{
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end
