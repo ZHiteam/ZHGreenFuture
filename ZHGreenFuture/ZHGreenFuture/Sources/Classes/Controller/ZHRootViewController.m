@@ -114,14 +114,14 @@
             break;
         case 2:
         {
-            image = @"bar_item_01";
-            selectedImage = @"bar_item_selected_01";
+            image = @"bar_item_03";
+            selectedImage = @"bar_item_selected_03";
         }
             break;
         case 3:
         {
-            image = @"bar_item_01";
-            selectedImage = @"bar_item_selected_01";
+            image = @"bar_item_04";
+            selectedImage = @"bar_item_selected_04";
         }
             break;
         default:

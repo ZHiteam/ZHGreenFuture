@@ -75,6 +75,15 @@
 		9C89838B19B56E61009CB910 /* banner_mask@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9C89838A19B56E61009CB910 /* banner_mask@2x.png */; };
 		9C89838E19B5BADD009CB910 /* ZHTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C89838D19B5BADD009CB910 /* ZHTableView.m */; };
 		9C89839219B5CD93009CB910 /* Timer.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C89839119B5CD93009CB910 /* Timer.m */; };
+		9C89839419B5FEC8009CB910 /* btn_camera@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9C89839319B5FEC8009CB910 /* btn_camera@2x.png */; };
+		9C89839719B60305009CB910 /* bar_item_03@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9C89839519B60305009CB910 /* bar_item_03@2x.png */; };
+		9C89839819B60305009CB910 /* bar_item_selected_03@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9C89839619B60305009CB910 /* bar_item_selected_03@2x.png */; };
+		9C8983D019B606EF009CB910 /* ImageIO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9C8983CF19B606EF009CB910 /* ImageIO.framework */; };
+		9C8983D319B6158C009CB910 /* NSDate+Calendar.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C8983D219B6158C009CB910 /* NSDate+Calendar.m */; };
+		9C8983D719B6168F009CB910 /* LunarCalendar.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C8983D619B6168F009CB910 /* LunarCalendar.m */; };
+		9C8983DA19B6272D009CB910 /* ZHRecipePublishVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C8983D919B6272D009CB910 /* ZHRecipePublishVC.m */; };
+		9C8983DD19B63409009CB910 /* bar_item_04@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9C8983DB19B63409009CB910 /* bar_item_04@2x.png */; };
+		9C8983DE19B63409009CB910 /* bar_item_selected_04@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9C8983DC19B63409009CB910 /* bar_item_selected_04@2x.png */; };
 		9C9778A019B1900F00D49E69 /* NSData+AESEncryption.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C97782D19B1900F00D49E69 /* NSData+AESEncryption.m */; };
 		9C9778A119B1900F00D49E69 /* NSDictionary+ZHiteam.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C97782F19B1900F00D49E69 /* NSDictionary+ZHiteam.m */; };
 		9C9778A219B1900F00D49E69 /* NSObject+Instance.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C97783119B1900F00D49E69 /* NSObject+Instance.m */; };
@@ -214,6 +223,18 @@
 		9C89838D19B5BADD009CB910 /* ZHTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZHTableView.m; sourceTree = "<group>"; };
 		9C89839019B5CD93009CB910 /* Timer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Timer.h; sourceTree = "<group>"; };
 		9C89839119B5CD93009CB910 /* Timer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Timer.m; sourceTree = "<group>"; };
+		9C89839319B5FEC8009CB910 /* btn_camera@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "btn_camera@2x.png"; sourceTree = "<group>"; };
+		9C89839519B60305009CB910 /* bar_item_03@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bar_item_03@2x.png"; sourceTree = "<group>"; };
+		9C89839619B60305009CB910 /* bar_item_selected_03@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bar_item_selected_03@2x.png"; sourceTree = "<group>"; };
+		9C8983CF19B606EF009CB910 /* ImageIO.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ImageIO.framework; path = System/Library/Frameworks/ImageIO.framework; sourceTree = SDKROOT; };
+		9C8983D119B6158C009CB910 /* NSDate+Calendar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+Calendar.h"; sourceTree = "<group>"; };
+		9C8983D219B6158C009CB910 /* NSDate+Calendar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+Calendar.m"; sourceTree = "<group>"; };
+		9C8983D519B6168F009CB910 /* LunarCalendar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LunarCalendar.h; sourceTree = "<group>"; };
+		9C8983D619B6168F009CB910 /* LunarCalendar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LunarCalendar.m; sourceTree = "<group>"; };
+		9C8983D819B6272D009CB910 /* ZHRecipePublishVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZHRecipePublishVC.h; sourceTree = "<group>"; };
+		9C8983D919B6272D009CB910 /* ZHRecipePublishVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZHRecipePublishVC.m; sourceTree = "<group>"; };
+		9C8983DB19B63409009CB910 /* bar_item_04@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bar_item_04@2x.png"; sourceTree = "<group>"; };
+		9C8983DC19B63409009CB910 /* bar_item_selected_04@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bar_item_selected_04@2x.png"; sourceTree = "<group>"; };
 		9C97782C19B1900F00D49E69 /* NSData+AESEncryption.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSData+AESEncryption.h"; sourceTree = "<group>"; };
 		9C97782D19B1900F00D49E69 /* NSData+AESEncryption.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSData+AESEncryption.m"; sourceTree = "<group>"; };
 		9C97782E19B1900F00D49E69 /* NSDictionary+ZHiteam.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDictionary+ZHiteam.h"; sourceTree = "<group>"; };
@@ -268,6 +289,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9C8983D019B606EF009CB910 /* ImageIO.framework in Frameworks */,
 				9C9778D619B1907300D49E69 /* SystemConfiguration.framework in Frameworks */,
 				9C9778D419B1905F00D49E69 /* MobileCoreServices.framework in Frameworks */,
 				849F7F8319AB86F000962BB1 /* libz.1.dylib in Frameworks */,
@@ -314,6 +336,7 @@
 		849F7F4919AB81EE00962BB1 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				9C8983CF19B606EF009CB910 /* ImageIO.framework */,
 				9C9778D519B1907300D49E69 /* SystemConfiguration.framework */,
 				9C9778D319B1905F00D49E69 /* MobileCoreServices.framework */,
 				849F7F8219AB86F000962BB1 /* libz.1.dylib */,
@@ -416,6 +439,8 @@
 			children = (
 				84EA64D419B1992600C446A5 /* ZHRecipeVC.h */,
 				84EA64D519B1992600C446A5 /* ZHRecipeVC.m */,
+				9C8983D819B6272D009CB910 /* ZHRecipePublishVC.h */,
+				9C8983D919B6272D009CB910 /* ZHRecipePublishVC.m */,
 			);
 			path = ZHRecipe;
 			sourceTree = "<group>";
@@ -459,6 +484,7 @@
 		9C3862AF19B1BC3D00679C48 /* Tools */ = {
 			isa = PBXGroup;
 			children = (
+				9C8983D419B6168F009CB910 /* LunarCalendar */,
 				9C89838F19B5CD93009CB910 /* Timer */,
 				9C3862B019B1BDC600679C48 /* MessageCenter.h */,
 				9C3862B119B1BDC600679C48 /* MessageCenter.m */,
@@ -469,6 +495,7 @@
 		9C3862B319B1CB0400679C48 /* images */ = {
 			isa = PBXGroup;
 			children = (
+				9C89839319B5FEC8009CB910 /* btn_camera@2x.png */,
 				9C89836519B451F5009CB910 /* temp */,
 				9C89838A19B56E61009CB910 /* banner_mask@2x.png */,
 				9C3862BF19B2C99300679C48 /* btn_back@2x.png */,
@@ -484,6 +511,10 @@
 		9C3862B419B1CB0400679C48 /* tabbar */ = {
 			isa = PBXGroup;
 			children = (
+				9C8983DB19B63409009CB910 /* bar_item_04@2x.png */,
+				9C8983DC19B63409009CB910 /* bar_item_selected_04@2x.png */,
+				9C89839519B60305009CB910 /* bar_item_03@2x.png */,
+				9C89839619B60305009CB910 /* bar_item_selected_03@2x.png */,
 				9C3862B919B1D6D300679C48 /* bar_item_02@2x.png */,
 				9C3862BA19B1D6D300679C48 /* bar_item_selected_02@2x.png */,
 				9C3862B519B1CB0400679C48 /* bar_item_01@2x.png */,
@@ -545,6 +576,15 @@
 			path = Timer;
 			sourceTree = "<group>";
 		};
+		9C8983D419B6168F009CB910 /* LunarCalendar */ = {
+			isa = PBXGroup;
+			children = (
+				9C8983D519B6168F009CB910 /* LunarCalendar.h */,
+				9C8983D619B6168F009CB910 /* LunarCalendar.m */,
+			);
+			path = LunarCalendar;
+			sourceTree = "<group>";
+		};
 		9C97782819B1900F00D49E69 /* Sources */ = {
 			isa = PBXGroup;
 			children = (
@@ -580,6 +620,8 @@
 		9C97782B19B1900F00D49E69 /* Category */ = {
 			isa = PBXGroup;
 			children = (
+				9C8983D119B6158C009CB910 /* NSDate+Calendar.h */,
+				9C8983D219B6158C009CB910 /* NSDate+Calendar.m */,
 				9C97782C19B1900F00D49E69 /* NSData+AESEncryption.h */,
 				9C97782D19B1900F00D49E69 /* NSData+AESEncryption.m */,
 				9C97782E19B1900F00D49E69 /* NSDictionary+ZHiteam.h */,
@@ -805,6 +847,7 @@
 			files = (
 				9C3862C019B2C99300679C48 /* btn_back@2x.png in Resources */,
 				849F7F6619AB81EE00962BB1 /* Images.xcassets in Resources */,
+				9C8983DE19B63409009CB910 /* bar_item_selected_04@2x.png in Resources */,
 				84A7A5B019B2BE890050CACD /* qr_code@2x.png in Resources */,
 				84B9604919B36E820042A670 /* avatar@2x.png in Resources */,
 				84A7A5CE19B2D7060050CACD /* bannerPlaceholder@2x.png in Resources */,
@@ -814,10 +857,12 @@
 				84A7A5D319B313270050CACD /* productPlaceholder@2x.png in Resources */,
 				84B9604419B3638A0042A670 /* favorites@2x.png in Resources */,
 				9C89838B19B56E61009CB910 /* banner_mask@2x.png in Resources */,
+				9C89839819B60305009CB910 /* bar_item_selected_03@2x.png in Resources */,
 				84B9604519B3638A0042A670 /* myBG@2x.png in Resources */,
 				84B9603819B35B5C0042A670 /* ZHOrderTableViewCell.xib in Resources */,
 				9C3862BB19B1D6D300679C48 /* bar_item_02@2x.png in Resources */,
 				9C3862BC19B1D6D300679C48 /* bar_item_selected_02@2x.png in Resources */,
+				9C89839719B60305009CB910 /* bar_item_03@2x.png in Resources */,
 				9C89836719B451F5009CB910 /* temp_liang@2x.png in Resources */,
 				9C3862BE19B2C7F800679C48 /* btn_search@2x.png in Resources */,
 				84A7A5B619B2C02F0050CACD /* surprise@2x.png in Resources */,
@@ -829,6 +874,8 @@
 				84B9604719B36A120042A670 /* setting@2x.png in Resources */,
 				9C89837B19B49AF0009CB910 /* btn_back_green@2x.png in Resources */,
 				849F7F5519AB81EE00962BB1 /* InfoPlist.strings in Resources */,
+				9C89839419B5FEC8009CB910 /* btn_camera@2x.png in Resources */,
+				9C8983DD19B63409009CB910 /* bar_item_04@2x.png in Resources */,
 				84A7A5B519B2C02F0050CACD /* credits@2x.png in Resources */,
 				84A7A5C719B2C90E0050CACD /* ZHRecommendTableViewCell.xib in Resources */,
 				9C9778D219B1900F00D49E69 /* system.config in Resources */,
@@ -887,6 +934,7 @@
 			files = (
 				84B9603C19B35B790042A670 /* ZHNormalTableViewCell.m in Sources */,
 				84A7A5CB19B2C9930050CACD /* ZHProductTableViewCell.m in Sources */,
+				9C8983D719B6168F009CB910 /* LunarCalendar.m in Sources */,
 				84EA64D319B1991300C446A5 /* ZHShoppingVC.m in Sources */,
 				9C9778A519B1900F00D49E69 /* UIImage+ZHiteam.m in Sources */,
 				9C89837619B4845C009CB910 /* ZHSegmentView.m in Sources */,
@@ -909,6 +957,7 @@
 				84A7A5D119B2D9690050CACD /* ZHHomePageModel.m in Sources */,
 				9C9778A719B1900F00D49E69 /* UIView+ZHiteam.m in Sources */,
 				849F7F5B19AB81EE00962BB1 /* AppDelegate.m in Sources */,
+				9C8983D319B6158C009CB910 /* NSDate+Calendar.m in Sources */,
 				9C9778A019B1900F00D49E69 /* NSData+AESEncryption.m in Sources */,
 				9C89836D19B474E7009CB910 /* ZHCatagoryVC.m in Sources */,
 				9C89839219B5CD93009CB910 /* Timer.m in Sources */,
@@ -921,6 +970,7 @@
 				9C9778A919B1900F00D49E69 /* HttpClient.m in Sources */,
 				84A7A5BC19B2C7E90050CACD /* ZHBannerTableViewCell.m in Sources */,
 				9C89838E19B5BADD009CB910 /* ZHTableView.m in Sources */,
+				9C8983DA19B6272D009CB910 /* ZHRecipePublishVC.m in Sources */,
 				9C9778AA19B1900F00D49E69 /* LocalSotrage.m in Sources */,
 				84B9604019B360740042A670 /* ZHOrderBadgeView.m in Sources */,
 				84EA64D619B1992600C446A5 /* ZHRecipeVC.m in Sources */,

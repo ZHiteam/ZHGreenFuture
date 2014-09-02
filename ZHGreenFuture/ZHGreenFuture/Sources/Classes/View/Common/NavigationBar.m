@@ -157,7 +157,7 @@
 +(UIButton*)barItemWithTitle:(NSString*)title action:(id)action selector:(SEL)selector{
     UIButton* button = [UIButton buttonWithType:UIButtonTypeCustom];
     
-    button.titleLabel.font = FONT(12.0f);
+    button.titleLabel.font = FONT(16.0f);
     
     [button setTitle:title forState:UIControlStateNormal];
     

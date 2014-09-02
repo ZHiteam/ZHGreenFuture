@@ -35,7 +35,7 @@
 
 -(void)loadContent{
     
-    self.navigationBar.rightBarItem = [UIButton barItemWithTitle:nil image:[UIImage themeImageNamed:@"btn_search"] action:self selector:@selector(action)];
+//    self.navigationBar.rightBarItem = [UIButton barItemWithTitle:nil image:[UIImage themeImageNamed:@"btn_search"] action:self selector:@selector(action)];
     [self.navigationBar setTitle:@"粮仓分类"];
     
     [self.view addSubview:self.catagory];
@@ -53,10 +53,10 @@
     return _catagory;
 }
 
--(void)action{
-    [[MessageCenter instance]performActionWithUserInfo:@{@"controller": @"ZHViewController",
-                                                         @"title":@"测试"}];
-}
+//-(void)action{
+//    [[MessageCenter instance]performActionWithUserInfo:@{@"controller": @"ZHViewController",
+//                                                         @"title":@"测试"}];
+//}
 
 - (void)didReceiveMemoryWarning
 {
