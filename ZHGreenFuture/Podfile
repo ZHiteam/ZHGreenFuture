@@ -6,4 +6,5 @@ target 'ZHGreenFuture' do
     pod "AFNetworking",             '2.3.0'
     pod "SVPullToRefresh"
     pod "JSONKit",					'1.5pre'
+    pod "DBCamera",                 '2.3.2'
 end

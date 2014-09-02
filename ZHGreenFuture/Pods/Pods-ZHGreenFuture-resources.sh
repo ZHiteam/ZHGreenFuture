@@ -41,6 +41,23 @@ install_resource()
       ;;
   esac
 }
+install_resource "DBCamera/DBCamera/Resources/DBCameraImages.xcassets"
+install_resource "DBCamera/DBCamera/Localizations/en.lproj"
+install_resource "DBCamera/DBCamera/Localizations/es.lproj"
+install_resource "DBCamera/DBCamera/Localizations/it.lproj"
+install_resource "DBCamera/DBCamera/Localizations/pt.lproj"
+install_resource "DBCamera/DBCamera/Localizations/tr.lproj"
+install_resource "DBCamera/DBCamera/Filters/1977.acv"
+install_resource "DBCamera/DBCamera/Filters/amaro.acv"
+install_resource "DBCamera/DBCamera/Filters/Hudson.acv"
+install_resource "DBCamera/DBCamera/Filters/mayfair.acv"
+install_resource "DBCamera/DBCamera/Filters/Nashville.acv"
+install_resource "DBCamera/DBCamera/Filters/Valencia.acv"
+install_resource "GPUImage/framework/Resources/lookup.png"
+install_resource "GPUImage/framework/Resources/lookup_amatorka.png"
+install_resource "GPUImage/framework/Resources/lookup_miss_etikate.png"
+install_resource "GPUImage/framework/Resources/lookup_soft_elegance_1.png"
+install_resource "GPUImage/framework/Resources/lookup_soft_elegance_2.png"
 
 rsync -avr --copy-links --no-relative --exclude '*/.svn/*' --files-from="$RESOURCES_TO_COPY" / "${CONFIGURATION_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}"
 if [[ "${ACTION}" == "install" ]]; then
