@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface UIImage (ZHitem)
+@interface UIImage (ZHiteam)
 
 +(UIImage *)themeImageNamed:(NSString *)name;
 

@@ -30,14 +30,14 @@
 #define IOS_VERSION_7 ([[[UIDevice currentDevice] systemVersion] floatValue] >= 7.0)
 
 /// 配置文件
-#define ROOT_FLODER             @"ZHitem"
+#define ROOT_FLODER             @"ZHiteam"
 #define SYS_CONFIG_PATH         @"system.config"
 #define USER_CONFIG_PATH        @"user.config"
 #define SSL_CERT                @"client.encrypt"
 #define SERVER_CONFIG           @"server.config"
 
 /// AES加密key和密文
-#define DATA_SEC_KEY            @"Zhitem4GreenFuture"
+#define DATA_SEC_KEY            @"ZHiteam4GreenFuture"
 
 /******************** 宏函数 **************************************************/
 #define FONT(fontsize)          [UIFont systemFontOfSize : fontsize]

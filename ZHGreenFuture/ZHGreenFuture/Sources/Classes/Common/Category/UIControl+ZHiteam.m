@@ -6,9 +6,9 @@
 //  Copyright (c) 2013 HKWF. All rights reserved.
 //
 
-#import "UIControl+ZHitem.h"
+#import "UIControl+ZHiteam.h"
 
-@implementation UIControl (ZHitem)
+@implementation UIControl (ZHiteam)
 
 -(void)setTouchUpInsideBlock:(TouchEventBLock)block{
     

@@ -6,10 +6,10 @@
 //  Copyright (c) 2013 HKWF. All rights reserved.
 //
 
-#import "NSString+ZHitem.h"
+#import "NSString+ZHiteam.h"
 #import <CommonCrypto/CommonDigest.h>
 
-@implementation NSString (ZHitem)
+@implementation NSString (ZHiteam)
 
 - (BOOL)isPureInt{
     

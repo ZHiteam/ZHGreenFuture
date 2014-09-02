@@ -7,7 +7,7 @@
 //
 
 #import "Config.h"
-#import "NSDictionary+ZHitem.h"
+#import "NSDictionary+ZHiteam.h"
 #import "NSData+AESEncryption.h"
 
 #define SYSTEM_PATHAT(fileName) [[NSBundle mainBundle] pathForResource:fileName ofType:nil]

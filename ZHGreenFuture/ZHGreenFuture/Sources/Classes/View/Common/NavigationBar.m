@@ -8,7 +8,7 @@
 
 #import "NavigationBar.h"
 #import "NavigationViewController.h"
-#import "UIControl+ZHitem.h"
+#import "UIControl+ZHiteam.h"
 
 #define BAR_ITEM_WIDTH  44.0f
 #define BAR_ITEM_SPAN   5.0f

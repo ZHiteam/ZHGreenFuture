@@ -10,7 +10,7 @@
 
 typedef void(^TouchEventBLock)(UIControl* ctl);
 
-@interface UIControl (ZHitem)
+@interface UIControl (ZHiteam)
 
 -(void)setTouchUpInsideBlock:(TouchEventBLock)block;
 

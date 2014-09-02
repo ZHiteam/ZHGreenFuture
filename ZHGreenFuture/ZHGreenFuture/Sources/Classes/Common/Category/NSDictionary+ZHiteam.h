@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-@interface NSDictionary (ZHitem)
+@interface NSDictionary (ZHiteam)
 
 + (NSDictionary *)dictionaryWithContentsOfData:(NSData *)data;
 
@@ -17,7 +17,7 @@
 -(NSData*)toData;
 @end
 
-@interface NSMutableDictionary(ZHitem)
+@interface NSMutableDictionary(ZHiteam)
 
 -(void)setObject:(id)object forIndexKey:(NSInteger)index;
 

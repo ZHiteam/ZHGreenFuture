@@ -51,6 +51,11 @@
         [viewCtl.navigationBar setTitle:title];
     }
     
+    id info = userInfo[@"userinfo"];
+    if (info){
+        viewCtl.userInfo = info;
+    }
+    
     NavigationViewController*   navi = [MemoryStorage valueForKey:k_NAVIGATIONCTL];
     
     NSString* animation = userInfo[@"fullscreen"];

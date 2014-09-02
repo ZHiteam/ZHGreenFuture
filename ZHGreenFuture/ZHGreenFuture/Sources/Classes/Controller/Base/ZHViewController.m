@@ -49,6 +49,7 @@
     [super viewDidLoad];
     self.view.backgroundColor = WHITE_BACKGROUND;///[[UIColor orangeColor] colorWithAlphaComponent:0.5];
     self.swipeBack = [[UISwipeGestureRecognizer alloc]initWithTarget:self action:@selector(_back)];
+    self.swipeBack.direction = UISwipeGestureRecognizerDirectionRight;
     [self.view addGestureRecognizer:self.swipeBack];
     
     if (_hasNavitaiongBar) {
@@ -104,7 +105,7 @@
 }
 
 -(void)whithNavigationBarStyle{
-    [self.navigationBar setTitleColor:GREEN_COLOR];
+    [self.navigationBar setTitleColor:RGB(68, 68, 68)];
     self.navigationBar.backgroundColor = WHITE_BACKGROUND;
     self.navigationBar.leftBarItem = [UIButton barItemWithTitle:@"" image:[UIImage themeImageNamed:@"btn_back_green"] action:self.navigationCtl selector:@selector(pop)];
 }

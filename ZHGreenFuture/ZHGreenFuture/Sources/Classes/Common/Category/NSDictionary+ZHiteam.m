@@ -6,9 +6,9 @@
 //  Copyright (c) 2013年 HKWF. All rights reserved.
 //
 
-#import "NSDictionary+ZHitem.h"
+#import "NSDictionary+ZHiteam.h"
 
-@implementation NSDictionary (ZHitem)
+@implementation NSDictionary (ZHiteam)
 
 + (NSDictionary *)dictionaryWithContentsOfData:(NSData *)data
 {
@@ -52,7 +52,7 @@
 }
 @end
 
-@implementation NSMutableDictionary(ZHitem)
+@implementation NSMutableDictionary(ZHiteam)
 
 -(void)setObject:(id)object forIndexKey:(NSInteger)index{
     if (!object) {

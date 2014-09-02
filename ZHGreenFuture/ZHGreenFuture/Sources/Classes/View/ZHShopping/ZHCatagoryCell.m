@@ -54,11 +54,12 @@ typedef enum keyPath{
     CGFloat xOffset = self.width/4;
     for (int i = 0 ;i < 3; ++i){
         UIView* line = [[UIView alloc]initWithFrame:CGRectMake(xOffset, 8, 0.5, self.height-CELL_BOTTOM_SPAN-16)];
-        line.backgroundColor = RGB(176, 176, 176);
+        line.backgroundColor = GRAY_LINE;
         [self.contentView addSubview:line];
         
         xOffset += self.width/4;
     }
+    
     /// 横线分割线
     int count = self.catagory.productList.count/3 + ((self.catagory.productList.count%3 == 0)?0:1)-1;
     
@@ -69,7 +70,7 @@ typedef enum keyPath{
     CGFloat yOffset = CELL_HEIGHT_SPAN + CELL_PER_HEIGHT;
     for( int i = 0 ; i < count ; ++i){
         UIView* line = [[UIView alloc]initWithFrame:CGRectMake(xStart, yOffset, width, 0.5)];
-        line.backgroundColor = RGB(176, 176, 176);
+        line.backgroundColor = GRAY_LINE;
         yOffset += CELL_PER_HEIGHT;
         [self.contentView addSubview:line];
     }
@@ -81,8 +82,10 @@ typedef enum keyPath{
 
     for (int i = 0 ; i < self.catagory.productList.count ; ++ i){
         
+        SecondCatagoryModel* model = self.catagory.productList[i];
+        
         UIButton* btn = [UIButton buttonWithType:UIButtonTypeCustom];
-        [btn setTitle:self.catagory.productList[i] forState:UIControlStateNormal];
+        [btn setTitle:model.title forState:UIControlStateNormal];
         [btn setTitleColor:RGB(68, 68, 68) forState:UIControlStateNormal];
         btn.frame = CGRectMake(xOffset, yOffset, width, CELL_PER_HEIGHT);
         

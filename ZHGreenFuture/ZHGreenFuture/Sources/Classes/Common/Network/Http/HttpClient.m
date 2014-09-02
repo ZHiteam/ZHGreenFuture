@@ -69,7 +69,7 @@
 +(void)requestData{
     HttpClient* client = [HttpClient instance];
     
-    [client->_client POST:@"/ZHitem/test.php" parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
+    [client->_client POST:@"/ZHiteam/test.php" parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
         NSLog(@"JSON: %@", responseObject);
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         NSLog(@"Error: %@", error);

@@ -6,9 +6,8 @@
 //  Copyright (c) 2013年 HKWF. All rights reserved.
 //
 
-#import "UIImage+ZHitem.h"
-
-@implementation UIImage (ZHitem)
+#import "UIImage+ZHiteam.h"
+@implementation UIImage (ZHiteam)
 
 /**
  * 优先在主题文件夹中查找
@@ -41,5 +40,6 @@
     UIGraphicsEndImageContext();
     return scaledImage;
 }
+
 
 @end

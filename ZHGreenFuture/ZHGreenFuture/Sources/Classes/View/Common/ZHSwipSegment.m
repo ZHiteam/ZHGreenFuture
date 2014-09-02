@@ -68,7 +68,7 @@
 
 -(void)performAnimationWithCur:(UIButton *)curSelectItem nextItem:(UIButton *)next{
     
-    [UIView animateWithDuration:0.5 animations:^{
+    [UIView animateWithDuration:0.3 animations:^{
         self.selectedSign.left = next.left+12;
         
         if (next.right > self.width){
@@ -79,5 +79,4 @@
         }
     }];
 }
-
 @end

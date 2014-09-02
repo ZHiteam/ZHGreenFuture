@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface UILabel (ZHitem)
+@interface UILabel (ZHiteam)
 
 +(UILabel*)labelWithText:(NSString*)text font:(UIFont*)font color:(UIColor*)color textAlignment:(NSTextAlignment)textAlignment;
 

@@ -15,6 +15,6 @@
 typedef void(^ZHCompletionBlock)(BOOL isSuccess);
 
 #define GREEN_COLOR         RGB(102,170,0)
-#define GRAY_LINE           RGB(0xC0, 0xC0, 0xC0)
+#define GRAY_LINE           RGB(204, 204, 204)
 #define WHITE_BACKGROUND    RGB(255,255,255)
 #define WHITE_TEXT          RGB(255,255,255)

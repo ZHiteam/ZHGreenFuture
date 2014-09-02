@@ -65,19 +65,24 @@
 		9C89836719B451F5009CB910 /* temp_liang@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9C89836619B451F5009CB910 /* temp_liang@2x.png */; };
 		9C89836A19B46202009CB910 /* ZHView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C89836919B46202009CB910 /* ZHView.m */; };
 		9C89836D19B474E7009CB910 /* ZHCatagoryVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C89836C19B474E7009CB910 /* ZHCatagoryVC.m */; };
-		9C89837019B47998009CB910 /* ZHCatagoryDetail.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C89836F19B47998009CB910 /* ZHCatagoryDetail.m */; };
 		9C89837319B47C58009CB910 /* ZHProductItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C89837219B47C58009CB910 /* ZHProductItem.m */; };
 		9C89837619B4845C009CB910 /* ZHSegmentView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C89837519B4845C009CB910 /* ZHSegmentView.m */; };
 		9C89837919B48C1E009CB910 /* ZHSwipSegment.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C89837819B48C1E009CB910 /* ZHSwipSegment.m */; };
 		9C89837B19B49AF0009CB910 /* btn_back_green@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9C89837A19B49AF0009CB910 /* btn_back_green@2x.png */; };
+		9C89837E19B49BFD009CB910 /* ZHSubCatagoryVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C89837D19B49BFD009CB910 /* ZHSubCatagoryVC.m */; };
+		9C89838719B56746009CB910 /* UIImageView+ZHiteam.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C89838619B56746009CB910 /* UIImageView+ZHiteam.m */; };
+		9C89838919B56D23009CB910 /* temp_banner_01@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9C89838819B56D23009CB910 /* temp_banner_01@2x.png */; };
+		9C89838B19B56E61009CB910 /* banner_mask@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9C89838A19B56E61009CB910 /* banner_mask@2x.png */; };
+		9C89838E19B5BADD009CB910 /* ZHTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C89838D19B5BADD009CB910 /* ZHTableView.m */; };
+		9C89839219B5CD93009CB910 /* Timer.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C89839119B5CD93009CB910 /* Timer.m */; };
 		9C9778A019B1900F00D49E69 /* NSData+AESEncryption.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C97782D19B1900F00D49E69 /* NSData+AESEncryption.m */; };
-		9C9778A119B1900F00D49E69 /* NSDictionary+ZHitem.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C97782F19B1900F00D49E69 /* NSDictionary+ZHitem.m */; };
+		9C9778A119B1900F00D49E69 /* NSDictionary+ZHiteam.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C97782F19B1900F00D49E69 /* NSDictionary+ZHiteam.m */; };
 		9C9778A219B1900F00D49E69 /* NSObject+Instance.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C97783119B1900F00D49E69 /* NSObject+Instance.m */; };
-		9C9778A319B1900F00D49E69 /* NSString+ZHitem.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C97783319B1900F00D49E69 /* NSString+ZHitem.m */; };
-		9C9778A419B1900F00D49E69 /* UIControl+ZHitem.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C97783519B1900F00D49E69 /* UIControl+ZHitem.m */; };
-		9C9778A519B1900F00D49E69 /* UIImage+ZHitem.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C97783719B1900F00D49E69 /* UIImage+ZHitem.m */; };
-		9C9778A619B1900F00D49E69 /* UILabel+ZHitem.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C97783919B1900F00D49E69 /* UILabel+ZHitem.m */; };
-		9C9778A719B1900F00D49E69 /* UIView+ZHitem.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C97783B19B1900F00D49E69 /* UIView+ZHitem.m */; };
+		9C9778A319B1900F00D49E69 /* NSString+ZHiteam.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C97783319B1900F00D49E69 /* NSString+ZHiteam.m */; };
+		9C9778A419B1900F00D49E69 /* UIControl+ZHiteam.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C97783519B1900F00D49E69 /* UIControl+ZHiteam.m */; };
+		9C9778A519B1900F00D49E69 /* UIImage+ZHiteam.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C97783719B1900F00D49E69 /* UIImage+ZHiteam.m */; };
+		9C9778A619B1900F00D49E69 /* UILabel+ZHiteam.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C97783919B1900F00D49E69 /* UILabel+ZHiteam.m */; };
+		9C9778A719B1900F00D49E69 /* UIView+ZHiteam.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C97783B19B1900F00D49E69 /* UIView+ZHiteam.m */; };
 		9C9778A819B1900F00D49E69 /* Config.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C97783E19B1900F00D49E69 /* Config.m */; };
 		9C9778A919B1900F00D49E69 /* HttpClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C97784319B1900F00D49E69 /* HttpClient.m */; };
 		9C9778AA19B1900F00D49E69 /* LocalSotrage.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C97784619B1900F00D49E69 /* LocalSotrage.m */; };
@@ -192,8 +197,6 @@
 		9C89836919B46202009CB910 /* ZHView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZHView.m; sourceTree = "<group>"; };
 		9C89836B19B474E7009CB910 /* ZHCatagoryVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZHCatagoryVC.h; sourceTree = "<group>"; };
 		9C89836C19B474E7009CB910 /* ZHCatagoryVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZHCatagoryVC.m; sourceTree = "<group>"; };
-		9C89836E19B47998009CB910 /* ZHCatagoryDetail.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZHCatagoryDetail.h; sourceTree = "<group>"; };
-		9C89836F19B47998009CB910 /* ZHCatagoryDetail.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZHCatagoryDetail.m; sourceTree = "<group>"; };
 		9C89837119B47C58009CB910 /* ZHProductItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZHProductItem.h; sourceTree = "<group>"; };
 		9C89837219B47C58009CB910 /* ZHProductItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZHProductItem.m; sourceTree = "<group>"; };
 		9C89837419B4845C009CB910 /* ZHSegmentView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZHSegmentView.h; sourceTree = "<group>"; };
@@ -201,22 +204,32 @@
 		9C89837719B48C1E009CB910 /* ZHSwipSegment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZHSwipSegment.h; sourceTree = "<group>"; };
 		9C89837819B48C1E009CB910 /* ZHSwipSegment.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZHSwipSegment.m; sourceTree = "<group>"; };
 		9C89837A19B49AF0009CB910 /* btn_back_green@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "btn_back_green@2x.png"; sourceTree = "<group>"; };
+		9C89837C19B49BFD009CB910 /* ZHSubCatagoryVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZHSubCatagoryVC.h; sourceTree = "<group>"; };
+		9C89837D19B49BFD009CB910 /* ZHSubCatagoryVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZHSubCatagoryVC.m; sourceTree = "<group>"; };
+		9C89838519B56746009CB910 /* UIImageView+ZHiteam.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImageView+ZHiteam.h"; sourceTree = "<group>"; };
+		9C89838619B56746009CB910 /* UIImageView+ZHiteam.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImageView+ZHiteam.m"; sourceTree = "<group>"; };
+		9C89838819B56D23009CB910 /* temp_banner_01@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "temp_banner_01@2x.png"; sourceTree = "<group>"; };
+		9C89838A19B56E61009CB910 /* banner_mask@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "banner_mask@2x.png"; sourceTree = "<group>"; };
+		9C89838C19B5BADD009CB910 /* ZHTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZHTableView.h; sourceTree = "<group>"; };
+		9C89838D19B5BADD009CB910 /* ZHTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZHTableView.m; sourceTree = "<group>"; };
+		9C89839019B5CD93009CB910 /* Timer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Timer.h; sourceTree = "<group>"; };
+		9C89839119B5CD93009CB910 /* Timer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Timer.m; sourceTree = "<group>"; };
 		9C97782C19B1900F00D49E69 /* NSData+AESEncryption.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSData+AESEncryption.h"; sourceTree = "<group>"; };
 		9C97782D19B1900F00D49E69 /* NSData+AESEncryption.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSData+AESEncryption.m"; sourceTree = "<group>"; };
-		9C97782E19B1900F00D49E69 /* NSDictionary+ZHitem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDictionary+ZHitem.h"; sourceTree = "<group>"; };
-		9C97782F19B1900F00D49E69 /* NSDictionary+ZHitem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDictionary+ZHitem.m"; sourceTree = "<group>"; };
+		9C97782E19B1900F00D49E69 /* NSDictionary+ZHiteam.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDictionary+ZHiteam.h"; sourceTree = "<group>"; };
+		9C97782F19B1900F00D49E69 /* NSDictionary+ZHiteam.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDictionary+ZHiteam.m"; sourceTree = "<group>"; };
 		9C97783019B1900F00D49E69 /* NSObject+Instance.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+Instance.h"; sourceTree = "<group>"; };
 		9C97783119B1900F00D49E69 /* NSObject+Instance.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+Instance.m"; sourceTree = "<group>"; };
-		9C97783219B1900F00D49E69 /* NSString+ZHitem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+ZHitem.h"; sourceTree = "<group>"; };
-		9C97783319B1900F00D49E69 /* NSString+ZHitem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+ZHitem.m"; sourceTree = "<group>"; };
-		9C97783419B1900F00D49E69 /* UIControl+ZHitem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIControl+ZHitem.h"; sourceTree = "<group>"; };
-		9C97783519B1900F00D49E69 /* UIControl+ZHitem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIControl+ZHitem.m"; sourceTree = "<group>"; };
-		9C97783619B1900F00D49E69 /* UIImage+ZHitem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+ZHitem.h"; sourceTree = "<group>"; };
-		9C97783719B1900F00D49E69 /* UIImage+ZHitem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+ZHitem.m"; sourceTree = "<group>"; };
-		9C97783819B1900F00D49E69 /* UILabel+ZHitem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UILabel+ZHitem.h"; sourceTree = "<group>"; };
-		9C97783919B1900F00D49E69 /* UILabel+ZHitem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UILabel+ZHitem.m"; sourceTree = "<group>"; };
-		9C97783A19B1900F00D49E69 /* UIView+ZHitem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+ZHitem.h"; sourceTree = "<group>"; };
-		9C97783B19B1900F00D49E69 /* UIView+ZHitem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+ZHitem.m"; sourceTree = "<group>"; };
+		9C97783219B1900F00D49E69 /* NSString+ZHiteam.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+ZHiteam.h"; sourceTree = "<group>"; };
+		9C97783319B1900F00D49E69 /* NSString+ZHiteam.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+ZHiteam.m"; sourceTree = "<group>"; };
+		9C97783419B1900F00D49E69 /* UIControl+ZHiteam.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIControl+ZHiteam.h"; sourceTree = "<group>"; };
+		9C97783519B1900F00D49E69 /* UIControl+ZHiteam.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIControl+ZHiteam.m"; sourceTree = "<group>"; };
+		9C97783619B1900F00D49E69 /* UIImage+ZHiteam.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+ZHiteam.h"; sourceTree = "<group>"; };
+		9C97783719B1900F00D49E69 /* UIImage+ZHiteam.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+ZHiteam.m"; sourceTree = "<group>"; };
+		9C97783819B1900F00D49E69 /* UILabel+ZHiteam.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UILabel+ZHiteam.h"; sourceTree = "<group>"; };
+		9C97783919B1900F00D49E69 /* UILabel+ZHiteam.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UILabel+ZHiteam.m"; sourceTree = "<group>"; };
+		9C97783A19B1900F00D49E69 /* UIView+ZHiteam.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+ZHiteam.h"; sourceTree = "<group>"; };
+		9C97783B19B1900F00D49E69 /* UIView+ZHiteam.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+ZHiteam.m"; sourceTree = "<group>"; };
 		9C97783D19B1900F00D49E69 /* Config.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Config.h; sourceTree = "<group>"; };
 		9C97783E19B1900F00D49E69 /* Config.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Config.m; sourceTree = "<group>"; };
 		9C97783F19B1900F00D49E69 /* Constant.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Constant.h; sourceTree = "<group>"; };
@@ -414,6 +427,8 @@
 				84EA64D219B1991300C446A5 /* ZHShoppingVC.m */,
 				9C89836B19B474E7009CB910 /* ZHCatagoryVC.h */,
 				9C89836C19B474E7009CB910 /* ZHCatagoryVC.m */,
+				9C89837C19B49BFD009CB910 /* ZHSubCatagoryVC.h */,
+				9C89837D19B49BFD009CB910 /* ZHSubCatagoryVC.m */,
 			);
 			path = ZHShopping;
 			sourceTree = "<group>";
@@ -444,6 +459,7 @@
 		9C3862AF19B1BC3D00679C48 /* Tools */ = {
 			isa = PBXGroup;
 			children = (
+				9C89838F19B5CD93009CB910 /* Timer */,
 				9C3862B019B1BDC600679C48 /* MessageCenter.h */,
 				9C3862B119B1BDC600679C48 /* MessageCenter.m */,
 			);
@@ -454,6 +470,7 @@
 			isa = PBXGroup;
 			children = (
 				9C89836519B451F5009CB910 /* temp */,
+				9C89838A19B56E61009CB910 /* banner_mask@2x.png */,
 				9C3862BF19B2C99300679C48 /* btn_back@2x.png */,
 				9C89837A19B49AF0009CB910 /* btn_back_green@2x.png */,
 				9C3862BD19B2C7F800679C48 /* btn_search@2x.png */,
@@ -482,8 +499,6 @@
 				9C3862C319B2CBBE00679C48 /* ZHShoppingCatagory.m */,
 				9C3862CD19B2D00400679C48 /* ZHCatagoryCell.h */,
 				9C3862CE19B2D00400679C48 /* ZHCatagoryCell.m */,
-				9C89836E19B47998009CB910 /* ZHCatagoryDetail.h */,
-				9C89836F19B47998009CB910 /* ZHCatagoryDetail.m */,
 			);
 			path = ZHShopping;
 			sourceTree = "<group>";
@@ -515,9 +530,19 @@
 		9C89836519B451F5009CB910 /* temp */ = {
 			isa = PBXGroup;
 			children = (
+				9C89838819B56D23009CB910 /* temp_banner_01@2x.png */,
 				9C89836619B451F5009CB910 /* temp_liang@2x.png */,
 			);
 			path = temp;
+			sourceTree = "<group>";
+		};
+		9C89838F19B5CD93009CB910 /* Timer */ = {
+			isa = PBXGroup;
+			children = (
+				9C89839019B5CD93009CB910 /* Timer.h */,
+				9C89839119B5CD93009CB910 /* Timer.m */,
+			);
+			path = Timer;
 			sourceTree = "<group>";
 		};
 		9C97782819B1900F00D49E69 /* Sources */ = {
@@ -557,20 +582,22 @@
 			children = (
 				9C97782C19B1900F00D49E69 /* NSData+AESEncryption.h */,
 				9C97782D19B1900F00D49E69 /* NSData+AESEncryption.m */,
-				9C97782E19B1900F00D49E69 /* NSDictionary+ZHitem.h */,
-				9C97782F19B1900F00D49E69 /* NSDictionary+ZHitem.m */,
+				9C97782E19B1900F00D49E69 /* NSDictionary+ZHiteam.h */,
+				9C97782F19B1900F00D49E69 /* NSDictionary+ZHiteam.m */,
 				9C97783019B1900F00D49E69 /* NSObject+Instance.h */,
 				9C97783119B1900F00D49E69 /* NSObject+Instance.m */,
-				9C97783219B1900F00D49E69 /* NSString+ZHitem.h */,
-				9C97783319B1900F00D49E69 /* NSString+ZHitem.m */,
-				9C97783419B1900F00D49E69 /* UIControl+ZHitem.h */,
-				9C97783519B1900F00D49E69 /* UIControl+ZHitem.m */,
-				9C97783619B1900F00D49E69 /* UIImage+ZHitem.h */,
-				9C97783719B1900F00D49E69 /* UIImage+ZHitem.m */,
-				9C97783819B1900F00D49E69 /* UILabel+ZHitem.h */,
-				9C97783919B1900F00D49E69 /* UILabel+ZHitem.m */,
-				9C97783A19B1900F00D49E69 /* UIView+ZHitem.h */,
-				9C97783B19B1900F00D49E69 /* UIView+ZHitem.m */,
+				9C97783219B1900F00D49E69 /* NSString+ZHiteam.h */,
+				9C97783319B1900F00D49E69 /* NSString+ZHiteam.m */,
+				9C97783419B1900F00D49E69 /* UIControl+ZHiteam.h */,
+				9C97783519B1900F00D49E69 /* UIControl+ZHiteam.m */,
+				9C97783619B1900F00D49E69 /* UIImage+ZHiteam.h */,
+				9C97783719B1900F00D49E69 /* UIImage+ZHiteam.m */,
+				9C89838519B56746009CB910 /* UIImageView+ZHiteam.h */,
+				9C89838619B56746009CB910 /* UIImageView+ZHiteam.m */,
+				9C97783819B1900F00D49E69 /* UILabel+ZHiteam.h */,
+				9C97783919B1900F00D49E69 /* UILabel+ZHiteam.m */,
+				9C97783A19B1900F00D49E69 /* UIView+ZHiteam.h */,
+				9C97783B19B1900F00D49E69 /* UIView+ZHiteam.m */,
 			);
 			path = Category;
 			sourceTree = "<group>";
@@ -671,6 +698,8 @@
 				9C89837519B4845C009CB910 /* ZHSegmentView.m */,
 				9C89837719B48C1E009CB910 /* ZHSwipSegment.h */,
 				9C89837819B48C1E009CB910 /* ZHSwipSegment.m */,
+				9C89838C19B5BADD009CB910 /* ZHTableView.h */,
+				9C89838D19B5BADD009CB910 /* ZHTableView.m */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -784,6 +813,7 @@
 				84A7A5CC19B2C9930050CACD /* ZHProductTableViewCell.xib in Resources */,
 				84A7A5D319B313270050CACD /* productPlaceholder@2x.png in Resources */,
 				84B9604419B3638A0042A670 /* favorites@2x.png in Resources */,
+				9C89838B19B56E61009CB910 /* banner_mask@2x.png in Resources */,
 				84B9604519B3638A0042A670 /* myBG@2x.png in Resources */,
 				84B9603819B35B5C0042A670 /* ZHOrderTableViewCell.xib in Resources */,
 				9C3862BB19B1D6D300679C48 /* bar_item_02@2x.png in Resources */,
@@ -795,6 +825,7 @@
 				84A7A5B819B2C02F0050CACD /* cart@2x.png in Resources */,
 				84A7A5BD19B2C7E90050CACD /* ZHBannerTableViewCell.xib in Resources */,
 				84B9603D19B35B790042A670 /* ZHNormalTableViewCell.xib in Resources */,
+				9C89838919B56D23009CB910 /* temp_banner_01@2x.png in Resources */,
 				84B9604719B36A120042A670 /* setting@2x.png in Resources */,
 				9C89837B19B49AF0009CB910 /* btn_back_green@2x.png in Resources */,
 				849F7F5519AB81EE00962BB1 /* InfoPlist.strings in Resources */,
@@ -857,30 +888,31 @@
 				84B9603C19B35B790042A670 /* ZHNormalTableViewCell.m in Sources */,
 				84A7A5CB19B2C9930050CACD /* ZHProductTableViewCell.m in Sources */,
 				84EA64D319B1991300C446A5 /* ZHShoppingVC.m in Sources */,
-				9C9778A519B1900F00D49E69 /* UIImage+ZHitem.m in Sources */,
+				9C9778A519B1900F00D49E69 /* UIImage+ZHiteam.m in Sources */,
 				9C89837619B4845C009CB910 /* ZHSegmentView.m in Sources */,
-				9C89837019B47998009CB910 /* ZHCatagoryDetail.m in Sources */,
 				9C9778A819B1900F00D49E69 /* Config.m in Sources */,
 				9C9778B419B1900F00D49E69 /* TabbarView.m in Sources */,
 				9C89837319B47C58009CB910 /* ZHProductItem.m in Sources */,
 				9C9778AD19B1900F00D49E69 /* TabbarViewController.m in Sources */,
-				9C9778A419B1900F00D49E69 /* UIControl+ZHitem.m in Sources */,
-				9C9778A319B1900F00D49E69 /* NSString+ZHitem.m in Sources */,
+				9C9778A419B1900F00D49E69 /* UIControl+ZHiteam.m in Sources */,
+				9C9778A319B1900F00D49E69 /* NSString+ZHiteam.m in Sources */,
 				9C3862CF19B2D00400679C48 /* ZHCatagoryCell.m in Sources */,
 				9C3862B219B1BDC600679C48 /* MessageCenter.m in Sources */,
-				9C9778A619B1900F00D49E69 /* UILabel+ZHitem.m in Sources */,
+				9C9778A619B1900F00D49E69 /* UILabel+ZHiteam.m in Sources */,
 				84B9603719B35B5C0042A670 /* ZHOrderTableViewCell.m in Sources */,
-				9C9778A119B1900F00D49E69 /* NSDictionary+ZHitem.m in Sources */,
+				9C9778A119B1900F00D49E69 /* NSDictionary+ZHiteam.m in Sources */,
 				9C9778A219B1900F00D49E69 /* NSObject+Instance.m in Sources */,
 				9C9778AB19B1900F00D49E69 /* MemoryStorage.m in Sources */,
 				9C3862CC19B2CEFD00679C48 /* SecondCatagoryModel.m in Sources */,
 				9C9778B319B1900F00D49E69 /* TabbarItem.m in Sources */,
 				84A7A5C119B2C8290050CACD /* ZHCategoryTableViewCell.m in Sources */,
 				84A7A5D119B2D9690050CACD /* ZHHomePageModel.m in Sources */,
-				9C9778A719B1900F00D49E69 /* UIView+ZHitem.m in Sources */,
+				9C9778A719B1900F00D49E69 /* UIView+ZHiteam.m in Sources */,
 				849F7F5B19AB81EE00962BB1 /* AppDelegate.m in Sources */,
 				9C9778A019B1900F00D49E69 /* NSData+AESEncryption.m in Sources */,
 				9C89836D19B474E7009CB910 /* ZHCatagoryVC.m in Sources */,
+				9C89839219B5CD93009CB910 /* Timer.m in Sources */,
+				9C89837E19B49BFD009CB910 /* ZHSubCatagoryVC.m in Sources */,
 				84EA64D919B1993700C446A5 /* ZHProfileVC.m in Sources */,
 				9C9778AE19B1900F00D49E69 /* ZHViewController.m in Sources */,
 				9C3862C419B2CBBE00679C48 /* ZHShoppingCatagory.m in Sources */,
@@ -888,11 +920,13 @@
 				9C9778AC19B1900F00D49E69 /* NavigationViewController.m in Sources */,
 				9C9778A919B1900F00D49E69 /* HttpClient.m in Sources */,
 				84A7A5BC19B2C7E90050CACD /* ZHBannerTableViewCell.m in Sources */,
+				9C89838E19B5BADD009CB910 /* ZHTableView.m in Sources */,
 				9C9778AA19B1900F00D49E69 /* LocalSotrage.m in Sources */,
 				84B9604019B360740042A670 /* ZHOrderBadgeView.m in Sources */,
 				84EA64D619B1992600C446A5 /* ZHRecipeVC.m in Sources */,
 				9C9778B219B1900F00D49E69 /* NavigationBar.m in Sources */,
 				84EA64C819B192D700C446A5 /* ZHRootViewController.m in Sources */,
+				9C89838719B56746009CB910 /* UIImageView+ZHiteam.m in Sources */,
 				9C89837919B48C1E009CB910 /* ZHSwipSegment.m in Sources */,
 				9C9778AF19B1900F00D49E69 /* BaseModel.m in Sources */,
 				849F7F5719AB81EE00962BB1 /* main.m in Sources */,

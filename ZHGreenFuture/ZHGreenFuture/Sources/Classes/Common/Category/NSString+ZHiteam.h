@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-@interface NSString (ZHitem)
+@interface NSString (ZHiteam)
 - (BOOL)isPureInt;
 
 - (BOOL)isPureFloat;

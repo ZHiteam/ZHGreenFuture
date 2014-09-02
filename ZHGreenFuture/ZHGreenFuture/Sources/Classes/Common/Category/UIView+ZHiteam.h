@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface UIView (ZHitem)
+@interface UIView (ZHiteam)
 
 /**
  * Shortcut for frame.origin.x.

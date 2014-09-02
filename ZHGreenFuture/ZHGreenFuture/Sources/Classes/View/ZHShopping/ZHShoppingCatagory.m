@@ -8,6 +8,7 @@
 
 #import "ZHShoppingCatagory.h"
 #import "ZHCatagoryCell.h"
+#import "SecondCatagoryModel.h"
 
 @interface ZHShoppingCatagory()<UITableViewDataSource,UITableViewDelegate,ZHCatagoryCellDelegate>
 
@@ -25,6 +26,7 @@
         self.dataSource = self;
         self.delegate = self;
         self.clipsToBounds = NO;
+        self.separatorStyle = UITableViewCellSeparatorStyleNone;
         
         self.showsVerticalScrollIndicator = NO;
         [self loadRequest];
@@ -50,27 +52,41 @@
     
 #warning test data
     NSMutableArray* array = [[NSMutableArray alloc]initWithCapacity:10];
-    CatagoryModel* model = [[CatagoryModel alloc]init];
-    model.title = @"等米下锅";
-    model.backgourndImageUrl = @"temp_liang";
     
-    model.productList = [NSArray arrayWithObjects:@"通榆大米",@"小米",@"燕麦米",@"通榆大米",@"小米",@"燕麦米",@"小米",@"燕麦米", nil];
-    
-    [array addObject:model];
-
+    [array addObject:[self getTestData:[NSArray arrayWithObjects:@"通榆大米",@"小米",@"燕麦米",@"通榆大米",@"小米",@"燕麦米",@"小米",@"燕麦米", nil]]];
     
     for(int i = 0 ;i < 10; ++i){
-        CatagoryModel* model = [[CatagoryModel alloc]init];
-        model.title = @"等米下锅";
-        model.backgourndImageUrl = @"temp_liang";
-        
-        model.productList = [NSArray arrayWithObjects:@"通榆大米",@"小米",@"燕麦米", nil];
-        
-        [array addObject:model];
+       
+        [array addObject:[self getTestData:[NSArray arrayWithObjects:@"通榆大米",@"小米",@"燕麦米",@"通榆大米", nil]]];
     }
     self.catagorys = [array mutableCopy];
     
     [self reloadData];
+}
+
+-(CatagoryModel*)getTestData:(NSArray*)tempTest{
+    NSMutableArray* mutableArray = [[NSMutableArray alloc]initWithCapacity:4];
+    
+//    NSArray* tempTest = [NSArray arrayWithObjects:@"通榆大米",@"小米",@"燕麦米",@"通榆大米",@"小米",@"燕麦米",@"小米",@"燕麦米", nil];
+    
+    static NSString* des1 = @"有机大米指的是栽种稻米的过程中，使用天然有机的栽种方式，完全采用自然农耕法种出来的大米。有机大米必须是种植改良场推荐的良质米品种，而且在栽培过程中不能使用化学肥料，农药和生长调节剂等。";
+    static NSString* des2 = @"有机大米指的是栽种稻米的过程中，使用天然有机的栽种方式，完全采用自然农耕法种出来的大米。";
+    
+    for(NSString* str in tempTest){
+        
+        SecondCatagoryModel* second = [[SecondCatagoryModel alloc]init];
+        second.title = str;
+        second.descript = rand()%2?des1:des2;
+        second.imageUrl = @"";
+        [mutableArray addObject:second];
+    }
+    
+    CatagoryModel* model = [[CatagoryModel alloc]init];
+    model.title = @"等米下锅";
+    model.backgourndImageUrl = @"temp_liang";
+    model.productList = [mutableArray mutableCopy];
+    
+    return model;
 }
 
 #pragma -mark UITableViewDataSource,UITableViewDelegate
@@ -142,7 +158,8 @@
         [[MessageCenter instance]performActionWithUserInfo:@{@"controller": @"ZHCatagoryVC"}];
     }
     else if (index.row < model.productList.count){
-        
+        SecondCatagoryModel* secondModel = model.productList[index.row];
+        [[MessageCenter instance]performActionWithUserInfo:@{@"controller": @"ZHSubCatagoryVC",@"userinfo":secondModel}];
     }
 }
 @end

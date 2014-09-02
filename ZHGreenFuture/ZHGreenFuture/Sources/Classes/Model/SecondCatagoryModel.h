@@ -10,4 +10,7 @@
 
 @interface SecondCatagoryModel : BaseModel
 
+@property (nonatomic,strong) NSString*  title;
+@property (nonatomic,strong) NSString*  imageUrl;
+@property (nonatomic,strong) NSString*  descript;
 @end

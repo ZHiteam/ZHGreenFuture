@@ -31,6 +31,9 @@ typedef enum  {
 @property (nonatomic, assign) NavigationViewController* navigationCtl; /// 导航器
 
 @property (nonatomic,strong)UISwipeGestureRecognizer *swipeBack;        /// 手势返回
+
+@property (nonatomic,strong) id                 userInfo;
+
 -(NSUInteger)interfaceOrientations;
 
 -(void)whithNavigationBarStyle;

@@ -6,10 +6,10 @@
 //  Copyright (c) 2013年 HKWF. All rights reserved.
 //
 
-#import "UIView+ZHitem.h"
+#import "UIView+ZHiteam.h"
 #import <QuartzCore/QuartzCore.h>
 
-@implementation UIView (ZHitem)
+@implementation UIView (ZHiteam)
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 - (CGFloat)left {
     return self.frame.origin.x;

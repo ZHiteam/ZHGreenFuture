@@ -6,9 +6,9 @@
 //  Copyright (c) 2013年 HKWF. All rights reserved.
 //
 
-#import "UILabel+ZHitem.h"
+#import "UILabel+ZHiteam.h"
 
-@implementation UILabel (ZHitem)
+@implementation UILabel (ZHiteam)
 
 +(UILabel *)labelWithText:(NSString *)text font:(UIFont *)font color:(UIColor *)color textAlignment:(NSTextAlignment)textAlignment{
     return [UILabel labelWithText:text font:font color:color textAlignment:textAlignment backgroundColor:[UIColor clearColor]];
