@@ -23,6 +23,12 @@
     return self;
 }
 
+- (void)setSegmentItems:(NSArray*)segments{
+    self.layer.borderColor = GREEN_COLOR.CGColor;
+    self.layer.borderWidth = 1;
+    [self loadContentWithItems:segments];
+    
+}
 
 -(void)loadContentWithItems:(NSArray*)items{
     if (items.count <= 0){
