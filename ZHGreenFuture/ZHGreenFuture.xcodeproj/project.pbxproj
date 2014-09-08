@@ -34,7 +34,6 @@
 		84A7A5CB19B2C9930050CACD /* ZHProductTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 84A7A5C919B2C9930050CACD /* ZHProductTableViewCell.m */; };
 		84A7A5CC19B2C9930050CACD /* ZHProductTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84A7A5CA19B2C9930050CACD /* ZHProductTableViewCell.xib */; };
 		84A7A5CE19B2D7060050CACD /* bannerPlaceholder@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 84A7A5CD19B2D7060050CACD /* bannerPlaceholder@2x.png */; };
-		84A7A5D119B2D9690050CACD /* ZHHomePageModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 84A7A5D019B2D9690050CACD /* ZHHomePageModel.m */; };
 		84A7A5D319B313270050CACD /* productPlaceholder@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 84A7A5D219B313270050CACD /* productPlaceholder@2x.png */; };
 		84B9603319B35A9A0042A670 /* ZHProfileModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 84B9603219B35A9A0042A670 /* ZHProfileModel.m */; };
 		84B9603719B35B5C0042A670 /* ZHOrderTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 84B9603519B35B5C0042A670 /* ZHOrderTableViewCell.m */; };
@@ -51,6 +50,30 @@
 		84EA64D319B1991300C446A5 /* ZHShoppingVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 84EA64D219B1991300C446A5 /* ZHShoppingVC.m */; };
 		84EA64D619B1992600C446A5 /* ZHRecipeVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 84EA64D519B1992600C446A5 /* ZHRecipeVC.m */; };
 		84EA64D919B1993700C446A5 /* ZHProfileVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 84EA64D819B1993700C446A5 /* ZHProfileVC.m */; };
+		84F1FE1D19BB19E20002605A /* ZHDetailVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 84F1FE1C19BB19E20002605A /* ZHDetailVC.m */; };
+		84F1FE2119BB1B720002605A /* ZHHomePageModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 84F1FE2019BB1B720002605A /* ZHHomePageModel.m */; };
+		84F1FE2419BB45920002605A /* ZHDetailModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 84F1FE2319BB45920002605A /* ZHDetailModel.m */; };
+		84F1FE2819BB46770002605A /* ZHDetailBannerCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 84F1FE2619BB46770002605A /* ZHDetailBannerCell.m */; };
+		84F1FE2919BB46770002605A /* ZHDetailBannerCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84F1FE2719BB46770002605A /* ZHDetailBannerCell.xib */; };
+		84F1FE2D19BC3D5F0002605A /* ZHDetailPriceCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 84F1FE2B19BC3D5F0002605A /* ZHDetailPriceCell.m */; };
+		84F1FE2E19BC3D5F0002605A /* ZHDetailPriceCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84F1FE2C19BC3D5F0002605A /* ZHDetailPriceCell.xib */; };
+		84F1FE3219BC413F0002605A /* ZHDetailLogisticsInfoCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 84F1FE3019BC413F0002605A /* ZHDetailLogisticsInfoCell.m */; };
+		84F1FE3319BC413F0002605A /* ZHDetailLogisticsInfoCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84F1FE3119BC413F0002605A /* ZHDetailLogisticsInfoCell.xib */; };
+		84F1FE3719BC43620002605A /* ZHDetailProductGuaranteeCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 84F1FE3519BC43620002605A /* ZHDetailProductGuaranteeCell.m */; };
+		84F1FE3819BC43620002605A /* ZHDetailProductGuaranteeCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84F1FE3619BC43620002605A /* ZHDetailProductGuaranteeCell.xib */; };
+		84F1FE3C19BC45B90002605A /* ZHDetailSKUInfoCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 84F1FE3A19BC45B90002605A /* ZHDetailSKUInfoCell.m */; };
+		84F1FE3D19BC45B90002605A /* ZHDetailSKUInfoCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84F1FE3B19BC45B90002605A /* ZHDetailSKUInfoCell.xib */; };
+		84F1FE4119BC47450002605A /* ZHDetailRecipeListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 84F1FE3F19BC47450002605A /* ZHDetailRecipeListCell.m */; };
+		84F1FE4219BC47450002605A /* ZHDetailRecipeListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84F1FE4019BC47450002605A /* ZHDetailRecipeListCell.xib */; };
+		84F1FE4619BC4A150002605A /* ZHDetailProductCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 84F1FE4419BC4A150002605A /* ZHDetailProductCell.m */; };
+		84F1FE4719BC4A150002605A /* ZHDetailProductCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84F1FE4519BC4A150002605A /* ZHDetailProductCell.xib */; };
+		84F1FE4A19BC58F80002605A /* detailBanner@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 84F1FE4919BC58F80002605A /* detailBanner@2x.png */; };
+		84F1FE4C19BD51130002605A /* detailProduct@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 84F1FE4B19BD51130002605A /* detailProduct@2x.png */; };
+		84F1FE4F19BD76840002605A /* ZHDetailProductHeadView.m in Sources */ = {isa = PBXBuildFile; fileRef = 84F1FE4E19BD76840002605A /* ZHDetailProductHeadView.m */; };
+		84F1FE5119BD76A10002605A /* ZHDetailProductHeadView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84F1FE5019BD76A10002605A /* ZHDetailProductHeadView.xib */; };
+		84F1FE5319BD7DE90002605A /* detailSKU@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 84F1FE5219BD7DE90002605A /* detailSKU@2x.png */; };
+		84F1FE5519BD7F180002605A /* detailMore@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 84F1FE5419BD7F180002605A /* detailMore@2x.png */; };
+		84F1FE5719BDDDB10002605A /* detailRecipe@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 84F1FE5619BDDDB10002605A /* detailRecipe@2x.png */; };
 		9C3862B219B1BDC600679C48 /* MessageCenter.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C3862B119B1BDC600679C48 /* MessageCenter.m */; };
 		9C3862B719B1CB0400679C48 /* bar_item_01@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9C3862B519B1CB0400679C48 /* bar_item_01@2x.png */; };
 		9C3862B819B1CB0400679C48 /* bar_item_selected_01@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9C3862B619B1CB0400679C48 /* bar_item_selected_01@2x.png */; };
@@ -157,8 +180,6 @@
 		84A7A5C919B2C9930050CACD /* ZHProductTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZHProductTableViewCell.m; sourceTree = "<group>"; };
 		84A7A5CA19B2C9930050CACD /* ZHProductTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ZHProductTableViewCell.xib; sourceTree = "<group>"; };
 		84A7A5CD19B2D7060050CACD /* bannerPlaceholder@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bannerPlaceholder@2x.png"; sourceTree = "<group>"; };
-		84A7A5CF19B2D9690050CACD /* ZHHomePageModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZHHomePageModel.h; sourceTree = "<group>"; };
-		84A7A5D019B2D9690050CACD /* ZHHomePageModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZHHomePageModel.m; sourceTree = "<group>"; };
 		84A7A5D219B313270050CACD /* productPlaceholder@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "productPlaceholder@2x.png"; sourceTree = "<group>"; };
 		84B9603119B35A9A0042A670 /* ZHProfileModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZHProfileModel.h; sourceTree = "<group>"; };
 		84B9603219B35A9A0042A670 /* ZHProfileModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZHProfileModel.m; sourceTree = "<group>"; };
@@ -185,6 +206,41 @@
 		84EA64D519B1992600C446A5 /* ZHRecipeVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZHRecipeVC.m; sourceTree = "<group>"; };
 		84EA64D719B1993700C446A5 /* ZHProfileVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZHProfileVC.h; sourceTree = "<group>"; };
 		84EA64D819B1993700C446A5 /* ZHProfileVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZHProfileVC.m; sourceTree = "<group>"; };
+		84F1FE1B19BB19E20002605A /* ZHDetailVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZHDetailVC.h; sourceTree = "<group>"; };
+		84F1FE1C19BB19E20002605A /* ZHDetailVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZHDetailVC.m; sourceTree = "<group>"; };
+		84F1FE1F19BB1B720002605A /* ZHHomePageModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZHHomePageModel.h; sourceTree = "<group>"; };
+		84F1FE2019BB1B720002605A /* ZHHomePageModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZHHomePageModel.m; sourceTree = "<group>"; };
+		84F1FE2219BB45920002605A /* ZHDetailModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZHDetailModel.h; sourceTree = "<group>"; };
+		84F1FE2319BB45920002605A /* ZHDetailModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZHDetailModel.m; sourceTree = "<group>"; };
+		84F1FE2519BB46770002605A /* ZHDetailBannerCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZHDetailBannerCell.h; sourceTree = "<group>"; };
+		84F1FE2619BB46770002605A /* ZHDetailBannerCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZHDetailBannerCell.m; sourceTree = "<group>"; };
+		84F1FE2719BB46770002605A /* ZHDetailBannerCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ZHDetailBannerCell.xib; sourceTree = "<group>"; };
+		84F1FE2A19BC3D5F0002605A /* ZHDetailPriceCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZHDetailPriceCell.h; sourceTree = "<group>"; };
+		84F1FE2B19BC3D5F0002605A /* ZHDetailPriceCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZHDetailPriceCell.m; sourceTree = "<group>"; };
+		84F1FE2C19BC3D5F0002605A /* ZHDetailPriceCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ZHDetailPriceCell.xib; sourceTree = "<group>"; };
+		84F1FE2F19BC413F0002605A /* ZHDetailLogisticsInfoCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZHDetailLogisticsInfoCell.h; sourceTree = "<group>"; };
+		84F1FE3019BC413F0002605A /* ZHDetailLogisticsInfoCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZHDetailLogisticsInfoCell.m; sourceTree = "<group>"; };
+		84F1FE3119BC413F0002605A /* ZHDetailLogisticsInfoCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ZHDetailLogisticsInfoCell.xib; sourceTree = "<group>"; };
+		84F1FE3419BC43620002605A /* ZHDetailProductGuaranteeCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZHDetailProductGuaranteeCell.h; sourceTree = "<group>"; };
+		84F1FE3519BC43620002605A /* ZHDetailProductGuaranteeCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZHDetailProductGuaranteeCell.m; sourceTree = "<group>"; };
+		84F1FE3619BC43620002605A /* ZHDetailProductGuaranteeCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ZHDetailProductGuaranteeCell.xib; sourceTree = "<group>"; };
+		84F1FE3919BC45B90002605A /* ZHDetailSKUInfoCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZHDetailSKUInfoCell.h; sourceTree = "<group>"; };
+		84F1FE3A19BC45B90002605A /* ZHDetailSKUInfoCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZHDetailSKUInfoCell.m; sourceTree = "<group>"; };
+		84F1FE3B19BC45B90002605A /* ZHDetailSKUInfoCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ZHDetailSKUInfoCell.xib; sourceTree = "<group>"; };
+		84F1FE3E19BC47450002605A /* ZHDetailRecipeListCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZHDetailRecipeListCell.h; sourceTree = "<group>"; };
+		84F1FE3F19BC47450002605A /* ZHDetailRecipeListCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZHDetailRecipeListCell.m; sourceTree = "<group>"; };
+		84F1FE4019BC47450002605A /* ZHDetailRecipeListCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ZHDetailRecipeListCell.xib; sourceTree = "<group>"; };
+		84F1FE4319BC4A150002605A /* ZHDetailProductCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZHDetailProductCell.h; sourceTree = "<group>"; };
+		84F1FE4419BC4A150002605A /* ZHDetailProductCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZHDetailProductCell.m; sourceTree = "<group>"; };
+		84F1FE4519BC4A150002605A /* ZHDetailProductCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ZHDetailProductCell.xib; sourceTree = "<group>"; };
+		84F1FE4919BC58F80002605A /* detailBanner@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "detailBanner@2x.png"; sourceTree = "<group>"; };
+		84F1FE4B19BD51130002605A /* detailProduct@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "detailProduct@2x.png"; sourceTree = "<group>"; };
+		84F1FE4D19BD76840002605A /* ZHDetailProductHeadView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZHDetailProductHeadView.h; sourceTree = "<group>"; };
+		84F1FE4E19BD76840002605A /* ZHDetailProductHeadView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZHDetailProductHeadView.m; sourceTree = "<group>"; };
+		84F1FE5019BD76A10002605A /* ZHDetailProductHeadView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ZHDetailProductHeadView.xib; sourceTree = "<group>"; };
+		84F1FE5219BD7DE90002605A /* detailSKU@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "detailSKU@2x.png"; sourceTree = "<group>"; };
+		84F1FE5419BD7F180002605A /* detailMore@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "detailMore@2x.png"; sourceTree = "<group>"; };
+		84F1FE5619BDDDB10002605A /* detailRecipe@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "detailRecipe@2x.png"; sourceTree = "<group>"; };
 		9C3862B019B1BDC600679C48 /* MessageCenter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MessageCenter.h; sourceTree = "<group>"; };
 		9C3862B119B1BDC600679C48 /* MessageCenter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MessageCenter.m; sourceTree = "<group>"; };
 		9C3862B519B1CB0400679C48 /* bar_item_01@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bar_item_01@2x.png"; sourceTree = "<group>"; };
@@ -461,10 +517,9 @@
 		84EA64CD19B198CC00C446A5 /* ZHHomePage */ = {
 			isa = PBXGroup;
 			children = (
+				84F1FE1E19BB1B720002605A /* Model */,
 				84EA64CE19B198FE00C446A5 /* ZHHomePageVC.h */,
 				84EA64CF19B198FE00C446A5 /* ZHHomePageVC.m */,
-				84A7A5CF19B2D9690050CACD /* ZHHomePageModel.h */,
-				84A7A5D019B2D9690050CACD /* ZHHomePageModel.m */,
 				84A7A5B919B2C7E90050CACD /* ZHBannerTableViewCell.h */,
 				84A7A5BA19B2C7E90050CACD /* ZHBannerTableViewCell.m */,
 				84A7A5BB19B2C7E90050CACD /* ZHBannerTableViewCell.xib */,
@@ -477,8 +532,57 @@
 				84A7A5C819B2C9930050CACD /* ZHProductTableViewCell.h */,
 				84A7A5C919B2C9930050CACD /* ZHProductTableViewCell.m */,
 				84A7A5CA19B2C9930050CACD /* ZHProductTableViewCell.xib */,
+				84F1FE1B19BB19E20002605A /* ZHDetailVC.h */,
+				84F1FE1C19BB19E20002605A /* ZHDetailVC.m */,
+				84F1FE2519BB46770002605A /* ZHDetailBannerCell.h */,
+				84F1FE2619BB46770002605A /* ZHDetailBannerCell.m */,
+				84F1FE2719BB46770002605A /* ZHDetailBannerCell.xib */,
+				84F1FE2A19BC3D5F0002605A /* ZHDetailPriceCell.h */,
+				84F1FE2B19BC3D5F0002605A /* ZHDetailPriceCell.m */,
+				84F1FE2C19BC3D5F0002605A /* ZHDetailPriceCell.xib */,
+				84F1FE2F19BC413F0002605A /* ZHDetailLogisticsInfoCell.h */,
+				84F1FE3019BC413F0002605A /* ZHDetailLogisticsInfoCell.m */,
+				84F1FE3119BC413F0002605A /* ZHDetailLogisticsInfoCell.xib */,
+				84F1FE3419BC43620002605A /* ZHDetailProductGuaranteeCell.h */,
+				84F1FE3519BC43620002605A /* ZHDetailProductGuaranteeCell.m */,
+				84F1FE3619BC43620002605A /* ZHDetailProductGuaranteeCell.xib */,
+				84F1FE3919BC45B90002605A /* ZHDetailSKUInfoCell.h */,
+				84F1FE3A19BC45B90002605A /* ZHDetailSKUInfoCell.m */,
+				84F1FE3B19BC45B90002605A /* ZHDetailSKUInfoCell.xib */,
+				84F1FE3E19BC47450002605A /* ZHDetailRecipeListCell.h */,
+				84F1FE3F19BC47450002605A /* ZHDetailRecipeListCell.m */,
+				84F1FE4019BC47450002605A /* ZHDetailRecipeListCell.xib */,
+				84F1FE4319BC4A150002605A /* ZHDetailProductCell.h */,
+				84F1FE4419BC4A150002605A /* ZHDetailProductCell.m */,
+				84F1FE4519BC4A150002605A /* ZHDetailProductCell.xib */,
+				84F1FE4D19BD76840002605A /* ZHDetailProductHeadView.h */,
+				84F1FE4E19BD76840002605A /* ZHDetailProductHeadView.m */,
+				84F1FE5019BD76A10002605A /* ZHDetailProductHeadView.xib */,
 			);
 			path = ZHHomePage;
+			sourceTree = "<group>";
+		};
+		84F1FE1E19BB1B720002605A /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				84F1FE1F19BB1B720002605A /* ZHHomePageModel.h */,
+				84F1FE2019BB1B720002605A /* ZHHomePageModel.m */,
+				84F1FE2219BB45920002605A /* ZHDetailModel.h */,
+				84F1FE2319BB45920002605A /* ZHDetailModel.m */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		84F1FE4819BC58F80002605A /* detail */ = {
+			isa = PBXGroup;
+			children = (
+				84F1FE5619BDDDB10002605A /* detailRecipe@2x.png */,
+				84F1FE5419BD7F180002605A /* detailMore@2x.png */,
+				84F1FE5219BD7DE90002605A /* detailSKU@2x.png */,
+				84F1FE4B19BD51130002605A /* detailProduct@2x.png */,
+				84F1FE4919BC58F80002605A /* detailBanner@2x.png */,
+			);
+			path = detail;
 			sourceTree = "<group>";
 		};
 		9C3862AF19B1BC3D00679C48 /* Tools */ = {
@@ -495,6 +599,7 @@
 		9C3862B319B1CB0400679C48 /* images */ = {
 			isa = PBXGroup;
 			children = (
+				84F1FE4819BC58F80002605A /* detail */,
 				9C89839319B5FEC8009CB910 /* btn_camera@2x.png */,
 				9C89836519B451F5009CB910 /* temp */,
 				9C89838A19B56E61009CB910 /* banner_mask@2x.png */,
@@ -849,12 +954,17 @@
 				849F7F6619AB81EE00962BB1 /* Images.xcassets in Resources */,
 				9C8983DE19B63409009CB910 /* bar_item_selected_04@2x.png in Resources */,
 				84A7A5B019B2BE890050CACD /* qr_code@2x.png in Resources */,
+				84F1FE5519BD7F180002605A /* detailMore@2x.png in Resources */,
 				84B9604919B36E820042A670 /* avatar@2x.png in Resources */,
 				84A7A5CE19B2D7060050CACD /* bannerPlaceholder@2x.png in Resources */,
 				9C3862B819B1CB0400679C48 /* bar_item_selected_01@2x.png in Resources */,
+				84F1FE5119BD76A10002605A /* ZHDetailProductHeadView.xib in Resources */,
 				9C3862B719B1CB0400679C48 /* bar_item_01@2x.png in Resources */,
 				84A7A5CC19B2C9930050CACD /* ZHProductTableViewCell.xib in Resources */,
+				84F1FE4C19BD51130002605A /* detailProduct@2x.png in Resources */,
 				84A7A5D319B313270050CACD /* productPlaceholder@2x.png in Resources */,
+				84F1FE4219BC47450002605A /* ZHDetailRecipeListCell.xib in Resources */,
+				84F1FE3D19BC45B90002605A /* ZHDetailSKUInfoCell.xib in Resources */,
 				84B9604419B3638A0042A670 /* favorites@2x.png in Resources */,
 				9C89838B19B56E61009CB910 /* banner_mask@2x.png in Resources */,
 				9C89839819B60305009CB910 /* bar_item_selected_03@2x.png in Resources */,
@@ -864,20 +974,28 @@
 				9C3862BC19B1D6D300679C48 /* bar_item_selected_02@2x.png in Resources */,
 				9C89839719B60305009CB910 /* bar_item_03@2x.png in Resources */,
 				9C89836719B451F5009CB910 /* temp_liang@2x.png in Resources */,
+				84F1FE2919BB46770002605A /* ZHDetailBannerCell.xib in Resources */,
 				9C3862BE19B2C7F800679C48 /* btn_search@2x.png in Resources */,
 				84A7A5B619B2C02F0050CACD /* surprise@2x.png in Resources */,
+				84F1FE3819BC43620002605A /* ZHDetailProductGuaranteeCell.xib in Resources */,
+				84F1FE2E19BC3D5F0002605A /* ZHDetailPriceCell.xib in Resources */,
 				84A7A5B719B2C02F0050CACD /* rice@2x.png in Resources */,
+				84F1FE3319BC413F0002605A /* ZHDetailLogisticsInfoCell.xib in Resources */,
 				84A7A5B819B2C02F0050CACD /* cart@2x.png in Resources */,
+				84F1FE4A19BC58F80002605A /* detailBanner@2x.png in Resources */,
 				84A7A5BD19B2C7E90050CACD /* ZHBannerTableViewCell.xib in Resources */,
 				84B9603D19B35B790042A670 /* ZHNormalTableViewCell.xib in Resources */,
+				84F1FE4719BC4A150002605A /* ZHDetailProductCell.xib in Resources */,
 				9C89838919B56D23009CB910 /* temp_banner_01@2x.png in Resources */,
 				84B9604719B36A120042A670 /* setting@2x.png in Resources */,
+				84F1FE5319BD7DE90002605A /* detailSKU@2x.png in Resources */,
 				9C89837B19B49AF0009CB910 /* btn_back_green@2x.png in Resources */,
 				849F7F5519AB81EE00962BB1 /* InfoPlist.strings in Resources */,
 				9C89839419B5FEC8009CB910 /* btn_camera@2x.png in Resources */,
 				9C8983DD19B63409009CB910 /* bar_item_04@2x.png in Resources */,
 				84A7A5B519B2C02F0050CACD /* credits@2x.png in Resources */,
 				84A7A5C719B2C90E0050CACD /* ZHRecommendTableViewCell.xib in Resources */,
+				84F1FE5719BDDDB10002605A /* detailRecipe@2x.png in Resources */,
 				9C9778D219B1900F00D49E69 /* system.config in Resources */,
 				9C9778D119B1900F00D49E69 /* Property.plist in Resources */,
 				84A7A5C219B2C8290050CACD /* ZHCategoryTableViewCell.xib in Resources */,
@@ -935,16 +1053,22 @@
 				84B9603C19B35B790042A670 /* ZHNormalTableViewCell.m in Sources */,
 				84A7A5CB19B2C9930050CACD /* ZHProductTableViewCell.m in Sources */,
 				9C8983D719B6168F009CB910 /* LunarCalendar.m in Sources */,
+				84F1FE3C19BC45B90002605A /* ZHDetailSKUInfoCell.m in Sources */,
 				84EA64D319B1991300C446A5 /* ZHShoppingVC.m in Sources */,
 				9C9778A519B1900F00D49E69 /* UIImage+ZHiteam.m in Sources */,
 				9C89837619B4845C009CB910 /* ZHSegmentView.m in Sources */,
 				9C9778A819B1900F00D49E69 /* Config.m in Sources */,
 				9C9778B419B1900F00D49E69 /* TabbarView.m in Sources */,
 				9C89837319B47C58009CB910 /* ZHProductItem.m in Sources */,
+				84F1FE4119BC47450002605A /* ZHDetailRecipeListCell.m in Sources */,
+				84F1FE3719BC43620002605A /* ZHDetailProductGuaranteeCell.m in Sources */,
+				84F1FE1D19BB19E20002605A /* ZHDetailVC.m in Sources */,
 				9C9778AD19B1900F00D49E69 /* TabbarViewController.m in Sources */,
 				9C9778A419B1900F00D49E69 /* UIControl+ZHiteam.m in Sources */,
+				84F1FE2419BB45920002605A /* ZHDetailModel.m in Sources */,
 				9C9778A319B1900F00D49E69 /* NSString+ZHiteam.m in Sources */,
 				9C3862CF19B2D00400679C48 /* ZHCatagoryCell.m in Sources */,
+				84F1FE2D19BC3D5F0002605A /* ZHDetailPriceCell.m in Sources */,
 				9C3862B219B1BDC600679C48 /* MessageCenter.m in Sources */,
 				9C9778A619B1900F00D49E69 /* UILabel+ZHiteam.m in Sources */,
 				84B9603719B35B5C0042A670 /* ZHOrderTableViewCell.m in Sources */,
@@ -954,17 +1078,19 @@
 				9C3862CC19B2CEFD00679C48 /* SecondCatagoryModel.m in Sources */,
 				9C9778B319B1900F00D49E69 /* TabbarItem.m in Sources */,
 				84A7A5C119B2C8290050CACD /* ZHCategoryTableViewCell.m in Sources */,
-				84A7A5D119B2D9690050CACD /* ZHHomePageModel.m in Sources */,
 				9C9778A719B1900F00D49E69 /* UIView+ZHiteam.m in Sources */,
 				849F7F5B19AB81EE00962BB1 /* AppDelegate.m in Sources */,
 				9C8983D319B6158C009CB910 /* NSDate+Calendar.m in Sources */,
+				84F1FE3219BC413F0002605A /* ZHDetailLogisticsInfoCell.m in Sources */,
 				9C9778A019B1900F00D49E69 /* NSData+AESEncryption.m in Sources */,
+				84F1FE2119BB1B720002605A /* ZHHomePageModel.m in Sources */,
 				9C89836D19B474E7009CB910 /* ZHCatagoryVC.m in Sources */,
 				9C89839219B5CD93009CB910 /* Timer.m in Sources */,
 				9C89837E19B49BFD009CB910 /* ZHSubCatagoryVC.m in Sources */,
 				84EA64D919B1993700C446A5 /* ZHProfileVC.m in Sources */,
 				9C9778AE19B1900F00D49E69 /* ZHViewController.m in Sources */,
 				9C3862C419B2CBBE00679C48 /* ZHShoppingCatagory.m in Sources */,
+				84F1FE4619BC4A150002605A /* ZHDetailProductCell.m in Sources */,
 				84A7A5C619B2C90E0050CACD /* ZHRecommendTableViewCell.m in Sources */,
 				9C9778AC19B1900F00D49E69 /* NavigationViewController.m in Sources */,
 				9C9778A919B1900F00D49E69 /* HttpClient.m in Sources */,
@@ -972,12 +1098,14 @@
 				9C89838E19B5BADD009CB910 /* ZHTableView.m in Sources */,
 				9C8983DA19B6272D009CB910 /* ZHRecipePublishVC.m in Sources */,
 				9C9778AA19B1900F00D49E69 /* LocalSotrage.m in Sources */,
+				84F1FE2819BB46770002605A /* ZHDetailBannerCell.m in Sources */,
 				84B9604019B360740042A670 /* ZHOrderBadgeView.m in Sources */,
 				84EA64D619B1992600C446A5 /* ZHRecipeVC.m in Sources */,
 				9C9778B219B1900F00D49E69 /* NavigationBar.m in Sources */,
 				84EA64C819B192D700C446A5 /* ZHRootViewController.m in Sources */,
 				9C89838719B56746009CB910 /* UIImageView+ZHiteam.m in Sources */,
 				9C89837919B48C1E009CB910 /* ZHSwipSegment.m in Sources */,
+				84F1FE4F19BD76840002605A /* ZHDetailProductHeadView.m in Sources */,
 				9C9778AF19B1900F00D49E69 /* BaseModel.m in Sources */,
 				849F7F5719AB81EE00962BB1 /* main.m in Sources */,
 				9C3862C719B2CECE00679C48 /* CatagoryModel.m in Sources */,

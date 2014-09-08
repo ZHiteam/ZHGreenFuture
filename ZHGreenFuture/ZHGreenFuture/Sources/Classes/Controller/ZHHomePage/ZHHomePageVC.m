@@ -12,6 +12,7 @@
 #import "ZHCategoryTableViewCell.h"
 #import "ZHRecommendTableViewCell.h"
 #import "ZHProductTableViewCell.h"
+#import "ZHDetailVC.h"
 
 @interface ZHHomePageVC ()<UITableViewDelegate, UITableViewDataSource>
 @property(nonatomic, strong)UITableView     *tableView;
@@ -60,6 +61,7 @@
         _tableView.backgroundColor = [UIColor lightGrayColor];
         _tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
         _tableView.autoresizesSubviews = UIViewAutoresizingFlexibleWidth|UIViewAutoresizingFlexibleHeight;
+        //[_tableView registerClass:[ZHProductTableViewCell class] forCellReuseIdentifier:@"kProductTableViewCell"];
     }
     return _tableView;
 }
@@ -279,6 +281,12 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    if (indexPath.section == 1) {
+        ZHProductItem *item = [self.homePageModel.productItems objectAtIndex:indexPath.row];
+        NSString *productId = [item.productId length] >0 ? item.productId : @"";
+        //[[ZHDetailVC alloc] initWithProductId:item.productId];
+        [[MessageCenter instance]performActionWithUserInfo:@{@"controller": @"ZHDetailVC",@"userinfo" : productId}];
+    }
     NSLog(@">>>>>didSelectRowAtIndexPath %@",indexPath);
 }
 
