@@ -13,6 +13,7 @@
 #import "ZHRecommendTableViewCell.h"
 #import "ZHProductTableViewCell.h"
 #import "ZHDetailVC.h"
+#import "ZHZbarVC.h"
 
 @interface ZHHomePageVC ()<UITableViewDelegate, UITableViewDataSource>
 @property(nonatomic, strong)UITableView     *tableView;
@@ -118,9 +119,10 @@
 
 #pragma mark - Event Handler
 - (void)leftItemPressed:(id)sender{
-//TODO: qr
-    NSLog(@">>>>%@",NSStringFromSelector(_cmd));
-   
+    NavigationViewController  *naviVC = [MemoryStorage valueForKey:k_NAVIGATIONCTL];
+    [[ZHZbarVC sharedInstance] startScanWithVC:naviVC completionBlock:^(NSString *result) {
+        NSLog(@">>>zbar result=%@",result);
+    }];
 }
 
 - (void)rightItemPressed:(id)sender{
