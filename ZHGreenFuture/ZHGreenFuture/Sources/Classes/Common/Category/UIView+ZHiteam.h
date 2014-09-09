@@ -85,6 +85,8 @@
 -(void)cornerRadius:(CGFloat)corner boardColor:(UIColor*)color boardWidth:(CGFloat)boardWidth;
 
 -(BOOL)isLoading;
+
 -(void)startLoading;
+
 -(void)stopLoading;
 @end

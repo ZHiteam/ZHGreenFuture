@@ -8,6 +8,7 @@
 
 #import "UIView+ZHiteam.h"
 #import <QuartzCore/QuartzCore.h>
+#import <CoreGraphics/CGBitmapContext.h>
 
 @implementation UIView (ZHiteam)
 ///////////////////////////////////////////////////////////////////////////////////////////////////
@@ -184,5 +185,6 @@
 -(void)stopLoading{
   [[self viewWithTag:-1109]removeFromSuperview];
 }
+
 @end
 

@@ -22,9 +22,14 @@
         _viewControllers = [[NSMutableArray alloc]initWithCapacity:0];
         self.hasNavitaiongBar = NO;
         _pushLock = NO;
+        
+        [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(statusBarChangeNotifaction) name:ZHSTATUS_BAR_CHANGE object:nil];
+        
+        [self setNeedsStatusBarAppearanceUpdate];
     }
     return self;
 }
+
 
 -(id)initWithRootViewController:(ZHViewController*)rootViewController frame:(CGRect)frame{
 
@@ -38,6 +43,8 @@
 
 -(void)dealloc{
     [_viewControllers removeAllObjects];
+    
+    [[NSNotificationCenter defaultCenter]removeObserver:self];
 }
 
 - (void)viewDidLoad
@@ -96,6 +103,10 @@
         if (ANIMATE_TYPE_NONE == animation) {
             aViewController.view.origin = CGPointMake(0, 0);
             [_viewControllers addObject:aViewController];
+            
+            
+            [self setNeedsStatusBarAppearanceUpdate];
+            
         }
         else{
             _pushLock = YES;
@@ -104,6 +115,8 @@
             } completion:^(BOOL finished) {
                 _pushLock = NO;
                 [_viewControllers addObject:aViewController];
+                
+                [self setNeedsStatusBarAppearanceUpdate];
             }];
         }
 
@@ -138,6 +151,8 @@
     {
         popBLock(YES);
         [[_viewControllers lastObject] viewWillAppear:YES];
+        
+        [self setNeedsStatusBarAppearanceUpdate];
     }
     else
     {
@@ -150,9 +165,12 @@
             }
         } completion:^(BOOL finished) {
             popBLock(finished);
-            [[_viewControllers lastObject] viewWillAppear:YES];            
+            [[_viewControllers lastObject] viewWillAppear:YES];
+
+            [self setNeedsStatusBarAppearanceUpdate];
         }];
     }
+
 }
 
 -(void)popToRoot{
@@ -164,7 +182,6 @@
         [self popWithAnimation:NO];
     }
     [self pop];
-    
 }
 
 -(ZHViewController*)topViewController{
@@ -172,5 +189,22 @@
         return [_viewControllers lastObject];
     }
     return nil;
+}
+
+-(UIStatusBarStyle)preferredStatusBarStyle{
+    
+    if (0 == _viewControllers.count) {
+        return self.statusStyle;
+    }
+    
+    return ((ZHViewController*)[_viewControllers lastObject]).statusStyle;
+}
+
+- (BOOL)prefersStatusBarHidden {
+    return NO;
+}
+
+-(void)statusBarChangeNotifaction{
+    [self setNeedsStatusBarAppearanceUpdate];
 }
 @end

@@ -24,6 +24,9 @@
         _hasNavitaiongBar = YES;
         
         [self _initNavigationBar];
+        
+        
+        self.statusStyle = UIStatusBarStyleLightContent;
     }
     
     return self;
@@ -47,6 +50,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
     self.view.backgroundColor = WHITE_BACKGROUND;///[[UIColor orangeColor] colorWithAlphaComponent:0.5];
     self.swipeBack = [[UISwipeGestureRecognizer alloc]initWithTarget:self action:@selector(_back)];
     self.swipeBack.direction = UISwipeGestureRecognizerDirectionRight;
@@ -108,5 +112,7 @@
     [self.navigationBar setTitleColor:RGB(68, 68, 68)];
     self.navigationBar.backgroundColor = WHITE_BACKGROUND;
     self.navigationBar.leftBarItem = [UIButton barItemWithTitle:@"" image:[UIImage themeImageNamed:@"btn_back"] action:self.navigationCtl selector:@selector(pop)];
+    
+    self.statusStyle = UIStatusBarStyleDefault;
 }
 @end

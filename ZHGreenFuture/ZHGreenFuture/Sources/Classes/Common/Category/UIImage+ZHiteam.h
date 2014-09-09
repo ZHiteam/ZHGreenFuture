@@ -13,4 +13,6 @@
 +(UIImage *)themeImageNamed:(NSString *)name;
 
 +(UIImage *)scaleImage:(UIImage *)image toScale:(float)scaleSize;
+
++ (UIImage *)createImageWithColor:(UIColor *)color;
 @end

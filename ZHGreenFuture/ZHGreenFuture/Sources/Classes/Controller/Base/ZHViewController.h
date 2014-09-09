@@ -21,6 +21,7 @@ typedef enum  {
 @class NavigationViewController;
 @interface ZHViewController : UIViewController
 
+@property (nonatomic,assign) UIStatusBarStyle   statusStyle;
 @property (nonatomic, assign) BOOL              hasNavitaiongBar;
 @property (nonatomic, strong) NavigationBar*    navigationBar;  /// 导航栏
 @property (nonatomic, assign) AnimationType     animationType;  /// 页面切换动画

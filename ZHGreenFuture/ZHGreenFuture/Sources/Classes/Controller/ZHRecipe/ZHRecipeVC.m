@@ -10,13 +10,20 @@
 #import "LunarCalendar.h"
 #import <DBCamera/DBCameraContainerViewController.h>
 #import <DBCamera/DBCameraViewController.h>
+#import "RecipeCell.h"
 
-@interface ZHRecipeVC ()<DBCameraViewControllerDelegate,DBCameraViewControllerDelegate>
+#import "ZHTagsView.h"
+
+@interface ZHRecipeVC ()<DBCameraViewControllerDelegate,DBCameraViewControllerDelegate,UITableViewDataSource,UITableViewDelegate>
 
 @property (nonatomic,strong) UIView*            titleViewPanel;
 @property (nonatomic,strong) UILabel*           weekLabel;
 @property (nonatomic,strong) UILabel*           dateLabel;
 
+@property (nonatomic,strong) ZHTagsView*        tagView;
+@property (nonatomic,strong) UIView*            tagPanel;
+
+@property (nonatomic,strong) UITableView*       recipeContent;
 @end
 
 @implementation ZHRecipeVC
@@ -35,6 +42,14 @@
 }
 
 -(void)loadContent{
+    [self loadTitleContent];
+    
+    [self.view addSubview:self.tagPanel];
+    
+    [self.view insertSubview:self.recipeContent belowSubview:self.tagPanel];
+}
+
+-(void)loadTitleContent{
     NSDate* date = [NSDate date];
     NSDateFormatter* formater = [[NSDateFormatter alloc]init];
     
@@ -45,7 +60,7 @@
     LunarCalendar* lunar = [date chineseCalendarDate];
     
     self.weekLabel.text = [NSString stringWithFormat:@"%@/%@",lunar.DayLunar,[formater stringFromDate:date]];///@"大暑/周一";
-
+    
     
     [self.navigationBar setTitleView:self.titleViewPanel];
     
@@ -82,6 +97,64 @@
     return _dateLabel;
 }
 
+-(UIView *)tagPanel{
+    if (!_tagPanel){
+        self.tagView.frame = CGRectMake(0, 30, self.tagView.width, self.tagView.height);
+        
+        _tagPanel = [[UIView alloc]initWithFrame:CGRectMake(self.contentBounds.origin.x, self.contentBounds.origin.y, self.view.width, 30+self.tagView.height+20)];
+        
+        UILabel* titleLabel = [UILabel labelWithText:@"大家都在关注：" font:FONT(14) color:RGB(0x77, 0x77, 0x77) textAlignment:NSTextAlignmentLeft];
+        titleLabel.frame = CGRectMake(12, 5, self.view.width-12, 30);
+        
+        [_tagPanel addSubview:titleLabel];
+        
+        [_tagPanel addSubview:self.tagView];
+        _tagPanel.backgroundColor = WHITE_BACKGROUND;
+        
+        UIView* line = [[UIView alloc]initWithFrame:CGRectMake(0, _tagPanel.height-1, _tagPanel.width, 1)];
+        line.backgroundColor = GRAY_LINE;
+        [_tagPanel addSubview:line];
+    }
+    return _tagPanel;
+}
+
+-(ZHTagsView *)tagView{
+    if (!_tagView){
+#warning TEST
+        NSArray* tags = @[@"解暑",@"夏季",@"清肠",@"粥",@"养生茶",@"润肺止咳"];
+        NSMutableArray* tagArray = [[NSMutableArray alloc]initWithCapacity:tags.count];
+        
+        for (NSString* tag in tags){
+            TagModel* model = [[TagModel alloc]init];
+            model.tags = tag;
+            model.url = @"green://list?type=111";
+            [tagArray addObject:model];
+        }
+        
+        
+        _tagView = [[ZHTagsView alloc]initWithFrame:CGRectMake(0, 30, self.view.width, 10) tags:tagArray];
+    }
+    
+    return _tagView;
+}
+
+
+-(UITableView *)recipeContent{
+    if (!_recipeContent){
+        _recipeContent = [[UITableView alloc]initWithFrame:CGRectMake(0, self.tagPanel.bottom, self.tagPanel.width, self.contentBounds.size.height-self.tagPanel.height)];
+        _recipeContent.backgroundColor = RGB(238, 238, 238);
+        _recipeContent.dataSource = self;
+        _recipeContent.delegate = self;
+        _recipeContent.clipsToBounds = NO;
+        _recipeContent.pagingEnabled = NO;
+        _recipeContent.separatorStyle = UITableViewCellSeparatorStyleNone;
+        _recipeContent.showsVerticalScrollIndicator = NO;
+
+    }
+    
+    return _recipeContent;
+}
+#pragma -mark -action
 - (void)cameraAction{
     
     DBCameraContainerViewController *container = [[DBCameraContainerViewController alloc] initWithDelegate:self];
@@ -117,4 +190,32 @@
         [[MessageCenter instance]performActionWithUserInfo:dic];
     }
 }
+
+#pragma -mark UITableViewDataSource,UITableViewDelegate
+-(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
+    return 10;
+}
+
+-(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
+    return [RecipeCell cellHeight];
+}
+
+-(UITableViewCell*)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
+    static NSString* identify= @"recipeCell";
+    RecipeCell* cell = [tableView dequeueReusableCellWithIdentifier:identify];
+    
+    if (!cell) {
+        cell = [[RecipeCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identify];
+//        cell = [RecipeCell instanceWithNibName:@"RecipeCell" bundle:nil owner:nil];
+    }
+    
+    return cell;
+}
+
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    
+    [[MessageCenter instance]performActionWithUserInfo:@{@"controller": @"ZHRecipeDetailVC"}];
+}
+
 @end
