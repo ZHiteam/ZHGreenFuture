@@ -92,7 +92,7 @@
 
 
 -(TabbarItem *)tabbar:(TabbarView *)tabbar itemAtIndex:(NSUInteger)index{
-    if (index >= TAB_BAR_HEIGHT ) {
+    if (index >= TABBAR_COUNT ) {
         return nil;
     }
     

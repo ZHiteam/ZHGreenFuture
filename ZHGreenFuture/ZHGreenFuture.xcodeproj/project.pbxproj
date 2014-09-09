@@ -84,6 +84,8 @@
 		9C8983DA19B6272D009CB910 /* ZHRecipePublishVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C8983D919B6272D009CB910 /* ZHRecipePublishVC.m */; };
 		9C8983DD19B63409009CB910 /* bar_item_04@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9C8983DB19B63409009CB910 /* bar_item_04@2x.png */; };
 		9C8983DE19B63409009CB910 /* bar_item_selected_04@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9C8983DC19B63409009CB910 /* bar_item_selected_04@2x.png */; };
+		9C89857119B70B5E009CB910 /* ZHTagsView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C89857019B70B5E009CB910 /* ZHTagsView.m */; };
+		9C89857419B70CC4009CB910 /* TagModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C89857319B70CC4009CB910 /* TagModel.m */; };
 		9C9778A019B1900F00D49E69 /* NSData+AESEncryption.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C97782D19B1900F00D49E69 /* NSData+AESEncryption.m */; };
 		9C9778A119B1900F00D49E69 /* NSDictionary+ZHiteam.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C97782F19B1900F00D49E69 /* NSDictionary+ZHiteam.m */; };
 		9C9778A219B1900F00D49E69 /* NSObject+Instance.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C97783119B1900F00D49E69 /* NSObject+Instance.m */; };
@@ -235,6 +237,10 @@
 		9C8983D919B6272D009CB910 /* ZHRecipePublishVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZHRecipePublishVC.m; sourceTree = "<group>"; };
 		9C8983DB19B63409009CB910 /* bar_item_04@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bar_item_04@2x.png"; sourceTree = "<group>"; };
 		9C8983DC19B63409009CB910 /* bar_item_selected_04@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bar_item_selected_04@2x.png"; sourceTree = "<group>"; };
+		9C89856F19B70B5E009CB910 /* ZHTagsView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZHTagsView.h; sourceTree = "<group>"; };
+		9C89857019B70B5E009CB910 /* ZHTagsView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZHTagsView.m; sourceTree = "<group>"; };
+		9C89857219B70CC4009CB910 /* TagModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TagModel.h; sourceTree = "<group>"; };
+		9C89857319B70CC4009CB910 /* TagModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TagModel.m; sourceTree = "<group>"; };
 		9C97782C19B1900F00D49E69 /* NSData+AESEncryption.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSData+AESEncryption.h"; sourceTree = "<group>"; };
 		9C97782D19B1900F00D49E69 /* NSData+AESEncryption.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSData+AESEncryption.m"; sourceTree = "<group>"; };
 		9C97782E19B1900F00D49E69 /* NSDictionary+ZHiteam.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDictionary+ZHiteam.h"; sourceTree = "<group>"; };
@@ -715,6 +721,8 @@
 			children = (
 				9C3862C919B2CEE600679C48 /* Base */,
 				9C3862C819B2CED700679C48 /* Catagory */,
+				9C89857219B70CC4009CB910 /* TagModel.h */,
+				9C89857319B70CC4009CB910 /* TagModel.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -742,6 +750,8 @@
 				9C89837819B48C1E009CB910 /* ZHSwipSegment.m */,
 				9C89838C19B5BADD009CB910 /* ZHTableView.h */,
 				9C89838D19B5BADD009CB910 /* ZHTableView.m */,
+				9C89856F19B70B5E009CB910 /* ZHTagsView.h */,
+				9C89857019B70B5E009CB910 /* ZHTagsView.m */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -947,8 +957,10 @@
 				9C3862CF19B2D00400679C48 /* ZHCatagoryCell.m in Sources */,
 				9C3862B219B1BDC600679C48 /* MessageCenter.m in Sources */,
 				9C9778A619B1900F00D49E69 /* UILabel+ZHiteam.m in Sources */,
+				9C89857119B70B5E009CB910 /* ZHTagsView.m in Sources */,
 				84B9603719B35B5C0042A670 /* ZHOrderTableViewCell.m in Sources */,
 				9C9778A119B1900F00D49E69 /* NSDictionary+ZHiteam.m in Sources */,
+				9C89857419B70CC4009CB910 /* TagModel.m in Sources */,
 				9C9778A219B1900F00D49E69 /* NSObject+Instance.m in Sources */,
 				9C9778AB19B1900F00D49E69 /* MemoryStorage.m in Sources */,
 				9C3862CC19B2CEFD00679C48 /* SecondCatagoryModel.m in Sources */,
