@@ -32,15 +32,32 @@
 @property(nonatomic, strong)NSArray *imageItems;
 @property(nonatomic, strong)UIScrollView*scrollView;
 @property(nonatomic, strong)NSTimer *timer;
-@property(nonatomic, strong)UIPageControl *pageControl;
 @property(nonatomic, assign)CGPoint  startPoint;
 @property(nonatomic, assign)CGFloat  directionOffset;
 @property(nonatomic, assign)BOOL     isInvalidate;
-@property(nonatomic, assign)UIEdgeInsets edgeInsets;
 @property(nonatomic, strong)UITapGestureRecognizer *tapGesture;
+
 @end
 
 @implementation FEScrollPageView
+
+- (void)awakeFromNib{
+    self.edgeInsets = UIEdgeInsetsZero;
+    self.itemWidth =  [[UIScreen mainScreen] bounds].size.width;
+    self.scrollView = [[UIScrollView alloc] initWithFrame:self.bounds];
+}
+
+- (instancetype)init
+{
+    self = [super init];
+    if (self) {
+        self.edgeInsets = UIEdgeInsetsZero;
+        self.itemWidth =  [[UIScreen mainScreen] bounds].size.width;
+        self.scrollView = [[UIScrollView alloc] initWithFrame:self.bounds];
+    }
+    return self;
+}
+
 - (instancetype)initWithFrame:(CGRect)frame
                    imageItems:(NSArray*)items
                 selectedBlock:(FEScrollPageSelectedBlock)selectedBlock
@@ -48,8 +65,8 @@
     self = [super initWithFrame:frame];
     if (self) {
         // Initialization code
-        self.edgeInsets = UIEdgeInsetsMake(0, 3, 0, 3);
-        _itemWidth= [[UIScreen mainScreen] bounds].size.width;
+        //self.edgeInsets = UIEdgeInsetsMake(0, 3, 0, 3);
+        //_itemWidth= [[UIScreen mainScreen] bounds].size.width;
         self.isHiddenPageController = NO;
         self.imageItems    = items;
         self.selectedBlock = selectedBlock;
@@ -70,13 +87,12 @@
 - (void)setImageItems:(NSArray*)items
         selectedBlock:(FEScrollPageSelectedBlock)selectedBlock
            isAutoPlay:(BOOL)isAutoPlay{
-    self.edgeInsets = UIEdgeInsetsMake(0, 0, 0, 0);
-    _itemWidth =  [[UIScreen mainScreen] bounds].size.width;
+    //_itemWidth =  [[UIScreen mainScreen] bounds].size.width;
     self.isHiddenPageController = NO;
     self.imageItems    = items;
     self.selectedBlock = selectedBlock;
     self.isAutoPlay = isAutoPlay;
-    self.scrollView = [[UIScrollView alloc] initWithFrame:self.bounds];
+    //self.scrollView = [[UIScrollView alloc] initWithFrame:self.bounds];
     self.pageControl = [[UIPageControl alloc] initWithFrame:CGRectMake(0, self.frame.size.height-10, self.frame.size.width, 10)];
     self.pageControl.userInteractionEnabled = NO;
     self.pageControl.numberOfPages = [self.imageItems count];
@@ -92,6 +108,10 @@
     self.timer = nil;
 }
 
+- (void)updateLayout{
+    [self scrollviewInit];
+}
+
 - (UITapGestureRecognizer *)tapGesture
 {
     if (_tapGesture == nil) {
@@ -104,7 +124,7 @@
 - (void)setItemWidth:(NSInteger)itemWidth{
     if (_itemWidth != itemWidth) {
         _itemWidth = itemWidth;
-        [self scrollviewInit];
+//        [self scrollviewInit];
     }
 }
 
@@ -113,6 +133,19 @@
         self.pageControl.hidden = _isHiddenPageController;
     }
 }
+
+- (void)setEdgeInsets:(UIEdgeInsets)edgeInsets{
+    CGRect rect = self.bounds;
+    self.scrollView.frame = CGRectMake(self.edgeInsets.left, 0, rect.size.width - self.edgeInsets.left - self.edgeInsets.right, rect.size.height);
+}
+
+- (UIScrollView *)scrollView{
+    if (_scrollView == nil) {
+        _scrollView = [[UIScrollView alloc] initWithFrame:self.bounds];
+    }
+    return _scrollView;
+}
+
     
 #pragma mark - Private Method
 - (void)scrollviewInit{
@@ -129,7 +162,7 @@
     [self.scrollView removeGestureRecognizer:self.tapGesture];
     
     //create scrollView
-    self.scrollView.contentSize = CGSizeMake(self.itemWidth * [self.imageItems count], self.frame.size.height);
+    self.scrollView.contentSize = CGSizeMake(self.itemWidth * [self.imageItems count] + self.margin * ([self.imageItems count] -1), self.frame.size.height);
     self.scrollView.showsVerticalScrollIndicator = NO;
     self.scrollView.pagingEnabled = (self.itemWidth == [UIScreen mainScreen].bounds.size.width);
     self.scrollView.delegate = self;
@@ -142,14 +175,23 @@
     for (id<FEImageItemProtocol> imageItem in self.imageItems){
         if ([imageItem conformsToProtocol:@protocol(FEImageItemProtocol)]) {
             UIImageView* imageView = [[UIImageView alloc] initWithFrame:CGRectZero];
-            imageView.frame = CGRectMake(originX + self.edgeInsets.left, 0, self.itemWidth - self.edgeInsets.left - self.edgeInsets.right, self.frame.size.height);
+            imageView.frame = CGRectMake(originX , 0, self.itemWidth , self.frame.size.height);
             //if (imageItem.imageURL)
             {
                 NSString *placeHolder = [imageItem respondsToSelector:@selector(placeholderImage)]?[imageItem placeholderImage]:nil;
                 [imageView setImageWithURL:[NSURL URLWithString:imageItem.imageURL] placeholderImage:[UIImage imageNamed:placeHolder]];
             }
+            if ([[imageItem title] length] >0) {
+               UILabel *titleLabel = [[UILabel alloc] initWithFrame:self.titleLabelRect];
+                titleLabel.backgroundColor = [[UIColor blackColor] colorWithAlphaComponent:0.5];
+                titleLabel.text = imageItem.title;
+                titleLabel.font = [UIFont systemFontOfSize:10];
+                titleLabel.textColor = [UIColor whiteColor];
+                titleLabel.textAlignment = NSTextAlignmentCenter;
+                [imageView addSubview:titleLabel];
+            }
             [self.scrollView addSubview:imageView];
-            originX += self.itemWidth;
+            originX =  originX + self.itemWidth + self.margin;
             imageView.backgroundColor = [UIColor clearColor];//originX/imageView.frame.size.width ?  [UIColor blueColor] : [UIColor orangeColor];
             imageView.contentMode = UIViewContentModeScaleAspectFit;
         }else {
@@ -160,7 +202,7 @@
     //set default image when none image
     if ([self.imageItems count] == 0 && [self.palceHoldImage length] > 0) {
         UIImageView* imageView = [[UIImageView alloc] initWithFrame:CGRectZero];
-        imageView.frame = CGRectMake(originX + self.edgeInsets.left, 0, self.itemWidth - self.edgeInsets.left - self.edgeInsets.right, self.frame.size.height);
+        imageView.frame = CGRectMake(originX , 0, self.itemWidth , self.frame.size.height);
         [imageView setImage:[UIImage imageNamed:self.palceHoldImage]];
         [self.scrollView addSubview:imageView];
     }

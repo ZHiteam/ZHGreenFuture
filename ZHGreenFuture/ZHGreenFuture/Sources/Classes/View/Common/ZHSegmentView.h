@@ -23,8 +23,7 @@
 @property (nonatomic,assign) id         segmentDelegate;
 
 - (id)initWithFrame:(CGRect)frame segments:(NSArray*)segments;
-
+- (void)setSegmentItems:(NSArray*)segments;
 -(void)itemSelected:(id)sender;
-
 -(void)performAnimationWithCur:(UIButton*)curSelectItem nextItem:(UIButton*)next;
 @end

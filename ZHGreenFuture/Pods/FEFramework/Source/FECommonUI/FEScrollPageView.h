@@ -32,7 +32,12 @@ typedef void(^FEScrollPageSelectedBlock)(FEImageItem* sender);
 @property(nonatomic, copy)FEScrollPageSelectedBlock selectedBlock;
 @property(nonatomic, assign)NSInteger               itemWidth;//default screen.width
 @property(nonatomic, assign)BOOL                    isHiddenPageController;//default NO
-@property(nonatomic, strong)NSString                *palceHoldImage;
+@property(nonatomic, strong)NSString                *palceHoldImage;//默认图
+@property(nonatomic, strong)UIPageControl           *pageControl;
+@property(nonatomic, assign)UIEdgeInsets            edgeInsets; //左右起始的间距
+@property(nonatomic, assign)CGFloat                 margin;     //item之间的间距
+@property(nonatomic, assign)CGRect                  titleLabelRect;//每个item上的titleLabel的位置
+
 - (instancetype)initWithFrame:(CGRect)frame
                    imageItems:(NSArray*)items
                 selectedBlock:(FEScrollPageSelectedBlock)selectedBlock
@@ -43,4 +48,6 @@ typedef void(^FEScrollPageSelectedBlock)(FEImageItem* sender);
            isAutoPlay:(BOOL)isAutoPlay;
 
 - (void)stopAutoPlay;
+
+- (void)updateLayout;
 @end
