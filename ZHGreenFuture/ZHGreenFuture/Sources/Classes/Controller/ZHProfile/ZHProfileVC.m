@@ -137,9 +137,7 @@
 
 #pragma mark - Event Handler
 - (void)leftItemPressed:(id)sender{
-    //TODO: setting
-    NSLog(@">>>>%@",NSStringFromSelector(_cmd));
-    
+    [[MessageCenter instance]performActionWithUserInfo:@{@"controller": @"ZHSettingVC"}];
 }
 
 - (void)rightItemPressed:(id)sender{
