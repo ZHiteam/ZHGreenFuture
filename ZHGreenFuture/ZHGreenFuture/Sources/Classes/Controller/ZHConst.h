@@ -22,3 +22,6 @@ typedef void(^ZHCompletionBlock)(BOOL isSuccess);
 #define ALERT_MESSAGE(msg)  {UIAlertView* alert = [[UIAlertView alloc]initWithTitle:@"" message:msg delegate:nil cancelButtonTitle:@"yep!!" otherButtonTitles: nil];[alert show];}
 
 #define ZHSTATUS_BAR_CHANGE @"zh_status_bar_change"
+
+#define SHARE_APPKEY    @"3028b230599a"
+#define COMMENT_URL     @"http://cmt.sharesdk.cn:5566/countInteract"

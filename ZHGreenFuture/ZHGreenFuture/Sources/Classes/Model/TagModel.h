@@ -10,7 +10,8 @@
 
 @interface TagModel : BaseModel
 
-@property (nonatomic,strong) NSString*  tags;
+@property (nonatomic,strong) NSString*  tagName;
+@property (nonatomic,strong) NSString*  tagId;
 @property (nonatomic,strong) NSString*  url;
 
 @end

@@ -7,8 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "RecipeItemModel.h"
 
 @interface RecipeCell : UITableViewCell
+
+@property (nonatomic,strong) RecipeItemModel*   recipeItem;
 
 @property (nonatomic,strong) UIImageView*       imageContent;
 @property (nonatomic,strong) UILabel*           titleLabel;

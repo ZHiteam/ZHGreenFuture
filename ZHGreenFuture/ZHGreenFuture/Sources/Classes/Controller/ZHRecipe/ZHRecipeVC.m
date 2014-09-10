@@ -11,8 +11,9 @@
 #import <DBCamera/DBCameraContainerViewController.h>
 #import <DBCamera/DBCameraViewController.h>
 #import "RecipeCell.h"
-
 #import "ZHTagsView.h"
+
+#import "RecipeModel.h"
 
 @interface ZHRecipeVC ()<DBCameraViewControllerDelegate,DBCameraViewControllerDelegate,UITableViewDataSource,UITableViewDelegate>
 
@@ -24,6 +25,8 @@
 @property (nonatomic,strong) UIView*            tagPanel;
 
 @property (nonatomic,strong) UITableView*       recipeContent;
+
+@property (nonatomic,strong)RecipeModel*        recipeModel;
 @end
 
 @implementation ZHRecipeVC
@@ -33,12 +36,41 @@
     [super viewDidLoad];
     
     [self loadContent];
+    
+    [self loadRequest];
 }
 
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+
+#warning TEST
+-(void)loadRequest{
+    NSArray* tags = @[@"解暑",@"夏季",@"清肠",@"粥",@"养生茶",@"润肺止咳"];
+    NSMutableArray* tagArray = [[NSMutableArray alloc]initWithCapacity:tags.count];
+    
+    for (NSString* tag in tags){
+        TagModel* model = [[TagModel alloc]init];
+        model.tagName = tag;
+        model.url = @"green://list?type=111";
+        [tagArray addObject:model];
+    }
+    
+    NSMutableArray* itemArray = [[NSMutableArray alloc]initWithCapacity:10];
+    for (int i = 0 ; i < 10; ++i){
+        RecipeItemModel* item = [[RecipeItemModel alloc]init];
+        item.recipeId = [NSString stringWithFormat:@"20010100%d",i];
+        [itemArray addObject:item];
+    }
+    
+    self.recipeModel = [[RecipeModel alloc]init];
+    self.recipeModel.tags = tagArray;
+    self.recipeModel.recipeItemList = itemArray;
+    
+    [self autoResizeContent];
 }
 
 -(void)loadContent{
@@ -113,26 +145,17 @@
         
         UIView* line = [[UIView alloc]initWithFrame:CGRectMake(0, _tagPanel.height-1, _tagPanel.width, 1)];
         line.backgroundColor = GRAY_LINE;
+        line.tag = -111;
         [_tagPanel addSubview:line];
+        line.autoresizingMask = UIViewAutoresizingFlexibleBottomMargin;
     }
     return _tagPanel;
 }
 
 -(ZHTagsView *)tagView{
     if (!_tagView){
-#warning TEST
-        NSArray* tags = @[@"解暑",@"夏季",@"清肠",@"粥",@"养生茶",@"润肺止咳"];
-        NSMutableArray* tagArray = [[NSMutableArray alloc]initWithCapacity:tags.count];
         
-        for (NSString* tag in tags){
-            TagModel* model = [[TagModel alloc]init];
-            model.tags = tag;
-            model.url = @"green://list?type=111";
-            [tagArray addObject:model];
-        }
-        
-        
-        _tagView = [[ZHTagsView alloc]initWithFrame:CGRectMake(0, 30, self.view.width, 10) tags:tagArray];
+        _tagView = [[ZHTagsView alloc]initWithFrame:CGRectMake(0, 30, self.view.width, 10) tags:self.recipeModel.tags];
     }
     
     return _tagView;
@@ -153,6 +176,15 @@
     }
     
     return _recipeContent;
+}
+
+-(void)autoResizeContent{
+    [self.tagView loadContentWithTags:self.recipeModel.tags];
+    
+    self.tagPanel.height = 30+self.tagView.height+20;
+    [self.tagPanel viewWithTag:-111].top = self.tagPanel.height-1;
+    
+    self.recipeContent.frame = CGRectMake(0, self.tagPanel.bottom, self.tagPanel.width, self.contentBounds.size.height-self.tagPanel.height);
 }
 #pragma -mark -action
 - (void)cameraAction{
@@ -193,7 +225,7 @@
 
 #pragma -mark UITableViewDataSource,UITableViewDelegate
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    return 10;
+    return self.recipeModel.recipeItemList.count;
 }
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
@@ -207,6 +239,11 @@
     if (!cell) {
         cell = [[RecipeCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identify];
 //        cell = [RecipeCell instanceWithNibName:@"RecipeCell" bundle:nil owner:nil];
+    }
+    
+    if (self.recipeModel.recipeItemList.count > indexPath.row) {
+        RecipeItemModel* item = self.recipeModel.recipeItemList[indexPath.row];
+        cell.recipeItem = item;
     }
     
     return cell;

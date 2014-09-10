@@ -45,7 +45,7 @@
         }
         UIButton* btn = [UIButton buttonWithType:UIButtonTypeCustom];
         
-        [btn setTitle:val.tags forState:UIControlStateNormal];
+        [btn setTitle:val.tagName forState:UIControlStateNormal];
         [btn setTitleColor:GREEN_COLOR forState:UIControlStateNormal];
         [btn setBackgroundImage:[UIImage createImageWithColor:WHITE_BACKGROUND] forState:UIControlStateNormal];
         
@@ -60,7 +60,7 @@
         
         btn.tag = i + TAG_START;
         
-        CGSize size = [val.tags sizeWithFont:btn.titleLabel.font];
+        CGSize size = [val.tagName sizeWithFont:btn.titleLabel.font];
         size.width += ITEM_SPAN*2;
         
         if (xOffset + size.width > self.width-SIDE_SPAN){

@@ -7,6 +7,8 @@
 //
 
 #import "RecipeCell.h"
+#import <Comment/Comment.h>
+#import <AFNetworking/AFHTTPRequestOperationManager.h>
 
 @implementation RecipeCell
 
@@ -107,15 +109,54 @@
         _disussCountLabel = [UILabel labelWithText:@"" font:FONT(10) color:[UIColor grayColor] textAlignment:NSTextAlignmentLeft];
         _disussCountLabel.frame = CGRectMake(self.discussPanel.width-30, 0, 30, 30);
         
-        UIImageView* dicImage = [[UIImageView alloc]initWithImage:[UIImage themeImageNamed:@"btn_discuss"]];
-        dicImage.frame = CGRectMake(_disussCountLabel.left-14, 10, 12, 11);
+        UIButton* dicImage = [[UIButton alloc]initWithFrame:CGRectMake(_disussCountLabel.left-14, 10, 12, 11)];///initWithImage:[UIImage themeImageNamed:@"btn_discuss"]];
+        [dicImage setImage:[UIImage themeImageNamed:@"btn_discuss"] forState:UIControlStateNormal];
+        [dicImage addTarget:self action:@selector(commentAction) forControlEvents:UIControlEventTouchUpInside];
+        
         [self.discussPanel addSubview:dicImage];
     }
     return _disussCountLabel;
 }
 #pragma -mark getter end
 
+#pragma -mark setter
+-(void)setRecipeItem:(RecipeItemModel *)recipeItem{
+    _recipeItem = recipeItem;
+    
+    if (!isEmptyString(_recipeItem.recipeId)) {
+//        [AFHTTPRequestOperationManager
+        AFHTTPRequestOperationManager* manager = [AFHTTPRequestOperationManager manager];
+        
+        manager.responseSerializer.acceptableContentTypes = [NSSet setWithObject:@"text/plain"];
+        
+        [manager POST:COMMENT_URL parameters:@{@"appkey": SHARE_APPKEY,@"topicid":_recipeItem.recipeId} success:^(AFHTTPRequestOperation *operation, id responseObject) {
+            ZHLOG(@"%@",responseObject);
+
+            if ([responseObject isKindOfClass:[NSDictionary class]]) {
+                NSDictionary* res = responseObject[@"res"];
+#warning TEST 暂时使用赞数代替评论数
+                self.disussCountLabel.text = [NSString stringWithFormat:@"%d", [res[@"likecount"] integerValue]];
+
+            }
+
+        } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+            ZHLOG(@"%@",error);
+        }];
+    }
+}
+#pragma -mark setter end
+
 +(CGFloat)cellHeight{
     return 200.0f;
+}
+
+
+
+-(void)commentAction{
+    UIViewController* vc = [MemoryStorage valueForKey:k_NAVIGATIONCTL];
+    [vc presentCommentListViewControllerWithContentId:self.recipeItem.recipeId title:@"文章标题" animated:YES];
+    
+//    [vc showCommentToolbarWithContentId:self.recipeItem.recipeId title:@"标题"];
+
 }
 @end

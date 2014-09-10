@@ -13,4 +13,5 @@
 
 -(id)initWithFrame:(CGRect)frame tags:(NSArray*)tags;
 
+-(void)loadContentWithTags:(NSArray*)tags;
 @end
