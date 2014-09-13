@@ -11,6 +11,9 @@
 #import "ZHOrderTableViewCell.h"
 #import "ZHNormalTableViewCell.h"
 #import "ZHOrderBadgeView.h"
+#import "ZHPersonInfoVC.h"
+#import "ZHOrderListVC.h"
+#import "ZHProductsVC.h"
 
 @interface ZHProfileVC ()<UITableViewDelegate, UITableViewDataSource>
 @property(nonatomic, strong)UITableView          *tableView;
@@ -42,7 +45,13 @@
     [self.view addSubview:self.tableView];
     [self.tableView addCoverWithImage:[UIImage imageNamed:@"myBG.png"] withTopView:nil aboveView:self.containerView enableBlur:NO];
     self.tableView.tableHeaderView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width, FECoverViewHeight + 0)];
+    self.tableView.tableHeaderView.userInteractionEnabled = NO;
     [self.avatarImageView setImageWithURL:[NSURL URLWithString:self.profileModel.userAvatar] placeholderImage:[UIImage imageNamed:@"avatar"]];
+    [self.avatarImageView touchEndedBlock:^(NSSet *touches, UIEvent *event) {
+        ZHPersonInfoVC *personInfoVC = [[ZHPersonInfoVC alloc] init];
+        NavigationViewController*   navi = [MemoryStorage valueForKey:k_NAVIGATIONCTL];
+        [navi pushViewController:personInfoVC animation:ANIMATE_TYPE_DEFAULT];
+    }];
     __weak typeof(self) weakSelf = self;
     [self.profileModel loadDataWithCompletion:^(BOOL isSuccess) {
         if (isSuccess) {
@@ -112,7 +121,7 @@
 
 - (UIView *)containerView{
     if (_containerView == nil) {
-        _containerView = [[UIView alloc] initWithFrame:CGRectMake(0, 40, [UIScreen mainScreen].bounds.size.width, 168)];
+        _containerView = [[UIView alloc] initWithFrame:CGRectMake(0, 40, [UIScreen mainScreen].bounds.size.width, 128)];
         [_containerView addSubview:self.avatarImageView];
         [_containerView addSubview:self.userNameLabel];
     }
@@ -152,7 +161,7 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    return section == 0 ? 2 : 2;
+    return section == 0 ? 2 : 1;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
@@ -168,6 +177,7 @@
                 }
                 cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
                 cell.textLabel.text = @"全部订单";
+                cell.selectionStyle = UITableViewCellSelectionStyleNone;
                 return cell;
             }
                 break;
@@ -190,7 +200,7 @@
         if (cell == nil){
             cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
         }
-        cell.textLabel.text = indexPath.row == 0 ? @"我可换购的商品" : @"地址管理";
+        cell.textLabel.text = @"我的作品";
         cell.imageView.image = [UIImage imageNamed:@"favorites.png"];
         
         return cell;
@@ -224,7 +234,16 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
-    NSLog(@">>>>>didSelectRowAtIndexPath %@",indexPath);
+    if (indexPath.section ==0 && (indexPath.row >=0 && indexPath.row <= 1)) {
+        ZHOrderListVC *orderListVC = [[ZHOrderListVC alloc] init];
+        NavigationViewController*   navi = [MemoryStorage valueForKey:k_NAVIGATIONCTL];
+        [navi pushViewController:orderListVC animation:ANIMATE_TYPE_DEFAULT];
+    } else if (indexPath.section ==1 && indexPath.row ==0){
+        ZHProductsVC *productsVC = [[ZHProductsVC alloc] init];
+        NavigationViewController*   navi = [MemoryStorage valueForKey:k_NAVIGATIONCTL];
+        [navi pushViewController:productsVC animation:ANIMATE_TYPE_DEFAULT];
+    }
+        NSLog(@">>>>>didSelectRowAtIndexPath %@",indexPath);
 }
 
 

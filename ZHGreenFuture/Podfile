@@ -8,4 +8,5 @@ target 'ZHGreenFuture' do
     #pod "JSONKit",					'1.5pre'
     pod "DBCamera",                 '2.3.2'
     pod "SVPullToRefresh",          '0.4.1'
+    pod "HMSegmentedControl",       '1.4.0'
 end
