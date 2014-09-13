@@ -169,7 +169,9 @@
 }
 
 - (void)gotoDetailWithProductId:(NSString*)productId{
-
+    productId = [productId length] > 0 ? productId : @" ";
+    [[MessageCenter instance]performActionWithUserInfo:@{@"controller": @"ZHDetailVC",@"userinfo" : productId}];
+    
 }
 
 #pragma mark - Event Handler

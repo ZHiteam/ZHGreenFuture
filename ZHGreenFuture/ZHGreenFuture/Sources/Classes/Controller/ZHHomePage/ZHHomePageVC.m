@@ -137,9 +137,15 @@
 - (void)bannerItemPressed:(NSInteger)index{
     //TODO: banner
     NSLog(@">>>>%@ %d",NSStringFromSelector(_cmd),index);
+    
+    ZHWebVC *webView = [[ZHWebVC alloc] initWithURL:@"banner"];
+    NavigationViewController*   navi = [MemoryStorage valueForKey:k_NAVIGATIONCTL];
+    [navi pushViewController:webView animation:ANIMATE_TYPE_DEFAULT];
 }
 
 - (void)categoryItemPressed:(NSInteger)index{
+    NSString *categoryId = @"xxx";
+    [[MessageCenter instance]performActionWithUserInfo:@{@"controller": @"ZHSubCatagoryVC",@"userinfo" : categoryId}];
 //TODO: category
     NSLog(@">>>>%@ %d",NSStringFromSelector(_cmd),index);
 }

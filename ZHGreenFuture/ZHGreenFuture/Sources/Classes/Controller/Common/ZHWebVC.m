@@ -27,18 +27,27 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    self.title = self.urlStr;
+    
+    [self configureNaivBar];
     // Do any additional setup after loading the view.
     self.webView.frame = self.view.bounds;
     [self.view addSubview:self.webView];
     NSURLRequest *request = [[NSURLRequest alloc] initWithURL:[NSURL URLWithString:self.urlStr]];
     [self.webView loadRequest:request];
+    
+    
 }
 
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+#pragma mark - Private Method
+- (void)configureNaivBar{
+    [self.navigationBar setTitle:self.urlStr];
+    [self whithNavigationBarStyle];
 }
 
 @end
