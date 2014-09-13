@@ -14,6 +14,7 @@
 #import "ZHProductTableViewCell.h"
 #import "ZHDetailVC.h"
 #import "ZHZbarVC.h"
+#import "ZHWebVC.h"
 
 @interface ZHHomePageVC ()<UITableViewDelegate, UITableViewDataSource>
 @property(nonatomic, strong)UITableView     *tableView;
@@ -121,6 +122,9 @@
 - (void)leftItemPressed:(id)sender{
     NavigationViewController  *naviVC = [MemoryStorage valueForKey:k_NAVIGATIONCTL];
     [[ZHZbarVC sharedInstance] startScanWithVC:naviVC completionBlock:^(NSString *result) {
+        ZHWebVC *webView = [[ZHWebVC alloc] initWithURL:result];
+        NavigationViewController*   navi = [MemoryStorage valueForKey:k_NAVIGATIONCTL];
+        [navi pushViewController:webView animation:ANIMATE_TYPE_DEFAULT];
         NSLog(@">>>zbar result=%@",result);
     }];
 }
