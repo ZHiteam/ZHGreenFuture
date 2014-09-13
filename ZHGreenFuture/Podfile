@@ -5,6 +5,7 @@ target 'ZHGreenFuture' do
     pod "SDWebImage",               '3.6.0'  #"SDWebImage/WebP"
     pod "AFNetworking",             '2.3.0'
     pod "SVPullToRefresh"
-    pod "JSONKit",					'1.5pre'
+    #pod "JSONKit",					'1.5pre'
     pod "DBCamera",                 '2.3.2'
+    pod "SVPullToRefresh",          '0.4.1'
 end

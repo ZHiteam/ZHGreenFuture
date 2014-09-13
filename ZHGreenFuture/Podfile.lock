@@ -24,7 +24,6 @@ PODS:
     - GPUImage (~> 0.1)
   - FEFramework (0.0.1)
   - GPUImage (0.1.5)
-  - JSONKit (1.5pre)
   - SDWebImage (3.6):
     - SDWebImage/Core
   - SDWebImage/Core (3.6)
@@ -34,9 +33,9 @@ DEPENDENCIES:
   - AFNetworking (= 2.3.0)
   - DBCamera (= 2.3.2)
   - FEFramework (from `git@github.com:FerrariXX/FEFramework.git`)
-  - JSONKit (= 1.5pre)
   - SDWebImage (= 3.6.0)
   - SVPullToRefresh
+  - SVPullToRefresh (= 0.4.1)
 
 EXTERNAL SOURCES:
   FEFramework:
@@ -47,7 +46,6 @@ SPEC CHECKSUMS:
   DBCamera: 83f13967ede8cac9e734ac32e72d5d39d0e0e0cd
   FEFramework: 59e2eae89f80017fd72cc5c5797f7ecc725eeb02
   GPUImage: 5114a47f5fc33eb312f3731550a3cea379416d04
-  JSONKit: efef3bbd3372ff33f96b9c6f34cf4fe18e74ab69
   SDWebImage: c6989652c1cdf27cbdf3f56957e2030f825af5bc
   SVPullToRefresh: d5161ebc833a38b465364412e5e307ca80bbb190
 

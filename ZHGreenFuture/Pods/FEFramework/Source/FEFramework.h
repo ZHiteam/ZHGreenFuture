@@ -4,4 +4,3 @@
 #import "FEScrollPageView.h"
 #import "UIView+FETouchBlocks.h"
 #import "NSString+FEExtension.h"
-#import "UIScrollView+FECover.h"
