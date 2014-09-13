@@ -8,9 +8,11 @@
 
 #import "ZHRecipeDetailVC.h"
 #import <ShareSDK/ShareSDK.h>
+#import "RecipeImageView.h"
 
-@interface ZHRecipeDetailVC ()
+@interface ZHRecipeDetailVC ()<UITableViewDataSource,UITableViewDelegate>
 
+@property (nonatomic,strong) UITableView*   contentTable;
 @end
 
 @implementation ZHRecipeDetailVC
@@ -43,20 +45,59 @@
     // Dispose of any resources that can be recreated.
 }
 
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
-{
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+#pragma -mark UITableViewDataSource,UITableViewDelegate
+-(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
+    return 6;
 }
-*/
 
+-(UITableViewCell*)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
+    
+    NSString* identify = [NSString stringWithFormat:@"recipeIdentify%d",indexPath.row];
+    
+    UITableViewCell* cell = [tableView dequeueReusableCellWithIdentifier:identify];
+    
+    if (!cell){
+        switch (indexPath.row){
+            case 0:
+                break;
+            case 1:
+                break;
+            case 2:
+                break;
+            case 3:
+                break;
+            case 4:
+                break;
+            case 5:
+                break;
+            default:
+                break;
+        }
+    }
+    
+    return cell;
+}
+
+-(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
+    
+    CGFloat height = 0.0f;
+    
+    switch (indexPath.row) {
+        case 0:
+            height = [RecipeImageView viewHeightWithContent:@""];
+            break;
+            
+        default:
+            break;
+    }
+    
+    return height;
+}
+
+#pragma -mark share action
 -(void)shareAction{
     NSString *imagePath = [[NSBundle mainBundle] pathForResource:@"ShareSDK"  ofType:@"jpg"];
-    
+#warning TEST SHARE
     //构造分享内容
     id<ISSContent> publishContent = [ShareSDK content:@"分享内容"
                                        defaultContent:@"默认分享内容，没内容时显示"

@@ -170,6 +170,7 @@
 		9C0E0AE819BFEF2B00ED8D87 /* zbar-samples.png in Resources */ = {isa = PBXBuildFile; fileRef = 9C0E0AD719BFEF2B00ED8D87 /* zbar-samples.png */; };
 		9C0E0AE919BFEF2B00ED8D87 /* ZHZbarPrivateVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C0E0AD919BFEF2B00ED8D87 /* ZHZbarPrivateVC.m */; };
 		9C0E0AEA19BFEF2B00ED8D87 /* ZHZbarVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C0E0ADB19BFEF2B00ED8D87 /* ZHZbarVC.m */; };
+		9C0E0AED19C173B100ED8D87 /* RecipeImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C0E0AEC19C173B000ED8D87 /* RecipeImageView.m */; };
 		9C3862B219B1BDC600679C48 /* MessageCenter.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C3862B119B1BDC600679C48 /* MessageCenter.m */; };
 		9C3862B719B1CB0400679C48 /* bar_item_01@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9C3862B519B1CB0400679C48 /* bar_item_01@2x.png */; };
 		9C3862B819B1CB0400679C48 /* bar_item_selected_01@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9C3862B619B1CB0400679C48 /* bar_item_selected_01@2x.png */; };
@@ -478,6 +479,8 @@
 		9C0E0AD919BFEF2B00ED8D87 /* ZHZbarPrivateVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZHZbarPrivateVC.m; sourceTree = "<group>"; };
 		9C0E0ADA19BFEF2B00ED8D87 /* ZHZbarVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZHZbarVC.h; sourceTree = "<group>"; };
 		9C0E0ADB19BFEF2B00ED8D87 /* ZHZbarVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZHZbarVC.m; sourceTree = "<group>"; };
+		9C0E0AEB19C173B000ED8D87 /* RecipeImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RecipeImageView.h; sourceTree = "<group>"; };
+		9C0E0AEC19C173B000ED8D87 /* RecipeImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RecipeImageView.m; sourceTree = "<group>"; };
 		9C3862B019B1BDC600679C48 /* MessageCenter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MessageCenter.h; sourceTree = "<group>"; };
 		9C3862B119B1BDC600679C48 /* MessageCenter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MessageCenter.m; sourceTree = "<group>"; };
 		9C3862B519B1CB0400679C48 /* bar_item_01@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bar_item_01@2x.png"; sourceTree = "<group>"; };
@@ -907,6 +910,8 @@
 			children = (
 				9C0E08AB19BF066D00ED8D87 /* RecipeCell.h */,
 				9C0E08AC19BF066D00ED8D87 /* RecipeCell.m */,
+				9C0E0AEB19C173B000ED8D87 /* RecipeImageView.h */,
+				9C0E0AEC19C173B000ED8D87 /* RecipeImageView.m */,
 			);
 			path = Recipe;
 			sourceTree = "<group>";
@@ -1760,6 +1765,7 @@
 				9C9778AA19B1900F00D49E69 /* LocalSotrage.m in Sources */,
 				84F1FE2819BB46770002605A /* ZHDetailBannerCell.m in Sources */,
 				84B9604019B360740042A670 /* ZHOrderBadgeView.m in Sources */,
+				9C0E0AED19C173B100ED8D87 /* RecipeImageView.m in Sources */,
 				84EA64D619B1992600C446A5 /* ZHRecipeVC.m in Sources */,
 				9C9778B219B1900F00D49E69 /* NavigationBar.m in Sources */,
 				84EA64C819B192D700C446A5 /* ZHRootViewController.m in Sources */,
