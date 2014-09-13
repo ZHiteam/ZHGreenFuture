@@ -72,7 +72,7 @@
 #pragma mark - Getter & Setter
 - (UITableView *)tableView{
     if (_tableView == nil) {
-        _tableView = [[UITableView alloc] initWithFrame:CGRectOffset(self.contentBounds, 0, -48)];
+        _tableView = [[UITableView alloc] initWithFrame:CGRectOffset(self.contentBounds, 0, 0)];
         //_tableView.clipsToBounds = NO;
         _tableView.delegate = self;
         _tableView.dataSource = self;
@@ -362,7 +362,7 @@
     else if (indexPath.section ==2){
         return [ZHDetailRecipeListCell height];
     }
-    else {
+    else if (indexPath.section ==3){
         return [ZHDetailProductCell height];
     }
     return 0.0;
@@ -409,6 +409,10 @@
     if (section == 2){
         return [ZHDetailProductHeadView height];
     }
+    if (section == 3) {
+        return 48.0;//placeHolder
+    }
+    
     return 0.0;
 }
 
