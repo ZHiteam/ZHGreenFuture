@@ -19,6 +19,9 @@
 		847E0BC719C475200055B5C6 /* ZHOrderSummaryCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 847E0BC519C475200055B5C6 /* ZHOrderSummaryCell.xib */; };
 		847E0BCB19C478B10055B5C6 /* ZHOrderModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 847E0BCA19C478B10055B5C6 /* ZHOrderModel.m */; };
 		847E0BCD19C483860055B5C6 /* orderProduct@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 847E0BCC19C483860055B5C6 /* orderProduct@2x.png */; };
+		847E0BD019C54C8C0055B5C6 /* ZHButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 847E0BCF19C54C8C0055B5C6 /* ZHButton.m */; };
+		847E0BD419C550CD0055B5C6 /* ZHOrderActionTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 847E0BD219C550CD0055B5C6 /* ZHOrderActionTableViewCell.m */; };
+		847E0BD519C550CD0055B5C6 /* ZHOrderActionTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 847E0BD319C550CD0055B5C6 /* ZHOrderActionTableViewCell.xib */; };
 		849F7F4B19AB81EE00962BB1 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 849F7F4A19AB81EE00962BB1 /* Foundation.framework */; };
 		849F7F4D19AB81EE00962BB1 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 849F7F4C19AB81EE00962BB1 /* CoreGraphics.framework */; };
 		849F7F4F19AB81EE00962BB1 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 849F7F4E19AB81EE00962BB1 /* UIKit.framework */; };
@@ -277,6 +280,11 @@
 		847E0BC919C478B10055B5C6 /* ZHOrderModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZHOrderModel.h; sourceTree = "<group>"; };
 		847E0BCA19C478B10055B5C6 /* ZHOrderModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZHOrderModel.m; sourceTree = "<group>"; };
 		847E0BCC19C483860055B5C6 /* orderProduct@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "orderProduct@2x.png"; sourceTree = "<group>"; };
+		847E0BCE19C54C8C0055B5C6 /* ZHButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZHButton.h; sourceTree = "<group>"; };
+		847E0BCF19C54C8C0055B5C6 /* ZHButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZHButton.m; sourceTree = "<group>"; };
+		847E0BD119C550CD0055B5C6 /* ZHOrderActionTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZHOrderActionTableViewCell.h; sourceTree = "<group>"; };
+		847E0BD219C550CD0055B5C6 /* ZHOrderActionTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZHOrderActionTableViewCell.m; sourceTree = "<group>"; };
+		847E0BD319C550CD0055B5C6 /* ZHOrderActionTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ZHOrderActionTableViewCell.xib; sourceTree = "<group>"; };
 		849F7F4719AB81EE00962BB1 /* ZHGreenFuture.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ZHGreenFuture.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		849F7F4A19AB81EE00962BB1 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		849F7F4C19AB81EE00962BB1 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -712,6 +720,8 @@
 			children = (
 				8468C65A19C3EC4D00B80868 /* ZHWebVC.h */,
 				8468C65B19C3EC4D00B80868 /* ZHWebVC.m */,
+				847E0BCE19C54C8C0055B5C6 /* ZHButton.h */,
+				847E0BCF19C54C8C0055B5C6 /* ZHButton.m */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -869,6 +879,9 @@
 				847E0BC319C475200055B5C6 /* ZHOrderSummaryCell.h */,
 				847E0BC419C475200055B5C6 /* ZHOrderSummaryCell.m */,
 				847E0BC519C475200055B5C6 /* ZHOrderSummaryCell.xib */,
+				847E0BD119C550CD0055B5C6 /* ZHOrderActionTableViewCell.h */,
+				847E0BD219C550CD0055B5C6 /* ZHOrderActionTableViewCell.m */,
+				847E0BD319C550CD0055B5C6 /* ZHOrderActionTableViewCell.xib */,
 				847E0BB119C42CF50055B5C6 /* ZHProductsVC.h */,
 				847E0BB219C42CF50055B5C6 /* ZHProductsVC.m */,
 			);
@@ -1687,6 +1700,7 @@
 				84F1FE2E19BC3D5F0002605A /* ZHDetailPriceCell.xib in Resources */,
 				84A7A5B719B2C02F0050CACD /* rice@2x.png in Resources */,
 				847E0BBD19C46B7D0055B5C6 /* ZHOrderProductCell.xib in Resources */,
+				847E0BD519C550CD0055B5C6 /* ZHOrderActionTableViewCell.xib in Resources */,
 				84F1FE3319BC413F0002605A /* ZHDetailLogisticsInfoCell.xib in Resources */,
 				84A7A5B819B2C02F0050CACD /* cart@2x.png in Resources */,
 				84F1FE4A19BC58F80002605A /* detailBanner@2x.png in Resources */,
@@ -1795,6 +1809,7 @@
 				9C9778A319B1900F00D49E69 /* NSString+ZHiteam.m in Sources */,
 				9C3862CF19B2D00400679C48 /* ZHCatagoryCell.m in Sources */,
 				84F1FE2D19BC3D5F0002605A /* ZHDetailPriceCell.m in Sources */,
+				847E0BD419C550CD0055B5C6 /* ZHOrderActionTableViewCell.m in Sources */,
 				847E0BBC19C46B7D0055B5C6 /* ZHOrderProductCell.m in Sources */,
 				9C3862B219B1BDC600679C48 /* MessageCenter.m in Sources */,
 				8468C65C19C3EC4D00B80868 /* ZHWebVC.m in Sources */,
@@ -1853,6 +1868,7 @@
 				84F1FE4F19BD76840002605A /* ZHDetailProductHeadView.m in Sources */,
 				9C9778AF19B1900F00D49E69 /* BaseModel.m in Sources */,
 				849F7F5719AB81EE00962BB1 /* main.m in Sources */,
+				847E0BD019C54C8C0055B5C6 /* ZHButton.m in Sources */,
 				9C3862C719B2CECE00679C48 /* CatagoryModel.m in Sources */,
 				847E0BC119C473A90055B5C6 /* ZHOrderStatusCell.m in Sources */,
 				9C89836A19B46202009CB910 /* ZHView.m in Sources */,

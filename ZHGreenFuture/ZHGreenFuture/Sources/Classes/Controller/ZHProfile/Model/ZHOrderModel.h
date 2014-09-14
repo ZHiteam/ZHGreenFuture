@@ -37,7 +37,9 @@ typedef NS_ENUM(NSInteger, ZHOrderType) {
 };
 
 @interface ZHOrderModel : NSObject
-@property(nonatomic, assign)NSInteger orderType;
+@property(nonatomic, assign)ZHOrderType orderType;
 @property(nonatomic, strong)NSArray *orderLists;//ZHOrderInfo
+
+- (void)loadDataWithType:(ZHOrderType)type completionBlock:(ZHCompletionBlock)block;
 
 @end

@@ -26,9 +26,8 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+    [self.navigationBar setTitle:@"我的作品"];
     [self whithNavigationBarStyle];
-    
 }
 
 - (void)didReceiveMemoryWarning

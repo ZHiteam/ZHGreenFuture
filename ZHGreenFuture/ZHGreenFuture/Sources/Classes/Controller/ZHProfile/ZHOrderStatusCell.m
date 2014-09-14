@@ -29,7 +29,11 @@
     if ([obj isKindOfClass:[ZHOrderStatusCell class]]) {
         ZHOrderStatusCell *cell = obj;
         cell.contentView.backgroundColor = [UIColor whiteColor];
-        UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, cell.bounds.size.height-0.5, [UIScreen mainScreen].bounds.size.width, 0.5)];
+        UIView *topView = [[UIView alloc] initWithFrame:CGRectMake(0, 12, [UIScreen mainScreen].bounds.size.width, 0.5)];
+        topView.backgroundColor = RGB(204, 204, 204);
+        [cell.contentView addSubview:topView];
+        
+        UIView *view = [[UIView alloc] initWithFrame:CGRectMake(12, cell.bounds.size.height-1, [UIScreen mainScreen].bounds.size.width - 24, 0.5)];
         view.backgroundColor = RGB(204, 204, 204);
         [cell.contentView addSubview:view];
         return cell;

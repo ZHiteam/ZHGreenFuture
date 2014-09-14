@@ -48,5 +48,7 @@
 
     #import "MessageCenter.h"
     #import "ZHConst.h"
+    #import "ZHButton.h"
+
 
 #endif
