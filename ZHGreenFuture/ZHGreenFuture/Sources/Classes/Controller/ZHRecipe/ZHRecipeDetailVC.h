@@ -10,4 +10,5 @@
 
 @interface ZHRecipeDetailVC : ZHViewController
 
+@property (nonatomic,strong) NSString* recipeId;
 @end

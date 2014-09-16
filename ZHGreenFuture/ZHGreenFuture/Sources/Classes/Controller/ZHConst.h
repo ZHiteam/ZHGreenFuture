@@ -18,6 +18,7 @@ typedef void(^ZHCompletionBlock)(BOOL isSuccess);
 #define GRAY_LINE           RGB(204, 204, 204)
 #define WHITE_BACKGROUND    RGB(255,255,255)
 #define WHITE_TEXT          RGB(255,255,255)
+#define BLACK_TEXT          RGB(0,0,0)
 
 #define ALERT_MESSAGE(msg)  {UIAlertView* alert = [[UIAlertView alloc]initWithTitle:@"" message:msg delegate:nil cancelButtonTitle:@"yep!!" otherButtonTitles: nil];[alert show];}
 

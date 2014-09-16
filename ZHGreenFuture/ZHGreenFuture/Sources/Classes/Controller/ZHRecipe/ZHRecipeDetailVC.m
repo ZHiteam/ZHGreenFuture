@@ -9,34 +9,50 @@
 #import "ZHRecipeDetailVC.h"
 #import <ShareSDK/ShareSDK.h>
 #import "RecipeImageView.h"
+#import "RecipeItemDetailModel.h"
 
 @interface ZHRecipeDetailVC ()<UITableViewDataSource,UITableViewDelegate>
 
 @property (nonatomic,strong) UITableView*   contentTable;
+@property (nonatomic,strong) RecipeItemDetailModel*     detailData;
+
 @end
 
 @implementation ZHRecipeDetailVC
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
-{
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self) {
-        // Custom initialization
-    }
-    return self;
-}
-
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+    [self loadContnet];
+
+    [self loadRequest];
+}
+
+- (void)loadContnet{
     self.navigationBar.title = @"芒果椰浆檽米饭";
     
     self.navigationBar.rightBarItem = [UIButton barItemWithTitle:@"" image:[UIImage themeImageNamed:@"btn_share"] action:self selector:@selector(shareAction)];
     
     [self whithNavigationBarStyle];
     
+    [self.view addSubview:self.contentTable];
+}
 
+-(void)loadRequest{
+//    [HttpClient requestDataWithURL:@"" paramers:@{@"recipeId": self.recipeId} success:^(id responseObject) {
+//        
+//    } failure:^(NSError *error) {
+//        
+//    }];
+    
+#warning TEST
+    self.detailData = [[RecipeItemDetailModel alloc]init];
+    self.detailData.backgroundImage = @"";
+    self.detailData.author = @"哎米饭";
+    self.detailData.done = @"10";
+    self.detailData.health = @"糯米：补中益气，健胃止泻解毒";
+    
+    [self.contentTable reloadData];
 }
 
 - (void)didReceiveMemoryWarning
@@ -44,6 +60,23 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+#pragma -mark getter
+
+-(UITableView *)contentTable{
+    
+    if (!_contentTable) {
+        _contentTable = [[UITableView alloc]initWithFrame:self.contentBounds];
+        _contentTable.backgroundColor = GRAY_LINE;
+        _contentTable.delegate = self;
+        _contentTable.dataSource = self;
+        _contentTable.showsVerticalScrollIndicator = NO;
+        _contentTable.separatorStyle = UITableViewCellSeparatorStyleNone;
+    }
+    
+    return _contentTable;
+}
+
+#pragma -mark getter end
 
 #pragma -mark UITableViewDataSource,UITableViewDelegate
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
@@ -57,22 +90,38 @@
     UITableViewCell* cell = [tableView dequeueReusableCellWithIdentifier:identify];
     
     if (!cell){
+        
         switch (indexPath.row){
             case 0:
+                cell = [[RecipeImageView alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identify];
                 break;
-            case 1:
-                break;
-            case 2:
-                break;
-            case 3:
-                break;
-            case 4:
-                break;
-            case 5:
-                break;
+//            case 1:
+//                break;
+//            case 2:
+//                break;
+//            case 3:
+//                break;
+//            case 4:
+//                break;
+//            case 5:
+//                break;
             default:
+                cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identify];
                 break;
         }
+    }
+    
+    switch (indexPath.row) {
+        case 0:
+        {
+            RecipeImageView* imageCell = (RecipeImageView*)cell;
+            imageCell.model = self.detailData;
+        }
+            
+            break;
+            
+        default:
+            break;
     }
     
     return cell;
@@ -84,7 +133,7 @@
     
     switch (indexPath.row) {
         case 0:
-            height = [RecipeImageView viewHeightWithContent:@""];
+            height = [RecipeImageView viewHeightWithContent:self.detailData.health];
             break;
             
         default:

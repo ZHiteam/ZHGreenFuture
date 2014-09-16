@@ -10,7 +10,7 @@
 
 @interface RecipeItemModel : BaseModel
 
-@property (nonatomic,strong) NSString*      imageUrl;
+@property (nonatomic,strong) NSString*      backgroundImageUrl;
 @property (nonatomic,strong) NSString*      title;
 @property (nonatomic,strong) NSString*      subTitle;
 @property (nonatomic,strong) NSString*      done;
