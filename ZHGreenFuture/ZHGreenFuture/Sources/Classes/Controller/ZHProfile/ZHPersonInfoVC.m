@@ -1,20 +1,22 @@
 //
-//  ZHSettingVC.m
+//  ZHPersonInfoVC.m
 //  ZHGreenFuture
 //
-//  Created by admin on 14-9-9.
+//  Created by admin on 14-9-13.
 //  Copyright (c) 2014年 ZHiteam. All rights reserved.
 //
 
-#import "ZHSettingVC.h"
+#import "ZHPersonInfoVC.h"
 
-@interface ZHSettingVC ()<UITableViewDelegate, UITableViewDataSource>
+@interface ZHPersonInfoVC ()<UITableViewDelegate, UITableViewDataSource>
 @property(nonatomic, strong)UITableView          *tableView;
 @property(nonatomic, strong)NSArray              *contentArray;
-@property(nonatomic, strong)UISwitch             *switchButton;
+@property(nonatomic, strong)UIImageView          *avatarView;
+@property(nonatomic, strong)UILabel              *userNameLabel;
+
 @end
 
-@implementation ZHSettingVC
+@implementation ZHPersonInfoVC
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -28,15 +30,9 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-
-    
-    self.contentArray = @[@"消息推送",@"清除缓存",@"给有好粮评分",@"意见反馈",@"分享给朋友",@"关于有好粮"];
-    [self.view addSubview:self.tableView];
+    self.contentArray = @[@"头像",@"昵称"];
     [self configureNaivBar];
-    
-    UIColor *color = [UIColor colorWithRed:238/255.0 green:238/255.0 blue:238/255.0 alpha:1.0];
-    self.view.backgroundColor = color ;
-    self.tableView.backgroundColor = color;
+    [self.view addSubview:self.tableView];
 }
 
 - (void)didReceiveMemoryWarning
@@ -60,19 +56,27 @@
     return _tableView;
 }
 
-- (UISwitch *)switchButton{
-    if (_switchButton == nil) {
-        _switchButton = [[UISwitch alloc] initWithFrame:CGRectZero];
-        _switchButton.on = YES;
+- (UIImageView *)avatarView{
+    if (_avatarView == nil) {
+        _avatarView = [[UIImageView alloc] initWithFrame:CGRectMake([UIScreen mainScreen].bounds.size.width - 120 , 7, 80, 30)];
+        [_avatarView setImageWithURL:[NSURL URLWithString:self.avatarURL] placeholderImage:[UIImage imageNamed:@"avatar"]];
     }
-    return _switchButton;
+    return _avatarView;
+}
+
+- (UILabel *)userNameLabel{
+    if (_userNameLabel == nil) {
+        _userNameLabel = [[UILabel alloc] initWithFrame:CGRectMake([UIScreen mainScreen].bounds.size.width - 120 , 7, 80, 30)];
+        _userNameLabel.text = [self.userName length] > 0 ? self.userName : @"艾米饭";
+        //_userNameLabel.backgroundColor = [UIColor orangeColor];
+    }
+    return _userNameLabel;
 }
 
 #pragma mark - Private Method
-
 - (void)configureNaivBar{
-    [self.navigationBar setTitle:@"设置"];
-      //default back
+    [self.navigationBar setTitle:@"个人信息"];
+    //default back
     [self whithNavigationBarStyle];
 }
 
@@ -103,9 +107,15 @@
         if ((indexPath.row+1)==[self.contentArray count]) {
             seperateView.frame = CGRectMake(0, cell.frame.size.height-0.5, cell.frame.size.width, 0.5);
         }
-        
+        cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
         cell.textLabel.text = [self.contentArray objectAtIndex:indexPath.row];
-        cell.accessoryView = indexPath.row == 0 ? self.switchButton : nil;
+        [self.avatarView removeFromSuperview];
+        [self.userNameLabel removeFromSuperview];
+        if (indexPath.row == 0) {
+            [cell.contentView addSubview:self.avatarView];
+        }else {
+            [cell.contentView addSubview:self.userNameLabel];
+        }
         return cell;
     }
     return nil;

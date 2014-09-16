@@ -66,6 +66,12 @@
 #define COCOAPODS_VERSION_MINOR_GPUImage 1
 #define COCOAPODS_VERSION_PATCH_GPUImage 5
 
+// HMSegmentedControl
+#define COCOAPODS_POD_AVAILABLE_HMSegmentedControl
+#define COCOAPODS_VERSION_MAJOR_HMSegmentedControl 1
+#define COCOAPODS_VERSION_MINOR_HMSegmentedControl 4
+#define COCOAPODS_VERSION_PATCH_HMSegmentedControl 0
+
 // SDWebImage
 #define COCOAPODS_POD_AVAILABLE_SDWebImage
 #define COCOAPODS_VERSION_MAJOR_SDWebImage 3
