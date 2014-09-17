@@ -96,7 +96,7 @@
     
     [self.navigationBar setTitleView:self.titleViewPanel];
     
-    self.navigationBar.rightBarItem = [UIButton barItemWithTitle:@"" image:[UIImage themeImageNamed:@"btn_camera"] action:self selector:@selector(cameraAction)];
+//    self.navigationBar.rightBarItem = [UIButton barItemWithTitle:@"" image:[UIImage themeImageNamed:@"btn_camera"] action:self selector:@selector(cameraAction)];
 }
 
 -(UIView *)titleViewPanel{

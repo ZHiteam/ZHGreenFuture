@@ -14,16 +14,18 @@
 
 
 
--(void)setImageWithUrl:(NSString*)url placeHodlerImage:(UIImage*)image{
+-(void)setImageWithUrlString:(NSString*)url placeHodlerImage:(UIImage*)image{
     [self startAnimating];
     __block UIImageView* imageView = self;
     //    NSURL *encodedString = [url formateToURL];
     NSURL *encodedString = [NSURL URLWithString:url];
-    
+
     [self setImageWithURL:encodedString placeholderImage:image completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType) {
         //        NSLog(@"image %@ error %@ %@",image,error,encodedString);
         [imageView stopLoading];
         imageView.alpha = 0.0f;
+        
+//        [[imageView viewWithTag:-10024]removeFromSuperview];
         [UIView animateWithDuration:ANIMATE_DURATION animations:^{
             imageView.alpha = 1.0f;
         }];

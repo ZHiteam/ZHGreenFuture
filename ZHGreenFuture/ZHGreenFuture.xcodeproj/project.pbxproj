@@ -185,9 +185,20 @@
 		9C0E0AE819BFEF2B00ED8D87 /* zbar-samples.png in Resources */ = {isa = PBXBuildFile; fileRef = 9C0E0AD719BFEF2B00ED8D87 /* zbar-samples.png */; };
 		9C0E0AE919BFEF2B00ED8D87 /* ZHZbarPrivateVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C0E0AD919BFEF2B00ED8D87 /* ZHZbarPrivateVC.m */; };
 		9C0E0AEA19BFEF2B00ED8D87 /* ZHZbarVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C0E0ADB19BFEF2B00ED8D87 /* ZHZbarVC.m */; };
-		9C0E0AED19C173B100ED8D87 /* RecipeImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C0E0AEC19C173B000ED8D87 /* RecipeImageView.m */; };
+		9C0E0AED19C173B100ED8D87 /* RecipeImageCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C0E0AEC19C173B000ED8D87 /* RecipeImageCell.m */; };
 		9C0E0AF019C418FC00ED8D87 /* RecipeItemDetailModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C0E0AEF19C418FC00ED8D87 /* RecipeItemDetailModel.m */; };
 		9C0E0AF219C41D6D00ED8D87 /* temp_recipe_banner@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9C0E0AF119C41D6D00ED8D87 /* temp_recipe_banner@2x.png */; };
+		9C0E0AF519C831AB00ED8D87 /* RecipeMaterialCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C0E0AF419C831AB00ED8D87 /* RecipeMaterialCell.m */; };
+		9C0E0AF819C8604E00ED8D87 /* MaterialModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C0E0AF719C8604E00ED8D87 /* MaterialModel.m */; };
+		9C0E0AFB19C860FD00ED8D87 /* MaterialItemView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C0E0AFA19C860FD00ED8D87 /* MaterialItemView.m */; };
+		9C0E0AFE19C8662600ED8D87 /* RecipeMadeStepCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C0E0AFD19C8662600ED8D87 /* RecipeMadeStepCell.m */; };
+		9C0E0B0119C866F100ED8D87 /* MadeStepModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C0E0B0019C866F100ED8D87 /* MadeStepModel.m */; };
+		9C0E0B0719C8690700ED8D87 /* MadeStepItemView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C0E0B0619C8690700ED8D87 /* MadeStepItemView.m */; };
+		9C0E0B0A19C8748B00ED8D87 /* VerticallyAlignedLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C0E0B0919C8748B00ED8D87 /* VerticallyAlignedLabel.m */; };
+		9C0E0B0D19C91B1000ED8D87 /* RecipeTipsCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C0E0B0C19C91B1000ED8D87 /* RecipeTipsCell.m */; };
+		9C0E0B1319C926EE00ED8D87 /* RecipeCommentCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C0E0B1219C926EE00ED8D87 /* RecipeCommentCell.m */; };
+		9C0E0B1619C9298600ED8D87 /* RecipeCommentItemView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C0E0B1519C9298600ED8D87 /* RecipeCommentItemView.m */; };
+		9C0E0B1919C9319900ED8D87 /* CommentModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C0E0B1819C9319900ED8D87 /* CommentModel.m */; };
 		9C3862B219B1BDC600679C48 /* MessageCenter.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C3862B119B1BDC600679C48 /* MessageCenter.m */; };
 		9C3862B719B1CB0400679C48 /* bar_item_01@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9C3862B519B1CB0400679C48 /* bar_item_01@2x.png */; };
 		9C3862B819B1CB0400679C48 /* bar_item_selected_01@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9C3862B619B1CB0400679C48 /* bar_item_selected_01@2x.png */; };
@@ -521,11 +532,33 @@
 		9C0E0AD919BFEF2B00ED8D87 /* ZHZbarPrivateVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZHZbarPrivateVC.m; sourceTree = "<group>"; };
 		9C0E0ADA19BFEF2B00ED8D87 /* ZHZbarVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZHZbarVC.h; sourceTree = "<group>"; };
 		9C0E0ADB19BFEF2B00ED8D87 /* ZHZbarVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZHZbarVC.m; sourceTree = "<group>"; };
-		9C0E0AEB19C173B000ED8D87 /* RecipeImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RecipeImageView.h; sourceTree = "<group>"; };
-		9C0E0AEC19C173B000ED8D87 /* RecipeImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RecipeImageView.m; sourceTree = "<group>"; };
+		9C0E0AEB19C173B000ED8D87 /* RecipeImageCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RecipeImageCell.h; sourceTree = "<group>"; };
+		9C0E0AEC19C173B000ED8D87 /* RecipeImageCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RecipeImageCell.m; sourceTree = "<group>"; };
 		9C0E0AEE19C418FC00ED8D87 /* RecipeItemDetailModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RecipeItemDetailModel.h; sourceTree = "<group>"; };
 		9C0E0AEF19C418FC00ED8D87 /* RecipeItemDetailModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RecipeItemDetailModel.m; sourceTree = "<group>"; };
 		9C0E0AF119C41D6D00ED8D87 /* temp_recipe_banner@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "temp_recipe_banner@2x.png"; sourceTree = "<group>"; };
+		9C0E0AF319C831AB00ED8D87 /* RecipeMaterialCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RecipeMaterialCell.h; sourceTree = "<group>"; };
+		9C0E0AF419C831AB00ED8D87 /* RecipeMaterialCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RecipeMaterialCell.m; sourceTree = "<group>"; };
+		9C0E0AF619C8604E00ED8D87 /* MaterialModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MaterialModel.h; sourceTree = "<group>"; };
+		9C0E0AF719C8604E00ED8D87 /* MaterialModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MaterialModel.m; sourceTree = "<group>"; };
+		9C0E0AF919C860FD00ED8D87 /* MaterialItemView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MaterialItemView.h; sourceTree = "<group>"; };
+		9C0E0AFA19C860FD00ED8D87 /* MaterialItemView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MaterialItemView.m; sourceTree = "<group>"; };
+		9C0E0AFC19C8662600ED8D87 /* RecipeMadeStepCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RecipeMadeStepCell.h; sourceTree = "<group>"; };
+		9C0E0AFD19C8662600ED8D87 /* RecipeMadeStepCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RecipeMadeStepCell.m; sourceTree = "<group>"; };
+		9C0E0AFF19C866F100ED8D87 /* MadeStepModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MadeStepModel.h; sourceTree = "<group>"; };
+		9C0E0B0019C866F100ED8D87 /* MadeStepModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MadeStepModel.m; sourceTree = "<group>"; };
+		9C0E0B0519C8690700ED8D87 /* MadeStepItemView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MadeStepItemView.h; sourceTree = "<group>"; };
+		9C0E0B0619C8690700ED8D87 /* MadeStepItemView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MadeStepItemView.m; sourceTree = "<group>"; };
+		9C0E0B0819C8748B00ED8D87 /* VerticallyAlignedLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VerticallyAlignedLabel.h; sourceTree = "<group>"; };
+		9C0E0B0919C8748B00ED8D87 /* VerticallyAlignedLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VerticallyAlignedLabel.m; sourceTree = "<group>"; };
+		9C0E0B0B19C91B1000ED8D87 /* RecipeTipsCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RecipeTipsCell.h; sourceTree = "<group>"; };
+		9C0E0B0C19C91B1000ED8D87 /* RecipeTipsCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RecipeTipsCell.m; sourceTree = "<group>"; };
+		9C0E0B1119C926EE00ED8D87 /* RecipeCommentCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RecipeCommentCell.h; sourceTree = "<group>"; };
+		9C0E0B1219C926EE00ED8D87 /* RecipeCommentCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RecipeCommentCell.m; sourceTree = "<group>"; };
+		9C0E0B1419C9298600ED8D87 /* RecipeCommentItemView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RecipeCommentItemView.h; sourceTree = "<group>"; };
+		9C0E0B1519C9298600ED8D87 /* RecipeCommentItemView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RecipeCommentItemView.m; sourceTree = "<group>"; };
+		9C0E0B1719C9319900ED8D87 /* CommentModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommentModel.h; sourceTree = "<group>"; };
+		9C0E0B1819C9319900ED8D87 /* CommentModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommentModel.m; sourceTree = "<group>"; };
 		9C3862B019B1BDC600679C48 /* MessageCenter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MessageCenter.h; sourceTree = "<group>"; };
 		9C3862B119B1BDC600679C48 /* MessageCenter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MessageCenter.m; sourceTree = "<group>"; };
 		9C3862B519B1CB0400679C48 /* bar_item_01@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bar_item_01@2x.png"; sourceTree = "<group>"; };
@@ -993,10 +1026,24 @@
 		9C0E08A519BF03F300ED8D87 /* Recipe */ = {
 			isa = PBXGroup;
 			children = (
+				9C0E0B0519C8690700ED8D87 /* MadeStepItemView.h */,
+				9C0E0B0619C8690700ED8D87 /* MadeStepItemView.m */,
 				9C0E08AB19BF066D00ED8D87 /* RecipeCell.h */,
 				9C0E08AC19BF066D00ED8D87 /* RecipeCell.m */,
-				9C0E0AEB19C173B000ED8D87 /* RecipeImageView.h */,
-				9C0E0AEC19C173B000ED8D87 /* RecipeImageView.m */,
+				9C0E0AEB19C173B000ED8D87 /* RecipeImageCell.h */,
+				9C0E0AEC19C173B000ED8D87 /* RecipeImageCell.m */,
+				9C0E0AF319C831AB00ED8D87 /* RecipeMaterialCell.h */,
+				9C0E0AF419C831AB00ED8D87 /* RecipeMaterialCell.m */,
+				9C0E0AF919C860FD00ED8D87 /* MaterialItemView.h */,
+				9C0E0AFA19C860FD00ED8D87 /* MaterialItemView.m */,
+				9C0E0AFC19C8662600ED8D87 /* RecipeMadeStepCell.h */,
+				9C0E0AFD19C8662600ED8D87 /* RecipeMadeStepCell.m */,
+				9C0E0B0B19C91B1000ED8D87 /* RecipeTipsCell.h */,
+				9C0E0B0C19C91B1000ED8D87 /* RecipeTipsCell.m */,
+				9C0E0B1119C926EE00ED8D87 /* RecipeCommentCell.h */,
+				9C0E0B1219C926EE00ED8D87 /* RecipeCommentCell.m */,
+				9C0E0B1419C9298600ED8D87 /* RecipeCommentItemView.h */,
+				9C0E0B1519C9298600ED8D87 /* RecipeCommentItemView.m */,
 			);
 			path = Recipe;
 			sourceTree = "<group>";
@@ -1184,6 +1231,12 @@
 				9C0E0A6519BF3F3900ED8D87 /* RecipeItemModel.m */,
 				9C0E0AEE19C418FC00ED8D87 /* RecipeItemDetailModel.h */,
 				9C0E0AEF19C418FC00ED8D87 /* RecipeItemDetailModel.m */,
+				9C0E0AF619C8604E00ED8D87 /* MaterialModel.h */,
+				9C0E0AFF19C866F100ED8D87 /* MadeStepModel.h */,
+				9C0E0B0019C866F100ED8D87 /* MadeStepModel.m */,
+				9C0E0AF719C8604E00ED8D87 /* MaterialModel.m */,
+				9C0E0B1719C9319900ED8D87 /* CommentModel.h */,
+				9C0E0B1819C9319900ED8D87 /* CommentModel.m */,
 			);
 			name = Recipe;
 			sourceTree = "<group>";
@@ -1562,6 +1615,8 @@
 				9C89838D19B5BADD009CB910 /* ZHTableView.m */,
 				9C89856F19B70B5E009CB910 /* ZHTagsView.h */,
 				9C89857019B70B5E009CB910 /* ZHTagsView.m */,
+				9C0E0B0819C8748B00ED8D87 /* VerticallyAlignedLabel.h */,
+				9C0E0B0919C8748B00ED8D87 /* VerticallyAlignedLabel.m */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -1804,8 +1859,10 @@
 				84F1FE3C19BC45B90002605A /* ZHDetailSKUInfoCell.m in Sources */,
 				84EA64D319B1991300C446A5 /* ZHShoppingVC.m in Sources */,
 				9C9778A519B1900F00D49E69 /* UIImage+ZHiteam.m in Sources */,
+				9C0E0B0119C866F100ED8D87 /* MadeStepModel.m in Sources */,
 				9C0E0A6619BF3F3900ED8D87 /* RecipeItemModel.m in Sources */,
 				9C89837619B4845C009CB910 /* ZHSegmentView.m in Sources */,
+				9C0E0B1619C9298600ED8D87 /* RecipeCommentItemView.m in Sources */,
 				9C9778A819B1900F00D49E69 /* Config.m in Sources */,
 				9C9778B419B1900F00D49E69 /* TabbarView.m in Sources */,
 				9C89837319B47C58009CB910 /* ZHProductItem.m in Sources */,
@@ -1828,8 +1885,10 @@
 				847E0BC619C475200055B5C6 /* ZHOrderSummaryCell.m in Sources */,
 				84A6CB1F19BF3E82007F954A /* ZHSettingVC.m in Sources */,
 				9C9778A619B1900F00D49E69 /* UILabel+ZHiteam.m in Sources */,
+				9C0E0B1319C926EE00ED8D87 /* RecipeCommentCell.m in Sources */,
 				9C0E08AE19BF066D00ED8D87 /* RecipeCell.m in Sources */,
 				9C89857119B70B5E009CB910 /* ZHTagsView.m in Sources */,
+				9C0E0AF819C8604E00ED8D87 /* MaterialModel.m in Sources */,
 				84B9603719B35B5C0042A670 /* ZHOrderTableViewCell.m in Sources */,
 				9C0E0A6219BF3E5200ED8D87 /* RecipeModel.m in Sources */,
 				9C0E0AEA19BFEF2B00ED8D87 /* ZHZbarVC.m in Sources */,
@@ -1850,6 +1909,7 @@
 				9C8983D319B6158C009CB910 /* NSDate+Calendar.m in Sources */,
 				84F1FE3219BC413F0002605A /* ZHDetailLogisticsInfoCell.m in Sources */,
 				9C9778A019B1900F00D49E69 /* NSData+AESEncryption.m in Sources */,
+				9C0E0AFE19C8662600ED8D87 /* RecipeMadeStepCell.m in Sources */,
 				84F1FE2119BB1B720002605A /* ZHHomePageModel.m in Sources */,
 				9C89836D19B474E7009CB910 /* ZHCatagoryVC.m in Sources */,
 				9C0E0ADF19BFEF2B00ED8D87 /* qrencode.c in Sources */,
@@ -1868,16 +1928,20 @@
 				9C9778A919B1900F00D49E69 /* HttpClient.m in Sources */,
 				84A7A5BC19B2C7E90050CACD /* ZHBannerTableViewCell.m in Sources */,
 				9C89838E19B5BADD009CB910 /* ZHTableView.m in Sources */,
+				9C0E0AF519C831AB00ED8D87 /* RecipeMaterialCell.m in Sources */,
 				9C8983DA19B6272D009CB910 /* ZHRecipePublishVC.m in Sources */,
 				9C9778AA19B1900F00D49E69 /* LocalSotrage.m in Sources */,
+				9C0E0B0A19C8748B00ED8D87 /* VerticallyAlignedLabel.m in Sources */,
 				84F1FE2819BB46770002605A /* ZHDetailBannerCell.m in Sources */,
 				84B9604019B360740042A670 /* ZHOrderBadgeView.m in Sources */,
-				9C0E0AED19C173B100ED8D87 /* RecipeImageView.m in Sources */,
+				9C0E0B1919C9319900ED8D87 /* CommentModel.m in Sources */,
+				9C0E0AED19C173B100ED8D87 /* RecipeImageCell.m in Sources */,
 				84EA64D619B1992600C446A5 /* ZHRecipeVC.m in Sources */,
 				9C9778B219B1900F00D49E69 /* NavigationBar.m in Sources */,
 				84EA64C819B192D700C446A5 /* ZHRootViewController.m in Sources */,
 				9C89838719B56746009CB910 /* UIImageView+ZHiteam.m in Sources */,
 				9C89837919B48C1E009CB910 /* ZHSwipSegment.m in Sources */,
+				9C0E0AFB19C860FD00ED8D87 /* MaterialItemView.m in Sources */,
 				84F1FE4F19BD76840002605A /* ZHDetailProductHeadView.m in Sources */,
 				9C9778AF19B1900F00D49E69 /* BaseModel.m in Sources */,
 				849F7F5719AB81EE00962BB1 /* main.m in Sources */,
@@ -1885,6 +1949,8 @@
 				9C3862C719B2CECE00679C48 /* CatagoryModel.m in Sources */,
 				847E0BC119C473A90055B5C6 /* ZHOrderStatusCell.m in Sources */,
 				9C89836A19B46202009CB910 /* ZHView.m in Sources */,
+				9C0E0B0D19C91B1000ED8D87 /* RecipeTipsCell.m in Sources */,
+				9C0E0B0719C8690700ED8D87 /* MadeStepItemView.m in Sources */,
 				84EA64D019B198FE00C446A5 /* ZHHomePageVC.m in Sources */,
 				84B9603319B35A9A0042A670 /* ZHProfileModel.m in Sources */,
 				9C9778B119B1900F00D49E69 /* ModelManager.m in Sources */,

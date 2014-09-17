@@ -12,6 +12,8 @@ typedef void(^ZHMoreItemClickedBlock)(id sender);
 
 
 @interface ZHDetailRecipeListCell : UITableViewCell
+
+@property (weak, nonatomic) IBOutlet UILabel *recipeLabel;
 @property (weak, nonatomic) IBOutlet UILabel *recipeCountLabel;
 @property (weak, nonatomic) IBOutlet UIButton *moreRecipeButton;
 @property (weak, nonatomic) IBOutlet FEScrollPageView *recipeListView;

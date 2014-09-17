@@ -10,6 +10,6 @@
 
 @interface UIImageView (ZHiteam)
 
--(void)setImageWithUrl:(NSString*)url placeHodlerImage:(UIImage*)image;
+-(void)setImageWithUrlString:(NSString*)url placeHodlerImage:(UIImage*)image;
 
 @end

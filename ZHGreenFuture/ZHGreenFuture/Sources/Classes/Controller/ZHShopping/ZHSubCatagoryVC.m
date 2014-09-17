@@ -67,7 +67,7 @@
         [_bannerView addSubview:self.titleLabel];
         [_bannerView addSubview:self.descriptionLabel];
         
-        [_bannerView setImageWithUrl:self.model.imageUrl placeHodlerImage:[UIImage themeImageNamed:@"temp_banner_01"]];
+        [_bannerView setImageWithUrlString:self.model.imageUrl placeHodlerImage:[UIImage themeImageNamed:@"temp_banner_01"]];
         
         
         self.descriptionLabel.top = _bannerView.height-_descriptionLabel.height;

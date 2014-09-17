@@ -212,7 +212,7 @@
             }
             ZHOrderProduct *product = [orderInfo.productLists objectAtIndex:indexPath.row - 1];
             ZHOrderProductCell *productCell = (ZHOrderProductCell*)cell;
-            [productCell.productImageView setImageWithUrl:product.imageURL placeHodlerImage:[UIImage imageNamed:@"orderProduct"]];
+            [productCell.productImageView setImageWithUrlString:product.imageURL placeHodlerImage:[UIImage imageNamed:@"orderProduct"]];
             [productCell.titleLabel     setText:product.title];
             [productCell.subTitleLabel  setText:product.skuInfo];
             [productCell.priceLabel     setText:product.promotionPrice];

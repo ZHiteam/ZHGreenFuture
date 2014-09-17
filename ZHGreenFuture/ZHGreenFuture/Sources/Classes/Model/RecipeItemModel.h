@@ -16,24 +16,5 @@
 @property (nonatomic,strong) NSString*      done;
 @property (nonatomic,strong) NSString*      comment;
 @property (nonatomic,strong) NSString*      recipeId;
-//json:{
-//    "tag":
-//    [
-//     {
-//         "name":’’,
-//         “tagId”:‘’
-//     }
-//     ],
-//    "recipeList":
-//    [
-//     {
-//         "imageURL":‘’,
-//         "title":‘’,
-//         “subTitle“:‘’,
-//         "done":‘’,
-//         "comment":‘’,
-//         "recipeId":‘’
-//     }
-//     ]
-//}
+
 @end

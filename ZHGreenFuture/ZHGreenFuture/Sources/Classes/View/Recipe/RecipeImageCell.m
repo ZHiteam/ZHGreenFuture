@@ -6,51 +6,61 @@
 //  Copyright (c) 2014 ZHiteam. All rights reserved.
 //
 
-#import "RecipeImageView.h"
+#import "RecipeImageCell.h"
+#import "UIView+ZHiteam.h"
 
 #define IMAGE_HEIGHT    240
 
-@interface RecipeImageView()
+@interface RecipeImageCell()
 
-@property (nonatomic,strong)    UIImageView*    image;              /// 图片
+@property (nonatomic,strong)    UIImageView*    imagePanel;              /// 图片
 @property (nonatomic,strong)    UILabel*        author;             /// 作者
 @property (nonatomic,strong)    UILabel*        madeCount;          /// 做过
 @property (nonatomic,strong)    UILabel*        collectCount;       /// 收藏
 
 @property (nonatomic,strong)    UIView*         contentPanel;       /// 养生必读区块
+@property (nonatomic,strong)    UILabel*        healthLabel;
 @property (nonatomic,strong)    UILabel*        recipeNeed;         /// 养生必读
 
 @end
 
-@implementation RecipeImageView
+@implementation RecipeImageCell
 
 -(id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier{
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     
     if (self){
-        [self loadCount];
+        [self loadContent];
+
     }
     return self;
 }
 
--(void)loadCount{
-    [self addSubview:self.image];
+-(void)loadContent{
+    
+    self.backgroundColor = [UIColor clearColor];
+    
+    [self addSubview:self.imagePanel];
     
     [self addSubview:self.contentPanel];
+    
+    [self addSubview:self.healthLabel];
+    
+    [self addSubview:self.recipeNeed];
 }
 
 #pragma -mark getter
--(UIImageView *)image{
+-(UIImageView *)imagePanel{
     
-    if (!_image){
-        _image = [[UIImageView alloc]initWithFrame:CGRectMake(0, 0, self.width, IMAGE_HEIGHT)];
+    if (!_imagePanel){
+        _imagePanel = [[UIImageView alloc]initWithFrame:CGRectMake(0, 0, self.width, IMAGE_HEIGHT)];
         
-        [_image addSubview:self.author];
+        [_imagePanel addSubview:self.author];
         
-        [_image addSubview:self.madeCount];
+        [_imagePanel addSubview:self.madeCount];
     }
     
-    return _image;
+    return _imagePanel;
 }
 
 -(UILabel *)author{
@@ -73,6 +83,26 @@
     return _madeCount;
 }
 
+-(UIView *)contentPanel{
+    
+    if (!_contentPanel){
+        _contentPanel = [[UIView alloc]initWithFrame:CGRectMake(0, self.imagePanel.bottom, self.width, self.height-self.imagePanel.bottom-10)];
+        _contentPanel.backgroundColor = WHITE_BACKGROUND;
+    }
+    
+    return _contentPanel;
+}
+
+-(UILabel *)healthLabel{
+    if (!_healthLabel){
+        _healthLabel = [UILabel labelWithText:@"养生必读" font:FONT(16) color:GREEN_COLOR textAlignment:NSTextAlignmentLeft];
+        
+        _healthLabel.frame = CGRectMake(10, self.contentPanel.top+5, self.width-5, 20);
+        
+    }
+    return _healthLabel;
+}
+
 -(UILabel *)recipeNeed{
     
     if (!_recipeNeed){
@@ -82,43 +112,30 @@
         label.textAlignment = NSTextAlignmentLeft;
         label.numberOfLines = 0;
         _recipeNeed = label;
+        
+        _recipeNeed.frame = CGRectMake(10, self.healthLabel.bottom+5, self.width, self.contentPanel.height-self.healthLabel.height-10);
     }
     return _recipeNeed;
 }
 
--(UIView *)contentPanel{
-    
-    if (!_contentPanel){
-        _contentPanel = [[UIView alloc]initWithFrame:CGRectMake(0, self.image.bottom, self.width, self.height-self.image.height-10)];
-        
-        UILabel* label = [UILabel labelWithText:@"养生必读" font:FONT(16) color:GREEN_COLOR textAlignment:NSTextAlignmentLeft];
-        
-        label.frame = CGRectMake(5, 5, self.width-5, 20);
-        
-        [_contentPanel addSubview:label];
-        
-        self.recipeNeed.frame = CGRectMake(label.left, label.bottom+5, label.width, _contentPanel.height-label.bottom-10);
-        
-        [_contentPanel addSubview:self.recipeNeed];
-    }
-    
-    return _contentPanel;
-}
-
 #pragma -mark getter end
 -(void)setModel:(RecipeItemDetailModel *)model{
-    [self.image setImageWithUrl:model.backgroundImage placeHodlerImage:[UIImage themeImageNamed:@"temp_recipe_banner@2x"]];
+    [self.imagePanel setImageWithUrlString:model.backgroundImage placeHodlerImage:[UIImage themeImageNamed:@"temp_recipe_banner@2x"]];
     
     self.author.text = [NSString stringWithFormat:@"by %@",model.author];
     self.madeCount.text = [NSString stringWithFormat:@"%@ 人做过",model.done];
     
     self.recipeNeed.text = model.health;
     
-    self.recipeNeed.height = [model.health sizeWithFont:FONT(12)
+    CGFloat height = [model.health sizeWithFont:FONT(12)
                                 constrainedToSize:CGSizeMake(FULL_WIDTH , MAXFLOAT)
                                     lineBreakMode:NSLineBreakByWordWrapping].height;
     
-    self.contentPanel.height = self.recipeNeed.height+40;
+    self.contentPanel.frame = CGRectMake(0, self.imagePanel.bottom, self.width, height+40);
+    
+    self.healthLabel.top = self.contentPanel.top+5;
+    
+    self.recipeNeed.frame = CGRectMake(5, self.healthLabel.bottom+5, self.contentPanel.width, height);
 }
 
 +(CGFloat)viewHeightWithContent:(NSString *)content{
