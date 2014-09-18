@@ -199,6 +199,9 @@
 		9C0E0B1319C926EE00ED8D87 /* RecipeCommentCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C0E0B1219C926EE00ED8D87 /* RecipeCommentCell.m */; };
 		9C0E0B1619C9298600ED8D87 /* RecipeCommentItemView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C0E0B1519C9298600ED8D87 /* RecipeCommentItemView.m */; };
 		9C0E0B1919C9319900ED8D87 /* CommentModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C0E0B1819C9319900ED8D87 /* CommentModel.m */; };
+		9C0E0B3019C9E0F200ED8D87 /* RecipeExampleCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C0E0B2F19C9E0F200ED8D87 /* RecipeExampleCell.m */; };
+		9C0E0B3319C9E12900ED8D87 /* RecipeBaseCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C0E0B3219C9E12900ED8D87 /* RecipeBaseCell.m */; };
+		9C0E0B3619C9E45C00ED8D87 /* RecpieExampleModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C0E0B3519C9E45C00ED8D87 /* RecpieExampleModel.m */; };
 		9C3862B219B1BDC600679C48 /* MessageCenter.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C3862B119B1BDC600679C48 /* MessageCenter.m */; };
 		9C3862B719B1CB0400679C48 /* bar_item_01@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9C3862B519B1CB0400679C48 /* bar_item_01@2x.png */; };
 		9C3862B819B1CB0400679C48 /* bar_item_selected_01@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9C3862B619B1CB0400679C48 /* bar_item_selected_01@2x.png */; };
@@ -559,6 +562,12 @@
 		9C0E0B1519C9298600ED8D87 /* RecipeCommentItemView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RecipeCommentItemView.m; sourceTree = "<group>"; };
 		9C0E0B1719C9319900ED8D87 /* CommentModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommentModel.h; sourceTree = "<group>"; };
 		9C0E0B1819C9319900ED8D87 /* CommentModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommentModel.m; sourceTree = "<group>"; };
+		9C0E0B2E19C9E0F200ED8D87 /* RecipeExampleCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RecipeExampleCell.h; sourceTree = "<group>"; };
+		9C0E0B2F19C9E0F200ED8D87 /* RecipeExampleCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RecipeExampleCell.m; sourceTree = "<group>"; };
+		9C0E0B3119C9E12900ED8D87 /* RecipeBaseCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RecipeBaseCell.h; sourceTree = "<group>"; };
+		9C0E0B3219C9E12900ED8D87 /* RecipeBaseCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RecipeBaseCell.m; sourceTree = "<group>"; };
+		9C0E0B3419C9E45C00ED8D87 /* RecpieExampleModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RecpieExampleModel.h; sourceTree = "<group>"; };
+		9C0E0B3519C9E45C00ED8D87 /* RecpieExampleModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RecpieExampleModel.m; sourceTree = "<group>"; };
 		9C3862B019B1BDC600679C48 /* MessageCenter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MessageCenter.h; sourceTree = "<group>"; };
 		9C3862B119B1BDC600679C48 /* MessageCenter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MessageCenter.m; sourceTree = "<group>"; };
 		9C3862B519B1CB0400679C48 /* bar_item_01@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bar_item_01@2x.png"; sourceTree = "<group>"; };
@@ -1026,6 +1035,8 @@
 		9C0E08A519BF03F300ED8D87 /* Recipe */ = {
 			isa = PBXGroup;
 			children = (
+				9C0E0B3119C9E12900ED8D87 /* RecipeBaseCell.h */,
+				9C0E0B3219C9E12900ED8D87 /* RecipeBaseCell.m */,
 				9C0E0B0519C8690700ED8D87 /* MadeStepItemView.h */,
 				9C0E0B0619C8690700ED8D87 /* MadeStepItemView.m */,
 				9C0E08AB19BF066D00ED8D87 /* RecipeCell.h */,
@@ -1044,6 +1055,8 @@
 				9C0E0B1219C926EE00ED8D87 /* RecipeCommentCell.m */,
 				9C0E0B1419C9298600ED8D87 /* RecipeCommentItemView.h */,
 				9C0E0B1519C9298600ED8D87 /* RecipeCommentItemView.m */,
+				9C0E0B2E19C9E0F200ED8D87 /* RecipeExampleCell.h */,
+				9C0E0B2F19C9E0F200ED8D87 /* RecipeExampleCell.m */,
 			);
 			path = Recipe;
 			sourceTree = "<group>";
@@ -1237,6 +1250,8 @@
 				9C0E0AF719C8604E00ED8D87 /* MaterialModel.m */,
 				9C0E0B1719C9319900ED8D87 /* CommentModel.h */,
 				9C0E0B1819C9319900ED8D87 /* CommentModel.m */,
+				9C0E0B3419C9E45C00ED8D87 /* RecpieExampleModel.h */,
+				9C0E0B3519C9E45C00ED8D87 /* RecpieExampleModel.m */,
 			);
 			name = Recipe;
 			sourceTree = "<group>";
@@ -1893,6 +1908,7 @@
 				9C0E0A6219BF3E5200ED8D87 /* RecipeModel.m in Sources */,
 				9C0E0AEA19BFEF2B00ED8D87 /* ZHZbarVC.m in Sources */,
 				9C0E0AE319BFEF2B00ED8D87 /* split.c in Sources */,
+				9C0E0B3319C9E12900ED8D87 /* RecipeBaseCell.m in Sources */,
 				9C0E0ADE19BFEF2B00ED8D87 /* QRCodeGenerator.m in Sources */,
 				9C9778A119B1900F00D49E69 /* NSDictionary+ZHiteam.m in Sources */,
 				9C89857419B70CC4009CB910 /* TagModel.m in Sources */,
@@ -1944,11 +1960,13 @@
 				9C0E0AFB19C860FD00ED8D87 /* MaterialItemView.m in Sources */,
 				84F1FE4F19BD76840002605A /* ZHDetailProductHeadView.m in Sources */,
 				9C9778AF19B1900F00D49E69 /* BaseModel.m in Sources */,
+				9C0E0B3619C9E45C00ED8D87 /* RecpieExampleModel.m in Sources */,
 				849F7F5719AB81EE00962BB1 /* main.m in Sources */,
 				847E0BD019C54C8C0055B5C6 /* ZHButton.m in Sources */,
 				9C3862C719B2CECE00679C48 /* CatagoryModel.m in Sources */,
 				847E0BC119C473A90055B5C6 /* ZHOrderStatusCell.m in Sources */,
 				9C89836A19B46202009CB910 /* ZHView.m in Sources */,
+				9C0E0B3019C9E0F200ED8D87 /* RecipeExampleCell.m in Sources */,
 				9C0E0B0D19C91B1000ED8D87 /* RecipeTipsCell.m in Sources */,
 				9C0E0B0719C8690700ED8D87 /* MadeStepItemView.m in Sources */,
 				84EA64D019B198FE00C446A5 /* ZHHomePageVC.m in Sources */,

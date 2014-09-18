@@ -107,9 +107,9 @@
 
 #pragma -mark end
 
-+(CGFloat)viewHeightWithContent:(NSArray*)content{
++(CGFloat)viewHeightWithContent:(id)content{
     CGFloat height = 25.0+10.0;
-    height += content.count*ITEM_HEIGHT;
+    height += ((NSArray*)content).count*ITEM_HEIGHT;
     return height;
 }
 

@@ -7,11 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "RecipeItemDetailModel.h"
+#import "RecipeBaseCell.h"
 
-@interface RecipeMaterialCell : UITableViewCell
+@interface RecipeMaterialCell : RecipeBaseCell
 
-@property (nonatomic,assign)RecipeItemDetailModel*  model;
-
-+(CGFloat)viewHeightWithContent:(NSArray*)content;
 @end

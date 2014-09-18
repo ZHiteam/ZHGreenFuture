@@ -88,7 +88,7 @@
     self.bgPanel.height = height-10;
 }
 
-+(CGFloat)viewHeightWithContent:(NSString *)content{
++(CGFloat)viewHeightWithContent:(id)content{
     CGFloat height = 25+5.0;
     
     CGSize size = [content sizeWithFont:FONT(14) constrainedToSize:CGSizeMake(FULL_WIDTH-10, MAXFLOAT) lineBreakMode:NSLineBreakByCharWrapping];

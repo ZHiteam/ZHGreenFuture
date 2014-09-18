@@ -138,7 +138,7 @@
     self.recipeNeed.frame = CGRectMake(5, self.healthLabel.bottom+5, self.contentPanel.width, height);
 }
 
-+(CGFloat)viewHeightWithContent:(NSString *)content{
++(CGFloat)viewHeightWithContent:(id)content{
     
     CGSize size = [content sizeWithFont:FONT(12)
                                        constrainedToSize:CGSizeMake(FULL_WIDTH , MAXFLOAT)

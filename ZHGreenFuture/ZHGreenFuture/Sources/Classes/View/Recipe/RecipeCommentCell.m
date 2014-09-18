@@ -48,7 +48,7 @@
     
     if (!_titleLabel){
         _titleLabel = [UILabel labelWithText:@"大家都在说" font:FONT(16) color:GREEN_COLOR textAlignment:NSTextAlignmentLeft];
-        _titleLabel.frame = CGRectMake(10, 10.0f, self.width-5, 25);
+        _titleLabel.frame = CGRectMake(10, 0.0f, self.width-5, 25);
         _titleLabel.backgroundColor = WHITE_BACKGROUND;
     }
     
@@ -110,10 +110,10 @@
     self.height = height;
 }
 
-+(CGFloat)viewHeightWithContent:(NSArray *)content{
++(CGFloat)viewHeightWithContent:(id)content{
     CGFloat height = 10.0f+25.0f;
     
-    height += ITEM_HEIGHT* content.count+(content.count==0?0:5);
+    height += ITEM_HEIGHT* ((NSArray*)content).count+(((NSArray*)content).count==0?0:5);
     
     return height+10;
 }

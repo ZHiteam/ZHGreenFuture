@@ -107,10 +107,10 @@
 
 #pragma -mark end
 
-+(CGFloat)viewHeightWithContent:(NSArray*)content{
++(CGFloat)viewHeightWithContent:(id)content{
     CGFloat height = 25.0f;
     
-    for(MadeStepModel* model in content){
+    for(MadeStepModel* model in (NSArray*)content){
         if ([model isKindOfClass:[MadeStepModel class]]){
             height += [MadeStepItemView viewHeightWithContent:model];
         }

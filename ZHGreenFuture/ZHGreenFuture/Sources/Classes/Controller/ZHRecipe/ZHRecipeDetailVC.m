@@ -13,9 +13,8 @@
 #import "RecipeMaterialCell.h"
 #import "RecipeMadeStepCell.h"
 #import "RecipeTipsCell.h"
-#import "ZHDetailRecipeListCell.h"
-#import "ZHDetailModel.h"
 #import "RecipeCommentCell.h"
+#import "RecipeExampleCell.h"
 
 #import <DBCamera/DBCameraContainerViewController.h>
 #import <DBCamera/DBCameraViewController.h>
@@ -26,7 +25,6 @@
 @property (nonatomic,strong) RecipeItemDetailModel*     detailData;
 @property (nonatomic,strong) UIView*                    toolBar;
 
-@property (nonatomic,strong) ZHDetailRecipeListCell*    recipeListCell;
 @end
 
 @implementation ZHRecipeDetailVC
@@ -92,11 +90,18 @@
 
     self.detailData.tips = @"糯米选用泰国的长糯米，泡一夜蒸的时候加恰好 没过糯米的水量。";
     
-    recommendRecipeItem * recipeItem = [[recommendRecipeItem alloc] init];
-    recipeItem.title = @"豌豆糯米饭";
-    recipeItem.imageURL = @"";
+    RecipeExampleImageContent* recipeItem = [[RecipeExampleImageContent alloc]init];
+    recipeItem.url = @"";
     recipeItem.placeholderImage = @"detailRecipe.png";
-    self.detailData.example = @[recipeItem , recipeItem, recipeItem, recipeItem, recipeItem,recipeItem,recipeItem,recipeItem];
+    recipeItem.content = @"玩斗檽米饭";
+    self.detailData.example = [[RecpieExampleModel alloc]init];
+    self.detailData.example.count = @"18";
+    self.detailData.example.images = @[recipeItem,recipeItem,recipeItem,recipeItem,recipeItem,recipeItem,recipeItem];
+//    recommendRecipeItem * recipeItem = [[recommendRecipeItem alloc] init];
+//    recipeItem.title = @"豌豆糯米饭";
+//    recipeItem.imageURL = @"";
+//    recipeItem.placeholderImage = @"detailRecipe.png";
+//    self.detailData.example = @[recipeItem , recipeItem, recipeItem, recipeItem, recipeItem,recipeItem,recipeItem,recipeItem];
 
     self.detailData.commentCount = @"18";
     
@@ -204,7 +209,7 @@
     
     NSString* identify = [NSString stringWithFormat:@"recipeIdentify%d",indexPath.row];
     
-    UITableViewCell* cell = [tableView dequeueReusableCellWithIdentifier:identify];
+    RecipeBaseCell* cell = [tableView dequeueReusableCellWithIdentifier:identify];
     
     if (!cell){
         switch (indexPath.row){
@@ -220,80 +225,18 @@
             case 3:
                 cell = [[RecipeTipsCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identify];
                 break;
-            case 4:{
-                cell = self.recipeListCell = [ZHDetailRecipeListCell tableViewCell];
-                UILabel* recipeLabel = self.recipeListCell.recipeLabel;
-                recipeLabel.text = @"大家都在照着菜谱做";
-                recipeLabel.textColor = GREEN_COLOR;
-                recipeLabel.font = FONT(16);
-                recipeLabel.frame = CGRectMake(5, 5, 100, 25);
-                
-                UILabel* count = self.recipeListCell.recipeCountLabel;
-                count.textColor = GREEN_COLOR;
-                count.font = FONT(16);
-                count.frame = CGRectMake(100, 5, 100, 25);
-            }
-                
+            case 4:
+                cell = [[RecipeExampleCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identify];
                 break;
             case 5:
                 cell = [[RecipeCommentCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identify];
                 break;
             default:
-                cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identify];
                 break;
         }
     }
     
-    switch (indexPath.row) {
-        case 0:
-        {
-            RecipeImageCell* imageCell = (RecipeImageCell*)cell;
-            imageCell.height = [RecipeImageCell viewHeightWithContent:self.detailData.health];
-            imageCell.model = self.detailData;
-        }
-            
-            break;
-        case 1:
-        {
-            RecipeMaterialCell* materialView = (RecipeMaterialCell*)cell;
-            materialView.model = self.detailData;
-        }
-            break;
-        case 2:
-        {
-            RecipeMadeStepCell* view = (RecipeMadeStepCell*)cell;
-            view.model = self.detailData;
-        }
-            break;
-        case 3:
-        {
-            RecipeTipsCell* view = (RecipeTipsCell*)cell;
-            view.model = self.detailData;
-        }
-            break;
-        case 4:
-        {
-            self.recipeListCell.recipeCountLabel.text = [NSString stringWithFormat:@" (%d)",[self.detailData.example count]];
-            __weak typeof(self) weakSelf = self;
-            [self.recipeListCell setMoreItemClickedBlock:^(id sender) {
-                //TODO:more item
-                NSLog(@">>>more Item clicked %@",weakSelf);
-            }];
-            
-            [self.recipeListCell.recipeListView setImageItems:self.detailData.example selectedBlock:nil isAutoPlay:NO];
-            [self.recipeListCell.recipeListView updateLayout];
-
-        }
-            break;
-        case 5:
-        {
-            RecipeCommentCell* view = (RecipeCommentCell*)cell;
-            view.model = self.detailData;
-        }
-            break;
-        default:
-            break;
-    }
+    cell.model = self.detailData;
     
     return cell;
 }
@@ -316,7 +259,7 @@
             height = [RecipeTipsCell viewHeightWithContent:self.detailData.tips];
             break;
         case 4:
-            height = [ZHDetailRecipeListCell height];
+            height = [RecipeExampleCell viewHeightWithContent:self.detailData.example];
             break;
         case 5:
             height = [RecipeCommentCell viewHeightWithContent:self.detailData.commentList];
