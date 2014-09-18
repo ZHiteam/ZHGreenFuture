@@ -151,7 +151,8 @@
 
 - (void)rightItemPressed:(id)sender{
     //TODO: cart
-    NSLog(@">>>>%@",NSStringFromSelector(_cmd));
+//    NSLog(@">>>>%@",NSStringFromSelector(_cmd));
+    [[MessageCenter instance]performActionWithUserInfo:@{@"controller": @"ZHShoppingChartVC"}];
 }
 
 
