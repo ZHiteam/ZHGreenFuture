@@ -36,6 +36,10 @@
     BOOL responseFromCached;
 }
 
+#pragma -mark modify by elvis 2014 09 19, reslove the compile errors
+@synthesize executing = _executing ;
+@synthesize finished = _finished;
+
 - (id)initWithRequest:(NSURLRequest *)request options:(SDWebImageDownloaderOptions)options progress:(void (^)(NSInteger, NSInteger))progressBlock completed:(void (^)(UIImage *, NSData *, NSError *, BOOL))completedBlock cancelled:(void (^)())cancelBlock {
     if ((self = [super init])) {
         _request = request;
