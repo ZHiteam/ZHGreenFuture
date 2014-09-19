@@ -16,14 +16,13 @@
 #import "RecipeCommentCell.h"
 #import "RecipeExampleCell.h"
 
-#import <DBCamera/DBCameraContainerViewController.h>
-#import <DBCamera/DBCameraViewController.h>
+#import "CameraHelper.h"
 
-@interface ZHRecipeDetailVC ()<UITableViewDataSource,UITableViewDelegate,DBCameraViewControllerDelegate,DBCameraViewControllerDelegate>
+@interface ZHRecipeDetailVC ()<UITableViewDataSource,UITableViewDelegate,CameraHelperDelegate>
 
 @property (nonatomic,strong) UITableView*               contentTable;
 @property (nonatomic,strong) RecipeItemDetailModel*     detailData;
-@property (nonatomic,strong) UIView*                    toolBar;
+@property (nonatomic,strong) UIButton*                    toolBar;
 
 @end
 
@@ -140,64 +139,43 @@
     return _contentTable;
 }
 
--(UIView *)toolBar{
+-(UIButton *)toolBar{
     if (!_toolBar){
-        _toolBar = [[UIView alloc]initWithFrame:CGRectMake(0, self.view.height-TAB_BAR_HEIGHT, self.view.width, TAB_BAR_HEIGHT)];
+        _toolBar = [[UIButton alloc]initWithFrame:CGRectMake(0, self.view.height-TAB_BAR_HEIGHT, self.view.width, TAB_BAR_HEIGHT)];
         _toolBar.backgroundColor = GREEN_COLOR;
         
         UIButton* camera = [[UIButton alloc]initWithFrame:CGRectMake(100, 0, TAB_BAR_HEIGHT, TAB_BAR_HEIGHT)];
         [camera setImage:[UIImage themeImageNamed:@"btn_camera"] forState:UIControlStateNormal];
         [_toolBar addSubview:camera];
         
-        [camera addTarget:self action:@selector(cameraAction) forControlEvents:UIControlEventTouchUpInside];
+
         
         UIButton* upload = [[UIButton alloc]initWithFrame:CGRectMake(camera.left+5, 0, 150, TAB_BAR_HEIGHT)];
         [upload setTitle:@"上传作品" forState:UIControlStateNormal];
         [upload setTitleColor:WHITE_TEXT forState:UIControlStateNormal];
         [_toolBar addSubview:upload];
         
+        [camera addTarget:self action:@selector(cameraAction) forControlEvents:UIControlEventTouchUpInside];
         [upload addTarget:self action:@selector(cameraAction) forControlEvents:UIControlEventTouchUpInside];
+        [_toolBar addTarget:self action:@selector(cameraAction) forControlEvents:UIControlEventTouchUpInside];
     }
     return _toolBar;
 }
 
 #pragma -mark getter end
 
-#pragma -mark -action
+#pragma -mark -action 
 - (void)cameraAction{
-    
-    DBCameraContainerViewController *container = [[DBCameraContainerViewController alloc] initWithDelegate:self];
-    DBCameraViewController *cameraController = [DBCameraViewController initWithDelegate:self];
-    [cameraController setUseCameraSegue:NO];
-    [container setCameraViewController:cameraController];
-    
-    [container setFullScreenMode];
-    
-    UIViewController* mainVC = [MemoryStorage valueForKey:k_NAVIGATIONCTL];
-    
-    [mainVC presentViewController:container animated:YES completion:^{
-        
-    }];
+    [CameraHelper takePhone:self];
 }
 
-#pragma -mark DBCameraViewControllerDelegate
-- (void) dismissCamera:(id)cameraViewController{
-    [cameraViewController restoreFullScreenMode];
-    UIViewController* mainVC = [MemoryStorage valueForKey:k_NAVIGATIONCTL];
-    [mainVC dismissViewControllerAnimated:YES completion:nil];
-}
-
-- (void) camera:(id)cameraViewController didFinishWithImage:(UIImage *)image withMetadata:(NSDictionary *)metadata{
-    [cameraViewController restoreFullScreenMode];
-    UIViewController* mainVC = [MemoryStorage valueForKey:k_NAVIGATIONCTL];
-    [mainVC dismissViewControllerAnimated:YES completion:nil];
-    
+#pragma -mark CameraHelperDelegate
+-(void)cameraTakePhotoSuccess:(UIImage *)image{
     NSMutableDictionary* dic = [NSMutableDictionary dictionaryWithObject:@"ZHRecipePublishVC" forKey:@"controller"];
-    
     if (image){
         [dic setValue:image forKey:@"userinfo"];
-        [[MessageCenter instance]performActionWithUserInfo:dic];
     }
+    [[MessageCenter instance]performActionWithUserInfo:dic];
 }
 
 #pragma -mark UITableViewDataSource,UITableViewDelegate

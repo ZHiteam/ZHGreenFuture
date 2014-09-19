@@ -270,6 +270,16 @@
 		9C9778D219B1900F00D49E69 /* system.config in Resources */ = {isa = PBXBuildFile; fileRef = 9C97789F19B1900F00D49E69 /* system.config */; };
 		9C9778D419B1905F00D49E69 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9C9778D319B1905F00D49E69 /* MobileCoreServices.framework */; };
 		9C9778D619B1907300D49E69 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9C9778D519B1907300D49E69 /* SystemConfiguration.framework */; };
+		9CCDFD5B19CBC88C008B6882 /* LICENSE.txt in Resources */ = {isa = PBXBuildFile; fileRef = 9CCDFD5019CBC88C008B6882 /* LICENSE.txt */; };
+		9CCDFD5C19CBC88C008B6882 /* README.md in Sources */ = {isa = PBXBuildFile; fileRef = 9CCDFD5119CBC88C008B6882 /* README.md */; };
+		9CCDFD5D19CBC88C008B6882 /* TPKeyboardAvoidingCollectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CCDFD5419CBC88C008B6882 /* TPKeyboardAvoidingCollectionView.m */; };
+		9CCDFD5E19CBC88C008B6882 /* TPKeyboardAvoidingScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CCDFD5619CBC88C008B6882 /* TPKeyboardAvoidingScrollView.m */; };
+		9CCDFD5F19CBC88C008B6882 /* TPKeyboardAvoidingTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CCDFD5819CBC88C008B6882 /* TPKeyboardAvoidingTableView.m */; };
+		9CCDFD6019CBC88C008B6882 /* UIScrollView+TPKeyboardAvoidingAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CCDFD5A19CBC88C008B6882 /* UIScrollView+TPKeyboardAvoidingAdditions.m */; };
+		9CCDFD6319CBCC30008B6882 /* ZHPlaceHolderTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CCDFD6219CBCC30008B6882 /* ZHPlaceHolderTextView.m */; };
+		9CCDFD6619CBD85C008B6882 /* CameraHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CCDFD6519CBD85C008B6882 /* CameraHelper.m */; };
+		9CCDFD6919CBDD80008B6882 /* ZHImagePreviewVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CCDFD6819CBDD80008B6882 /* ZHImagePreviewVC.m */; };
+		9CCDFD6B19CBE542008B6882 /* btn_delete@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9CCDFD6A19CBE542008B6882 /* btn_delete@2x.png */; };
 		A4C9D54E32334D93A158D3F2 /* libPods-ZHGreenFuture.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C548FF18989B4FF8A8B17AD4 /* libPods-ZHGreenFuture.a */; };
 /* End PBXBuildFile section */
 
@@ -690,6 +700,23 @@
 		9C97789F19B1900F00D49E69 /* system.config */ = {isa = PBXFileReference; lastKnownFileType = file; path = system.config; sourceTree = "<group>"; };
 		9C9778D319B1905F00D49E69 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
 		9C9778D519B1907300D49E69 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		9CCDFD5019CBC88C008B6882 /* LICENSE.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE.txt; sourceTree = "<group>"; };
+		9CCDFD5119CBC88C008B6882 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		9CCDFD5319CBC88C008B6882 /* TPKeyboardAvoidingCollectionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TPKeyboardAvoidingCollectionView.h; sourceTree = "<group>"; };
+		9CCDFD5419CBC88C008B6882 /* TPKeyboardAvoidingCollectionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TPKeyboardAvoidingCollectionView.m; sourceTree = "<group>"; };
+		9CCDFD5519CBC88C008B6882 /* TPKeyboardAvoidingScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TPKeyboardAvoidingScrollView.h; sourceTree = "<group>"; };
+		9CCDFD5619CBC88C008B6882 /* TPKeyboardAvoidingScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TPKeyboardAvoidingScrollView.m; sourceTree = "<group>"; };
+		9CCDFD5719CBC88C008B6882 /* TPKeyboardAvoidingTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TPKeyboardAvoidingTableView.h; sourceTree = "<group>"; };
+		9CCDFD5819CBC88C008B6882 /* TPKeyboardAvoidingTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TPKeyboardAvoidingTableView.m; sourceTree = "<group>"; };
+		9CCDFD5919CBC88C008B6882 /* UIScrollView+TPKeyboardAvoidingAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIScrollView+TPKeyboardAvoidingAdditions.h"; sourceTree = "<group>"; };
+		9CCDFD5A19CBC88C008B6882 /* UIScrollView+TPKeyboardAvoidingAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIScrollView+TPKeyboardAvoidingAdditions.m"; sourceTree = "<group>"; };
+		9CCDFD6119CBCC30008B6882 /* ZHPlaceHolderTextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZHPlaceHolderTextView.h; sourceTree = "<group>"; };
+		9CCDFD6219CBCC30008B6882 /* ZHPlaceHolderTextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZHPlaceHolderTextView.m; sourceTree = "<group>"; };
+		9CCDFD6419CBD85C008B6882 /* CameraHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CameraHelper.h; sourceTree = "<group>"; };
+		9CCDFD6519CBD85C008B6882 /* CameraHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CameraHelper.m; sourceTree = "<group>"; };
+		9CCDFD6719CBDD80008B6882 /* ZHImagePreviewVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZHImagePreviewVC.h; sourceTree = "<group>"; };
+		9CCDFD6819CBDD80008B6882 /* ZHImagePreviewVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZHImagePreviewVC.m; sourceTree = "<group>"; };
+		9CCDFD6A19CBE542008B6882 /* btn_delete@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "btn_delete@2x.png"; sourceTree = "<group>"; };
 		C548FF18989B4FF8A8B17AD4 /* libPods-ZHGreenFuture.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-ZHGreenFuture.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C71C3F53A51D425DB6BCAC4D /* Pods-ZHGreenFuture.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ZHGreenFuture.xcconfig"; path = "Pods/Pods-ZHGreenFuture.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -966,6 +993,8 @@
 				9C8983D919B6272D009CB910 /* ZHRecipePublishVC.m */,
 				9C0E08B419BF27CF00ED8D87 /* ZHRecipeDetailVC.h */,
 				9C0E08B519BF27CF00ED8D87 /* ZHRecipeDetailVC.m */,
+				9CCDFD6719CBDD80008B6882 /* ZHImagePreviewVC.h */,
+				9CCDFD6819CBDD80008B6882 /* ZHImagePreviewVC.m */,
 			);
 			path = ZHRecipe;
 			sourceTree = "<group>";
@@ -1088,6 +1117,7 @@
 		9C0E08B919BF32BB00ED8D87 /* Libraies */ = {
 			isa = PBXGroup;
 			children = (
+				9CCDFD4F19CBC88C008B6882 /* TPKeyboardAvoiding */,
 				9C0E0A5B19BF377E00ED8D87 /* Comment */,
 				9C0E09B119BF331200ED8D87 /* ShareSDK */,
 			);
@@ -1388,6 +1418,8 @@
 				9C89838F19B5CD93009CB910 /* Timer */,
 				9C3862B019B1BDC600679C48 /* MessageCenter.h */,
 				9C3862B119B1BDC600679C48 /* MessageCenter.m */,
+				9CCDFD6419CBD85C008B6882 /* CameraHelper.h */,
+				9CCDFD6519CBD85C008B6882 /* CameraHelper.m */,
 			);
 			path = Tools;
 			sourceTree = "<group>";
@@ -1395,18 +1427,19 @@
 		9C3862B319B1CB0400679C48 /* images */ = {
 			isa = PBXGroup;
 			children = (
+				9CCDFD6A19CBE542008B6882 /* btn_delete@2x.png */,
+				9C89838A19B56E61009CB910 /* banner_mask@2x.png */,
+				9C3862BF19B2C99300679C48 /* btn_back@2x.png */,
+				9C89837A19B49AF0009CB910 /* btn_back_green@2x.png */,
+				9C3862BD19B2C7F800679C48 /* btn_search@2x.png */,
+				9C89839319B5FEC8009CB910 /* btn_camera@2x.png */,
 				9C0E0B4219CB44F300ED8D87 /* btn_checkbox_selected@2x.png */,
 				9C0E0B4319CB44F300ED8D87 /* btn_checkbox_unselected@2x.png */,
 				9C0E08B719BF290400ED8D87 /* btn_share@2x.png */,
 				9C0E08B019BF1DC400ED8D87 /* btn_discuss@2x.png */,
 				9C89857519BEB280009CB910 /* recipe */,
 				84F1FE4819BC58F80002605A /* detail */,
-				9C89839319B5FEC8009CB910 /* btn_camera@2x.png */,
 				9C89836519B451F5009CB910 /* temp */,
-				9C89838A19B56E61009CB910 /* banner_mask@2x.png */,
-				9C3862BF19B2C99300679C48 /* btn_back@2x.png */,
-				9C89837A19B49AF0009CB910 /* btn_back_green@2x.png */,
-				9C3862BD19B2C7F800679C48 /* btn_search@2x.png */,
 				84B9604119B3638A0042A670 /* profile */,
 				84A7A5AE19B2BE770050CACD /* homePage */,
 				9C3862B419B1CB0400679C48 /* tabbar */,
@@ -1676,6 +1709,8 @@
 				9C0E0B4719CB450700ED8D87 /* ZHCheckbox.m */,
 				9C0E0B5219CB587900ED8D87 /* ZHEditCountView.h */,
 				9C0E0B5319CB587900ED8D87 /* ZHEditCountView.m */,
+				9CCDFD6119CBCC30008B6882 /* ZHPlaceHolderTextView.h */,
+				9CCDFD6219CBCC30008B6882 /* ZHPlaceHolderTextView.m */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -1699,6 +1734,31 @@
 				9C97789F19B1900F00D49E69 /* system.config */,
 			);
 			path = Resources;
+			sourceTree = "<group>";
+		};
+		9CCDFD4F19CBC88C008B6882 /* TPKeyboardAvoiding */ = {
+			isa = PBXGroup;
+			children = (
+				9CCDFD5019CBC88C008B6882 /* LICENSE.txt */,
+				9CCDFD5119CBC88C008B6882 /* README.md */,
+				9CCDFD5219CBC88C008B6882 /* TPKeyboardAvoiding */,
+			);
+			path = TPKeyboardAvoiding;
+			sourceTree = "<group>";
+		};
+		9CCDFD5219CBC88C008B6882 /* TPKeyboardAvoiding */ = {
+			isa = PBXGroup;
+			children = (
+				9CCDFD5319CBC88C008B6882 /* TPKeyboardAvoidingCollectionView.h */,
+				9CCDFD5419CBC88C008B6882 /* TPKeyboardAvoidingCollectionView.m */,
+				9CCDFD5519CBC88C008B6882 /* TPKeyboardAvoidingScrollView.h */,
+				9CCDFD5619CBC88C008B6882 /* TPKeyboardAvoidingScrollView.m */,
+				9CCDFD5719CBC88C008B6882 /* TPKeyboardAvoidingTableView.h */,
+				9CCDFD5819CBC88C008B6882 /* TPKeyboardAvoidingTableView.m */,
+				9CCDFD5919CBC88C008B6882 /* UIScrollView+TPKeyboardAvoidingAdditions.h */,
+				9CCDFD5A19CBC88C008B6882 /* UIScrollView+TPKeyboardAvoidingAdditions.m */,
+			);
+			path = TPKeyboardAvoiding;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -1819,6 +1879,7 @@
 				847E0BCD19C483860055B5C6 /* orderProduct@2x.png in Resources */,
 				84F1FE2919BB46770002605A /* ZHDetailBannerCell.xib in Resources */,
 				9C3862BE19B2C7F800679C48 /* btn_search@2x.png in Resources */,
+				9CCDFD6B19CBE542008B6882 /* btn_delete@2x.png in Resources */,
 				9C0E0A4619BF331300ED8D87 /* ShareSDKiPhoneDefaultShareViewUI.bundle in Resources */,
 				84A7A5B619B2C02F0050CACD /* surprise@2x.png in Resources */,
 				9C0E0A3A19BF331300ED8D87 /* WeiboSDK.bundle in Resources */,
@@ -1826,6 +1887,7 @@
 				84F1FE3819BC43620002605A /* ZHDetailProductGuaranteeCell.xib in Resources */,
 				84F1FE2E19BC3D5F0002605A /* ZHDetailPriceCell.xib in Resources */,
 				84A7A5B719B2C02F0050CACD /* rice@2x.png in Resources */,
+				9CCDFD5B19CBC88C008B6882 /* LICENSE.txt in Resources */,
 				847E0BBD19C46B7D0055B5C6 /* ZHOrderProductCell.xib in Resources */,
 				847E0BD519C550CD0055B5C6 /* ZHOrderActionTableViewCell.xib in Resources */,
 				84F1FE3319BC413F0002605A /* ZHDetailLogisticsInfoCell.xib in Resources */,
@@ -1913,6 +1975,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				847E0BCB19C478B10055B5C6 /* ZHOrderModel.m in Sources */,
+				9CCDFD6619CBD85C008B6882 /* CameraHelper.m in Sources */,
 				84B9603C19B35B790042A670 /* ZHNormalTableViewCell.m in Sources */,
 				84A7A5CB19B2C9930050CACD /* ZHProductTableViewCell.m in Sources */,
 				9C8983D719B6168F009CB910 /* LunarCalendar.m in Sources */,
@@ -1933,6 +1996,7 @@
 				84F1FE3719BC43620002605A /* ZHDetailProductGuaranteeCell.m in Sources */,
 				84F1FE1D19BB19E20002605A /* ZHDetailVC.m in Sources */,
 				9C9778AD19B1900F00D49E69 /* TabbarViewController.m in Sources */,
+				9CCDFD5E19CBC88C008B6882 /* TPKeyboardAvoidingScrollView.m in Sources */,
 				9C9778A419B1900F00D49E69 /* UIControl+ZHiteam.m in Sources */,
 				84F1FE2419BB45920002605A /* ZHDetailModel.m in Sources */,
 				9C0E0AE919BFEF2B00ED8D87 /* ZHZbarPrivateVC.m in Sources */,
@@ -1968,8 +2032,10 @@
 				9C0E0AF019C418FC00ED8D87 /* RecipeItemDetailModel.m in Sources */,
 				84A7A5C119B2C8290050CACD /* ZHCategoryTableViewCell.m in Sources */,
 				9C9778A719B1900F00D49E69 /* UIView+ZHiteam.m in Sources */,
+				9CCDFD5F19CBC88C008B6882 /* TPKeyboardAvoidingTableView.m in Sources */,
 				9C0E0B5419CB587900ED8D87 /* ZHEditCountView.m in Sources */,
 				849F7F5B19AB81EE00962BB1 /* AppDelegate.m in Sources */,
+				9CCDFD5D19CBC88C008B6882 /* TPKeyboardAvoidingCollectionView.m in Sources */,
 				847E0BAD19C422C90055B5C6 /* ZHPersonInfoVC.m in Sources */,
 				9C8983D319B6158C009CB910 /* NSDate+Calendar.m in Sources */,
 				84F1FE3219BC413F0002605A /* ZHDetailLogisticsInfoCell.m in Sources */,
@@ -1982,8 +2048,10 @@
 				847E0BB319C42CF50055B5C6 /* ZHProductsVC.m in Sources */,
 				9C89837E19B49BFD009CB910 /* ZHSubCatagoryVC.m in Sources */,
 				9C0E0AE019BFEF2B00ED8D87 /* qrinput.c in Sources */,
+				9CCDFD5C19CBC88C008B6882 /* README.md in Sources */,
 				84EA64D919B1993700C446A5 /* ZHProfileVC.m in Sources */,
 				9C9778AE19B1900F00D49E69 /* ZHViewController.m in Sources */,
+				9CCDFD6919CBDD80008B6882 /* ZHImagePreviewVC.m in Sources */,
 				9C3862C419B2CBBE00679C48 /* ZHShoppingCatagory.m in Sources */,
 				84F1FE4619BC4A150002605A /* ZHDetailProductCell.m in Sources */,
 				84A7A5C619B2C90E0050CACD /* ZHRecommendTableViewCell.m in Sources */,
@@ -2001,7 +2069,9 @@
 				9C0E0B0A19C8748B00ED8D87 /* VerticallyAlignedLabel.m in Sources */,
 				84F1FE2819BB46770002605A /* ZHDetailBannerCell.m in Sources */,
 				84B9604019B360740042A670 /* ZHOrderBadgeView.m in Sources */,
+				9CCDFD6319CBCC30008B6882 /* ZHPlaceHolderTextView.m in Sources */,
 				9C0E0B1919C9319900ED8D87 /* CommentModel.m in Sources */,
+				9CCDFD6019CBC88C008B6882 /* UIScrollView+TPKeyboardAvoidingAdditions.m in Sources */,
 				9C0E0AED19C173B100ED8D87 /* RecipeImageCell.m in Sources */,
 				84EA64D619B1992600C446A5 /* ZHRecipeVC.m in Sources */,
 				9C9778B219B1900F00D49E69 /* NavigationBar.m in Sources */,

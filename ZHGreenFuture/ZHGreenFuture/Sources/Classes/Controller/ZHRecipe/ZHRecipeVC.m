@@ -186,6 +186,7 @@
     
     self.recipeContent.frame = CGRectMake(0, self.tagPanel.bottom, self.tagPanel.width, self.contentBounds.size.height-self.tagPanel.height);
 }
+
 #pragma -mark -action
 - (void)cameraAction{
     
