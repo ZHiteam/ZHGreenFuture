@@ -9,13 +9,34 @@
 #import "ZHDetailModel.h"
 #import "ZHHomePageModel.h"
 
-@implementation recommendRecipeItem
-
+@implementation ZHRecommendRecipeItem
+- (instancetype)initWithDictionary:(NSDictionary*)dict
+{
+    self = [super init];
+    if (self) {
+        if ([dict isKindOfClass:[NSDictionary class]]) {
+            self.imageURL = [dict objectForKey:@"imageURL"];
+            self.title    = [dict objectForKey:@"title"];
+        }
+    }
+    return self;
+}
 @end
 
 
-@implementation otherBuyItem
-
+@implementation ZHOtherBuyItem
+- (instancetype)initWithDictionary:(NSDictionary*)dict
+{
+    self = [super init];
+    if (self) {
+        if ([dict isKindOfClass:[NSDictionary class]]) {
+            self.imageURL = [dict objectForKey:@"imageURL"];
+            self.title    = [dict objectForKey:@"title"];
+            self.price    = [dict objectForKey:@"price"];
+        }
+    }
+    return self;
+}
 @end
 
 
@@ -29,6 +50,27 @@
     }
     return self;
 }
+
+#pragma mark - Public Method
+- (void)loadDataWithProductId:(NSString*)productId completionBlock:(ZHCompletionBlock)block{
+    __weak __typeof(self) weakSelf = self;
+    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+    manager.responseSerializer.acceptableContentTypes = [NSSet setWithObject:@"text/html"];//这里设置是因为服务端返回的类型是text/html，不在AF默认设置之列
+    manager.requestSerializer.timeoutInterval = kTimeoutInterval;
+    [manager GET:BASE_URL parameters:@{@"scene": @"10",@"productId":productId} success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        if ([responseObject isKindOfClass:[NSDictionary class]]) {
+            [weakSelf parserJsonDict:responseObject];
+        }
+        if (block) {
+            block(YES);
+        }
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        if (block) {
+            block(NO);
+        }
+    }];
+}
+
 
 #pragma mark - Privte Method
 - (void)initMockData{
@@ -47,27 +89,70 @@
     
     self.introduceImageList = @[@"", @"",@""];
     
-    recommendRecipeItem * recipeItem = [[recommendRecipeItem alloc] init];
+    ZHRecommendRecipeItem * recipeItem = [[ZHRecommendRecipeItem alloc] init];
     recipeItem.title = @"豌豆糯米饭";
     recipeItem.imageURL = @"";
     recipeItem.placeholderImage = @"detailRecipe.png";
     self.recommendRecipeList = @[recipeItem , recipeItem, recipeItem, recipeItem, recipeItem,recipeItem,recipeItem,recipeItem];
     
     //other buy products list
-    otherBuyItem *buyItem = [[otherBuyItem alloc] init];
+    ZHOtherBuyItem *buyItem = [[ZHOtherBuyItem alloc] init];
     buyItem.imageURL = @"";
     buyItem.title    = @"东北农家五常大米吉林长春香米 新米不断";
     buyItem.price    = @"29.80";
     self.otherBuyList= @[buyItem,buyItem,buyItem,buyItem,buyItem,buyItem,buyItem,buyItem,buyItem,buyItem,buyItem,buyItem,buyItem,buyItem,buyItem];
 }
 
-- (void)loadDataWithCompletion:(ZHCompletionBlock)block{
-    return;
-    [HttpClient requestDataWithURL:@"xxx" paramers:nil success:^(id responseObject) {
-        
-    } failure:^(NSError *error) {
-        
-    }];
+- (void)parserJsonDict:(NSDictionary*)jsonDict{
+    
+    NSArray *srcArray = nil;
+    NSMutableArray *dstArray = [NSMutableArray arrayWithCapacity:10];
+    //banner
+    srcArray = [jsonDict objectForKey:@"bannerImageList"];
+    for (NSDictionary *banner in srcArray) {
+        ZHBannerItem  *obj = [[ZHBannerItem alloc] initWithDictionary:banner];
+        [dstArray addObject:obj];
+    }
+    self.bannerImages = [dstArray copy];
+    
+    //introduceImageList
+    [dstArray removeAllObjects];
+    srcArray = [jsonDict objectForKey:@"introduceImageList"];
+    for (NSString *imageURL in srcArray) {
+        [dstArray addObject:imageURL];
+    }
+    self.introduceImageList = [dstArray copy];
+    
+    //recommendRecipeList
+    [dstArray removeAllObjects];
+    srcArray = [jsonDict objectForKey:@"recommendRecipeList"];
+    for (NSDictionary *dict in srcArray) {
+        ZHRecommendRecipeItem *obj = [[ZHRecommendRecipeItem alloc] initWithDictionary:dict];
+        [dstArray addObject:obj];
+    }
+    self.recommendRecipeList = [dstArray copy];
+    
+    //otherBuyList
+    [dstArray removeAllObjects];
+    srcArray = [jsonDict objectForKey:@"otherBuyList"];
+    for (NSDictionary *dict in srcArray) {
+        ZHOtherBuyItem *obj = [[ZHOtherBuyItem alloc] initWithDictionary:dict];
+        [dstArray addObject:obj];
+    }
+    self.otherBuyList = [dstArray copy];
+    
+    
+    self.title          = [jsonDict objectForKey:@"title"];
+    self.productId      = [NSString stringWithFormat:@"%d",[[jsonDict objectForKey:@"productId"] integerValue]];
+    self.marketPirce    = [NSString stringWithFormat:@"%.2f",[[jsonDict objectForKey:@"marketPirce"] floatValue]];
+    self.promotionPrice = [NSString stringWithFormat:@"%.2f",[[jsonDict objectForKey:@"promotionPrice"] floatValue]];
+    self.fromPlace      = [NSString stringWithFormat:@"%.2f",[[jsonDict objectForKey:@"fromPlace"] floatValue]];
+    self.skuInfo        = [jsonDict objectForKey:@"skuInfo"];
+    if ([[jsonDict objectForKey:@"salesCount"] isKindOfClass:[NSNumber class]]) {
+        self.salesCount = [NSString stringWithFormat:@"%d",[[jsonDict objectForKey:@"salesCount"] integerValue]];
+    } else {
+        self.salesCount = [jsonDict objectForKey:@"salesCount"];
+    }
 }
 
 @end

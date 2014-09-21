@@ -29,6 +29,7 @@
 @property(nonatomic, strong)ZHDetailSKUInfoCell         *skuInfoTableviewCell;
 @property(nonatomic, strong)ZHDetailRecipeListCell      *recipeTableviewCell;
 @property(nonatomic, strong)UIButton                    *addCartButton;
+@property(nonatomic, strong)NSString                    *productId;
 
 @end
 
@@ -43,13 +44,6 @@
     return self;
 }
 
-- (instancetype)initWithProductId:(NSString*)productId{
-    self = [super initWithNibName:nil bundle:nil];
-    if (self) {
-        
-    }
-    return self;
-}
 
 - (void)viewDidLoad
 {
@@ -57,10 +51,14 @@
     self.backColor = [UIColor colorWithRed:238/255.0 green:238/255.0 blue:238/255.0 alpha:1.0];
     self.view.backgroundColor = self.backColor ;
     self.tableView.backgroundColor = self.backColor;
-    [self loadConent];
     [self configureNaivBar];
     [self.view addSubview:self.tableView];
     [self.view addSubview:self.addCartButton];
+}
+
+- (void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+    [self loadConent];
 }
 
 - (void)didReceiveMemoryWarning
@@ -70,6 +68,13 @@
 }
 
 #pragma mark - Getter & Setter
+- (void)setUserInfo:(id)userInfo{
+    [super setUserInfo:userInfo];
+    if (userInfo && [userInfo isKindOfClass:[NSString class]]) {
+        self.productId = userInfo;
+    }
+}
+
 - (UITableView *)tableView{
     if (_tableView == nil) {
         _tableView = [[UITableView alloc] initWithFrame:CGRectOffset(self.contentBounds, 0, 0)];
@@ -146,7 +151,7 @@
 #pragma mark - Privte Method
 - (void)loadConent{
     __weak typeof(self) weakSelf = self;
-    [self.detailModel loadDataWithCompletion:^(BOOL isSuccess) {
+    [self.detailModel loadDataWithProductId:self.productId completionBlock:^(BOOL isSuccess) {
         [weakSelf.tableView reloadData];
     }];
 }
@@ -294,7 +299,7 @@
         NSArray * buyLists = self.detailModel.otherBuyList;
         
         //left item
-        otherBuyItem *leftItem  = [buyLists objectAtIndex:indexPath.row*2];
+        ZHOtherBuyItem *leftItem  = [buyLists objectAtIndex:indexPath.row*2];
         UIImage *placeHolder = [UIImage imageNamed:@"detailProduct"];
         [cell.leftImageView setImageWithUrlString:leftItem.imageURL placeHodlerImage:placeHolder];
         [cell.leftPriceLabel setText:leftItem.price];
@@ -315,7 +320,7 @@
         if ((indexPath.row * 2 +1) < [buyLists count] ) {
             cell.rightOverLayerView.backgroundColor = [UIColor clearColor];
             cell.rightOverLayerView.userInteractionEnabled = YES;
-            otherBuyItem *rightItem = [buyLists objectAtIndex:indexPath.row*2 + 1];
+            ZHOtherBuyItem *rightItem = [buyLists objectAtIndex:indexPath.row*2 + 1];
             [cell.rightImageView setImageWithUrlString:leftItem.imageURL  placeHodlerImage:placeHolder];
             [cell.rightPriceLabel setText:rightItem.price];
             [cell.rightTitleLabel setText:rightItem.title];

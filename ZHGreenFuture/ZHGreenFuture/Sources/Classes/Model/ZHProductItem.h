@@ -15,5 +15,6 @@
 @property(nonatomic ,strong)NSString *price;
 @property(nonatomic ,strong)NSString *buyCount;
 @property(nonatomic ,strong)NSString *productId;
+- (instancetype)initWithDictionary:(NSDictionary*)dict;
 
 @end

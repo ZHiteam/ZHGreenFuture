@@ -77,7 +77,10 @@
 
 #pragma mark - Privte Method
 - (void)loadConent{
-
+    __weak typeof(self) weakSelf = self;
+    [self.homePageModel loadDataWithCompletion:^(BOOL isSuccess) {
+        [weakSelf.tableView reloadData];
+    }];
 }
 
 - (void)configureNaivBar{

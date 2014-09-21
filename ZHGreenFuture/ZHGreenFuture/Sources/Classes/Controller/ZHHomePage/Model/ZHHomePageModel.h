@@ -16,29 +16,34 @@
 @property(nonatomic, strong)NSString *placeholderImage;
 @property(nonatomic, strong)NSString *title;
 @property(nonatomic, assign)NSInteger tag;
-
+- (instancetype)initWithDictionary:(NSDictionary*)dict;
 @end
 
 @interface ZHCategoryItem : NSObject
+@property(nonatomic ,strong)NSString *categoryId;
 @property(nonatomic ,strong)NSString *iconURL;
 @property(nonatomic ,strong)NSString *title;
 @property(nonatomic ,strong)NSString *innerURL;
+- (instancetype)initWithDictionary:(NSDictionary*)dict;
 @end
 
 @interface ZHCalenderItem : NSObject
 @property(nonatomic ,strong)NSString *date;
 @property(nonatomic ,strong)NSString *title;
 @property(nonatomic ,strong)NSString *subTitle;
+- (instancetype)initWithDictionary:(NSDictionary*)dict;
 @end
 
 @interface ZHCreditsItem : NSObject
 @property(nonatomic ,strong)NSString *imageURL;
 @property(nonatomic ,strong)NSString *clickImageURL;
+- (instancetype)initWithDictionary:(NSDictionary*)dict;
 @end
 
 @interface ZHSurpriseItem : NSObject
 @property(nonatomic ,strong)NSString *imageURL;
 @property(nonatomic ,strong)NSString *clickImageURL;
+- (instancetype)initWithDictionary:(NSDictionary*)dict;
 @end
 
 @interface ZHHomePageModel : NSObject
@@ -48,6 +53,7 @@
 @property(nonatomic, strong)ZHCreditsItem  *creditsItem;
 @property(nonatomic, strong)ZHSurpriseItem *surpriseItem;
 @property(nonatomic, strong)NSArray *productItems;  //
+@property(nonatomic, assign)NSInteger productCounts;
 
 - (void)loadDataWithCompletion:(ZHCompletionBlock)block;
 @end
