@@ -23,6 +23,7 @@
 		845C76B019D06E0900CB3F5E /* profile_cart@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 845C76AE19D06E0900CB3F5E /* profile_cart@2x.png */; };
 		845C76B219D06FCA00CB3F5E /* profile_favorites@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 845C76B119D06FCA00CB3F5E /* profile_favorites@2x.png */; };
 		845C76B519D070F600CB3F5E /* ZHProfileModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 845C76B319D070F600CB3F5E /* ZHProfileModel.m */; };
+		845C76B719D0871600CB3F5E /* home_qrcode@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 845C76B619D0871600CB3F5E /* home_qrcode@2x.png */; };
 		8468C65C19C3EC4D00B80868 /* ZHWebVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 8468C65B19C3EC4D00B80868 /* ZHWebVC.m */; };
 		847E0BAD19C422C90055B5C6 /* ZHPersonInfoVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 847E0BAC19C422C90055B5C6 /* ZHPersonInfoVC.m */; };
 		847E0BB019C42B030055B5C6 /* ZHOrderListVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 847E0BAF19C42B030055B5C6 /* ZHOrderListVC.m */; };
@@ -54,11 +55,9 @@
 		84A6CB1F19BF3E82007F954A /* ZHSettingVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 84A6CB1E19BF3E82007F954A /* ZHSettingVC.m */; };
 		84A6CB6919BF4A6E007F954A /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84A6CB6819BF4A6E007F954A /* AVFoundation.framework */; };
 		84A6CB6B19BF4A88007F954A /* libiconv.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 84A6CB6A19BF4A88007F954A /* libiconv.dylib */; };
-		84A7A5B019B2BE890050CACD /* qr_code@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 84A7A5AF19B2BE890050CACD /* qr_code@2x.png */; };
 		84A7A5B519B2C02F0050CACD /* credits@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 84A7A5B119B2C02F0050CACD /* credits@2x.png */; };
 		84A7A5B619B2C02F0050CACD /* surprise@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 84A7A5B219B2C02F0050CACD /* surprise@2x.png */; };
 		84A7A5B719B2C02F0050CACD /* rice@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 84A7A5B319B2C02F0050CACD /* rice@2x.png */; };
-		84A7A5B819B2C02F0050CACD /* cart@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 84A7A5B419B2C02F0050CACD /* cart@2x.png */; };
 		84A7A5BC19B2C7E90050CACD /* ZHBannerTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 84A7A5BA19B2C7E90050CACD /* ZHBannerTableViewCell.m */; };
 		84A7A5BD19B2C7E90050CACD /* ZHBannerTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84A7A5BB19B2C7E90050CACD /* ZHBannerTableViewCell.xib */; };
 		84A7A5C119B2C8290050CACD /* ZHCategoryTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 84A7A5BF19B2C8290050CACD /* ZHCategoryTableViewCell.m */; };
@@ -330,6 +329,7 @@
 		845C76B119D06FCA00CB3F5E /* profile_favorites@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "profile_favorites@2x.png"; sourceTree = "<group>"; };
 		845C76B319D070F600CB3F5E /* ZHProfileModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZHProfileModel.m; sourceTree = "<group>"; };
 		845C76B419D070F600CB3F5E /* ZHProfileModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZHProfileModel.h; sourceTree = "<group>"; };
+		845C76B619D0871600CB3F5E /* home_qrcode@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "home_qrcode@2x.png"; sourceTree = "<group>"; };
 		8468C65A19C3EC4D00B80868 /* ZHWebVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZHWebVC.h; sourceTree = "<group>"; };
 		8468C65B19C3EC4D00B80868 /* ZHWebVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZHWebVC.m; sourceTree = "<group>"; };
 		847E0BAB19C422C90055B5C6 /* ZHPersonInfoVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZHPersonInfoVC.h; sourceTree = "<group>"; };
@@ -376,11 +376,9 @@
 		84A6CB1E19BF3E82007F954A /* ZHSettingVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZHSettingVC.m; sourceTree = "<group>"; };
 		84A6CB6819BF4A6E007F954A /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		84A6CB6A19BF4A88007F954A /* libiconv.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libiconv.dylib; path = usr/lib/libiconv.dylib; sourceTree = SDKROOT; };
-		84A7A5AF19B2BE890050CACD /* qr_code@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "qr_code@2x.png"; sourceTree = "<group>"; };
 		84A7A5B119B2C02F0050CACD /* credits@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "credits@2x.png"; sourceTree = "<group>"; };
 		84A7A5B219B2C02F0050CACD /* surprise@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "surprise@2x.png"; sourceTree = "<group>"; };
 		84A7A5B319B2C02F0050CACD /* rice@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "rice@2x.png"; sourceTree = "<group>"; };
-		84A7A5B419B2C02F0050CACD /* cart@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "cart@2x.png"; sourceTree = "<group>"; };
 		84A7A5B919B2C7E90050CACD /* ZHBannerTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZHBannerTableViewCell.h; sourceTree = "<group>"; };
 		84A7A5BA19B2C7E90050CACD /* ZHBannerTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZHBannerTableViewCell.m; sourceTree = "<group>"; };
 		84A7A5BB19B2C7E90050CACD /* ZHBannerTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ZHBannerTableViewCell.xib; sourceTree = "<group>"; };
@@ -985,13 +983,12 @@
 		84A7A5AE19B2BE770050CACD /* homePage */ = {
 			isa = PBXGroup;
 			children = (
+				845C76B619D0871600CB3F5E /* home_qrcode@2x.png */,
 				84A7A5D219B313270050CACD /* productPlaceholder@2x.png */,
 				84A7A5CD19B2D7060050CACD /* bannerPlaceholder@2x.png */,
 				84A7A5B119B2C02F0050CACD /* credits@2x.png */,
 				84A7A5B219B2C02F0050CACD /* surprise@2x.png */,
 				84A7A5B319B2C02F0050CACD /* rice@2x.png */,
-				84A7A5B419B2C02F0050CACD /* cart@2x.png */,
-				84A7A5AF19B2BE890050CACD /* qr_code@2x.png */,
 			);
 			path = homePage;
 			sourceTree = "<group>";
@@ -1915,7 +1912,6 @@
 				9C0E0A2F19BF331300ED8D87 /* ShareSDKCoreService.framework.zip in Resources */,
 				9C0E0A5E19BF377E00ED8D87 /* Comment.bundle in Resources */,
 				9C8983DE19B63409009CB910 /* bar_item_selected_04@2x.png in Resources */,
-				84A7A5B019B2BE890050CACD /* qr_code@2x.png in Resources */,
 				84F1FE5519BD7F180002605A /* detailMore@2x.png in Resources */,
 				84B9604919B36E820042A670 /* avatar@2x.png in Resources */,
 				84A7A5CE19B2D7060050CACD /* bannerPlaceholder@2x.png in Resources */,
@@ -1932,6 +1928,7 @@
 				847E0BC219C473A90055B5C6 /* ZHOrderStatusCell.xib in Resources */,
 				9C0E0AE819BFEF2B00ED8D87 /* zbar-samples.png in Resources */,
 				84A7A5D319B313270050CACD /* productPlaceholder@2x.png in Resources */,
+				845C76B719D0871600CB3F5E /* home_qrcode@2x.png in Resources */,
 				84F1FE4219BC47450002605A /* ZHDetailRecipeListCell.xib in Resources */,
 				84260FD619CD79A300216C78 /* auth_phone@2x.png in Resources */,
 				9C89857719BEB280009CB910 /* gradient_layer@2x.png in Resources */,
@@ -1962,7 +1959,6 @@
 				847E0BD519C550CD0055B5C6 /* ZHOrderActionTableViewCell.xib in Resources */,
 				84F1FE3319BC413F0002605A /* ZHDetailLogisticsInfoCell.xib in Resources */,
 				9C0E0B4519CB44F300ED8D87 /* btn_checkbox_unselected@2x.png in Resources */,
-				84A7A5B819B2C02F0050CACD /* cart@2x.png in Resources */,
 				84F1FE4A19BC58F80002605A /* detailBanner@2x.png in Resources */,
 				84A7A5BD19B2C7E90050CACD /* ZHBannerTableViewCell.xib in Resources */,
 				9C0E0A3719BF331300ED8D87 /* RennSDK.bundle in Resources */,

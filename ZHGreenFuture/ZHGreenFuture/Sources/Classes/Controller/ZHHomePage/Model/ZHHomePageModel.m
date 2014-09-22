@@ -87,6 +87,10 @@
 }
 @end
 
+@interface ZHHomePageModel ()
+@property(nonatomic, assign)NSInteger pageNumber;
+@end
+
 
 @implementation ZHHomePageModel
 - (instancetype)init
@@ -94,6 +98,8 @@
     self = [super init];
     if (self) {
         [self initMockData];
+        self.pageNumber = 0;
+        self.isHaveMore = YES;
     }
     return self;
 }
@@ -117,6 +123,44 @@
         }
     }];
 }
+
+- (void)loadMoreWithCompletion:(ZHCompletionBlock)block{
+    if (!self.isHaveMore) {
+        block(NO);
+        return;
+    }
+    
+    self.pageNumber++;
+    __weak __typeof(self) weakSelf = self;
+    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+    manager.responseSerializer.acceptableContentTypes = [NSSet setWithObject:@"text/html"];//这里设置是因为服务端返回的类型是text/html，不在AF默认设置之列
+    manager.requestSerializer.timeoutInterval = kTimeoutInterval;
+    [manager GET:BASE_URL parameters:@{@"scene": @"2",@"gotoPage":[NSString stringWithFormat:@"%d",self.pageNumber]} success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        if ([[responseObject objectForKey:@"lastPage"] boolValue]) {
+            weakSelf.isHaveMore = NO;
+        }
+        if ([responseObject isKindOfClass:[NSDictionary class]]) {
+            NSMutableArray *dstArray = [NSMutableArray arrayWithArray:self.productItems];
+            NSArray *srcArray = [responseObject objectForKey:@"freshList"];
+            if ([srcArray count] >0) {
+                for (NSDictionary *banner in srcArray) {
+                    ZHProductItem * obj = [[ZHProductItem alloc] initWithDictionary:banner];
+                    [dstArray addObject:obj];
+                }
+                self.productItems = [dstArray copy];
+            }
+        }
+        if (block) {
+            block(YES);
+        }
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        if (block) {
+            block(NO);
+        }
+    }];
+    
+}
+
 
 #pragma mark - Privte Method
 - (void)initMockData{

@@ -44,6 +44,20 @@
     [self loadConent];
     [self configureNaivBar];
     [self.view addSubview:self.tableView];
+    __weak __typeof(self) weakSelf = self;
+    [self.tableView addInfiniteScrollingWithActionHandler:^{
+        if (!weakSelf.homePageModel.isHaveMore) {
+            [weakSelf.tableView.infiniteScrollingView stopAnimating];
+            [FEToastView showWithTitle:@"没有更多了。" animation:YES interval:1.0];
+        } else {
+            [weakSelf.homePageModel loadMoreWithCompletion:^(BOOL isSuccess) {
+                if (isSuccess) {
+                    [weakSelf.tableView reloadData];
+                }
+                [weakSelf.tableView.infiniteScrollingView stopAnimating];
+            }];
+        }
+    }];
 }
 
 - (void)didReceiveMemoryWarning
@@ -86,15 +100,17 @@
 
 - (void)configureNaivBar{
     [self.navigationBar setTitle:@"首页"];
-    UIButton *button = [[UIButton alloc] initWithFrame:CGRectMake(0, 20, 60 , 44)];
+    UIButton *button = [[UIButton alloc] initWithFrame:CGRectMake(0, 20, 40 , 44)];
     button.backgroundColor = [UIColor clearColor];
-    [button setImage:[UIImage imageNamed:@"qr_code"] forState:UIControlStateNormal];
+    [button setImage:[UIImage imageNamed:@"home_qrcode"] forState:UIControlStateNormal];
+    [button setImage:[UIImage imageNamed:@"home_qrcode"] forState:UIControlStateHighlighted];
     [button addTarget:self action:@selector(leftItemPressed:) forControlEvents:UIControlEventTouchUpInside];
     self.navigationBar.leftBarItem = button;
     
-    button = [[UIButton alloc] initWithFrame:CGRectMake([UIScreen mainScreen].bounds.size.width - 60, 20, 60 , 44)];
+    button = [[UIButton alloc] initWithFrame:CGRectMake([UIScreen mainScreen].bounds.size.width - 40, 20, 40 , 44)];
     button.backgroundColor = [UIColor clearColor];
-    [button setImage:[UIImage imageNamed:@"cart"] forState:UIControlStateNormal];
+    [button setImage:[UIImage imageNamed:@"profile_cart"] forState:UIControlStateNormal];
+    [button setImage:[UIImage imageNamed:@"profile_cart"] forState:UIControlStateHighlighted];
     [button addTarget:self action:@selector(rightItemPressed:) forControlEvents:UIControlEventTouchUpInside];
     self.navigationBar.rightBarItem = button;
 }
