@@ -8,24 +8,27 @@
 
 #import <Foundation/Foundation.h>
 
-@interface recommendRecipeItem : NSObject <FEImageItemProtocol>
+@interface ZHRecommendRecipeItem : NSObject <FEImageItemProtocol>
 @property(nonatomic, strong)NSString *imageURL;
 @property(nonatomic, strong)NSString *title;
 @property(nonatomic, assign)NSInteger tag;
 @property(nonatomic, strong)NSString *placeholderImage;
+- (instancetype)initWithDictionary:(NSDictionary*)dict;
 
 @end
 
 
-@interface otherBuyItem : NSObject
+@interface ZHOtherBuyItem : NSObject
 @property(nonatomic, strong)NSString *imageURL;
 @property(nonatomic, strong)NSString *title;
 @property(nonatomic, strong)NSString *price;
 @property(nonatomic ,strong)NSString *productId;
+- (instancetype)initWithDictionary:(NSDictionary*)dict;
+
 @end
 
 @interface ZHDetailModel : NSObject
-@property(nonatomic, strong)NSArray  *bannerImages;
+@property(nonatomic, strong)NSArray  *bannerImages; //ZHBannerItem
 @property(nonatomic, strong)NSString *title;
 @property(nonatomic, strong)NSString *marketPirce;
 @property(nonatomic, strong)NSString *promotionPrice;
@@ -35,6 +38,7 @@
 @property(nonatomic, strong)NSArray  *introduceImageList;
 @property(nonatomic, strong)NSArray  *recommendRecipeList;   //recommendRecipeItem
 @property(nonatomic, strong)NSArray  *otherBuyList;          //otherBuyItem
+@property(nonatomic, strong)NSString *productId;
 
-- (void)loadDataWithCompletion:(ZHCompletionBlock)block;
+- (void)loadDataWithProductId:(NSString*)productId completionBlock:(ZHCompletionBlock)block;
 @end

@@ -7,6 +7,18 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		84260FC719CD2AC900216C78 /* ZHAuthorizationVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 84260FC619CD2AC900216C78 /* ZHAuthorizationVC.m */; };
+		84260FCB19CD2F1C00216C78 /* auth_account@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 84260FC919CD2F1C00216C78 /* auth_account@2x.png */; };
+		84260FCC19CD2F1C00216C78 /* auth_password@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 84260FCA19CD2F1C00216C78 /* auth_password@2x.png */; };
+		84260FCF19CD31DB00216C78 /* ZHAuthorizationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 84260FCE19CD31DB00216C78 /* ZHAuthorizationManager.m */; };
+		84260FD119CD603B00216C78 /* btn_back_login@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 84260FD019CD603B00216C78 /* btn_back_login@2x.png */; };
+		84260FD419CD756300216C78 /* ZHAuthorizationRegister1VC.m in Sources */ = {isa = PBXBuildFile; fileRef = 84260FD319CD756300216C78 /* ZHAuthorizationRegister1VC.m */; };
+		84260FD619CD79A300216C78 /* auth_phone@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 84260FD519CD79A300216C78 /* auth_phone@2x.png */; };
+		84260FDD19CD844400216C78 /* ZHAuthorizationRegister2VC.m in Sources */ = {isa = PBXBuildFile; fileRef = 84260FDB19CD844400216C78 /* ZHAuthorizationRegister2VC.m */; };
+		84260FDE19CD844400216C78 /* ZHAuthorizationRegister2VC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84260FDC19CD844400216C78 /* ZHAuthorizationRegister2VC.xib */; };
+		84260FE219CD8CF800216C78 /* ZHAuthorizationRegister3VC.m in Sources */ = {isa = PBXBuildFile; fileRef = 84260FE019CD8CF800216C78 /* ZHAuthorizationRegister3VC.m */; };
+		84260FE319CD8CF800216C78 /* ZHAuthorizationRegister3VC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84260FE119CD8CF800216C78 /* ZHAuthorizationRegister3VC.xib */; };
+		84260FE619CD8F5C00216C78 /* ZHNaviBackButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 84260FE519CD8F5C00216C78 /* ZHNaviBackButton.m */; };
 		8468C65C19C3EC4D00B80868 /* ZHWebVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 8468C65B19C3EC4D00B80868 /* ZHWebVC.m */; };
 		847E0BAD19C422C90055B5C6 /* ZHPersonInfoVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 847E0BAC19C422C90055B5C6 /* ZHPersonInfoVC.m */; };
 		847E0BB019C42B030055B5C6 /* ZHOrderListVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 847E0BAF19C42B030055B5C6 /* ZHOrderListVC.m */; };
@@ -302,6 +314,24 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		84260FC519CD2AC900216C78 /* ZHAuthorizationVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZHAuthorizationVC.h; sourceTree = "<group>"; };
+		84260FC619CD2AC900216C78 /* ZHAuthorizationVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZHAuthorizationVC.m; sourceTree = "<group>"; };
+		84260FC919CD2F1C00216C78 /* auth_account@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "auth_account@2x.png"; sourceTree = "<group>"; };
+		84260FCA19CD2F1C00216C78 /* auth_password@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "auth_password@2x.png"; sourceTree = "<group>"; };
+		84260FCD19CD31DB00216C78 /* ZHAuthorizationManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZHAuthorizationManager.h; sourceTree = "<group>"; };
+		84260FCE19CD31DB00216C78 /* ZHAuthorizationManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZHAuthorizationManager.m; sourceTree = "<group>"; };
+		84260FD019CD603B00216C78 /* btn_back_login@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "btn_back_login@2x.png"; sourceTree = "<group>"; };
+		84260FD219CD756300216C78 /* ZHAuthorizationRegister1VC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZHAuthorizationRegister1VC.h; sourceTree = "<group>"; };
+		84260FD319CD756300216C78 /* ZHAuthorizationRegister1VC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZHAuthorizationRegister1VC.m; sourceTree = "<group>"; };
+		84260FD519CD79A300216C78 /* auth_phone@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "auth_phone@2x.png"; path = "Auth/auth_phone@2x.png"; sourceTree = "<group>"; };
+		84260FDA19CD844400216C78 /* ZHAuthorizationRegister2VC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZHAuthorizationRegister2VC.h; sourceTree = "<group>"; };
+		84260FDB19CD844400216C78 /* ZHAuthorizationRegister2VC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZHAuthorizationRegister2VC.m; sourceTree = "<group>"; };
+		84260FDC19CD844400216C78 /* ZHAuthorizationRegister2VC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ZHAuthorizationRegister2VC.xib; sourceTree = "<group>"; };
+		84260FDF19CD8CF800216C78 /* ZHAuthorizationRegister3VC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZHAuthorizationRegister3VC.h; sourceTree = "<group>"; };
+		84260FE019CD8CF800216C78 /* ZHAuthorizationRegister3VC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZHAuthorizationRegister3VC.m; sourceTree = "<group>"; };
+		84260FE119CD8CF800216C78 /* ZHAuthorizationRegister3VC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ZHAuthorizationRegister3VC.xib; sourceTree = "<group>"; };
+		84260FE419CD8F5C00216C78 /* ZHNaviBackButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZHNaviBackButton.h; sourceTree = "<group>"; };
+		84260FE519CD8F5C00216C78 /* ZHNaviBackButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZHNaviBackButton.m; sourceTree = "<group>"; };
 		8468C65A19C3EC4D00B80868 /* ZHWebVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZHWebVC.h; sourceTree = "<group>"; };
 		8468C65B19C3EC4D00B80868 /* ZHWebVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZHWebVC.m; sourceTree = "<group>"; };
 		847E0BAB19C422C90055B5C6 /* ZHPersonInfoVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZHPersonInfoVC.h; sourceTree = "<group>"; };
@@ -832,6 +862,36 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		84260FC419CD2AA900216C78 /* ZHAuthorization */ = {
+			isa = PBXGroup;
+			children = (
+				84260FE419CD8F5C00216C78 /* ZHNaviBackButton.h */,
+				84260FE519CD8F5C00216C78 /* ZHNaviBackButton.m */,
+				84260FC519CD2AC900216C78 /* ZHAuthorizationVC.h */,
+				84260FC619CD2AC900216C78 /* ZHAuthorizationVC.m */,
+				84260FCD19CD31DB00216C78 /* ZHAuthorizationManager.h */,
+				84260FCE19CD31DB00216C78 /* ZHAuthorizationManager.m */,
+				84260FD219CD756300216C78 /* ZHAuthorizationRegister1VC.h */,
+				84260FD319CD756300216C78 /* ZHAuthorizationRegister1VC.m */,
+				84260FDA19CD844400216C78 /* ZHAuthorizationRegister2VC.h */,
+				84260FDB19CD844400216C78 /* ZHAuthorizationRegister2VC.m */,
+				84260FDC19CD844400216C78 /* ZHAuthorizationRegister2VC.xib */,
+				84260FDF19CD8CF800216C78 /* ZHAuthorizationRegister3VC.h */,
+				84260FE019CD8CF800216C78 /* ZHAuthorizationRegister3VC.m */,
+				84260FE119CD8CF800216C78 /* ZHAuthorizationRegister3VC.xib */,
+			);
+			path = ZHAuthorization;
+			sourceTree = "<group>";
+		};
+		84260FC819CD2F1C00216C78 /* Auth */ = {
+			isa = PBXGroup;
+			children = (
+				84260FC919CD2F1C00216C78 /* auth_account@2x.png */,
+				84260FCA19CD2F1C00216C78 /* auth_password@2x.png */,
+			);
+			path = Auth;
+			sourceTree = "<group>";
+		};
 		8468C65619C3EC2800B80868 /* Common */ = {
 			isa = PBXGroup;
 			children = (
@@ -1457,6 +1517,8 @@
 				9CCDFD7D19CC240A008B6882 /* btn_delete_with_label@2x.png */,
 				9CCDFD7E19CC240A008B6882 /* btn_edit_with_label@2x.png */,
 				9CCDFD7519CC1182008B6882 /* btn_location@2x.png */,
+				84260FD519CD79A300216C78 /* auth_phone@2x.png */,
+				84260FD019CD603B00216C78 /* btn_back_login@2x.png */,
 				9CCDFD6A19CBE542008B6882 /* btn_delete@2x.png */,
 				9C89838A19B56E61009CB910 /* banner_mask@2x.png */,
 				9C3862BF19B2C99300679C48 /* btn_back@2x.png */,
@@ -1467,6 +1529,7 @@
 				9C0E0B4319CB44F300ED8D87 /* btn_checkbox_unselected@2x.png */,
 				9C0E08B719BF290400ED8D87 /* btn_share@2x.png */,
 				9C0E08B019BF1DC400ED8D87 /* btn_discuss@2x.png */,
+				84260FC819CD2F1C00216C78 /* Auth */,
 				9C89857519BEB280009CB910 /* recipe */,
 				84F1FE4819BC58F80002605A /* detail */,
 				9C89836519B451F5009CB910 /* temp */,
@@ -1676,6 +1739,7 @@
 				84EA64CB19B198CC00C446A5 /* ZHRecipe */,
 				84EA64CC19B198CC00C446A5 /* ZHShopping */,
 				84EA64CD19B198CC00C446A5 /* ZHHomePage */,
+				84260FC419CD2AA900216C78 /* ZHAuthorization */,
 				84EA64C619B192D700C446A5 /* ZHRootViewController.h */,
 				84EA64C719B192D700C446A5 /* ZHRootViewController.m */,
 				84EA64C919B196E500C446A5 /* ZHConst.h */,
@@ -1893,12 +1957,14 @@
 				84F1FE5119BD76A10002605A /* ZHDetailProductHeadView.xib in Resources */,
 				9C3862B719B1CB0400679C48 /* bar_item_01@2x.png in Resources */,
 				84A7A5CC19B2C9930050CACD /* ZHProductTableViewCell.xib in Resources */,
+				84260FE319CD8CF800216C78 /* ZHAuthorizationRegister3VC.xib in Resources */,
 				84F1FE4C19BD51130002605A /* detailProduct@2x.png in Resources */,
 				9C0E08B119BF1DC400ED8D87 /* btn_discuss@2x.png in Resources */,
 				847E0BC219C473A90055B5C6 /* ZHOrderStatusCell.xib in Resources */,
 				9C0E0AE819BFEF2B00ED8D87 /* zbar-samples.png in Resources */,
 				84A7A5D319B313270050CACD /* productPlaceholder@2x.png in Resources */,
 				84F1FE4219BC47450002605A /* ZHDetailRecipeListCell.xib in Resources */,
+				84260FD619CD79A300216C78 /* auth_phone@2x.png in Resources */,
 				9C89857719BEB280009CB910 /* gradient_layer@2x.png in Resources */,
 				84F1FE3D19BC45B90002605A /* ZHDetailSKUInfoCell.xib in Resources */,
 				84B9604419B3638A0042A670 /* favorites@2x.png in Resources */,
@@ -1932,11 +1998,14 @@
 				84F1FE4A19BC58F80002605A /* detailBanner@2x.png in Resources */,
 				84A7A5BD19B2C7E90050CACD /* ZHBannerTableViewCell.xib in Resources */,
 				9C0E0A3719BF331300ED8D87 /* RennSDK.bundle in Resources */,
+				84260FCB19CD2F1C00216C78 /* auth_account@2x.png in Resources */,
 				84B9603D19B35B790042A670 /* ZHNormalTableViewCell.xib in Resources */,
 				84F1FE4719BC4A150002605A /* ZHDetailProductCell.xib in Resources */,
 				9C89838919B56D23009CB910 /* temp_banner_01@2x.png in Resources */,
+				84260FCC19CD2F1C00216C78 /* auth_password@2x.png in Resources */,
 				84B9604719B36A120042A670 /* setting@2x.png in Resources */,
 				84F1FE5319BD7DE90002605A /* detailSKU@2x.png in Resources */,
+				84260FD119CD603B00216C78 /* btn_back_login@2x.png in Resources */,
 				9C89837B19B49AF0009CB910 /* btn_back_green@2x.png in Resources */,
 				9C0E0AE519BFEF2B00ED8D87 /* zbar-back.png in Resources */,
 				849F7F5519AB81EE00962BB1 /* InfoPlist.strings in Resources */,
@@ -1948,6 +2017,7 @@
 				9C0E0A3619BF331300ED8D87 /* TencentOpenApi_IOS_Bundle.bundle in Resources */,
 				9C0E0A4319BF331300ED8D87 /* ShareSDKiPadSimpleShareViewUI.bundle in Resources */,
 				9C0E0AE719BFEF2B00ED8D87 /* zbar-helpicons.png in Resources */,
+				84260FDE19CD844400216C78 /* ZHAuthorizationRegister2VC.xib in Resources */,
 				9C8983DD19B63409009CB910 /* bar_item_04@2x.png in Resources */,
 				84A7A5B519B2C02F0050CACD /* credits@2x.png in Resources */,
 				9C0E0A2D19BF331300ED8D87 /* Resource.bundle in Resources */,
@@ -2014,6 +2084,7 @@
 				847E0BCB19C478B10055B5C6 /* ZHOrderModel.m in Sources */,
 				9CCDFD6619CBD85C008B6882 /* CameraHelper.m in Sources */,
 				84B9603C19B35B790042A670 /* ZHNormalTableViewCell.m in Sources */,
+				84260FD419CD756300216C78 /* ZHAuthorizationRegister1VC.m in Sources */,
 				84A7A5CB19B2C9930050CACD /* ZHProductTableViewCell.m in Sources */,
 				9C8983D719B6168F009CB910 /* LunarCalendar.m in Sources */,
 				9C0E0AE219BFEF2B00ED8D87 /* rscode.c in Sources */,
@@ -2042,8 +2113,10 @@
 				84F1FE2D19BC3D5F0002605A /* ZHDetailPriceCell.m in Sources */,
 				847E0BD419C550CD0055B5C6 /* ZHOrderActionTableViewCell.m in Sources */,
 				9C0E0B4119CB40B600ED8D87 /* ShoppingChartModel.m in Sources */,
+				84260FE619CD8F5C00216C78 /* ZHNaviBackButton.m in Sources */,
 				847E0BBC19C46B7D0055B5C6 /* ZHOrderProductCell.m in Sources */,
 				9C3862B219B1BDC600679C48 /* MessageCenter.m in Sources */,
+				84260FDD19CD844400216C78 /* ZHAuthorizationRegister2VC.m in Sources */,
 				8468C65C19C3EC4D00B80868 /* ZHWebVC.m in Sources */,
 				847E0BC619C475200055B5C6 /* ZHOrderSummaryCell.m in Sources */,
 				9C0E0B3D19CB3EF800ED8D87 /* ZHShoppingChartCell.m in Sources */,
@@ -2073,6 +2146,7 @@
 				9CCDFD5F19CBC88C008B6882 /* TPKeyboardAvoidingTableView.m in Sources */,
 				9C0E0B5419CB587900ED8D87 /* ZHEditCountView.m in Sources */,
 				849F7F5B19AB81EE00962BB1 /* AppDelegate.m in Sources */,
+				84260FC719CD2AC900216C78 /* ZHAuthorizationVC.m in Sources */,
 				9CCDFD5D19CBC88C008B6882 /* TPKeyboardAvoidingCollectionView.m in Sources */,
 				847E0BAD19C422C90055B5C6 /* ZHPersonInfoVC.m in Sources */,
 				9CCDFD7C19CC167F008B6882 /* ZHAddressCell.m in Sources */,
@@ -2134,8 +2208,10 @@
 				9C0E0B0719C8690700ED8D87 /* MadeStepItemView.m in Sources */,
 				84EA64D019B198FE00C446A5 /* ZHHomePageVC.m in Sources */,
 				84B9603319B35A9A0042A670 /* ZHProfileModel.m in Sources */,
+				84260FE219CD8CF800216C78 /* ZHAuthorizationRegister3VC.m in Sources */,
 				9C0E0B4819CB450700ED8D87 /* ZHCheckbox.m in Sources */,
 				9C9778B119B1900F00D49E69 /* ModelManager.m in Sources */,
+				84260FCF19CD31DB00216C78 /* ZHAuthorizationManager.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

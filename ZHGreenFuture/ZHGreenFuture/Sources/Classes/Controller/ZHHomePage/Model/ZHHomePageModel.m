@@ -11,25 +11,80 @@
 
 
 @implementation ZHBannerItem
+- (instancetype)initWithDictionary:(NSDictionary*)dict
+{
+    self = [super init];
+    if (self) {
+        if ([dict isKindOfClass:[NSDictionary class]]) {
+            self.imageURL = [dict objectForKey:@"imageURL"];
+            self.clickImageURL = [dict objectForKey:@"clickImageURL"];
+        }
+    }
+    return self;
+}
+
 - (NSString*)title{
     return nil;
 }
 @end
 
 @implementation ZHCategoryItem
-
+- (instancetype)initWithDictionary:(NSDictionary*)dict
+{
+    self = [super init];
+    if (self) {
+        if ([dict isKindOfClass:[NSDictionary class]]) {
+            self.categoryId = [dict objectForKey:@"categoryId"];
+            self.iconURL    = [dict objectForKey:@"iconURL"];
+            self.title      = [dict objectForKey:@"title"];
+            self.innerURL   = [dict objectForKey:@"innerURL"];
+        }
+    }
+    return self;
+}
 @end
 
 @implementation ZHCalenderItem
-
+- (instancetype)initWithDictionary:(NSDictionary*)dict
+{
+    self = [super init];
+    if (self) {
+        if ([dict isKindOfClass:[NSDictionary class]]) {
+            self.title    = [dict objectForKey:@"title"];
+            self.subTitle = [dict objectForKey:@"subTitle"];
+            self.date     = [dict objectForKey:@"time"];
+        }
+    }
+    return self;
+}
 @end
 
 @implementation ZHCreditsItem
-
+- (instancetype)initWithDictionary:(NSDictionary*)dict
+{
+    self = [super init];
+    if (self) {
+        if ([dict isKindOfClass:[NSDictionary class]]) {
+            self.imageURL      = [dict objectForKey:@"imageURL"];
+            self.clickImageURL = [dict objectForKey:@"clickImageURL"];
+        }
+    }
+    return self;
+}
 @end
 
 @implementation ZHSurpriseItem
-
+- (instancetype)initWithDictionary:(NSDictionary*)dict
+{
+    self = [super init];
+    if (self) {
+        if ([dict isKindOfClass:[NSDictionary class]]) {
+            self.imageURL      = [dict objectForKey:@"imageURL"];
+            self.clickImageURL = [dict objectForKey:@"clickImageURL"];
+        }
+    }
+    return self;
+}
 @end
 
 
@@ -41,6 +96,26 @@
         [self initMockData];
     }
     return self;
+}
+
+#pragma mark - Public Method
+- (void)loadDataWithCompletion:(ZHCompletionBlock)block{
+    __weak __typeof(self) weakSelf = self;
+    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+    manager.responseSerializer.acceptableContentTypes = [NSSet setWithObject:@"text/html"];//这里设置是因为服务端返回的类型是text/html，不在AF默认设置之列
+    manager.requestSerializer.timeoutInterval = kTimeoutInterval;
+    [manager GET:BASE_URL parameters:@{@"scene": @"1"} success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        if ([responseObject isKindOfClass:[NSDictionary class]]) {
+            [weakSelf parserJsonDict:responseObject];
+        }
+        if (block) {
+            block(YES);
+        }
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        if (block) {
+            block(NO);
+        }
+    }];
 }
 
 #pragma mark - Privte Method
@@ -75,13 +150,47 @@
     self.productItems = @[productItem, productItem, productItem, productItem,productItem,productItem,productItem,productItem,productItem,productItem];
 }
 
-- (void)loadDataWithCompletion:(ZHCompletionBlock)block{
-    return;
-    [HttpClient requestDataWithURL:@"xxx" paramers:nil success:^(id responseObject) {
-         
-     } failure:^(NSError *error) {
-         
-     }];
+- (void)parserJsonDict:(NSDictionary*)jsonDict{
+
+    NSArray *srcArray = nil;
+    NSMutableArray *dstArray = [NSMutableArray arrayWithCapacity:10];
+    //banner
+    srcArray = [jsonDict objectForKey:@"banners"];
+    for (NSDictionary *banner in srcArray) {
+        ZHBannerItem * obj = [[ZHBannerItem alloc] initWithDictionary:banner];
+        [dstArray addObject:obj];
+    }
+    self.bannerItems = [dstArray copy];
+    
+    //category
+    [dstArray removeAllObjects];
+    srcArray = [jsonDict objectForKey:@"category"];
+    for (NSDictionary *banner in srcArray) {
+        ZHCategoryItem * obj = [[ZHCategoryItem alloc] initWithDictionary:banner];
+        [dstArray addObject:obj];
+    }
+    self.categoryItems = [dstArray copy];
+    
+    //calender
+    self.calenderItem = [[ZHCalenderItem alloc] initWithDictionary:[jsonDict objectForKey:@"calender"]];
+    
+    //creditsImage
+    self.creditsItem = [[ZHCreditsItem alloc] initWithDictionary:[jsonDict objectForKey:@"creditsImage"]];
+    
+    //surpriseImage
+    self.surpriseItem = [[ZHSurpriseItem alloc] initWithDictionary:[jsonDict objectForKey:@"surpriseImage"]];
+
+    //freshTotal
+    self.productCounts = [[jsonDict objectForKey:@"freshTotal"] integerValue];
+    
+    //freshList
+    [dstArray removeAllObjects];
+    srcArray = [jsonDict objectForKey:@"freshList"];
+    for (NSDictionary *banner in srcArray) {
+        ZHProductItem * obj = [[ZHProductItem alloc] initWithDictionary:banner];
+        [dstArray addObject:obj];
+    }
+    self.productItems = [dstArray copy];
 }
 
 @end
