@@ -36,6 +36,9 @@
         cell.waitReceiveLabel.backgroundColor  = [UIColor clearColor];
         cell.waitCommentLabel.backgroundColor  = [UIColor clearColor];
         cell.orderServiceLabel.backgroundColor = [UIColor clearColor];
+        UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, cell.bounds.size.height-0.5, [UIScreen mainScreen].bounds.size.width, 0.5)];
+        view.backgroundColor = RGB(204, 204, 204);
+        [cell.contentView addSubview:view];
         return cell;
     }
     return nil;

@@ -258,7 +258,6 @@
 #pragma mark -  UITableViewDelegate
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
-    //TBHomePageOneSectionData* sectionItem;
     if (indexPath.section ==0) {
         switch (indexPath.row) {
             case 0:

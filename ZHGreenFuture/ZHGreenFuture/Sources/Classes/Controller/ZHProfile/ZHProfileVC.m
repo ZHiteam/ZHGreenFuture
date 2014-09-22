@@ -52,12 +52,7 @@
         NavigationViewController*   navi = [MemoryStorage valueForKey:k_NAVIGATIONCTL];
         [navi pushViewController:personInfoVC animation:ANIMATE_TYPE_DEFAULT];
     }];
-    __weak typeof(self) weakSelf = self;
-    [self.profileModel loadDataWithCompletion:^(BOOL isSuccess) {
-        if (isSuccess) {
-            [weakSelf.tableView reloadData];
-        }
-    }];
+    [self loadConent];
 }
 
 - (void)didReceiveMemoryWarning
@@ -74,7 +69,7 @@
         _tableView.delegate = self;
         _tableView.dataSource = self;
         _tableView.backgroundColor = RGB(234, 234, 234);
-        //_tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+        _tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
         _tableView.autoresizesSubviews = UIViewAutoresizingFlexibleWidth|UIViewAutoresizingFlexibleHeight;
     }
     return _tableView;
@@ -131,17 +126,26 @@
 #pragma mark - Privte Method
 - (void)configureNaivBar{
     [self.navigationBar setTitle:@"个人中心"];
-    UIButton *button = [[UIButton alloc] initWithFrame:CGRectMake(0, 20, 60 , 44)];
+    UIButton *button = [[UIButton alloc] initWithFrame:CGRectMake(0, 20, 40 , 44)];
     button.backgroundColor = [UIColor clearColor];
-    [button setImage:[UIImage imageNamed:@"setting"] forState:UIControlStateNormal];
+    [button setImage:[UIImage imageNamed:@"profile_setting"] forState:UIControlStateNormal];
     [button addTarget:self action:@selector(leftItemPressed:) forControlEvents:UIControlEventTouchUpInside];
     self.navigationBar.leftBarItem = button;
     
-    button = [[UIButton alloc] initWithFrame:CGRectMake([UIScreen mainScreen].bounds.size.width - 60, 20, 60 , 44)];
+    button = [[UIButton alloc] initWithFrame:CGRectMake([UIScreen mainScreen].bounds.size.width - 40, 20, 40 , 44)];
     button.backgroundColor = [UIColor clearColor];
-    [button setImage:[UIImage imageNamed:@"cart"] forState:UIControlStateNormal];
+    [button setImage:[UIImage imageNamed:@"profile_cart"] forState:UIControlStateNormal];
     [button addTarget:self action:@selector(rightItemPressed:) forControlEvents:UIControlEventTouchUpInside];
     self.navigationBar.rightBarItem = button;
+}
+
+- (void)loadConent{
+    __weak typeof(self) weakSelf = self;
+    [self.profileModel loadDataWithCompletion:^(BOOL isSuccess) {
+        if (isSuccess) {
+            [weakSelf.tableView reloadData];
+        }
+    }];
 }
 
 #pragma mark - Event Handler
@@ -175,6 +179,9 @@
                 UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
                 if (cell == nil){
                     cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
+                    UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, cell.bounds.size.height-0.5, [UIScreen mainScreen].bounds.size.width, 0.5)];
+                    view.backgroundColor = RGB(204, 204, 204);
+                    [cell.contentView addSubview:view];
                 }
                 cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
                 cell.textLabel.text = @"全部订单";
@@ -200,10 +207,12 @@
         UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
         if (cell == nil){
             cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
+            UIView *view = [[UIView alloc] initWithFrame:CGRectMake(12, cell.bounds.size.height-0.5, [UIScreen mainScreen].bounds.size.width -24, 0.5)];
+            view.backgroundColor = RGB(204, 204, 204);
+            [cell.contentView addSubview:view];
         }
         cell.textLabel.text = @"我的作品";
-        cell.imageView.image = [UIImage imageNamed:@"favorites.png"];
-        
+        cell.imageView.image = [UIImage imageNamed:@"profile_favorites"];
         return cell;
     }
     return nil;
@@ -234,6 +243,7 @@
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    //NSLog(@">>>>>didSelectRowAtIndexPath %@",indexPath);
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     if (indexPath.section ==0 && (indexPath.row >=0 && indexPath.row <= 1)) {
         ZHOrderListVC *orderListVC = [[ZHOrderListVC alloc] init];
@@ -244,7 +254,6 @@
         NavigationViewController*   navi = [MemoryStorage valueForKey:k_NAVIGATIONCTL];
         [navi pushViewController:productsVC animation:ANIMATE_TYPE_DEFAULT];
     }
-        NSLog(@">>>>>didSelectRowAtIndexPath %@",indexPath);
 }
 
 
