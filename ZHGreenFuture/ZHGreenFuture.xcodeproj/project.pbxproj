@@ -280,6 +280,14 @@
 		9CCDFD6619CBD85C008B6882 /* CameraHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CCDFD6519CBD85C008B6882 /* CameraHelper.m */; };
 		9CCDFD6919CBDD80008B6882 /* ZHImagePreviewVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CCDFD6819CBDD80008B6882 /* ZHImagePreviewVC.m */; };
 		9CCDFD6B19CBE542008B6882 /* btn_delete@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9CCDFD6A19CBE542008B6882 /* btn_delete@2x.png */; };
+		9CCDFD6E19CBFE67008B6882 /* ZHConfirmOrderVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CCDFD6D19CBFE67008B6882 /* ZHConfirmOrderVC.m */; };
+		9CCDFD7119CC0EA3008B6882 /* ZHInsetTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CCDFD7019CC0EA3008B6882 /* ZHInsetTextField.m */; };
+		9CCDFD7419CC0FF2008B6882 /* AddressModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CCDFD7319CC0FF2008B6882 /* AddressModel.m */; };
+		9CCDFD7619CC1182008B6882 /* btn_location@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9CCDFD7519CC1182008B6882 /* btn_location@2x.png */; };
+		9CCDFD7919CC13DD008B6882 /* ZHAddressManagerVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CCDFD7819CC13DD008B6882 /* ZHAddressManagerVC.m */; };
+		9CCDFD7C19CC167F008B6882 /* ZHAddressCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CCDFD7B19CC167F008B6882 /* ZHAddressCell.m */; };
+		9CCDFD7F19CC240A008B6882 /* btn_delete_with_label@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9CCDFD7D19CC240A008B6882 /* btn_delete_with_label@2x.png */; };
+		9CCDFD8019CC240A008B6882 /* btn_edit_with_label@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9CCDFD7E19CC240A008B6882 /* btn_edit_with_label@2x.png */; };
 		A4C9D54E32334D93A158D3F2 /* libPods-ZHGreenFuture.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C548FF18989B4FF8A8B17AD4 /* libPods-ZHGreenFuture.a */; };
 /* End PBXBuildFile section */
 
@@ -717,6 +725,19 @@
 		9CCDFD6719CBDD80008B6882 /* ZHImagePreviewVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZHImagePreviewVC.h; sourceTree = "<group>"; };
 		9CCDFD6819CBDD80008B6882 /* ZHImagePreviewVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZHImagePreviewVC.m; sourceTree = "<group>"; };
 		9CCDFD6A19CBE542008B6882 /* btn_delete@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "btn_delete@2x.png"; sourceTree = "<group>"; };
+		9CCDFD6C19CBFE67008B6882 /* ZHConfirmOrderVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZHConfirmOrderVC.h; sourceTree = "<group>"; };
+		9CCDFD6D19CBFE67008B6882 /* ZHConfirmOrderVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZHConfirmOrderVC.m; sourceTree = "<group>"; };
+		9CCDFD6F19CC0EA3008B6882 /* ZHInsetTextField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZHInsetTextField.h; sourceTree = "<group>"; };
+		9CCDFD7019CC0EA3008B6882 /* ZHInsetTextField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZHInsetTextField.m; sourceTree = "<group>"; };
+		9CCDFD7219CC0FF2008B6882 /* AddressModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddressModel.h; sourceTree = "<group>"; };
+		9CCDFD7319CC0FF2008B6882 /* AddressModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddressModel.m; sourceTree = "<group>"; };
+		9CCDFD7519CC1182008B6882 /* btn_location@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "btn_location@2x.png"; sourceTree = "<group>"; };
+		9CCDFD7719CC13DD008B6882 /* ZHAddressManagerVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZHAddressManagerVC.h; sourceTree = "<group>"; };
+		9CCDFD7819CC13DD008B6882 /* ZHAddressManagerVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZHAddressManagerVC.m; sourceTree = "<group>"; };
+		9CCDFD7A19CC167F008B6882 /* ZHAddressCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZHAddressCell.h; sourceTree = "<group>"; };
+		9CCDFD7B19CC167F008B6882 /* ZHAddressCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZHAddressCell.m; sourceTree = "<group>"; };
+		9CCDFD7D19CC240A008B6882 /* btn_delete_with_label@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "btn_delete_with_label@2x.png"; sourceTree = "<group>"; };
+		9CCDFD7E19CC240A008B6882 /* btn_edit_with_label@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "btn_edit_with_label@2x.png"; sourceTree = "<group>"; };
 		C548FF18989B4FF8A8B17AD4 /* libPods-ZHGreenFuture.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-ZHGreenFuture.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C71C3F53A51D425DB6BCAC4D /* Pods-ZHGreenFuture.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ZHGreenFuture.xcconfig"; path = "Pods/Pods-ZHGreenFuture.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -1010,6 +1031,10 @@
 				9C89837D19B49BFD009CB910 /* ZHSubCatagoryVC.m */,
 				9C0E0B3719CB3C6B00ED8D87 /* ZHShoppingChartVC.h */,
 				9C0E0B3819CB3C6B00ED8D87 /* ZHShoppingChartVC.m */,
+				9CCDFD6C19CBFE67008B6882 /* ZHConfirmOrderVC.h */,
+				9CCDFD6D19CBFE67008B6882 /* ZHConfirmOrderVC.m */,
+				9CCDFD7719CC13DD008B6882 /* ZHAddressManagerVC.h */,
+				9CCDFD7819CC13DD008B6882 /* ZHAddressManagerVC.m */,
 			);
 			path = ZHShopping;
 			sourceTree = "<group>";
@@ -1407,6 +1432,8 @@
 			children = (
 				9C0E0B3F19CB40B600ED8D87 /* ShoppingChartModel.h */,
 				9C0E0B4019CB40B600ED8D87 /* ShoppingChartModel.m */,
+				9CCDFD7219CC0FF2008B6882 /* AddressModel.h */,
+				9CCDFD7319CC0FF2008B6882 /* AddressModel.m */,
 			);
 			name = Shopping;
 			sourceTree = "<group>";
@@ -1427,6 +1454,9 @@
 		9C3862B319B1CB0400679C48 /* images */ = {
 			isa = PBXGroup;
 			children = (
+				9CCDFD7D19CC240A008B6882 /* btn_delete_with_label@2x.png */,
+				9CCDFD7E19CC240A008B6882 /* btn_edit_with_label@2x.png */,
+				9CCDFD7519CC1182008B6882 /* btn_location@2x.png */,
 				9CCDFD6A19CBE542008B6882 /* btn_delete@2x.png */,
 				9C89838A19B56E61009CB910 /* banner_mask@2x.png */,
 				9C3862BF19B2C99300679C48 /* btn_back@2x.png */,
@@ -1471,6 +1501,8 @@
 				9C3862CE19B2D00400679C48 /* ZHCatagoryCell.m */,
 				9C0E0B3B19CB3EF800ED8D87 /* ZHShoppingChartCell.h */,
 				9C0E0B3C19CB3EF800ED8D87 /* ZHShoppingChartCell.m */,
+				9CCDFD7A19CC167F008B6882 /* ZHAddressCell.h */,
+				9CCDFD7B19CC167F008B6882 /* ZHAddressCell.m */,
 			);
 			path = ZHShopping;
 			sourceTree = "<group>";
@@ -1711,6 +1743,8 @@
 				9C0E0B5319CB587900ED8D87 /* ZHEditCountView.m */,
 				9CCDFD6119CBCC30008B6882 /* ZHPlaceHolderTextView.h */,
 				9CCDFD6219CBCC30008B6882 /* ZHPlaceHolderTextView.m */,
+				9CCDFD6F19CC0EA3008B6882 /* ZHInsetTextField.h */,
+				9CCDFD7019CC0EA3008B6882 /* ZHInsetTextField.m */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -1850,6 +1884,7 @@
 				9C8983DE19B63409009CB910 /* bar_item_selected_04@2x.png in Resources */,
 				84A7A5B019B2BE890050CACD /* qr_code@2x.png in Resources */,
 				84F1FE5519BD7F180002605A /* detailMore@2x.png in Resources */,
+				9CCDFD7F19CC240A008B6882 /* btn_delete_with_label@2x.png in Resources */,
 				84B9604919B36E820042A670 /* avatar@2x.png in Resources */,
 				84A7A5CE19B2D7060050CACD /* bannerPlaceholder@2x.png in Resources */,
 				9C0E0B4419CB44F300ED8D87 /* btn_checkbox_selected@2x.png in Resources */,
@@ -1881,6 +1916,7 @@
 				9C3862BE19B2C7F800679C48 /* btn_search@2x.png in Resources */,
 				9CCDFD6B19CBE542008B6882 /* btn_delete@2x.png in Resources */,
 				9C0E0A4619BF331300ED8D87 /* ShareSDKiPhoneDefaultShareViewUI.bundle in Resources */,
+				9CCDFD8019CC240A008B6882 /* btn_edit_with_label@2x.png in Resources */,
 				84A7A5B619B2C02F0050CACD /* surprise@2x.png in Resources */,
 				9C0E0A3A19BF331300ED8D87 /* WeiboSDK.bundle in Resources */,
 				9C0E0AE619BFEF2B00ED8D87 /* zbar-help.html in Resources */,
@@ -1907,6 +1943,7 @@
 				9C89839419B5FEC8009CB910 /* btn_camera@2x.png in Resources */,
 				847E0BC719C475200055B5C6 /* ZHOrderSummaryCell.xib in Resources */,
 				9C0E0A4119BF331300ED8D87 /* ShareSDKiPadDefaultShareViewUI.bundle in Resources */,
+				9CCDFD7619CC1182008B6882 /* btn_location@2x.png in Resources */,
 				9C0E08B819BF290400ED8D87 /* btn_share@2x.png in Resources */,
 				9C0E0A3619BF331300ED8D87 /* TencentOpenApi_IOS_Bundle.bundle in Resources */,
 				9C0E0A4319BF331300ED8D87 /* ShareSDKiPadSimpleShareViewUI.bundle in Resources */,
@@ -2011,6 +2048,7 @@
 				847E0BC619C475200055B5C6 /* ZHOrderSummaryCell.m in Sources */,
 				9C0E0B3D19CB3EF800ED8D87 /* ZHShoppingChartCell.m in Sources */,
 				84A6CB1F19BF3E82007F954A /* ZHSettingVC.m in Sources */,
+				9CCDFD7419CC0FF2008B6882 /* AddressModel.m in Sources */,
 				9C9778A619B1900F00D49E69 /* UILabel+ZHiteam.m in Sources */,
 				9C0E0B1319C926EE00ED8D87 /* RecipeCommentCell.m in Sources */,
 				9C0E08AE19BF066D00ED8D87 /* RecipeCell.m in Sources */,
@@ -2037,6 +2075,7 @@
 				849F7F5B19AB81EE00962BB1 /* AppDelegate.m in Sources */,
 				9CCDFD5D19CBC88C008B6882 /* TPKeyboardAvoidingCollectionView.m in Sources */,
 				847E0BAD19C422C90055B5C6 /* ZHPersonInfoVC.m in Sources */,
+				9CCDFD7C19CC167F008B6882 /* ZHAddressCell.m in Sources */,
 				9C8983D319B6158C009CB910 /* NSDate+Calendar.m in Sources */,
 				84F1FE3219BC413F0002605A /* ZHDetailLogisticsInfoCell.m in Sources */,
 				9C9778A019B1900F00D49E69 /* NSData+AESEncryption.m in Sources */,
@@ -2071,6 +2110,7 @@
 				84B9604019B360740042A670 /* ZHOrderBadgeView.m in Sources */,
 				9CCDFD6319CBCC30008B6882 /* ZHPlaceHolderTextView.m in Sources */,
 				9C0E0B1919C9319900ED8D87 /* CommentModel.m in Sources */,
+				9CCDFD7119CC0EA3008B6882 /* ZHInsetTextField.m in Sources */,
 				9CCDFD6019CBC88C008B6882 /* UIScrollView+TPKeyboardAvoidingAdditions.m in Sources */,
 				9C0E0AED19C173B100ED8D87 /* RecipeImageCell.m in Sources */,
 				84EA64D619B1992600C446A5 /* ZHRecipeVC.m in Sources */,
@@ -2083,12 +2123,14 @@
 				9C9778AF19B1900F00D49E69 /* BaseModel.m in Sources */,
 				9C0E0B3619C9E45C00ED8D87 /* RecpieExampleModel.m in Sources */,
 				849F7F5719AB81EE00962BB1 /* main.m in Sources */,
+				9CCDFD7919CC13DD008B6882 /* ZHAddressManagerVC.m in Sources */,
 				847E0BD019C54C8C0055B5C6 /* ZHButton.m in Sources */,
 				9C3862C719B2CECE00679C48 /* CatagoryModel.m in Sources */,
 				847E0BC119C473A90055B5C6 /* ZHOrderStatusCell.m in Sources */,
 				9C89836A19B46202009CB910 /* ZHView.m in Sources */,
 				9C0E0B3019C9E0F200ED8D87 /* RecipeExampleCell.m in Sources */,
 				9C0E0B0D19C91B1000ED8D87 /* RecipeTipsCell.m in Sources */,
+				9CCDFD6E19CBFE67008B6882 /* ZHConfirmOrderVC.m in Sources */,
 				9C0E0B0719C8690700ED8D87 /* MadeStepItemView.m in Sources */,
 				84EA64D019B198FE00C446A5 /* ZHHomePageVC.m in Sources */,
 				84B9603319B35A9A0042A670 /* ZHProfileModel.m in Sources */,

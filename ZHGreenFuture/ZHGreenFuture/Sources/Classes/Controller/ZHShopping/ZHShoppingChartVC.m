@@ -119,6 +119,8 @@
         _checkOut = [[UIButton alloc]initWithFrame:CGRectMake(self.view.width-90, 0, 90, TAB_BAR_HEIGHT)];
         [_checkOut setTitleColor:WHITE_TEXT forState:UIControlStateNormal];
         _checkOut.titleLabel.font = FONT(16);
+        
+        [_checkOut addTarget:self action:@selector(checkOutAction) forControlEvents:UIControlEventTouchUpInside];
     }
     
     return _checkOut;
@@ -222,6 +224,38 @@
 -(void)editAction{
     self.chartEditing = !self.chartEditing;
     
+}
+
+#pragma -mark checkout action
+-(void)checkOutAction{
+    
+    /// 删除
+    if (self.chartEditing){
+        
+    }
+    /// 结算
+    else{
+        if (self.shoppingChartLists.count > 0){
+            
+            NSMutableArray* selectedList = [[NSMutableArray alloc]initWithCapacity:self.shoppingChartLists.count];
+            for (ShoppingChartModel* model in self.shoppingChartLists){
+                if (model.checked){
+                    [selectedList addObject:model];
+                }
+            }
+            
+            if (selectedList.count > 0){
+                NSDictionary* userInfo = @{@"controller":@"ZHConfirmOrderVC",
+                                           @"userinfo":selectedList
+                                           };
+                
+                [[MessageCenter instance] performActionWithUserInfo:userInfo];
+            }
+            else{
+                ALERT_MESSAGE(@"请选择宝贝后，再提交订单");
+            }
+        }
+    }
 }
 
 #pragma -mark UITableViewDataSource,UITableViewDelegate

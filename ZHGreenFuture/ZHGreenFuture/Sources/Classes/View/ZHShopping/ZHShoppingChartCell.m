@@ -31,6 +31,7 @@
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if (self) {
         [self loadContent];
+        self.showCheckBox = YES;
     }
     return self;
 }
@@ -97,7 +98,6 @@
         _nameLabel.textColor = BLACK_TEXT;
         _nameLabel.font = FONT(14);
         
-//        _nameLabel.text = @"【三千禾】东北农家黑 荞麦米 粗粮 五谷杂 荞麦米 粗粮 五谷杂";
         _nameLabel.numberOfLines = 0;
     }
     
@@ -109,8 +109,6 @@
     if (!_standardLabel){
         _standardLabel = [UILabel labelWithText:@"" font:FONT(14) color:[UIColor lightGrayColor] textAlignment:NSTextAlignmentLeft];
         _standardLabel.frame = CGRectMake(self.nameLabel.left, self.nameLabel.bottom, self.nameLabel.width, 18);
-        
-//        _standardLabel.text = @"重量：500g；礼盒装";
     }
     
     return _standardLabel;
@@ -169,10 +167,34 @@
 }
 
 #pragma -mark
+#pragma -mark show checkBox
+-(void)setShowCheckBox:(BOOL)showCheckBox{
+    _showCheckBox = showCheckBox;
+    
+    if (!showCheckBox){
+        self.checkBox.hidden = YES;
+        
+        
+        self.productImage.left = self.checkBox.left;
+        
+        self.nameLabel.frame = CGRectMake(self.productImage.right+10,
+                                          self.productImage.top,
+                                          self.priceLabel.left-self.productImage.right-10,
+                                          self.nameLabel.height);
+        
+        self.standardLabel.frame = CGRectMake(self.nameLabel.left,
+                                              self.standardLabel.top,
+                                              self.nameLabel.width,
+                                              self.standardLabel.height);
+    }
+    
+}
+
+#pragma -mark
 #pragma -mark editing model
 -(void)setChartEditing:(BOOL)chartEditing{
     
-    if (_chartEditing == chartEditing){
+    if (_chartEditing == chartEditing || !self.showCheckBox){
         return;
     }
     

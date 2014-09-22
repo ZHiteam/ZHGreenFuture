@@ -13,8 +13,8 @@
 
 @property (nonatomic,strong) ShoppingChartModel* model;
 @property (nonatomic,assign) BOOL chartEditing;
-
 @property (nonatomic,assign) BOOL checked;
 
+@property (nonatomic,assign) BOOL showCheckBox;
 +(CGFloat)cellHeight;
 @end
