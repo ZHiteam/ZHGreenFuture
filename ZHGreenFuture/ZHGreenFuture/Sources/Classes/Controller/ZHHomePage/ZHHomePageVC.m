@@ -44,7 +44,6 @@
     [self loadConent];
     [self configureNaivBar];
     [self.view addSubview:self.tableView];
-    //[self.view insertSubview:self.tableView belowSubview:self.navigationBar];
 }
 
 - (void)didReceiveMemoryWarning
@@ -79,7 +78,9 @@
 - (void)loadConent{
     __weak typeof(self) weakSelf = self;
     [self.homePageModel loadDataWithCompletion:^(BOOL isSuccess) {
-        [weakSelf.tableView reloadData];
+        if (isSuccess) {
+            [weakSelf.tableView reloadData];
+        }
     }];
 }
 
@@ -172,7 +173,7 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    return section == 0 ? 3 : [self.homePageModel.productItems count];
+    return section == 0 ? 2 : [self.homePageModel.productItems count];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
@@ -277,6 +278,14 @@
         return [ZHProductTableViewCell height];
     }
     return 0.0;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section{
+    return section == 0 ? 12.0 : 0.0;
+}
+
+- (UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section{
+    return nil;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
