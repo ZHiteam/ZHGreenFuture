@@ -7,8 +7,9 @@
 //
 
 #import "ZHViewController.h"
+#import "RecipeItemModel.h"
 
 @interface ZHRecipeDetailVC : ZHViewController
 
-@property (nonatomic,strong) NSString* recipeId;
+@property (nonatomic,strong) RecipeItemModel* model;
 @end

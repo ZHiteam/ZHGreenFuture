@@ -15,6 +15,7 @@
 @property (nonatomic,strong) NSString*      subTitle;
 @property (nonatomic,strong) NSString*      done;
 @property (nonatomic,strong) NSString*      comment;
+@property (nonatomic,strong) NSString*      like;
 @property (nonatomic,strong) NSString*      recipeId;
 
 @end

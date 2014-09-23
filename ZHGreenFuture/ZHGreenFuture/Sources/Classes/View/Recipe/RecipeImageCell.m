@@ -54,7 +54,8 @@
     
     if (!_imagePanel){
         _imagePanel = [[UIImageView alloc]initWithFrame:CGRectMake(0, 0, self.width, IMAGE_HEIGHT)];
-        
+        _imagePanel.contentMode = UIViewContentModeScaleAspectFill;
+        _imagePanel.clipsToBounds = YES;
         [_imagePanel addSubview:self.author];
         
         [_imagePanel addSubview:self.madeCount];
@@ -120,10 +121,15 @@
 
 #pragma -mark getter end
 -(void)setModel:(RecipeItemDetailModel *)model{
-    [self.imagePanel setImageWithUrlString:model.backgroundImage placeHodlerImage:[UIImage themeImageNamed:@"temp_recipe_banner@2x"]];
+    [self.imagePanel setImageWithUrlString:model.backgroundImage placeHodlerImage:nil];
     
-    self.author.text = [NSString stringWithFormat:@"by %@",model.author];
-    self.madeCount.text = [NSString stringWithFormat:@"%@ 人做过",model.done];
+    if (!isEmptyString(model.author)){
+        self.author.text = [NSString stringWithFormat:@"by %@",model.author];
+    }
+    
+    if (!isEmptyString(model.done)){
+        self.madeCount.text = [NSString stringWithFormat:@"%@ 人做过",model.done];
+    }
     
     self.recipeNeed.text = model.health;
     

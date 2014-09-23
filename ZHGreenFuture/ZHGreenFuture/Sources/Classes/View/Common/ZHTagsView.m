@@ -14,8 +14,8 @@
 #define TAG_START   -1024
 
 @interface ZHTagsView()
-
-@property (nonatomic,strong) NSArray*    tagArrays;
+@property (nonatomic,assign) NSInteger      selectedIndex;
+@property (nonatomic,strong) NSArray*       tagArrays;
 @end;
 
 @implementation ZHTagsView
@@ -24,7 +24,9 @@
 {
     self = [super initWithFrame:frame];
     if (self) {
+        self.selectedIndex = TAG_START-1;
         [self loadContentWithTags:tags];
+
     }
     return self;
 }
@@ -44,13 +46,23 @@
             continue;
         }
         UIButton* btn = [UIButton buttonWithType:UIButtonTypeCustom];
-        
+        btn.tag = i + TAG_START;
         [btn setTitle:val.tagName forState:UIControlStateNormal];
-        [btn setTitleColor:GREEN_COLOR forState:UIControlStateNormal];
-        [btn setBackgroundImage:[UIImage createImageWithColor:WHITE_BACKGROUND] forState:UIControlStateNormal];
+        if (btn.tag == self.selectedIndex){
+            [btn setTitleColor:GREEN_COLOR forState:UIControlStateHighlighted];
+            [btn setBackgroundImage:[UIImage createImageWithColor:WHITE_BACKGROUND] forState:UIControlStateHighlighted];
+            
+            [btn setTitleColor:WHITE_BACKGROUND forState:UIControlStateNormal];
+            [btn setBackgroundImage:[UIImage createImageWithColor:GREEN_COLOR] forState:UIControlStateNormal];
+        }
+        else{
+            [btn setTitleColor:GREEN_COLOR forState:UIControlStateNormal];
+            [btn setBackgroundImage:[UIImage createImageWithColor:WHITE_BACKGROUND] forState:UIControlStateNormal];
+            
+            [btn setTitleColor:WHITE_BACKGROUND forState:UIControlStateHighlighted];
+            [btn setBackgroundImage:[UIImage createImageWithColor:GREEN_COLOR] forState:UIControlStateHighlighted];
+        }
         
-        [btn setTitleColor:WHITE_BACKGROUND forState:UIControlStateHighlighted];
-        [btn setBackgroundImage:[UIImage createImageWithColor:GREEN_COLOR] forState:UIControlStateHighlighted];
         
         [btn addTarget:self action:@selector(itemSelected:) forControlEvents:UIControlEventTouchUpInside];
         
@@ -58,14 +70,14 @@
         btn.layer.borderColor = GREEN_COLOR.CGColor;
         btn.layer.borderWidth = 0.5;
         
-        btn.tag = i + TAG_START;
+
         
         CGSize size = [val.tagName sizeWithFont:btn.titleLabel.font];
         size.width += ITEM_SPAN*2;
         
         if (xOffset + size.width > self.width-SIDE_SPAN){
             xOffset = SIDE_SPAN;
-            yOffset += ITEM_HEIGHT;
+            yOffset += ITEM_HEIGHT+SIDE_SPAN;
         }
         
         btn.frame = CGRectMake(xOffset, yOffset, size.width, ITEM_HEIGHT);
@@ -88,18 +100,40 @@
         return;
     }
     
-    ZHLOG(@"tag :\n%@",self.tagArrays[tag]);
-    NSString* str = [NSString stringWithFormat:@"tag taped %@",((TagModel*)self.tagArrays[tag]).url];
-    ALERT_MESSAGE(str);
-}
+    if (self.selectedIndex != TAG_START-1) {
+        int index = self.selectedIndex - TAG_START;
+        if (index >= 0 && index < self.tagArrays.count){
+            UIButton* btn = (UIButton*)[self viewWithTag:self.selectedIndex];
+            [btn setTitleColor:GREEN_COLOR forState:UIControlStateNormal];
+            [btn setBackgroundImage:[UIImage createImageWithColor:WHITE_BACKGROUND] forState:UIControlStateNormal];
+            
+            [btn setTitleColor:WHITE_BACKGROUND forState:UIControlStateHighlighted];
+            [btn setBackgroundImage:[UIImage createImageWithColor:GREEN_COLOR] forState:UIControlStateHighlighted];
+            
+        }
+    }
+    if (self.selectedIndex != sender.tag){
+        [sender setTitleColor:GREEN_COLOR forState:UIControlStateHighlighted];
+        [sender setBackgroundImage:[UIImage createImageWithColor:WHITE_BACKGROUND] forState:UIControlStateHighlighted];
+        
+        [sender setTitleColor:WHITE_BACKGROUND forState:UIControlStateNormal];
+        [sender setBackgroundImage:[UIImage createImageWithColor:GREEN_COLOR] forState:UIControlStateNormal];
+    }
+    else{
+        
+        if ([self.delegate respondsToSelector:@selector(tagSelectWithId:)]){
+            [self.delegate tagSelectWithId:@"-1"];
+        }
+        self.selectedIndex = TAG_START-1;
+        return;
+    }
 
-//
-//-(UILabel *)titleLabel{
-//    if (!_titleLabel){
-//        _titleLabel = [UILabel labelWithText:@"大家都在关注：" font:FONT(12) color:RGB(0x77, 0x77, 0x77) textAlignment:NSTextAlignmentLeft];
-//        _titleLabel.frame = CGRectMake(SIDE_SPAN, 0, self.width-SIDE_SPAN, 30);
-//    }
-//    return _titleLabel;
-//}
+    
+    self.selectedIndex = sender.tag;
+    
+    if ([self.delegate respondsToSelector:@selector(tagSelectWithId:)]){
+        [self.delegate tagSelectWithId:((TagModel*)self.tagArrays[tag]).tagId];
+    }
+}
 
 @end

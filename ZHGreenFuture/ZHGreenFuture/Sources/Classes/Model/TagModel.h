@@ -12,6 +12,5 @@
 
 @property (nonatomic,strong) NSString*  tagName;
 @property (nonatomic,strong) NSString*  tagId;
-@property (nonatomic,strong) NSString*  url;
 
 @end

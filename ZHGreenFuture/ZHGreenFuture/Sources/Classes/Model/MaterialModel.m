@@ -10,4 +10,18 @@
 
 @implementation MaterialModel
 
++(id)praserModelWithInfo:(id)info{
+    MaterialModel* model = [[MaterialModel alloc]init];
+    if (![info isKindOfClass:[NSDictionary class]]){
+        return model;
+    }
+    
+    NSDictionary* dic = (NSDictionary*)info;
+    
+    model.title = dic[@"title"];
+    model.weight = dic[@"weight"];
+    
+    return model;
+}
+
 @end

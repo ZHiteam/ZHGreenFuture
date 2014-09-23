@@ -15,6 +15,20 @@
 
 @implementation RecipeExampleImageContent
 
++(id)praserModelWithInfo:(id)info{
+    RecipeExampleImageContent* model = [[RecipeExampleImageContent alloc]init];
+    if (![info isKindOfClass:[NSDictionary class]]){
+        return model;
+    }
+    
+    NSDictionary* dic = (NSDictionary*)info;
+    
+    model.content = dic[@"content"];
+    model.url = dic[@"url"];
+    
+    return model;
+}
+
 - (NSString*)title{
     return self.content;
 }

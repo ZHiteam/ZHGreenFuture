@@ -10,4 +10,18 @@
 
 @implementation MadeStepModel
 
++(id)praserModelWithInfo:(id)info{
+    MadeStepModel* model = [[MadeStepModel alloc]init];
+    if (![info isKindOfClass:[NSDictionary class]]){
+        return model;
+    }
+    
+    NSDictionary* dic = (NSDictionary*)info;
+    
+    model.title = dic[@"title"];
+    model.imageUrl = dic[@"imageURL"];
+    
+    return model;
+}
+
 @end

@@ -40,19 +40,14 @@
     UIImageView* bannerMask = [[UIImageView alloc]initWithImage:[UIImage themeImageNamed:@"banner_mask"]];
     bannerMask.frame = self.imageContent.frame;
     [self addSubview:bannerMask];
-    
-#warning TEST placehold
-    self.imageContent.image = [UIImage themeImageNamed:@"temp_recipe_placehold"];
-    self.titleLabel.text = @"香肠蒸糯米饭";
-    self.descLabel.text = @"扩张血管、促进生长、发育、增强免疫系统";
-    self.madeCountLabel.text = @"18 人做过";
-    self.disussCountLabel.text = @"16";
 }
 
 #pragma -mark getter
 -(UIImageView *)imageContent{
     if (!_imageContent){
         _imageContent = [[UIImageView alloc]initWithFrame:CGRectMake(10, 10, self.width-20, 150)];
+        _imageContent.contentMode = UIViewContentModeScaleAspectFill;
+        _imageContent.clipsToBounds = YES;
     }
     
     return _imageContent;
@@ -122,27 +117,15 @@
 #pragma -mark setter
 -(void)setRecipeItem:(RecipeItemModel *)recipeItem{
     _recipeItem = recipeItem;
+   
+
+    self.titleLabel.text = recipeItem.title;
+    self.descLabel.text  = recipeItem.subTitle;
+    self.madeCountLabel.text = [NSString stringWithFormat:@"%d 人做过", [recipeItem.done intValue]] ;
+    self.disussCountLabel.text = recipeItem.comment;
+    self.likeCountLabe.text = recipeItem.like;
     
-    if (!isEmptyString(_recipeItem.recipeId)) {
-//        [AFHTTPRequestOperationManager
-        AFHTTPRequestOperationManager* manager = [AFHTTPRequestOperationManager manager];
-        
-        manager.responseSerializer.acceptableContentTypes = [NSSet setWithObject:@"text/plain"];
-        
-        [manager POST:COMMENT_URL parameters:@{@"appkey": SHARE_APPKEY,@"topicid":_recipeItem.recipeId} success:^(AFHTTPRequestOperation *operation, id responseObject) {
-            ZHLOG(@"%@",responseObject);
-
-            if ([responseObject isKindOfClass:[NSDictionary class]]) {
-                NSDictionary* res = responseObject[@"res"];
-#warning TEST 暂时使用赞数代替评论数
-                self.disussCountLabel.text = [NSString stringWithFormat:@"%d", [res[@"likecount"] integerValue]];
-
-            }
-
-        } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-            ZHLOG(@"%@",error);
-        }];
-    }
+    [self.imageContent setImageWithUrlString:recipeItem.backgroundImageUrl placeHodlerImage:nil];
 }
 #pragma -mark setter end
 

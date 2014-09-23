@@ -37,7 +37,12 @@
 }
 
 - (void)loadContnet{
-    self.navigationBar.title = @"芒果椰浆檽米饭";
+    
+    if ([self.userInfo isKindOfClass:[RecipeItemModel class]]){
+        self.model = self.userInfo;
+    }
+    
+    self.navigationBar.title = self.model.title;
     
     self.navigationBar.rightBarItem = [UIButton barItemWithTitle:@"" image:[UIImage themeImageNamed:@"btn_share"] action:self selector:@selector(shareAction)];
     
@@ -49,71 +54,21 @@
 }
 
 -(void)loadRequest{
-//    [HttpClient requestDataWithURL:@"" paramers:@{@"recipeId": self.recipeId} success:^(id responseObject) {
-//        
-//    } failure:^(NSError *error) {
-//        
-//    }];
-    
-#warning TEST
-    self.detailData = [[RecipeItemDetailModel alloc]init];
-    self.detailData.backgroundImage = @"";
-    self.detailData.author = @"哎米饭";
-    self.detailData.done = @"10";
-    self.detailData.health = @"糯米：补中益气，健胃止泻解毒";
-    
-    NSMutableArray* material = [[NSMutableArray alloc]init];
-    NSDictionary* val = @{@"椰浆粉":@"100克",@"糯米":@"200克",@"白砂糖":@"适量",@"盐":@"一撮"};
-    for (NSString* key in val.allKeys){
-        MaterialModel* item = [[MaterialModel alloc]init];
-        item.title = key;
-        item.weight = val[key];
-        
-        [material addObject:item];
+    if (isEmptyString(self.model.recipeId)){
+        return;
     }
-    self.detailData.material = material;
     
-    NSMutableArray* madeStep = [[NSMutableArray alloc]init];
-    NSDictionary* step = @{@"推荐一下这个椰浆粉罐头椰浆放久了容易分 层，这个椰浆浓度可以自己掌握，香味比罐 头的足，大家可以自行淘宝。":@"http://images.meishij.net/p/20140520/f67c1ff8a368acb2d61522a830b8319a_150x150.jpg",
-                           @"糯米选用泰国的长糯米泡一夜，蒸的时候加 恰好没过糯米的水量，蒸透即可。":@"",
-                           @"椰浆粉用温水化开，加入白砂糖和一撮盐， (这个很重要)放入蒸好的糯米饭里拌匀。":@"",
-                           @"芒果切片铺在保鲜膜上用卷寿司相同的手法 卷起":@"http://images.meishij.net/p/20140728/aa387a9e1362494f4e612dd63aee093f.jpg"};
-    for (NSString* key in step.allKeys){
-        MadeStepModel* item = [[MadeStepModel alloc]init];
-        item.title = key;
-        item.imageUrl = step[key];
+    [HttpClient requestDataWithURL:@"serverAPI.action" paramers:@{@"scene":@"7",@"recipeId": self.model.recipeId} success:^(id responseObject) {
         
-        [madeStep addObject:item];
-    }
-    self.detailData.practice = madeStep;
-
-    self.detailData.tips = @"糯米选用泰国的长糯米，泡一夜蒸的时候加恰好 没过糯米的水量。";
-    
-    RecipeExampleImageContent* recipeItem = [[RecipeExampleImageContent alloc]init];
-    recipeItem.url = @"";
-    recipeItem.placeholderImage = @"detailRecipe.png";
-    recipeItem.content = @"玩斗檽米饭";
-    self.detailData.example = [[RecpieExampleModel alloc]init];
-    self.detailData.example.count = @"18";
-    self.detailData.example.images = @[recipeItem,recipeItem,recipeItem,recipeItem,recipeItem,recipeItem,recipeItem];
-//    recommendRecipeItem * recipeItem = [[recommendRecipeItem alloc] init];
-//    recipeItem.title = @"豌豆糯米饭";
-//    recipeItem.imageURL = @"";
-//    recipeItem.placeholderImage = @"detailRecipe.png";
-//    self.detailData.example = @[recipeItem , recipeItem, recipeItem, recipeItem, recipeItem,recipeItem,recipeItem,recipeItem];
-
-    self.detailData.commentCount = @"18";
-    
-    CommentModel* model = [[CommentModel alloc]init];
-    model.userAvatarURL = @"http://www.smzdm.com/smzdm_user_manager/data/avatar/000/88/53/09_avatar_middle.jpg";
-    model.userName = @"唉唉唉";
-    model.contenet = @"请问椰果是没有甜度的么";
-    model.comment_date = @"7月23日 17:30";
-    
-    self.detailData.commentList = @[model,model];
-    
-    
-    [self.contentTable reloadData];
+        ZHLOG(@"%@",responseObject);
+        
+        self.detailData = [RecipeItemDetailModel praserModelWithInfo:responseObject];
+        
+        [self.contentTable reloadData];
+        
+    } failure:^(NSError *error) {
+        
+    }];
 }
 
 - (void)didReceiveMemoryWarning

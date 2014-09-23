@@ -10,7 +10,7 @@
 
 @implementation CatagoryModel
 
-+(BaseModel *)praserModelWithInfo:(id)info{
++(id)praserModelWithInfo:(id)info{
     CatagoryModel* model = [[CatagoryModel alloc]init];
     
     if (![info isKindOfClass:[NSDictionary class]]){

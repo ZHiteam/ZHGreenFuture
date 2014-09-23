@@ -10,7 +10,7 @@
 
 @implementation SecondCatagoryModel
 
-+(BaseModel *)praserModelWithInfo:(id)info{
++(id)praserModelWithInfo:(id)info{
     SecondCatagoryModel* model = [[SecondCatagoryModel alloc]init];
     
     if (![info isKindOfClass:[NSDictionary class]]){

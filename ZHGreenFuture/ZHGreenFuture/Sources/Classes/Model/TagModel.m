@@ -10,4 +10,17 @@
 
 @implementation TagModel
 
++(id)praserModelWithInfo:(id)info{
+    TagModel* model = [[TagModel alloc]init];
+    
+    if (![info isKindOfClass:[NSDictionary class]]){
+        return model;
+    }
+    NSDictionary* dic = (NSDictionary*)info;
+    
+    model.tagName   = dic[@"name"];
+    model.tagId     = [NSString stringWithFormat:@"%d", [dic[@"tagId"]intValue]];
+    
+    return model;
+}
 @end

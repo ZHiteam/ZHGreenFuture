@@ -15,7 +15,7 @@
 
 #import "RecipeModel.h"
 
-@interface ZHRecipeVC ()<DBCameraViewControllerDelegate,DBCameraViewControllerDelegate,UITableViewDataSource,UITableViewDelegate>
+@interface ZHRecipeVC ()<DBCameraViewControllerDelegate,DBCameraViewControllerDelegate,UITableViewDataSource,UITableViewDelegate,ZHTagsViewDelegate>
 
 @property (nonatomic,strong) UIView*            titleViewPanel;
 @property (nonatomic,strong) UILabel*           weekLabel;
@@ -46,31 +46,16 @@
     // Dispose of any resources that can be recreated.
 }
 
-
-#warning TEST
 -(void)loadRequest{
-    NSArray* tags = @[@"解暑",@"夏季",@"清肠",@"粥",@"养生茶",@"润肺止咳"];
-    NSMutableArray* tagArray = [[NSMutableArray alloc]initWithCapacity:tags.count];
-    
-    for (NSString* tag in tags){
-        TagModel* model = [[TagModel alloc]init];
-        model.tagName = tag;
-        model.url = @"green://list?type=111";
-        [tagArray addObject:model];
-    }
-    
-    NSMutableArray* itemArray = [[NSMutableArray alloc]initWithCapacity:10];
-    for (int i = 0 ; i < 10; ++i){
-        RecipeItemModel* item = [[RecipeItemModel alloc]init];
-        item.recipeId = [NSString stringWithFormat:@"20010100%d",i];
-        [itemArray addObject:item];
-    }
-    
-    self.recipeModel = [[RecipeModel alloc]init];
-    self.recipeModel.tags = tagArray;
-    self.recipeModel.recipeItemList = itemArray;
-    
-    [self autoResizeContent];
+    [HttpClient requestDataWithURL:@"serverAPI.action" paramers:@{@"scene":@"6"}success:^(id responseObject) {
+        ZHLOG(@"%@",responseObject);
+        
+        self.recipeModel = (RecipeModel*)[RecipeModel praserModelWithInfo:responseObject];
+        
+        [self autoResizeContent];
+    } failure:^(NSError *error) {
+        
+    }];
 }
 
 -(void)loadContent{
@@ -93,10 +78,7 @@
     
     self.weekLabel.text = [NSString stringWithFormat:@"%@/%@",lunar.DayLunar,[formater stringFromDate:date]];///@"大暑/周一";
     
-    
     [self.navigationBar setTitleView:self.titleViewPanel];
-    
-//    self.navigationBar.rightBarItem = [UIButton barItemWithTitle:@"" image:[UIImage themeImageNamed:@"btn_camera"] action:self selector:@selector(cameraAction)];
 }
 
 -(UIView *)titleViewPanel{
@@ -133,7 +115,7 @@
     if (!_tagPanel){
         self.tagView.frame = CGRectMake(0, 30, self.tagView.width, self.tagView.height);
         
-        _tagPanel = [[UIView alloc]initWithFrame:CGRectMake(self.contentBounds.origin.x, self.contentBounds.origin.y, self.view.width, 30+self.tagView.height+20)];
+        _tagPanel = [[UIView alloc]initWithFrame:CGRectMake(0, 0, self.view.width, 30+self.tagView.height+20)];
         
         UILabel* titleLabel = [UILabel labelWithText:@"大家都在关注：" font:FONT(14) color:RGB(0x77, 0x77, 0x77) textAlignment:NSTextAlignmentLeft];
         titleLabel.frame = CGRectMake(12, 5, self.view.width-12, 30);
@@ -156,6 +138,7 @@
     if (!_tagView){
         
         _tagView = [[ZHTagsView alloc]initWithFrame:CGRectMake(0, 30, self.view.width, 10) tags:self.recipeModel.tags];
+        _tagView.delegate = self;
     }
     
     return _tagView;
@@ -164,7 +147,8 @@
 
 -(UITableView *)recipeContent{
     if (!_recipeContent){
-        _recipeContent = [[UITableView alloc]initWithFrame:CGRectMake(0, self.tagPanel.bottom, self.tagPanel.width, self.contentBounds.size.height-self.tagPanel.height)];
+        _recipeContent = [[UITableView alloc]initWithFrame:self.contentBounds];
+
         _recipeContent.backgroundColor = RGB(238, 238, 238);
         _recipeContent.dataSource = self;
         _recipeContent.delegate = self;
@@ -183,8 +167,8 @@
     
     self.tagPanel.height = 30+self.tagView.height+20;
     [self.tagPanel viewWithTag:-111].top = self.tagPanel.height-1;
-    
-    self.recipeContent.frame = CGRectMake(0, self.tagPanel.bottom, self.tagPanel.width, self.contentBounds.size.height-self.tagPanel.height);
+
+    [self.recipeContent reloadData];
 }
 
 #pragma -mark -action
@@ -225,21 +209,44 @@
 }
 
 #pragma -mark UITableViewDataSource,UITableViewDelegate
+-(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
+    return 2;
+}
+
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
+    if (0 == section) {
+        return 1;
+    }
+    
     return self.recipeModel.recipeItemList.count;
 }
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
+    if ( 0 == indexPath.section){
+        return self.tagPanel.height;
+    }
+    
     return [RecipeCell cellHeight];
 }
 
 -(UITableViewCell*)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
+    
+    if ( 0 == indexPath.section){
+        UITableViewCell* cell = [tableView dequeueReusableCellWithIdentifier:@"cell"];
+        
+        if (!cell){
+            cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"cell"];
+            [cell.contentView addSubview:self.tagPanel];
+        }
+        
+        return cell;
+    }
+    
     static NSString* identify= @"recipeCell";
     RecipeCell* cell = [tableView dequeueReusableCellWithIdentifier:identify];
     
     if (!cell) {
         cell = [[RecipeCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identify];
-//        cell = [RecipeCell instanceWithNibName:@"RecipeCell" bundle:nil owner:nil];
     }
     
     if (self.recipeModel.recipeItemList.count > indexPath.row) {
@@ -251,9 +258,54 @@
 }
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     
-    [[MessageCenter instance]performActionWithUserInfo:@{@"controller": @"ZHRecipeDetailVC"}];
+    if (0 == indexPath.section){
+        return;
+    }
+    NSMutableDictionary* dic = [[NSMutableDictionary alloc]initWithCapacity:2];
+    [dic setObject:@"ZHRecipeDetailVC" forKey:@"controller"];
+    if (indexPath.row < self.recipeModel.recipeItemList.count){
+        RecipeItemModel* model = self.recipeModel.recipeItemList[indexPath.row];
+        if (model){
+            [dic setObject:model forKey:@"userinfo"];
+        }
+    }
+    
+    [[MessageCenter instance]performActionWithUserInfo:dic];
 }
 
+#pragma -mark ZHTagsViewDelegate
+-(void)tagSelectWithId:(NSString *)tagId{
+    if (isEmptyString(tagId)){
+        return;
+    }
+    else if ([tagId isEqualToString:@"-1"]){
+        return [self loadRequest];
+    }
+    
+    [HttpClient requestDataWithURL:@"serverAPI.action" paramers:@{@"scene":@"6",@"tagId":tagId}success:^(id responseObject) {
+        ZHLOG(@"%@",responseObject);
+        if ([responseObject isKindOfClass:[NSDictionary class]]){
+            NSDictionary* dic = (NSDictionary*)responseObject;
+            if ([dic[@"recipeList"] isKindOfClass:[NSArray class]]){
+                NSArray* arry = (NSArray*)dic[@"recipeList"];
+                
+                NSMutableArray* muData = [[NSMutableArray alloc]initWithCapacity:arry.count];
+                for(id val in arry){
+                    RecipeItemModel* item = (RecipeItemModel*)[RecipeItemModel praserModelWithInfo:val];
+                    [muData addObject:item];
+                }
+                
+                self.recipeModel.recipeItemList = [muData mutableCopy];
+                
+                [self autoResizeContent];
+            }
+        }
+
+    } failure:^(NSError *error) {
+        
+    }];
+}
 @end
