@@ -31,6 +31,9 @@
 
 @interface ZHCategoryTableViewCell()
 @property(nonatomic, copy)void (^clickedBlock)(NSInteger index);
+@property(nonatomic, strong)UIView *seperateLineView;
+@property(nonatomic, strong)UIView *seperateMarginView;
+
 @end
 
 @implementation ZHCategoryTableViewCell
@@ -55,22 +58,29 @@
     if ([obj isKindOfClass:[ZHCategoryTableViewCell class]]) {
         ZHCategoryTableViewCell *cell = obj;
         cell.contentView.backgroundColor = [UIColor whiteColor];
-        UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, cell.bounds.size.height-0.5, [UIScreen mainScreen].bounds.size.width, 0.5)];
-        view.backgroundColor = RGB(204, 204, 204);
-        [cell.contentView addSubview:view];
+        cell.seperateLineView = [[UIView alloc] initWithFrame:CGRectMake(0, cell.bounds.size.height-0.5, [UIScreen mainScreen].bounds.size.width, 0.5)];
+        cell.seperateLineView.backgroundColor = RGB(204, 204, 204);
+        [cell.contentView addSubview:cell.seperateLineView];
+        
+        cell.seperateMarginView = [[UIView alloc] initWithFrame:CGRectMake(0, 148, [UIScreen mainScreen].bounds.size.width, 12)];
+        cell.seperateMarginView.backgroundColor = RGB(234, 234, 234);
+        [cell.contentView addSubview:cell.seperateMarginView];
+        
         return cell;
     }
     return nil;
 }
 
 + (CGFloat)height{
-    return 148.0f;
+    return 160.0f;
 }
 
 - (void)layoutWithCategoryItem:(NSArray*)categoryItems clickedBlock:(void (^)(NSInteger index)) block{
     self.clickedBlock = block;
 
     [self.contentView removeAllSubviews];
+    [self.contentView addSubview:self.seperateLineView];
+    [self.contentView addSubview:self.seperateMarginView];
     NSInteger index = 0, maxPerRow;
     CGFloat originX=0.0 , originY=0.0 , itemWidth=80.0 , itemHeight=74.0;
     maxPerRow  = [UIScreen mainScreen].bounds.size.width/ itemWidth;

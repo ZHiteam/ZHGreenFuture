@@ -73,7 +73,7 @@
         //_tableView.clipsToBounds = NO;
         _tableView.delegate = self;
         _tableView.dataSource = self;
-        _tableView.backgroundColor = [UIColor lightGrayColor];
+        _tableView.backgroundColor = RGB(234, 234, 234);
         _tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
         _tableView.autoresizesSubviews = UIViewAutoresizingFlexibleWidth|UIViewAutoresizingFlexibleHeight;
         //[_tableView registerClass:[ZHProductTableViewCell class] forCellReuseIdentifier:@"kProductTableViewCell"];
@@ -295,13 +295,13 @@
     return 0.0;
 }
 
-- (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section{
-    return section == 0 ? 12.0 : 0.0;
-}
-
-- (UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section{
-    return nil;
-}
+//- (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section{
+//    return section == 0 ? 12.0 : 0.0;
+//}
+//
+//- (UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section{
+//    return nil;
+//}
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
     return section == 0 ? 0.0 : 28.0;
