@@ -53,7 +53,11 @@
 -(void)loadContent{
     self.view.backgroundColor = RGB(238, 238, 238);
     
-    self.navigationBar.title = @"XXX分类";
+    if ([self.userInfo isKindOfClass:[CatagoryModel class]]){
+        self.model = self.userInfo;
+    }
+    
+    self.navigationBar.title = self.model.title;
 
     [self whithNavigationBarStyle];
     
@@ -66,15 +70,6 @@
     
     [self.contentView addSubview:self.segmentPanel];
 }
-
-
-//-(ZHCatagoryDetail *)catagoryView{
-//    if (!_catagoryView){
-//        _catagoryView = [[ZHCatagoryDetail alloc]initWithFrame:self.contentBounds];
-//    }
-//    
-//    return _catagoryView;
-//}
 
 -(UIView *)contentView{
     if (!_contentView){
@@ -100,7 +95,16 @@
 
 -(ZHSwipSegment *)catagoryList{
     if (!_catagoryList){
-        _catagoryList = [[ZHSwipSegment alloc]initWithFrame:CGRectMake(0, self.contentView.top, self.view.width, 40) segments:@[@"全部",@"通榆大米",@"小米",@"燕麦米",@"通榆大米",@"小米",@"燕麦米"]];
+        
+        NSMutableArray* items = [[NSMutableArray alloc]initWithCapacity:self.model.productList.count];
+        [items addObject:@"全部"];
+        for (SecondCatagoryModel* sc in self.model.productList){
+            if (!isEmptyString(sc.title)){
+                [items addObject:sc.title];
+            }
+        }
+        
+        _catagoryList = [[ZHSwipSegment alloc]initWithFrame:CGRectMake(0, self.contentView.top, self.view.width, 40) segments:items];
         _catagoryList.segmentDelegate = self;
         
         [_catagoryList touchEndedBlock:^(NSSet *touches, UIEvent *event) {

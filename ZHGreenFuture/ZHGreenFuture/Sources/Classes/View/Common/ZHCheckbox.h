@@ -12,4 +12,6 @@
 
 @property (nonatomic,copy)      ZHCompletionBlock   checkBlock;
 @property (nonatomic,assign)    BOOL                checked;
+
+-(void)setCheckState:(BOOL)checkState;
 @end

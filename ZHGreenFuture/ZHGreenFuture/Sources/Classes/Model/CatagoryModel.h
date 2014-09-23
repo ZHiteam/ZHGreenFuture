@@ -13,7 +13,7 @@
 @property (nonatomic,strong)NSString*   title;
 @property (nonatomic,strong)NSString*   subtitle;
 @property (nonatomic,strong)NSString*   backgourndImageUrl;
-
+@property (nonatomic,strong)NSString*   categoryId;
 @property (nonatomic,strong)NSArray*    productList;
 
 @end

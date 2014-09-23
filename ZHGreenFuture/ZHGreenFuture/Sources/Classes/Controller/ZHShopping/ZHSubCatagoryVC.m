@@ -49,9 +49,11 @@
     self.navigationBar.title = self.model.title;
     [self whithNavigationBarStyle];
     
-    [self.view addSubview:self.bannerView];
+//    [self.view addSubview:self.bannerView];
+//    
+//    [self.view insertSubview:self.contentView belowSubview:self.bannerView];
     
-    [self.view insertSubview:self.contentView belowSubview:self.bannerView];
+    [self.view addSubview:self.contentView];
     
     
     UIImageView* mask = [[UIImageView alloc]initWithFrame:self.bannerView.bounds];
@@ -61,16 +63,17 @@
 
 -(UIImageView *)bannerView{
     if (!_bannerView){
-        _bannerView = [[UIImageView alloc]initWithFrame:self.contentBounds];
-        _bannerView.height = 160;
+        _bannerView = [[UIImageView alloc]initWithFrame:CGRectMake(0, 0, self.view.width, 160)];
+        _bannerView.contentMode = UIViewContentModeScaleAspectFill;
+        _bannerView.clipsToBounds = YES;
         
         [_bannerView addSubview:self.titleLabel];
         [_bannerView addSubview:self.descriptionLabel];
         
-        [_bannerView setImageWithUrlString:self.model.imageUrl placeHodlerImage:[UIImage themeImageNamed:@"temp_banner_01"]];
+        [_bannerView setImageWithUrlString:self.model.imageUrl placeHodlerImage:nil];///[UIImage themeImageNamed:@"temp_banner_01"]];
         
         
-        self.descriptionLabel.top = _bannerView.height-_descriptionLabel.height;
+        self.descriptionLabel.top = _bannerView.height-_descriptionLabel.height-10;
         
         self.titleLabel.bottom = _descriptionLabel.top;
     }
@@ -111,13 +114,13 @@
 
 -(UITableView *)contentView{
     if (!_contentView){
-        _contentView = [[ZHTableView alloc]initWithFrame:CGRectMake(self.bannerView.left, self.bannerView.bottom, self.bannerView.width, self.contentBounds.size.height-self.bannerView.height)];
-        
+//        _contentView = [[ZHTableView alloc]initWithFrame:CGRectMake(self.bannerView.left, self.bannerView.bottom, self.bannerView.width, self.contentBounds.size.height-self.bannerView.height)];
+        _contentView = [[ZHTableView alloc]initWithFrame:self.contentBounds];
         _contentView.showsVerticalScrollIndicator = NO;
         _contentView.backgroundColor = RGB(238, 238, 238);
         _contentView.dataSource = self;
         _contentView.delegate = self;
-        
+        _contentView.separatorStyle = UITableViewCellSeparatorStyleNone;
         _contentView.clipsToBounds = NO;
         
         _contentView.pagingEnabled = NO;
@@ -127,32 +130,40 @@
 }
 
 -(void)loadRequest{
-    [HttpClient requestDataWithURL:@"" paramers:nil success:^(id responseObject) {
+    [HttpClient requestDataWithURL:@"serverAPI.action" paramers:@{@"scene":@"5",@"categoryId":self.model.categoryId} success:^(id responseObject) {
+        NSLog(@"%@",responseObject);
         
+        self.model = (SecondCatagoryModel*)[SecondCatagoryModel praserModelWithInfo:responseObject];
+        
+        self.productList = self.model.productList;
+
+        [self.bannerView setImageWithUrlString:self.model.imageUrl placeHodlerImage:nil];
+        [self.contentView reloadData];
     } failure:^(NSError *error) {
         
     }];
-    
-#warning test data
-    NSMutableArray* array = [[NSMutableArray alloc]initWithCapacity:10];
-    for(int i = 0 ;i < 10; ++i){
-        //4.product
-        ZHProductItem *productItem = [[ZHProductItem alloc] init];
-        productItem.title = @"东北特产全胚芽燕麦850g";
-        productItem.subTitle = @"它的营养价值很高，其脂肪含量是大米的4倍";
-        productItem.price = @"288.81";
-        productItem.buyCount = @"435";
-        [array addObject:productItem];
-    }
-    self.productList = [array mutableCopy];
-    
-    [_contentView reloadData];
 }
 
 #pragma -mark UITableViewDataSource,UITableViewDelegate
+-(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
+    return 2;
+}
+
+
 -(UITableViewCell*)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     
     static NSString *CellIdentifier = @"kProductTableViewCell";
+
+    if (indexPath.section == 0){
+        UITableViewCell* cell = [tableView dequeueReusableCellWithIdentifier:@"cell"];
+        if (!cell){
+            cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"cell"];
+            [cell.contentView addSubview:self.bannerView];
+        }
+        
+        return cell;
+    }
+    
     ZHProductTableViewCell*cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (cell == nil){
         cell = [ZHProductTableViewCell tableViewCell];
@@ -171,78 +182,29 @@
 
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
+    
+    if (indexPath.section == 0){
+        return self.bannerView.height;
+    }
+    
     return [ZHProductTableViewCell height];
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
+    if (section == 0){
+        return 1;
+    }
+    
     return self.productList.count;
 }
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
-}
-
-#pragma -mark 
-
--(void)scrollViewWillBeginDecelerating:(UIScrollView *)scrollView{
     
-    /// 防止滑倒顶部和滑倒底部反弹事件
-    if (scrollView.contentOffset.y < 0 || scrollView.contentOffset.y > (scrollView.contentSize.height-scrollView.height)){
-        return;
+    if (indexPath.section == 1) {
+        ZHProductItem *item = [self.productList objectAtIndex:indexPath.row];
+        NSString *productId = [item.productId length] >0 ? item.productId : @"";
+        [[MessageCenter instance]performActionWithUserInfo:@{@"controller": @"ZHDetailVC",@"userinfo" : productId}];
     }
-    self.direct = scrollView.contentOffset.y;
-    self.startScroll = YES;
-}
-
--(void)scrollViewWillBeginDragging:(UIScrollView *)scrollView{
-    
-    self.direct = scrollView.contentOffset.y;
-    self.startScroll = YES;
-}
-
--(void)scrollViewDidScroll:(UIScrollView *)scrollView{
-    if (self.startScroll){
-//        ZHLOG(@"did scroll  %lf",scrollView.contentOffset.y);
-        if (scrollView.contentOffset.y - self.direct > 0){
-            ZHLOG(@"UP");
-            
-            [self hideBanner];
-        }
-        else if (scrollView.contentOffset.y - self.direct < 0){
-            ZHLOG(@"DOWN");
-            
-            [self showBanner];
-        }
-        self.startScroll = NO;
-    }
-}
-
-#pragma -mark action
--(void)hideBanner{
-    
-    if (self.bannerView.bottom == self.navigationBar.bottom){
-        return;
-    }
-    
-    [UIView animateWithDuration:0.3 animations:^{
-        self.bannerView.bottom = self.navigationBar.bottom;
-        
-        self.contentView.frame = self.contentBounds;
-    } completion:^(BOOL finished) {
-    }];
-}
-
--(void)showBanner{
-    
-    if (self.bannerView.top == self.navigationBar.bottom){
-        return;
-    }
-    
-    [UIView animateWithDuration:0.3 animations:^{
-        self.bannerView.top = self.navigationBar.bottom;
-        
-        self.contentView.frame = CGRectMake(0, self.bannerView.bottom, self.bannerView.width, self.contentBounds.size.height-self.bannerView.height);
-    } completion:^(BOOL finished) {
-    }];
 }
 @end

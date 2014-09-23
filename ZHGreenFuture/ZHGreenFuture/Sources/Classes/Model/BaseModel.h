@@ -12,4 +12,6 @@
 
 @property (nonatomic) NSString* title;
 //@property(nonatomic)NSString*   serail; /// 备用
+
++(BaseModel*)praserModelWithInfo:(id)info;
 @end

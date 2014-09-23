@@ -67,12 +67,22 @@
 -(NSURL*)formateToURL{
     NSString* temp = self;
     if ([self hasPrefix:@"http://"]) {
-        temp = [self substringFromIndex:6];
+        temp = [self substringFromIndex:7];
     }
+    
+    NSString* prefix = @"http:/";
+    
+    NSRange r1 = [temp rangeOfString:@":"];
+    NSRange r2 = [temp rangeOfString:@"/"];
+    if (r1.location < r2.location){
+        prefix = [NSString stringWithFormat:@"http://%@",[temp substringToIndex:r2.location]];
+        temp = [temp substringFromIndex:r2.location];
+    }
+    
     
     NSArray* arry = [temp componentsSeparatedByString:@"/"];
     if (arry.count > 0) {
-        temp = @"http:/";
+        temp = prefix;
         for (int i = 0; i < arry.count; ++i) {
             if (isEmptyString(arry[i])) {
                 continue;
@@ -82,10 +92,25 @@
     }
     else{
         temp = [temp urlEncode];
-        temp = [NSString stringWithFormat:@"http://%@",temp];
+        temp = [NSString stringWithFormat:@"%@/%@",prefix,temp];
     }
     
     return [[NSURL alloc]initWithString:temp];
+}
+
+-(NSURL*)greenFutureURL{
+    NSString* string = [self stringByReplacingOccurrencesOfString:@"\\" withString:@"/"];
+    
+    if (![string hasPrefix:@"http://"]){
+        if (![string hasPrefix:@"/"]){
+            string = [NSString stringWithFormat:@"%@/%@",BASE_SITE,string];
+        }
+        else{
+            string = [NSString stringWithFormat:@"%@%@",BASE_SITE,string];
+        }
+    }
+    
+    return [NSURL URLWithString:string];
 }
 
 //利用正则表达式验证

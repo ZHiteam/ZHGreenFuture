@@ -104,6 +104,16 @@
             _defaultAddress.checked = !_defaultAddress.checked;
         }];
         
+        __block ZHAddressCell* cell = self;
+        
+        _defaultAddress.checkBlock = ^(BOOL check){
+            if (check){
+                [cell.delegate setDefaultWithModel:cell.model index:cell.index isDefault:check];
+            }
+            else{
+                [cell.defaultAddress setCheckState:YES];
+            }
+        };
         [self.contentPanel addSubview:labelBtn];
     }
     
@@ -116,6 +126,12 @@
         _editBtn = [[UIButton alloc]initWithFrame:CGRectMake(160, self.defaultAddress.top, 50, 20)];
         [_editBtn setImage:[UIImage themeImageNamed:@"btn_edit_with_label"] forState:UIControlStateNormal];
         [_editBtn addTarget:self action:@selector(editAddressAction) forControlEvents:UIControlEventTouchUpInside];
+        
+        __block ZHAddressCell* cell = self;
+        
+        [_editBtn setTouchUpInsideBlock:^(UIControl *ctl) {
+            [cell.delegate editWithModel:cell.model index:cell.index];
+        }];
     }
     
     return _editBtn;
@@ -126,6 +142,12 @@
         _deleteBtn = [[UIButton alloc]initWithFrame:CGRectMake(self.contentPanel.width-70, self.editBtn.top, 50, 20)];
         [_deleteBtn setImage:[UIImage themeImageNamed:@"btn_delete_with_label"] forState:UIControlStateNormal];
         [_deleteBtn addTarget:self action:@selector(deleteAddressAction) forControlEvents:UIControlEventTouchUpInside];
+        
+        __block ZHAddressCell* cell = self;
+        
+        [_deleteBtn setTouchUpInsideBlock:^(UIControl *ctl) {
+            [cell.delegate deleteWithModel:cell.model index:cell.index];
+        }];
     }
     return _deleteBtn;
 }
@@ -136,12 +158,13 @@
     if (!model){
         return;
     }
+    _model = model;
     
     self.nameLabel.text = model.name;
     self.phoneLabel.text = model.phone;
     self.addressLabel.text = model.address;
     
-    self.defaultAddress.checked = [model.currentAddress boolValue];
+    [self.defaultAddress setCheckState:[model.currentAddress boolValue]];
 }
 
 -(void)editAddressAction{

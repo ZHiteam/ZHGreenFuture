@@ -46,6 +46,7 @@
     #import "NavigationViewController.h"
     #import "TabbarViewController.h"
 
+    #import "DoAlertView.h"
     #import "MessageCenter.h"
     #import "ZHConst.h"
     #import "ZHButton.h"

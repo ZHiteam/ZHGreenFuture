@@ -20,4 +20,8 @@
     return [super setValue:value forKeyPath:key];
 }
 
++(BaseModel*)praserModelWithInfo:(id)info{
+    
+    return [[BaseModel alloc]init];
+}
 @end

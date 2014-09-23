@@ -11,4 +11,5 @@
 
 @interface ZHSwipSegment : ZHSegmentView
 
+-(void)loadContentWithItems:(NSArray*)items;
 @end

@@ -17,6 +17,8 @@
 
 -(NSURL*)formateToURL;
 
+-(NSURL*)greenFutureURL;
+
 -(BOOL)isValidateEmail;
 
 -(NSString*)bankNo2NormalString;

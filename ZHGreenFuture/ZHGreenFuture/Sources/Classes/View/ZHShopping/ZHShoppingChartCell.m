@@ -240,8 +240,8 @@
     
     self.nameLabel.text = model.title;
     self.standardLabel.text = model.skuInfo;
-    self.priceLabel.text = model.marketPrice;
-    self.promotionPriceLabel.text = model.promotionPrice;
+    self.priceLabel.text = [NSString stringWithFormat:@"￥%@", model.marketPrice];
+    self.promotionPriceLabel.text = [NSString stringWithFormat:@"￥%@", model.promotionPrice];///model.promotionPrice;
     self.buyCountLabel.text = [NSString stringWithFormat:@"x %@",model.buyCout];
     self.editCountView.count = model.buyCout;
     

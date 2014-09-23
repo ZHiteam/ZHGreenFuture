@@ -282,6 +282,32 @@
 		9C9778D219B1900F00D49E69 /* system.config in Resources */ = {isa = PBXBuildFile; fileRef = 9C97789F19B1900F00D49E69 /* system.config */; };
 		9C9778D419B1905F00D49E69 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9C9778D319B1905F00D49E69 /* MobileCoreServices.framework */; };
 		9C9778D619B1907300D49E69 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9C9778D519B1907300D49E69 /* SystemConfiguration.framework */; };
+		9CCB1D5819D08659009BB25A /* ZHCheckoutVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CCB1D5719D08659009BB25A /* ZHCheckoutVC.m */; };
+		9CCB1D7619D08826009BB25A /* AlipayRsaLib.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9CCB1D5A19D08826009BB25A /* AlipayRsaLib.a */; };
+		9CCB1D7719D08826009BB25A /* Alixpay.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 9CCB1D5C19D08826009BB25A /* Alixpay.bundle */; };
+		9CCB1D7A19D08826009BB25A /* AlixPayOrder.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CCB1D6019D08826009BB25A /* AlixPayOrder.m */; };
+		9CCB1D7B19D08826009BB25A /* AlixPayResult.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CCB1D6219D08826009BB25A /* AlixPayResult.m */; };
+		9CCB1D7C19D08826009BB25A /* NSObject+SBJSON.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CCB1D6619D08826009BB25A /* NSObject+SBJSON.m */; };
+		9CCB1D7D19D08826009BB25A /* NSString+SBJSON.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CCB1D6819D08826009BB25A /* NSString+SBJSON.m */; };
+		9CCB1D7E19D08826009BB25A /* SBJSON.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CCB1D6A19D08826009BB25A /* SBJSON.m */; };
+		9CCB1D7F19D08826009BB25A /* SBJsonBase.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CCB1D6C19D08826009BB25A /* SBJsonBase.m */; };
+		9CCB1D8019D08826009BB25A /* SBJsonParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CCB1D6E19D08826009BB25A /* SBJsonParser.m */; };
+		9CCB1D8119D08826009BB25A /* SBJsonWriter.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CCB1D7019D08826009BB25A /* SBJsonWriter.m */; };
+		9CCB1D8219D08826009BB25A /* libcrypto.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9CCB1D7119D08826009BB25A /* libcrypto.a */; };
+		9CCB1D8319D08826009BB25A /* libssl.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9CCB1D7219D08826009BB25A /* libssl.a */; };
+		9CCB1D8519D088EF009BB25A /* AlixPaylib_arc.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9CCB1D8419D088EF009BB25A /* AlixPaylib_arc.a */; };
+		9CCB1D8B19D14EBE009BB25A /* DoAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CCB1D8A19D14EBE009BB25A /* DoAlertView.m */; };
+		9CCB1D9719D14F2A009BB25A /* UIImage+ResizeMagick.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CCB1D9219D14F2A009BB25A /* UIImage+ResizeMagick.m */; };
+		9CCB1DA419D14FED009BB25A /* check.png in Resources */ = {isa = PBXBuildFile; fileRef = 9CCB1D9A19D14FED009BB25A /* check.png */; };
+		9CCB1DA519D14FED009BB25A /* check@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9CCB1D9B19D14FED009BB25A /* check@2x.png */; };
+		9CCB1DA619D14FED009BB25A /* check_black.png in Resources */ = {isa = PBXBuildFile; fileRef = 9CCB1D9C19D14FED009BB25A /* check_black.png */; };
+		9CCB1DA719D14FED009BB25A /* check_black@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9CCB1D9D19D14FED009BB25A /* check_black@2x.png */; };
+		9CCB1DA819D14FED009BB25A /* close.png in Resources */ = {isa = PBXBuildFile; fileRef = 9CCB1D9E19D14FED009BB25A /* close.png */; };
+		9CCB1DA919D14FED009BB25A /* close@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9CCB1D9F19D14FED009BB25A /* close@2x.png */; };
+		9CCB1DAA19D14FED009BB25A /* close_black.png in Resources */ = {isa = PBXBuildFile; fileRef = 9CCB1DA019D14FED009BB25A /* close_black.png */; };
+		9CCB1DAB19D14FED009BB25A /* close_black@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9CCB1DA119D14FED009BB25A /* close_black@2x.png */; };
+		9CCB1DAC19D14FED009BB25A /* pic1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 9CCB1DA219D14FED009BB25A /* pic1.jpg */; };
+		9CCB1DAD19D14FED009BB25A /* pic2.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 9CCB1DA319D14FED009BB25A /* pic2.jpg */; };
 		9CCDFD5B19CBC88C008B6882 /* LICENSE.txt in Resources */ = {isa = PBXBuildFile; fileRef = 9CCDFD5019CBC88C008B6882 /* LICENSE.txt */; };
 		9CCDFD5C19CBC88C008B6882 /* README.md in Sources */ = {isa = PBXBuildFile; fileRef = 9CCDFD5119CBC88C008B6882 /* README.md */; };
 		9CCDFD5D19CBC88C008B6882 /* TPKeyboardAvoidingCollectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CCDFD5419CBC88C008B6882 /* TPKeyboardAvoidingCollectionView.m */; };
@@ -300,6 +326,7 @@
 		9CCDFD7C19CC167F008B6882 /* ZHAddressCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CCDFD7B19CC167F008B6882 /* ZHAddressCell.m */; };
 		9CCDFD7F19CC240A008B6882 /* btn_delete_with_label@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9CCDFD7D19CC240A008B6882 /* btn_delete_with_label@2x.png */; };
 		9CCDFD8019CC240A008B6882 /* btn_edit_with_label@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9CCDFD7E19CC240A008B6882 /* btn_edit_with_label@2x.png */; };
+		9CCDFD8319D06EC7008B6882 /* ZHAddressEditVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CCDFD8219D06EC7008B6882 /* ZHAddressEditVC.m */; };
 		A4C9D54E32334D93A158D3F2 /* libPods-ZHGreenFuture.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C548FF18989B4FF8A8B17AD4 /* libPods-ZHGreenFuture.a */; };
 /* End PBXBuildFile section */
 
@@ -738,6 +765,47 @@
 		9C97789F19B1900F00D49E69 /* system.config */ = {isa = PBXFileReference; lastKnownFileType = file; path = system.config; sourceTree = "<group>"; };
 		9C9778D319B1905F00D49E69 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
 		9C9778D519B1907300D49E69 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		9CCB1D5619D08659009BB25A /* ZHCheckoutVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZHCheckoutVC.h; sourceTree = "<group>"; };
+		9CCB1D5719D08659009BB25A /* ZHCheckoutVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZHCheckoutVC.m; sourceTree = "<group>"; };
+		9CCB1D5A19D08826009BB25A /* AlipayRsaLib.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = AlipayRsaLib.a; sourceTree = "<group>"; };
+		9CCB1D5B19D08826009BB25A /* AlixLibService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlixLibService.h; sourceTree = "<group>"; };
+		9CCB1D5C19D08826009BB25A /* Alixpay.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Alixpay.bundle; sourceTree = "<group>"; };
+		9CCB1D5F19D08826009BB25A /* AlixPayOrder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlixPayOrder.h; sourceTree = "<group>"; };
+		9CCB1D6019D08826009BB25A /* AlixPayOrder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AlixPayOrder.m; sourceTree = "<group>"; };
+		9CCB1D6119D08826009BB25A /* AlixPayResult.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlixPayResult.h; sourceTree = "<group>"; };
+		9CCB1D6219D08826009BB25A /* AlixPayResult.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AlixPayResult.m; sourceTree = "<group>"; };
+		9CCB1D6419D08826009BB25A /* JSON.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSON.h; sourceTree = "<group>"; };
+		9CCB1D6519D08826009BB25A /* NSObject+SBJSON.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+SBJSON.h"; sourceTree = "<group>"; };
+		9CCB1D6619D08826009BB25A /* NSObject+SBJSON.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+SBJSON.m"; sourceTree = "<group>"; };
+		9CCB1D6719D08826009BB25A /* NSString+SBJSON.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+SBJSON.h"; sourceTree = "<group>"; };
+		9CCB1D6819D08826009BB25A /* NSString+SBJSON.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+SBJSON.m"; sourceTree = "<group>"; };
+		9CCB1D6919D08826009BB25A /* SBJSON.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBJSON.h; sourceTree = "<group>"; };
+		9CCB1D6A19D08826009BB25A /* SBJSON.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBJSON.m; sourceTree = "<group>"; };
+		9CCB1D6B19D08826009BB25A /* SBJsonBase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBJsonBase.h; sourceTree = "<group>"; };
+		9CCB1D6C19D08826009BB25A /* SBJsonBase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBJsonBase.m; sourceTree = "<group>"; };
+		9CCB1D6D19D08826009BB25A /* SBJsonParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBJsonParser.h; sourceTree = "<group>"; };
+		9CCB1D6E19D08826009BB25A /* SBJsonParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBJsonParser.m; sourceTree = "<group>"; };
+		9CCB1D6F19D08826009BB25A /* SBJsonWriter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBJsonWriter.h; sourceTree = "<group>"; };
+		9CCB1D7019D08826009BB25A /* SBJsonWriter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBJsonWriter.m; sourceTree = "<group>"; };
+		9CCB1D7119D08826009BB25A /* libcrypto.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libcrypto.a; sourceTree = "<group>"; };
+		9CCB1D7219D08826009BB25A /* libssl.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libssl.a; sourceTree = "<group>"; };
+		9CCB1D7419D08826009BB25A /* DataSigner.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DataSigner.h; sourceTree = "<group>"; };
+		9CCB1D7519D08826009BB25A /* DataVerifier.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DataVerifier.h; sourceTree = "<group>"; };
+		9CCB1D8419D088EF009BB25A /* AlixPaylib_arc.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = AlixPaylib_arc.a; sourceTree = "<group>"; };
+		9CCB1D8919D14EBE009BB25A /* DoAlertView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DoAlertView.h; sourceTree = "<group>"; };
+		9CCB1D8A19D14EBE009BB25A /* DoAlertView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DoAlertView.m; sourceTree = "<group>"; };
+		9CCB1D9119D14F2A009BB25A /* UIImage+ResizeMagick.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+ResizeMagick.h"; sourceTree = "<group>"; };
+		9CCB1D9219D14F2A009BB25A /* UIImage+ResizeMagick.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+ResizeMagick.m"; sourceTree = "<group>"; };
+		9CCB1D9A19D14FED009BB25A /* check.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = check.png; sourceTree = "<group>"; };
+		9CCB1D9B19D14FED009BB25A /* check@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "check@2x.png"; sourceTree = "<group>"; };
+		9CCB1D9C19D14FED009BB25A /* check_black.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = check_black.png; sourceTree = "<group>"; };
+		9CCB1D9D19D14FED009BB25A /* check_black@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "check_black@2x.png"; sourceTree = "<group>"; };
+		9CCB1D9E19D14FED009BB25A /* close.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = close.png; sourceTree = "<group>"; };
+		9CCB1D9F19D14FED009BB25A /* close@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "close@2x.png"; sourceTree = "<group>"; };
+		9CCB1DA019D14FED009BB25A /* close_black.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = close_black.png; sourceTree = "<group>"; };
+		9CCB1DA119D14FED009BB25A /* close_black@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "close_black@2x.png"; sourceTree = "<group>"; };
+		9CCB1DA219D14FED009BB25A /* pic1.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = pic1.jpg; sourceTree = "<group>"; };
+		9CCB1DA319D14FED009BB25A /* pic2.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = pic2.jpg; sourceTree = "<group>"; };
 		9CCDFD5019CBC88C008B6882 /* LICENSE.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE.txt; sourceTree = "<group>"; };
 		9CCDFD5119CBC88C008B6882 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		9CCDFD5319CBC88C008B6882 /* TPKeyboardAvoidingCollectionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TPKeyboardAvoidingCollectionView.h; sourceTree = "<group>"; };
@@ -768,6 +836,8 @@
 		9CCDFD7B19CC167F008B6882 /* ZHAddressCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZHAddressCell.m; sourceTree = "<group>"; };
 		9CCDFD7D19CC240A008B6882 /* btn_delete_with_label@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "btn_delete_with_label@2x.png"; sourceTree = "<group>"; };
 		9CCDFD7E19CC240A008B6882 /* btn_edit_with_label@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "btn_edit_with_label@2x.png"; sourceTree = "<group>"; };
+		9CCDFD8119D06EC7008B6882 /* ZHAddressEditVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZHAddressEditVC.h; sourceTree = "<group>"; };
+		9CCDFD8219D06EC7008B6882 /* ZHAddressEditVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZHAddressEditVC.m; sourceTree = "<group>"; };
 		C548FF18989B4FF8A8B17AD4 /* libPods-ZHGreenFuture.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-ZHGreenFuture.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C71C3F53A51D425DB6BCAC4D /* Pods-ZHGreenFuture.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ZHGreenFuture.xcconfig"; path = "Pods/Pods-ZHGreenFuture.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -806,6 +876,7 @@
 				9C9778D419B1905F00D49E69 /* MobileCoreServices.framework in Frameworks */,
 				9C0E0A2819BF331300ED8D87 /* WhatsAppConnection.framework in Frameworks */,
 				9C0E0A2319BF331300ED8D87 /* TencentWeiboConnection.framework in Frameworks */,
+				9CCB1D8219D08826009BB25A /* libcrypto.a in Frameworks */,
 				9C0E0A1F19BF331300ED8D87 /* SMSConnection.framework in Frameworks */,
 				9C0E0A2519BF331300ED8D87 /* TwitterConnection.framework in Frameworks */,
 				9C0E0A4719BF331300ED8D87 /* ShareSDKiPhoneDefaultShareViewUI.framework in Frameworks */,
@@ -830,6 +901,7 @@
 				9C0E0A0C19BF331300ED8D87 /* EverNoteConnection.framework in Frameworks */,
 				9C0E0A3C19BF331300ED8D87 /* libWeChatSDK.a in Frameworks */,
 				849F7F4B19AB81EE00962BB1 /* Foundation.framework in Frameworks */,
+				9CCB1D8519D088EF009BB25A /* AlixPaylib_arc.a in Frameworks */,
 				9C0E0A2419BF331300ED8D87 /* TumblrConnection.framework in Frameworks */,
 				9C0E0A1119BF331300ED8D87 /* InstapaperConnection.framework in Frameworks */,
 				A4C9D54E32334D93A158D3F2 /* libPods-ZHGreenFuture.a in Frameworks */,
@@ -837,10 +909,12 @@
 				9C0E0A2619BF331300ED8D87 /* VKontakteConnection.framework in Frameworks */,
 				9C0E0A0919BF331300ED8D87 /* CopyConnection.framework in Frameworks */,
 				9C0E0A1319BF331300ED8D87 /* KaiXinConnection.framework in Frameworks */,
+				9CCB1D7619D08826009BB25A /* AlipayRsaLib.a in Frameworks */,
 				9C0E0A2E19BF331300ED8D87 /* ShareSDKCoreService.framework in Frameworks */,
 				9C0E0A2719BF331300ED8D87 /* WeChatConnection.framework in Frameworks */,
 				9C0E0A1019BF331300ED8D87 /* InstagramConnection.framework in Frameworks */,
 				9C0E0A4419BF331300ED8D87 /* ShareSDKiPadSimpleShareViewUI.framework in Frameworks */,
+				9CCB1D8319D08826009BB25A /* libssl.a in Frameworks */,
 				9C0E0A2119BF331300ED8D87 /* SohuWeiboConnection.framework in Frameworks */,
 				9C0E0A4519BF331300ED8D87 /* ShareSDKiPhoneAppRecommendShareViewUI.framework in Frameworks */,
 				9C0E0A4919BF331300ED8D87 /* ShareSDKiPhoneSimpleShareViewUI.framework in Frameworks */,
@@ -1095,6 +1169,10 @@
 				9CCDFD6D19CBFE67008B6882 /* ZHConfirmOrderVC.m */,
 				9CCDFD7719CC13DD008B6882 /* ZHAddressManagerVC.h */,
 				9CCDFD7819CC13DD008B6882 /* ZHAddressManagerVC.m */,
+				9CCDFD8119D06EC7008B6882 /* ZHAddressEditVC.h */,
+				9CCDFD8219D06EC7008B6882 /* ZHAddressEditVC.m */,
+				9CCB1D5619D08659009BB25A /* ZHCheckoutVC.h */,
+				9CCB1D5719D08659009BB25A /* ZHCheckoutVC.m */,
 			);
 			path = ZHShopping;
 			sourceTree = "<group>";
@@ -1202,6 +1280,8 @@
 		9C0E08B919BF32BB00ED8D87 /* Libraies */ = {
 			isa = PBXGroup;
 			children = (
+				9CCB1D8819D14EBE009BB25A /* DoAlertView */,
+				9CCB1D5919D08826009BB25A /* alipay */,
 				9CCDFD4F19CBC88C008B6882 /* TPKeyboardAvoiding */,
 				9C0E0A5B19BF377E00ED8D87 /* Comment */,
 				9C0E09B119BF331200ED8D87 /* ShareSDK */,
@@ -1529,6 +1609,7 @@
 				9C0E0B4319CB44F300ED8D87 /* btn_checkbox_unselected@2x.png */,
 				9C0E08B719BF290400ED8D87 /* btn_share@2x.png */,
 				9C0E08B019BF1DC400ED8D87 /* btn_discuss@2x.png */,
+				9CCB1D9919D14FED009BB25A /* DoAlertView */,
 				84260FC819CD2F1C00216C78 /* Auth */,
 				9C89857519BEB280009CB910 /* recipe */,
 				84F1FE4819BC58F80002605A /* detail */,
@@ -1834,6 +1915,98 @@
 			path = Resources;
 			sourceTree = "<group>";
 		};
+		9CCB1D5919D08826009BB25A /* alipay */ = {
+			isa = PBXGroup;
+			children = (
+				9CCB1D8419D088EF009BB25A /* AlixPaylib_arc.a */,
+				9CCB1D5A19D08826009BB25A /* AlipayRsaLib.a */,
+				9CCB1D5B19D08826009BB25A /* AlixLibService.h */,
+				9CCB1D5C19D08826009BB25A /* Alixpay.bundle */,
+				9CCB1D5F19D08826009BB25A /* AlixPayOrder.h */,
+				9CCB1D6019D08826009BB25A /* AlixPayOrder.m */,
+				9CCB1D6119D08826009BB25A /* AlixPayResult.h */,
+				9CCB1D6219D08826009BB25A /* AlixPayResult.m */,
+				9CCB1D6319D08826009BB25A /* json */,
+				9CCB1D7119D08826009BB25A /* libcrypto.a */,
+				9CCB1D7219D08826009BB25A /* libssl.a */,
+				9CCB1D7319D08826009BB25A /* RSA */,
+			);
+			path = alipay;
+			sourceTree = "<group>";
+		};
+		9CCB1D6319D08826009BB25A /* json */ = {
+			isa = PBXGroup;
+			children = (
+				9CCB1D6419D08826009BB25A /* JSON.h */,
+				9CCB1D6519D08826009BB25A /* NSObject+SBJSON.h */,
+				9CCB1D6619D08826009BB25A /* NSObject+SBJSON.m */,
+				9CCB1D6719D08826009BB25A /* NSString+SBJSON.h */,
+				9CCB1D6819D08826009BB25A /* NSString+SBJSON.m */,
+				9CCB1D6919D08826009BB25A /* SBJSON.h */,
+				9CCB1D6A19D08826009BB25A /* SBJSON.m */,
+				9CCB1D6B19D08826009BB25A /* SBJsonBase.h */,
+				9CCB1D6C19D08826009BB25A /* SBJsonBase.m */,
+				9CCB1D6D19D08826009BB25A /* SBJsonParser.h */,
+				9CCB1D6E19D08826009BB25A /* SBJsonParser.m */,
+				9CCB1D6F19D08826009BB25A /* SBJsonWriter.h */,
+				9CCB1D7019D08826009BB25A /* SBJsonWriter.m */,
+			);
+			path = json;
+			sourceTree = "<group>";
+		};
+		9CCB1D7319D08826009BB25A /* RSA */ = {
+			isa = PBXGroup;
+			children = (
+				9CCB1D7419D08826009BB25A /* DataSigner.h */,
+				9CCB1D7519D08826009BB25A /* DataVerifier.h */,
+			);
+			path = RSA;
+			sourceTree = "<group>";
+		};
+		9CCB1D8819D14EBE009BB25A /* DoAlertView */ = {
+			isa = PBXGroup;
+			children = (
+				9CCB1D8C19D14F2A009BB25A /* 3rdSource */,
+				9CCB1D8919D14EBE009BB25A /* DoAlertView.h */,
+				9CCB1D8A19D14EBE009BB25A /* DoAlertView.m */,
+			);
+			path = DoAlertView;
+			sourceTree = "<group>";
+		};
+		9CCB1D8C19D14F2A009BB25A /* 3rdSource */ = {
+			isa = PBXGroup;
+			children = (
+				9CCB1D8D19D14F2A009BB25A /* UIImage-ResizeMagick */,
+			);
+			path = 3rdSource;
+			sourceTree = "<group>";
+		};
+		9CCB1D8D19D14F2A009BB25A /* UIImage-ResizeMagick */ = {
+			isa = PBXGroup;
+			children = (
+				9CCB1D9119D14F2A009BB25A /* UIImage+ResizeMagick.h */,
+				9CCB1D9219D14F2A009BB25A /* UIImage+ResizeMagick.m */,
+			);
+			path = "UIImage-ResizeMagick";
+			sourceTree = "<group>";
+		};
+		9CCB1D9919D14FED009BB25A /* DoAlertView */ = {
+			isa = PBXGroup;
+			children = (
+				9CCB1D9A19D14FED009BB25A /* check.png */,
+				9CCB1D9B19D14FED009BB25A /* check@2x.png */,
+				9CCB1D9C19D14FED009BB25A /* check_black.png */,
+				9CCB1D9D19D14FED009BB25A /* check_black@2x.png */,
+				9CCB1D9E19D14FED009BB25A /* close.png */,
+				9CCB1D9F19D14FED009BB25A /* close@2x.png */,
+				9CCB1DA019D14FED009BB25A /* close_black.png */,
+				9CCB1DA119D14FED009BB25A /* close_black@2x.png */,
+				9CCB1DA219D14FED009BB25A /* pic1.jpg */,
+				9CCB1DA319D14FED009BB25A /* pic2.jpg */,
+			);
+			path = DoAlertView;
+			sourceTree = "<group>";
+		};
 		9CCDFD4F19CBC88C008B6882 /* TPKeyboardAvoiding */ = {
 			isa = PBXGroup;
 			children = (
@@ -1945,6 +2118,7 @@
 				849F7F6619AB81EE00962BB1 /* Images.xcassets in Resources */,
 				9C0E0A2F19BF331300ED8D87 /* ShareSDKCoreService.framework.zip in Resources */,
 				9C0E0A5E19BF377E00ED8D87 /* Comment.bundle in Resources */,
+				9CCB1DA819D14FED009BB25A /* close.png in Resources */,
 				9C8983DE19B63409009CB910 /* bar_item_selected_04@2x.png in Resources */,
 				84A7A5B019B2BE890050CACD /* qr_code@2x.png in Resources */,
 				84F1FE5519BD7F180002605A /* detailMore@2x.png in Resources */,
@@ -1952,6 +2126,7 @@
 				84B9604919B36E820042A670 /* avatar@2x.png in Resources */,
 				84A7A5CE19B2D7060050CACD /* bannerPlaceholder@2x.png in Resources */,
 				9C0E0B4419CB44F300ED8D87 /* btn_checkbox_selected@2x.png in Resources */,
+				9CCB1DAA19D14FED009BB25A /* close_black.png in Resources */,
 				9C0E0A4819BF331300ED8D87 /* ShareSDKiPhoneSimpleShareViewUI.bundle in Resources */,
 				9C3862B819B1CB0400679C48 /* bar_item_selected_01@2x.png in Resources */,
 				84F1FE5119BD76A10002605A /* ZHDetailProductHeadView.xib in Resources */,
@@ -1960,6 +2135,8 @@
 				84260FE319CD8CF800216C78 /* ZHAuthorizationRegister3VC.xib in Resources */,
 				84F1FE4C19BD51130002605A /* detailProduct@2x.png in Resources */,
 				9C0E08B119BF1DC400ED8D87 /* btn_discuss@2x.png in Resources */,
+				9CCB1DAB19D14FED009BB25A /* close_black@2x.png in Resources */,
+				9CCB1DA719D14FED009BB25A /* check_black@2x.png in Resources */,
 				847E0BC219C473A90055B5C6 /* ZHOrderStatusCell.xib in Resources */,
 				9C0E0AE819BFEF2B00ED8D87 /* zbar-samples.png in Resources */,
 				84A7A5D319B313270050CACD /* productPlaceholder@2x.png in Resources */,
@@ -1969,6 +2146,7 @@
 				84F1FE3D19BC45B90002605A /* ZHDetailSKUInfoCell.xib in Resources */,
 				84B9604419B3638A0042A670 /* favorites@2x.png in Resources */,
 				9C89838B19B56E61009CB910 /* banner_mask@2x.png in Resources */,
+				9CCB1DA619D14FED009BB25A /* check_black.png in Resources */,
 				9C0E0AF219C41D6D00ED8D87 /* temp_recipe_banner@2x.png in Resources */,
 				9C89839819B60305009CB910 /* bar_item_selected_03@2x.png in Resources */,
 				84B9604519B3638A0042A670 /* myBG@2x.png in Resources */,
@@ -1979,6 +2157,7 @@
 				9C89836719B451F5009CB910 /* temp_liang@2x.png in Resources */,
 				847E0BCD19C483860055B5C6 /* orderProduct@2x.png in Resources */,
 				84F1FE2919BB46770002605A /* ZHDetailBannerCell.xib in Resources */,
+				9CCB1D7719D08826009BB25A /* Alixpay.bundle in Resources */,
 				9C3862BE19B2C7F800679C48 /* btn_search@2x.png in Resources */,
 				9CCDFD6B19CBE542008B6882 /* btn_delete@2x.png in Resources */,
 				9C0E0A4619BF331300ED8D87 /* ShareSDKiPhoneDefaultShareViewUI.bundle in Resources */,
@@ -1990,6 +2169,7 @@
 				84F1FE2E19BC3D5F0002605A /* ZHDetailPriceCell.xib in Resources */,
 				84A7A5B719B2C02F0050CACD /* rice@2x.png in Resources */,
 				9CCDFD5B19CBC88C008B6882 /* LICENSE.txt in Resources */,
+				9CCB1DA919D14FED009BB25A /* close@2x.png in Resources */,
 				847E0BBD19C46B7D0055B5C6 /* ZHOrderProductCell.xib in Resources */,
 				847E0BD519C550CD0055B5C6 /* ZHOrderActionTableViewCell.xib in Resources */,
 				84F1FE3319BC413F0002605A /* ZHDetailLogisticsInfoCell.xib in Resources */,
@@ -2008,6 +2188,7 @@
 				84260FD119CD603B00216C78 /* btn_back_login@2x.png in Resources */,
 				9C89837B19B49AF0009CB910 /* btn_back_green@2x.png in Resources */,
 				9C0E0AE519BFEF2B00ED8D87 /* zbar-back.png in Resources */,
+				9CCB1DA419D14FED009BB25A /* check.png in Resources */,
 				849F7F5519AB81EE00962BB1 /* InfoPlist.strings in Resources */,
 				9C89839419B5FEC8009CB910 /* btn_camera@2x.png in Resources */,
 				847E0BC719C475200055B5C6 /* ZHOrderSummaryCell.xib in Resources */,
@@ -2021,10 +2202,13 @@
 				9C8983DD19B63409009CB910 /* bar_item_04@2x.png in Resources */,
 				84A7A5B519B2C02F0050CACD /* credits@2x.png in Resources */,
 				9C0E0A2D19BF331300ED8D87 /* Resource.bundle in Resources */,
+				9CCB1DA519D14FED009BB25A /* check@2x.png in Resources */,
 				84A7A5C719B2C90E0050CACD /* ZHRecommendTableViewCell.xib in Resources */,
 				84F1FE5719BDDDB10002605A /* detailRecipe@2x.png in Resources */,
+				9CCB1DAC19D14FED009BB25A /* pic1.jpg in Resources */,
 				9C9778D219B1900F00D49E69 /* system.config in Resources */,
 				9C0E0A1219BF331300ED8D87 /* InstapaperResource.bundle in Resources */,
+				9CCB1DAD19D14FED009BB25A /* pic2.jpg in Resources */,
 				9C0E0A3F19BF331300ED8D87 /* ShareSDKFlatShareViewUI.bundle in Resources */,
 				9C0E08B319BF20BA00ED8D87 /* temp_recipe_placehold@2x.png in Resources */,
 				9C0E0A2C19BF331300ED8D87 /* ShareSDKLocalizable.strings in Resources */,
@@ -2086,6 +2270,7 @@
 				84B9603C19B35B790042A670 /* ZHNormalTableViewCell.m in Sources */,
 				84260FD419CD756300216C78 /* ZHAuthorizationRegister1VC.m in Sources */,
 				84A7A5CB19B2C9930050CACD /* ZHProductTableViewCell.m in Sources */,
+				9CCB1D7A19D08826009BB25A /* AlixPayOrder.m in Sources */,
 				9C8983D719B6168F009CB910 /* LunarCalendar.m in Sources */,
 				9C0E0AE219BFEF2B00ED8D87 /* rscode.c in Sources */,
 				84F1FE3C19BC45B90002605A /* ZHDetailSKUInfoCell.m in Sources */,
@@ -2093,6 +2278,7 @@
 				9C9778A519B1900F00D49E69 /* UIImage+ZHiteam.m in Sources */,
 				9C0E0B0119C866F100ED8D87 /* MadeStepModel.m in Sources */,
 				9C0E0A6619BF3F3900ED8D87 /* RecipeItemModel.m in Sources */,
+				9CCB1D5819D08659009BB25A /* ZHCheckoutVC.m in Sources */,
 				9C89837619B4845C009CB910 /* ZHSegmentView.m in Sources */,
 				9C0E0B1619C9298600ED8D87 /* RecipeCommentItemView.m in Sources */,
 				9C9778A819B1900F00D49E69 /* Config.m in Sources */,
@@ -2118,12 +2304,14 @@
 				9C3862B219B1BDC600679C48 /* MessageCenter.m in Sources */,
 				84260FDD19CD844400216C78 /* ZHAuthorizationRegister2VC.m in Sources */,
 				8468C65C19C3EC4D00B80868 /* ZHWebVC.m in Sources */,
+				9CCB1D7B19D08826009BB25A /* AlixPayResult.m in Sources */,
 				847E0BC619C475200055B5C6 /* ZHOrderSummaryCell.m in Sources */,
 				9C0E0B3D19CB3EF800ED8D87 /* ZHShoppingChartCell.m in Sources */,
 				84A6CB1F19BF3E82007F954A /* ZHSettingVC.m in Sources */,
 				9CCDFD7419CC0FF2008B6882 /* AddressModel.m in Sources */,
 				9C9778A619B1900F00D49E69 /* UILabel+ZHiteam.m in Sources */,
 				9C0E0B1319C926EE00ED8D87 /* RecipeCommentCell.m in Sources */,
+				9CCB1D8119D08826009BB25A /* SBJsonWriter.m in Sources */,
 				9C0E08AE19BF066D00ED8D87 /* RecipeCell.m in Sources */,
 				9C89857119B70B5E009CB910 /* ZHTagsView.m in Sources */,
 				9C0E0AF819C8604E00ED8D87 /* MaterialModel.m in Sources */,
@@ -2136,6 +2324,8 @@
 				9C9778A119B1900F00D49E69 /* NSDictionary+ZHiteam.m in Sources */,
 				9C89857419B70CC4009CB910 /* TagModel.m in Sources */,
 				9C9778A219B1900F00D49E69 /* NSObject+Instance.m in Sources */,
+				9CCB1D9719D14F2A009BB25A /* UIImage+ResizeMagick.m in Sources */,
+				9CCDFD8319D06EC7008B6882 /* ZHAddressEditVC.m in Sources */,
 				9C9778AB19B1900F00D49E69 /* MemoryStorage.m in Sources */,
 				9C3862CC19B2CEFD00679C48 /* SecondCatagoryModel.m in Sources */,
 				9C0E0AE119BFEF2B00ED8D87 /* qrspec.c in Sources */,
@@ -2147,6 +2337,7 @@
 				9C0E0B5419CB587900ED8D87 /* ZHEditCountView.m in Sources */,
 				849F7F5B19AB81EE00962BB1 /* AppDelegate.m in Sources */,
 				84260FC719CD2AC900216C78 /* ZHAuthorizationVC.m in Sources */,
+				9CCB1D7C19D08826009BB25A /* NSObject+SBJSON.m in Sources */,
 				9CCDFD5D19CBC88C008B6882 /* TPKeyboardAvoidingCollectionView.m in Sources */,
 				847E0BAD19C422C90055B5C6 /* ZHPersonInfoVC.m in Sources */,
 				9CCDFD7C19CC167F008B6882 /* ZHAddressCell.m in Sources */,
@@ -2162,10 +2353,12 @@
 				9C89837E19B49BFD009CB910 /* ZHSubCatagoryVC.m in Sources */,
 				9C0E0AE019BFEF2B00ED8D87 /* qrinput.c in Sources */,
 				9CCDFD5C19CBC88C008B6882 /* README.md in Sources */,
+				9CCB1D7F19D08826009BB25A /* SBJsonBase.m in Sources */,
 				84EA64D919B1993700C446A5 /* ZHProfileVC.m in Sources */,
 				9C9778AE19B1900F00D49E69 /* ZHViewController.m in Sources */,
 				9CCDFD6919CBDD80008B6882 /* ZHImagePreviewVC.m in Sources */,
 				9C3862C419B2CBBE00679C48 /* ZHShoppingCatagory.m in Sources */,
+				9CCB1D8B19D14EBE009BB25A /* DoAlertView.m in Sources */,
 				84F1FE4619BC4A150002605A /* ZHDetailProductCell.m in Sources */,
 				84A7A5C619B2C90E0050CACD /* ZHRecommendTableViewCell.m in Sources */,
 				9C9778AC19B1900F00D49E69 /* NavigationViewController.m in Sources */,
@@ -2194,7 +2387,9 @@
 				9C89837919B48C1E009CB910 /* ZHSwipSegment.m in Sources */,
 				9C0E0AFB19C860FD00ED8D87 /* MaterialItemView.m in Sources */,
 				84F1FE4F19BD76840002605A /* ZHDetailProductHeadView.m in Sources */,
+				9CCB1D7D19D08826009BB25A /* NSString+SBJSON.m in Sources */,
 				9C9778AF19B1900F00D49E69 /* BaseModel.m in Sources */,
+				9CCB1D7E19D08826009BB25A /* SBJSON.m in Sources */,
 				9C0E0B3619C9E45C00ED8D87 /* RecpieExampleModel.m in Sources */,
 				849F7F5719AB81EE00962BB1 /* main.m in Sources */,
 				9CCDFD7919CC13DD008B6882 /* ZHAddressManagerVC.m in Sources */,
@@ -2206,6 +2401,7 @@
 				9C0E0B0D19C91B1000ED8D87 /* RecipeTipsCell.m in Sources */,
 				9CCDFD6E19CBFE67008B6882 /* ZHConfirmOrderVC.m in Sources */,
 				9C0E0B0719C8690700ED8D87 /* MadeStepItemView.m in Sources */,
+				9CCB1D8019D08826009BB25A /* SBJsonParser.m in Sources */,
 				84EA64D019B198FE00C446A5 /* ZHHomePageVC.m in Sources */,
 				84B9603319B35A9A0042A670 /* ZHProfileModel.m in Sources */,
 				84260FE219CD8CF800216C78 /* ZHAuthorizationRegister3VC.m in Sources */,
@@ -2378,6 +2574,7 @@
 					"$(PROJECT_DIR)/ZHGreenFuture/Sources/Libraies/ShareSDK/Extend/YiXinSDK",
 					"$(PROJECT_DIR)/ZHGreenFuture/Sources/Classes/Common/ZBarSDK",
 					"$(PROJECT_DIR)/ZHGreenFuture/Sources/Libraies/ZBarSDK",
+					"$(PROJECT_DIR)/ZHGreenFuture/Sources/Libraies/alipay",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
@@ -2431,6 +2628,7 @@
 					"$(PROJECT_DIR)/ZHGreenFuture/Sources/Libraies/ShareSDK/Extend/YiXinSDK",
 					"$(PROJECT_DIR)/ZHGreenFuture/Sources/Classes/Common/ZBarSDK",
 					"$(PROJECT_DIR)/ZHGreenFuture/Sources/Libraies/ZBarSDK",
+					"$(PROJECT_DIR)/ZHGreenFuture/Sources/Libraies/alipay",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";

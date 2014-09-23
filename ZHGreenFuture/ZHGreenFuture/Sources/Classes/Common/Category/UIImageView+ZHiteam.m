@@ -17,8 +17,8 @@
 -(void)setImageWithUrlString:(NSString*)url placeHodlerImage:(UIImage*)image{
     [self startAnimating];
     __block UIImageView* imageView = self;
-    //    NSURL *encodedString = [url formateToURL];
-    NSURL *encodedString = [NSURL URLWithString:url];
+        NSURL *encodedString = [url greenFutureURL];
+//    NSURL *encodedString = [NSURL URLWithString:url];
 
     [self setImageWithURL:encodedString placeholderImage:image completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType) {
         //        NSLog(@"image %@ error %@ %@",image,error,encodedString);

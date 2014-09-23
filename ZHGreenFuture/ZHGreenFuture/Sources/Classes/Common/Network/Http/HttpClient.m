@@ -23,16 +23,11 @@
     self = [super init];
     
     if (self) {
-        NSString* serverAddr = [[Config config]configForKey:HTTP_SERVER];
 
-        if ( isEmptyString(serverAddr)) {
-            ZHLOG(@"%@",@"服务器地址不可用");
-        }
-        else{
-            NSURL *url = [NSURL URLWithString:serverAddr];
-            _client = [[AFHTTPRequestOperationManager alloc]initWithBaseURL:url];
-            _client.responseSerializer.acceptableContentTypes = [NSSet setWithObject:@"text/html"];
-        }
+        NSURL* url = [NSURL URLWithString:@"http://115.29.207.63:8080/greenFuture/"];
+        _client = [[AFHTTPRequestOperationManager alloc]initWithBaseURL:url];
+        _client.responseSerializer.acceptableContentTypes = [NSSet setWithObject:@"text/html"];
+        _client.requestSerializer.timeoutInterval = kTimeoutInterval;
     }
     
     return self;

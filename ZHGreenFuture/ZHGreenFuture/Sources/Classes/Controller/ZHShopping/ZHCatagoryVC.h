@@ -7,7 +7,10 @@
 //
 
 #import "ZHViewController.h"
+#import "CatagoryModel.h"
 
 @interface ZHCatagoryVC : ZHViewController
+
+@property (nonatomic,strong) CatagoryModel* model;
 
 @end

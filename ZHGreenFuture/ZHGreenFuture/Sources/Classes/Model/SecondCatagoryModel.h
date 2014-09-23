@@ -7,10 +7,16 @@
 //
 
 #import "BaseModel.h"
+#import "ZHProductItem.h"
 
 @interface SecondCatagoryModel : BaseModel
 
 @property (nonatomic,strong) NSString*  title;
 @property (nonatomic,strong) NSString*  imageUrl;
 @property (nonatomic,strong) NSString*  descript;
+@property (nonatomic,strong) NSString*  categoryId;
+
+@property (nonatomic,assign) BOOL       lastPage;
+
+@property (nonatomic,strong) NSArray*   productList;
 @end

@@ -28,7 +28,7 @@ typedef enum keyPath{
     /// image
     self.catagoryImage.frame = CGRectMake((self.width/4-50)/2, (self.height-CELL_BOTTOM_SPAN-72)/2, CELL_PER_HEIGHT, CELL_PER_HEIGHT);
     [self.contentView addSubview:_catagoryImage];
-    [self.catagoryImage setImage:[UIImage themeImageNamed:self.catagory.backgourndImageUrl]];
+    [self.catagoryImage setImageWithUrlString:self.catagory.backgourndImageUrl placeHodlerImage:nil];
     
     /// label
     self.catagoryLabel.frame = CGRectMake(0, self.catagoryImage.bottom+3, self.width/4, 28);

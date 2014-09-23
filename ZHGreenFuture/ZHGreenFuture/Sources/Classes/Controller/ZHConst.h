@@ -20,13 +20,17 @@ typedef void(^ZHCompletionBlock)(BOOL isSuccess);
 #define WHITE_TEXT          RGB(255,255,255)
 #define BLACK_TEXT          RGB(0,0,0)
 
-#define ALERT_MESSAGE(msg)  {UIAlertView* alert = [[UIAlertView alloc]initWithTitle:@"" message:msg delegate:nil cancelButtonTitle:@"确定" otherButtonTitles: nil];[alert show];}
+//#define ALERT_MESSAGE(msg)  {UIAlertView* alert = [[UIAlertView alloc]initWithTitle:@"" message:msg delegate:nil cancelButtonTitle:@"确定" otherButtonTitles: nil];[alert show];}
+
+#define ALERT_MESSAGE(msg)     DoAlertView* a = [[DoAlertView alloc]init];[a doYes:msg yes:^(DoAlertView *alertView) {}];
 
 #define ZHSTATUS_BAR_CHANGE @"zh_status_bar_change"
 
 #define SHARE_APPKEY                    @"3028b230599a"
 #define COMMENT_URL                     @"http://cmt.sharesdk.cn:5566/countInteract"
-#define BASE_URL                        @"http://115.29.207.63:8080/greenFuture/serverAPI.action"
+
+#define BASE_SITE                       @"http://115.29.207.63:8080"
+#define BASE_URL                        [NSString stringWithFormat:@"%@/greenFuture/serverAPI.action",BASE_SITE]
 #define kTimeoutInterval                6.0
 
 #define ZHALERTVIEW(TARGET,TITLE,MESSAGE,CANCELBUTTON,OTHERBUTTONS...) {UIAlertView *av =[[UIAlertView alloc] initWithTitle:TITLE message:MESSAGE delegate:TARGET cancelButtonTitle:CANCELBUTTON otherButtonTitles:OTHERBUTTONS];[av show];av=nil;}

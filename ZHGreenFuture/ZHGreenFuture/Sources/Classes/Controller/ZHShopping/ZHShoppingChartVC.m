@@ -53,8 +53,8 @@
         ShoppingChartModel* model = [[ShoppingChartModel alloc]init];
         model.title = @"【三千禾】东北农家黑 荞麦米 粗粮 五谷杂 荞麦米 粗粮 五谷杂";
         model.skuInfo = @"重量：500g；礼盒装";
-        model.marketPrice = @"￥19.89";
-        model.promotionPrice = @"￥9.89";
+        model.marketPrice = @"19.89";
+        model.promotionPrice = @"9.89";
         model.buyCout = [NSString stringWithFormat:@"%d",i+1];
         
         [self.shoppingChartLists addObject:model];

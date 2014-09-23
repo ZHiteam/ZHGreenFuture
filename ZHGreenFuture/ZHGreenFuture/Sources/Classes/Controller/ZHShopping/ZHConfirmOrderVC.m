@@ -11,19 +11,32 @@
 #import "TPKeyboardAvoidingTableView.h"
 #import "ZHInsetTextField.h"
 #import "AddressModel.h"
+#import "ZHAddressManagerVC.h"
 
-@interface ZHConfirmOrderVC ()<UITableViewDataSource,UITableViewDelegate>
+@interface ZHConfirmOrderVC ()<UITableViewDataSource,UITableViewDelegate,ZHAddressManagerDelegate>
 
 @property (nonatomic,strong) TPKeyboardAvoidingTableView*   confiemOrderTable;
 @property (nonatomic,strong) UITableViewCell*               addressView;
 
 @property (nonatomic,strong) AddressModel*                  addressModel;
+@property (nonatomic,strong) UIView*                        noAddressStyleView;
+@property (nonatomic,strong) UIView*                        addressStyleView;
 
+@property (nonatomic,strong) UIView*                        toolBar;
+@property (nonatomic,strong) UIButton*                      checkOut;
+@property (nonatomic,strong) UILabel*                       total;
 @end
 
 @implementation ZHConfirmOrderVC
 
 - (void)viewDidLoad {
+#pragma TEST
+//    AddressModel* model = [[AddressModel alloc]init];
+//    model.name = @"王百万";
+//    model.phone = @"15067192558";
+//    model.address = @"浙江省杭州市西湖区东部软件园科技广场617";
+//    self.addressModel = model;
+    
     [super viewDidLoad];
     [self loadContent];
 }
@@ -34,7 +47,7 @@
 }
 
 -(void)loadContent{
-    
+    self.view.backgroundColor = WHITE_BACKGROUND;
     if ([self.userInfo isKindOfClass:[NSArray class]]){
         self.chartList = self.userInfo;
     }
@@ -43,15 +56,15 @@
     [self whithNavigationBarStyle];
     
     [self.view addSubview:self.confiemOrderTable];
+    [self.view addSubview:self.toolBar];
 }
 
 -(TPKeyboardAvoidingTableView *)confiemOrderTable{
     
     if (!_confiemOrderTable){
         _confiemOrderTable = [[TPKeyboardAvoidingTableView alloc]initWithFrame:self.contentBounds];
-        _confiemOrderTable.backgroundColor = GRAY_LINE;
         _confiemOrderTable.showsVerticalScrollIndicator = NO;
-        
+        _confiemOrderTable.separatorStyle = UITableViewCellSeparatorStyleNone;
         _confiemOrderTable.delegate = self;
         _confiemOrderTable.dataSource = self;
     }
@@ -59,35 +72,153 @@
     return _confiemOrderTable;
 }
 
+-(UIView *)toolBar{
+    
+    if (!_toolBar){
+        _toolBar = [[UIView alloc]initWithFrame:CGRectMake(0, self.view.height-TAB_BAR_HEIGHT, self.view.width, TAB_BAR_HEIGHT)];
+        _toolBar.backgroundColor = GRAY_LINE;
+        
+        [_toolBar addSubview:self.checkOut];
+        [_toolBar addSubview:self.total];
+    }
+    
+    return _toolBar;
+}
+
+-(UILabel *)total{
+    if (!_total){
+        _total  =[UILabel labelWithText:@"" font:FONT(16) color:GREEN_COLOR textAlignment:NSTextAlignmentLeft];
+        _total.frame = CGRectMake(10, 0, 200, TAB_BAR_HEIGHT);
+        
+        CGFloat totalMoney = 0.0f;
+        for (ShoppingChartModel* model  in self.chartList) {
+            totalMoney += [model.promotionPrice floatValue]*[model.buyCout intValue];
+        }
+        
+        _total.text = [NSString stringWithFormat:@"合计：￥%.2f",totalMoney];
+    }
+    
+    return _total;
+}
+
+
+-(UIButton *)checkOut{
+    
+    if (!_checkOut){
+        _checkOut = [[UIButton alloc]initWithFrame:CGRectMake(self.view.width-90, 0, 90, TAB_BAR_HEIGHT)];
+        [_checkOut setTitleColor:WHITE_TEXT forState:UIControlStateNormal];
+        _checkOut.titleLabel.font = FONT(16);
+
+        [self.checkOut setTitle:@"去结算" forState:UIControlStateNormal];
+        self.checkOut.backgroundColor = GREEN_COLOR;
+        
+        [_checkOut addTarget:self action:@selector(checkOutAction) forControlEvents:UIControlEventTouchUpInside];
+    }
+    
+    return _checkOut;
+}
+
+
+-(UIView *)noAddressStyleView{
+    
+    if (!_noAddressStyleView){
+        _noAddressStyleView = [[UIControl alloc]initWithFrame:CGRectMake(0, 0, self.view.width, 50)];
+        
+        UIButton* location = [[UIButton alloc]initWithFrame:CGRectMake(10, 16, 14, 18)];
+        [location setImage:[UIImage themeImageNamed:@"btn_location"] forState:UIControlStateNormal];
+        [_noAddressStyleView addSubview:location];
+        
+        UIButton* makSure = [[UIButton alloc]initWithFrame:CGRectMake(location.right+10, location.top, 120, location.height)];
+        [makSure setTitle:@"请填写收货地址" forState:UIControlStateNormal];
+        [makSure setTitleColor:BLACK_TEXT forState:UIControlStateNormal];
+        makSure.titleLabel.font = FONT(16);
+        makSure.titleLabel.textAlignment = NSTextAlignmentLeft;
+        [_noAddressStyleView addSubview:makSure];
+        
+        UIButton* more = [[UIButton alloc]initWithFrame:CGRectMake(_noAddressStyleView.width-28, 16, 18, 18)];
+        [more setImage:[UIImage themeImageNamed:@"detailMore"] forState:UIControlStateNormal];
+        [_noAddressStyleView addSubview:more];
+        
+        UIControl* _mask = [[UIControl alloc]initWithFrame:_noAddressStyleView.bounds];
+        [_mask addTarget:self action:@selector(addressManagerPage) forControlEvents:UIControlEventTouchUpInside];
+        [_noAddressStyleView addSubview:_mask];
+    }
+    
+    return _noAddressStyleView;
+}
+
+-(UIView *)addressStyleView{
+    
+    if (!_addressStyleView){
+        _addressStyleView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, self.view.width, 80)];
+        
+        UILabel* label = [UILabel labelWithText:@"收件人：" font:FONT(14) color:BLACK_TEXT textAlignment:NSTextAlignmentLeft];
+        label.frame = CGRectMake(10, 10, 60, 20);
+        [_addressStyleView addSubview:label];
+        
+        UILabel* name = [UILabel labelWithText:@"" font:FONT(14) color:BLACK_TEXT textAlignment:NSTextAlignmentLeft];
+        name.frame = CGRectMake(label.right, label.top, 200, 20);
+        [_addressStyleView addSubview:name];
+        name.tag = -100;
+        
+        label = [UILabel labelWithText:@"手机号：" font:FONT(14) color:BLACK_TEXT textAlignment:NSTextAlignmentLeft];
+        label.frame = CGRectMake(10, 30, 60, 20);
+        [_addressStyleView addSubview:label];
+        
+        UILabel* phone = [UILabel labelWithText:@"" font:FONT(14) color:BLACK_TEXT textAlignment:NSTextAlignmentLeft];
+        phone.frame = CGRectMake(label.right, label.top, 200, 20);
+        [_addressStyleView addSubview:phone];
+        phone.tag = -101;
+        
+        label = [UILabel labelWithText:@"收货地址：" font:FONT(14) color:BLACK_TEXT textAlignment:NSTextAlignmentLeft];
+        label.frame = CGRectMake(10, 50, 60, 20);
+        [_addressStyleView addSubview:label];
+        
+        UILabel* address = [UILabel labelWithText:@"" font:FONT(14) color:BLACK_TEXT textAlignment:NSTextAlignmentLeft];
+        address.frame = CGRectMake(label.right, label.top, self.view.width-label.width-20, 20);
+        [_addressStyleView addSubview:address];
+        address.tag = -102;
+        
+        UIButton* more = [[UIButton alloc]initWithFrame:CGRectMake(_addressStyleView.width-28, (_addressStyleView.height-18)/2, 18, 18)];
+        [more setImage:[UIImage themeImageNamed:@"detailMore"] forState:UIControlStateNormal];
+        [_addressStyleView addSubview:more];
+        
+        UIControl* _mask = [[UIControl alloc]initWithFrame:_addressStyleView.bounds];
+        [_mask addTarget:self action:@selector(addressManagerPage) forControlEvents:UIControlEventTouchUpInside];
+        [_addressStyleView addSubview:_mask];
+    }
+    
+    if (self.addressModel){
+        UILabel* name = (UILabel*)[_addressStyleView viewWithTag:-100];
+        name.text = self.addressModel.name;
+        
+        UILabel* phone = (UILabel*)[_addressStyleView viewWithTag:-101];
+        phone.text = self.addressModel.phone;
+        
+        UILabel* address = (UILabel*)[_addressStyleView viewWithTag:-102];
+        address.text = self.addressModel.address;
+    }
+    
+    return _addressStyleView;
+}
+
+
 -(UITableViewCell *)addressView{
     
     if (!_addressView){
         _addressView = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"addressCell"];
-        _addressView.height = 50;
-        if (!self.addressModel){
-            UIControl* ctl = [[UIControl alloc]initWithFrame:_addressView.bounds];
-            [_addressView addSubview:ctl];
 
-            UIButton* location = [[UIButton alloc]initWithFrame:CGRectMake(10, 16, 14, 18)];
-            [location setImage:[UIImage themeImageNamed:@"btn_location"] forState:UIControlStateNormal];
-            [ctl addSubview:location];
-            
-            UIButton* makSure = [[UIButton alloc]initWithFrame:CGRectMake(location.right+10, location.top, 120, location.height)];
-            [makSure setTitle:@"请填写收货地址" forState:UIControlStateNormal];
-            [makSure setTitleColor:BLACK_TEXT forState:UIControlStateNormal];
-            makSure.titleLabel.font = FONT(16);
-            makSure.titleLabel.textAlignment = NSTextAlignmentLeft;
-            [ctl addSubview:makSure];
+    }
 
-            UIButton* more = [[UIButton alloc]initWithFrame:CGRectMake(_addressView.width-28, 16, 18, 18)];
-            [more setImage:[UIImage themeImageNamed:@"detailMore"] forState:UIControlStateNormal];
-            [ctl addSubview:more];
-            
-            [ctl addTarget:self action:@selector(addressManagerPage) forControlEvents:UIControlEventTouchUpInside];
-            [location addTarget:self action:@selector(addressManagerPage) forControlEvents:UIControlEventTouchUpInside];
-            [makSure addTarget:self action:@selector(addressManagerPage) forControlEvents:UIControlEventTouchUpInside];
-            [more addTarget:self action:@selector(addressManagerPage) forControlEvents:UIControlEventTouchUpInside];
-        }
+    [_addressView removeAllSubviews];
+    
+    if (!self.addressModel){
+        _addressView.height = self.noAddressStyleView.height;
+        [_addressView addSubview:self.noAddressStyleView];
+    }
+    else{
+        _addressView.height = self.addressStyleView.height;
+        [_addressView addSubview:self.addressStyleView];
     }
     
     return _addressView;
@@ -145,6 +276,13 @@
     return 10;
 }
 
+-(UIView*)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
+    UIView* view = [[UIView alloc]initWithFrame:CGRectMake(0, 0,tableView.width, 10)];
+    view.backgroundColor = GRAY_LINE;
+    return view;
+//    return [UIView]
+}
+
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
@@ -182,6 +320,11 @@
         desc.tag = -102;
         
         [cell addSubview:desc];
+        
+        UIView* line = [[UIView alloc]initWithFrame:CGRectMake(10, 39, cell.width-20, 1)];
+        line.backgroundColor = GRAY_LINE;
+        [cell addSubview:line];
+        
     }
     
     UILabel* label = (UILabel*)[cell viewWithTag:-101];
@@ -228,6 +371,31 @@
 
 #pragma -mark Adress Manager
 -(void)addressManagerPage{
-    [[MessageCenter instance]performActionWithUserInfo:@{@"controller":@"ZHAddressManagerVC"}];
+    [[MessageCenter instance]performActionWithUserInfo:@{@"controller":@"ZHAddressManagerVC",@"userinfo":self}];
+}
+
+#pragma -mark checkOutAction
+-(void)checkOutAction{
+    if (!self.addressModel){
+        ALERT_MESSAGE(@"请填写收货地址");
+        return;
+    }
+    
+
+    
+    DoAlertView* alert = [[DoAlertView alloc]init];
+    NSString* msg = [NSString stringWithFormat:@"确认支付金额\n%@",self.total.text];
+    [alert doYesNo:msg yes:^(DoAlertView *alertView) {
+        
+    } no:^(DoAlertView *alertView) {
+        
+    }];
+}
+
+#pragma -mark selected address
+-(void)selectedAtAddress:(AddressModel *)address{
+    self.addressModel = address;
+    
+    [self.confiemOrderTable reloadData];
 }
 @end

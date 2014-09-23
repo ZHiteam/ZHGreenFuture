@@ -33,4 +33,7 @@
     return self;
 }
 
++(BaseModel *)praserModelWithInfo:(id)info{
+    return [[ZHProductItem alloc]initWithDictionary:info];
+}
 @end

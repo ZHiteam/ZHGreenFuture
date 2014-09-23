@@ -38,9 +38,9 @@
     return self.selected;
 }
 
--(void)checkAction:(BOOL)check{
-
-    self.selected = check;
+-(void)setCheckState:(BOOL)checkState{
+    self.selected = checkState;
+    
     if (self.selected){
         [self setImage:[UIImage themeImageNamed:@"btn_checkbox_unselected"] forState:UIControlStateHighlighted];
         [self setImage:[UIImage themeImageNamed:@"btn_checkbox_selected"] forState:UIControlStateNormal];
@@ -49,6 +49,12 @@
         [self setImage:[UIImage themeImageNamed:@"btn_checkbox_unselected"] forState:UIControlStateNormal];
         [self setImage:[UIImage themeImageNamed:@"btn_checkbox_selected"] forState:UIControlStateHighlighted];
     }
+    
+}
+
+-(void)checkAction:(BOOL)check{
+    
+    [self setCheckState:check];
     
     if (self.checkBlock){
         self.checkBlock(check);

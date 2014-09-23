@@ -7,7 +7,14 @@
 //
 
 #import "ZHViewController.h"
+#import "AddressModel.h"
+
+@protocol ZHAddressManagerDelegate <NSObject>
+
+-(void)selectedAtAddress:(AddressModel*)address;
+
+@end
 
 @interface ZHAddressManagerVC : ZHViewController
-
+@property (nonatomic,assign) id delegate;
 @end
