@@ -8,6 +8,7 @@
 
 #import "ZHAuthorizationRegister1VC.h"
 #import "ZHAuthorizationRegister2VC.h"
+#import "ZHAuthorizationManager.h"
 
 @interface ZHAuthorizationRegister1VC ()
 @property(nonatomic, strong)UIImageView            *phoneImageView;
@@ -111,8 +112,18 @@
 
 #pragma mark - Event Handler
 - (void)registerButtonPressed:(id)sender{
-    ZHAuthorizationRegister2VC * vc = [[ZHAuthorizationRegister2VC alloc] initWithNibName:@"ZHAuthorizationRegister2VC" bundle:nil];
-    [self.navigationController pushViewController:vc animated:YES];
+    if ([self.accountTextField.text length] >0) {
+        __weak __typeof(self) weakSelf = self;
+        [[ZHAuthorizationManager shareInstance] getValidateCodeWithAccount:self.accountTextField.text completionBlock:^(BOOL isSuccess, id info) {
+            if (!isSuccess) {
+                ZHALERTVIEW(nil, @"出错了，请再试一次" , nil,@"确定"  ,nil,nil);
+            }else {
+                ZHAuthorizationRegister2VC * vc = [[ZHAuthorizationRegister2VC alloc] initWithNibName:@"ZHAuthorizationRegister2VC" bundle:nil];
+                vc.account = weakSelf.accountTextField.text;
+                [weakSelf.navigationController pushViewController:vc animated:YES];
+            }
+        }];
+    }
 }
 
 - (void)backItemPressed:(id)sender{

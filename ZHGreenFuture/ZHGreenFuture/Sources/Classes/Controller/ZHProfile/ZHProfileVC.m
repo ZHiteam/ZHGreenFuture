@@ -14,6 +14,9 @@
 #import "ZHPersonInfoVC.h"
 #import "ZHOrderListVC.h"
 #import "ZHProductsVC.h"
+#import "ZHAuthorizationVC.h"
+#import "ZHRootViewController.h"
+#import "TabbarViewController.h"
 
 @interface ZHProfileVC ()<UITableViewDelegate, UITableViewDataSource>
 @property(nonatomic, strong)UITableView          *tableView;
@@ -53,6 +56,21 @@
         [navi pushViewController:personInfoVC animation:ANIMATE_TYPE_DEFAULT];
     }];
     [self loadConent];
+}
+
+- (void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+
+    if (![[[ZHAuthorizationVC shareInstance] authManager] isLogin])
+    {
+        [ZHAuthorizationVC showLoginVCWithCompletionBlock:^(BOOL isSuccess, id info) {
+            if (!isSuccess) {
+                ZHRootViewController *rootVC = [[[UIApplication sharedApplication] delegate] performSelector:@selector(rootViewController)];
+                TabbarViewController *tabbarVC = [rootVC performSelector:@selector(tabCtl)];
+                [tabbarVC selectAtIndex:0 animation:YES];
+            }
+        }];
+    }
 }
 
 - (void)didReceiveMemoryWarning

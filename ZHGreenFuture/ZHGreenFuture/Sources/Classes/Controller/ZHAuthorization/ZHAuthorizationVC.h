@@ -10,7 +10,9 @@
 #import "ZHAuthorizationManager.h"
 
 @interface ZHAuthorizationVC : UIViewController
+@property(nonatomic, assign) BOOL isRunning;
 @property(nonatomic, readonly)ZHAuthorizationManager *authManager;
++ (instancetype)shareInstance;
 + (void)showLoginVCWithCompletionBlock:(ZHAuthCompletionBlock)block;
 + (void)dismissLoginVC;
 @end

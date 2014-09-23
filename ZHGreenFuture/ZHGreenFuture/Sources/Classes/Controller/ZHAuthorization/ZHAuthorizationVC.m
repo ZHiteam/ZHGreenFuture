@@ -21,6 +21,16 @@
 
 @implementation ZHAuthorizationVC
 
++ (instancetype)shareInstance{
+    static ZHAuthorizationVC *shareInstance;
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        shareInstance = [[ZHAuthorizationVC alloc] init];
+    });
+    return shareInstance;
+}
+
+
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
@@ -57,12 +67,15 @@
 #pragma mark - Public Method
 
 + (void)showLoginVCWithCompletionBlock:(ZHAuthCompletionBlock)block{
-    ZHAuthorizationVC *vc = [[ZHAuthorizationVC alloc] init];
-    vc.completionBlock = block;
-    vc.modalPresentationStyle = UIModalPresentationCurrentContext;
-    
-    UINavigationController *naviVC = [[UINavigationController alloc] initWithRootViewController:vc];
-    [[[[UIApplication sharedApplication] keyWindow] rootViewController] presentViewController:naviVC animated:YES completion:nil];
+    ZHAuthorizationVC *vc = [ZHAuthorizationVC shareInstance];
+    if (!vc.isRunning) {
+        vc.isRunning       = YES;
+        vc.completionBlock = block;
+        vc.modalPresentationStyle = UIModalPresentationCurrentContext;
+        
+        UINavigationController *naviVC = [[UINavigationController alloc] initWithRootViewController:vc];
+        [[[[UIApplication sharedApplication] keyWindow] rootViewController] presentViewController:naviVC animated:YES completion:nil];
+    }
 }
 
 + (void)dismissLoginVC{
@@ -127,6 +140,8 @@
 #pragma mark - Event Handler
 - (void)leftItemPressed:(id)sender{
     [ZHAuthorizationVC dismissLoginVC];
+    self.completionBlock(NO,nil);
+    self.isRunning = NO;
 }
 
 - (void)rightItemPressed:(id)sender{
@@ -156,10 +171,14 @@
     [[ZHAuthorizationManager shareInstance] logInWithAccount:userNameStr password:passwordStr completionBlock:^(BOOL isSuccess, id info) {
         if (!isSuccess) {
             ZHALERTVIEW(@"登录出错", nil , nil,@"确定"  ,nil,nil);
+        } else {
+            [ZHAuthorizationVC dismissLoginVC];
         }
+        
         if (weakSelf.completionBlock) {
             weakSelf.completionBlock(isSuccess,info);
         }
+        weakSelf.isRunning = NO;
     }];
 }
 
@@ -198,56 +217,21 @@
     if(indexPath.row == 0) {
         cell.imageView.image  = [UIImage imageNamed:@"auth_account"];
         textField.placeholder = @"手机号/用户名";
+        textField.secureTextEntry = NO;
+        textField.keyboardType = UIKeyboardTypeNumbersAndPunctuation;
         //textField.font = [UIFont systemFontOfSize:14.0];
         seperateView.hidden = NO;
         self.accountTextField = textField;
     }else if ( indexPath.row == 1) {
         cell.imageView.image = [UIImage imageNamed:@"auth_password"];
         textField.placeholder = @"请输入密码";
+        textField.secureTextEntry = YES;
+        textField.keyboardType = UIKeyboardTypeNumbersAndPunctuation;
         self.passwordTextField = textField;
     } else if( indexPath.row == 2) {
         textField.hidden = YES;
         [cell addSubview:self.loginButton];
     }
-//    if (indexPath.section ==0) {
-//        switch (indexPath.row) {
-//            case 0:
-//            {
-//                static NSString *CellIdentifier = @"kTableViewCell";
-//                UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-//                if (cell == nil){
-//                    cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
-//                }
-//                cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
-//                cell.textLabel.text = @"全部订单";
-//                cell.selectionStyle = UITableViewCellSelectionStyleNone;
-//                return cell;
-//            }
-//                break;
-//            case 1:
-//                
-//                [self.orderTableViewCell.waitPayLabel setBadegeCount:self.profileModel.waitPayCount];
-//                [self.orderTableViewCell.waitDeliverLabel setBadegeCount:self.profileModel.deliverCount];
-//                [self.orderTableViewCell.waitReceiveLabel setBadegeCount:self.profileModel.comfirmShoppingCount];
-//                [self.orderTableViewCell.waitCommentLabel setBadegeCount:self.profileModel.waitCommentCount];
-//                [self.orderTableViewCell.orderServiceLabel setBadegeCount:@"51"];
-//                return self.orderTableViewCell;
-//                break;
-//            default:
-//                break;
-//        }
-//    }
-//    else {
-//        static NSString *CellIdentifier = @"kImageTableViewCell";
-//        UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-//        if (cell == nil){
-//            cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
-//        }
-//        cell.textLabel.text = @"我的作品";
-//        cell.imageView.image = [UIImage imageNamed:@"favorites.png"];
-//        
-//        return cell;
-//    }
     return cell;
 }
 
@@ -270,15 +254,7 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
-//    if (indexPath.section ==0 && (indexPath.row >=0 && indexPath.row <= 1)) {
-//        ZHOrderListVC *orderListVC = [[ZHOrderListVC alloc] init];
-//        NavigationViewController*   navi = [MemoryStorage valueForKey:k_NAVIGATIONCTL];
-//        [navi pushViewController:orderListVC animation:ANIMATE_TYPE_DEFAULT];
-//    } else if (indexPath.section ==1 && indexPath.row ==0){
-//        ZHProductsVC *productsVC = [[ZHProductsVC alloc] init];
-//        NavigationViewController*   navi = [MemoryStorage valueForKey:k_NAVIGATIONCTL];
-//        [navi pushViewController:productsVC animation:ANIMATE_TYPE_DEFAULT];
-//    }
+
     NSLog(@">>>>>didSelectRowAtIndexPath %@",indexPath);
 }
 

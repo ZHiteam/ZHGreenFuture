@@ -7,8 +7,13 @@
 //
 
 #import "ZHAuthorizationRegister3VC.h"
+#import "ZHAuthorizationManager.h"
+#import "ZHAuthorizationVC.h"
 
 @interface ZHAuthorizationRegister3VC ()
+@property (weak, nonatomic) IBOutlet UITextField *passwordTextField;
+@property (weak, nonatomic) IBOutlet UITextField *password2TextField;
+- (IBAction)commitButtonPressed:(id)sender;
 
 @end
 
@@ -76,4 +81,19 @@
     [self.navigationController popToRootViewControllerAnimated:YES];
 }
 
+- (IBAction)commitButtonPressed:(id)sender {
+    NSString *pass1 = self.passwordTextField.text;
+    NSString *pass2 = self.password2TextField.text;
+    if ([pass1 length] >0 && [pass1 isEqualToString:pass2]) {
+        [[ZHAuthorizationManager shareInstance] registerWithAccount:self.account password:pass1 completionBlock:^(BOOL isSuccess, id info) {
+            if (!isSuccess) {
+                ZHALERTVIEW(nil, @"出错了，请再试一次" , nil,@"确定"  ,nil,nil);
+            }else {
+                [FEToastView showWithTitle:@"注册成功。" animation:YES interval:1.0];
+                [ZHAuthorizationVC dismissLoginVC];
+                [ZHAuthorizationVC shareInstance].isRunning = NO;
+            }
+        }];
+    }
+}
 @end

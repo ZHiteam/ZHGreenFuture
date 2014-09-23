@@ -8,6 +8,8 @@
 
 #import "ZHAuthorizationRegister2VC.h"
 #import "ZHAuthorizationRegister3VC.h"
+#import "ZHAuthorizationManager.h"
+
 
 @interface ZHAuthorizationRegister2VC ()
 @property (weak, nonatomic) IBOutlet UILabel *infoLabel;
@@ -86,9 +88,16 @@
 		ZHALERTVIEW(nil,@"验证码错误，请重新输入。",nil, @"确定" ,nil,nil);
         return;
 	}
-    
-    ZHAuthorizationRegister3VC * vc = [[ZHAuthorizationRegister3VC alloc] initWithNibName:@"ZHAuthorizationRegister3VC" bundle:nil];
-    [self.navigationController pushViewController:vc animated:YES];
+    __weak __typeof(self) weakSelf = self;
+    [[ZHAuthorizationManager shareInstance] postValidateCode:authCode account:self.account completionBlock:^(BOOL isSuccess, id info) {
+        if (!isSuccess) {
+            ZHALERTVIEW(nil, @"出错了，请再试一次" , nil,@"确定"  ,nil,nil);
+        }else {
+            ZHAuthorizationRegister3VC * vc = [[ZHAuthorizationRegister3VC alloc] initWithNibName:@"ZHAuthorizationRegister3VC" bundle:nil];
+            vc.account = weakSelf.account;
+            [weakSelf.navigationController pushViewController:vc animated:YES];
+        }
+    }];
 }
 
 - (void)regetAuthCode{

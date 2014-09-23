@@ -12,10 +12,16 @@ typedef void(^ZHAuthCompletionBlock)(BOOL isSuccess, id info);
 
 @interface ZHAuthorizationManager : NSObject
 @property(nonatomic,assign) BOOL        isLogin;
-@property(nonatomic,retain) NSString*	account;
-@property(nonatomic,retain) NSString*	passWord;
+@property(nonatomic,strong) NSString*	account;
+@property(nonatomic,strong) NSString*	passWord;
+@property(nonatomic,strong) NSString*	userId;
+@property(nonatomic,strong) NSString*	userNick;
+@property(nonatomic,strong) NSString*	userAvatarURL;
+
 
 + (instancetype)shareInstance;
-- (void)registerWithAccount:(NSString*)account password:(NSString*)password referral:(NSString*)referral completionBlock:(ZHAuthCompletionBlock)block;
+- (void)getValidateCodeWithAccount:(NSString*)account completionBlock:(ZHAuthCompletionBlock)block;
+- (void)postValidateCode:(NSString*)validateCode account:(NSString*)account completionBlock:(ZHAuthCompletionBlock)block;
+- (void)registerWithAccount:(NSString*)account password:(NSString*)password completionBlock:(ZHAuthCompletionBlock)block;
 - (void)logInWithAccount:(NSString*)account password:(NSString*)password completionBlock:(ZHAuthCompletionBlock)block;
 @end

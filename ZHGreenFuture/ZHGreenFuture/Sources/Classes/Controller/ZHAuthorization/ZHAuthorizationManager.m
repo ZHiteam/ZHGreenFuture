@@ -15,8 +15,7 @@
 
 
 @interface ZHAuthorizationManager ()
-//@property(nonatomic, strong)NSString *account;
-//@property(nonatomic, strong)NSString *passWord;
+
 @end
 
 @implementation ZHAuthorizationManager
@@ -52,84 +51,111 @@
     return [self.passWord length] >0;
 }
 
-- (void)registerWithAccount:(NSString*)account password:(NSString*)password referral:(NSString*)referral completionBlock:(ZHAuthCompletionBlock)block{
-   /*
-    NSMutableString *urlStr = [NSMutableString stringWithFormat:@"%@RegUser", kBaseURLString];
-    AFHTTPClient *httpClient = [[AFHTTPClient alloc] initWithBaseURL:[NSURL URLWithString:@""]];
-    httpClient.parameterEncoding = AFJSONParameterEncoding;
-    [httpClient setDefaultHeader:@"Accept" value:@"text/json"];
-    //post json
-    NSMutableDictionary *params=[[NSMutableDictionary alloc] init];
-    [params setObject:account forKey:@"userID"];
-    [params setObject:password forKey:@"pwd"];
-    [params setObject:referral forKey:@"referral"];
-    
-    __weak __typeof(self) weakSelf = self;
-    [httpClient postPath:urlStr parameters:params success:^(AFHTTPRequestOperation *operation, id responseObject) {
-        NSString *responseStr = nil;
-        if ([responseObject isKindOfClass:[NSData class]]) {
-            responseStr = [[NSString alloc] initWithData:responseObject encoding:NSUTF8StringEncoding];
-            responseStr = [responseStr stringByReplacingOccurrencesOfString:@"\"" withString:@""];
-            if ([responseStr isEqualToString:@"注册成功"]) {
-                weakSelf.account  = account;
-                weakSelf.passWord = password;
-                [weakSelf setAccountInfo];
-                if (block) {
-                    block(YES, @"注册成功");
+- (void)getValidateCodeWithAccount:(NSString*)account completionBlock:(ZHAuthCompletionBlock)block{
+    if ([account length] >0 ) {
+        AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+        manager.responseSerializer.acceptableContentTypes = [NSSet setWithObject:@"text/html"];//这里设置是因为服务端返回的类型是text/html，不在AF默认设置之列
+        manager.requestSerializer.timeoutInterval = kTimeoutInterval;
+        [manager POST:BASE_URL parameters:@{@"scene": @"24",@"phone":account} success:^(AFHTTPRequestOperation *operation, id responseObject) {
+            BOOL result = NO;
+            if ([responseObject isKindOfClass:[NSDictionary class]]) {
+                if ([[responseObject objectForKey:@"result"] boolValue]) {
+                    result = YES;
                 }
-                return ;
             }
-            NSLog(@"Request Successful, response '%@'", responseStr);
-        }
-        if (block) {
-            block(NO, responseStr);
-        }
-        
-    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-        NSLog(@"[HTTPClient Error]: %@", error);
-        if (block) {
-            block(NO, [error description]);
-        }
-        
-    }];
-    */
+            if (block) {
+                block(result,nil);
+            }
+        } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+            if (block) {
+                block(NO,nil);
+            }
+        }];
+    }
+
+}
+
+- (void)postValidateCode:(NSString*)validateCode account:(NSString*)account completionBlock:(ZHAuthCompletionBlock)block{
+    if ([account length] >0 && [validateCode length] >0) {
+        AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+        manager.responseSerializer.acceptableContentTypes = [NSSet setWithObject:@"text/html"];//这里设置是因为服务端返回的类型是text/html，不在AF默认设置之列
+        manager.requestSerializer.timeoutInterval = kTimeoutInterval;
+        [manager POST:BASE_URL parameters:@{@"scene": @"25",@"phone":account,@"validateCode":validateCode} success:^(AFHTTPRequestOperation *operation, id responseObject) {
+            
+            BOOL result = NO;
+            if ([responseObject isKindOfClass:[NSDictionary class]]) {
+                if ([[responseObject objectForKey:@"result"] boolValue]) {
+                    result = YES;
+                }
+            }
+            if (block) {
+                block(result,nil);
+            }
+        } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+            if (block) {
+                block(NO,nil);
+            }
+        }];
+    }
+
+}
+
+
+- (void)registerWithAccount:(NSString*)account password:(NSString*)password  completionBlock:(ZHAuthCompletionBlock)block{
+    
+    if ([account length] >0 && [password length] >0) {
+        __weak __typeof(self) weakSelf = self;
+        AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+        manager.responseSerializer.acceptableContentTypes = [NSSet setWithObject:@"text/html"];//这里设置是因为服务端返回的类型是text/html，不在AF默认设置之列
+        manager.requestSerializer.timeoutInterval = kTimeoutInterval;
+        [manager POST:BASE_URL parameters:@{@"scene": @"26",@"phone":account,@"password":password} success:^(AFHTTPRequestOperation *operation, id responseObject) {
+            
+            BOOL result = NO;
+            if ([responseObject isKindOfClass:[NSDictionary class]]) {
+                if ([[responseObject objectForKey:@"result"] boolValue]) {
+                    weakSelf.account  = account;
+                    weakSelf.passWord = password;
+                    [weakSelf setAccountInfo];
+                    result = YES;
+                }
+            }
+            if (block) {
+                block(result,nil);
+            }
+        } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+            if (block) {
+                block(NO,nil);
+            }
+        }];
+    }
 }
 
 - (void)logInWithAccount:(NSString*)account password:(NSString*)password completionBlock:(ZHAuthCompletionBlock)block
 {
-    /*
-    NSMutableString *urlStr = [NSMutableString stringWithFormat:@"%@Login", kBaseURLString];
-    AFHTTPClient *httpClient = [[AFHTTPClient alloc] initWithBaseURL:[NSURL URLWithString:@""]];
-    httpClient.parameterEncoding = AFJSONParameterEncoding;
-    [httpClient setDefaultHeader:@"Accept" value:@"text/json"];
-    //post json
-    NSMutableDictionary *params=[[NSMutableDictionary alloc] init];
-    [params setObject:account forKey:@"userID"];
-    [params setObject:password forKey:@"pwd"];
-    
-    __weak __typeof(self) weakSelf = self;
-    [httpClient postPath:urlStr parameters:params success:^(AFHTTPRequestOperation *operation, id responseObject) {
-        if (responseObject) {
-            NSDictionary *responseDict = [NSJSONSerialization JSONObjectWithData:responseObject options:NSJSONReadingMutableLeaves error:nil];
+    if ([account length] >0 && [password length] >0) {
+        __weak __typeof(self) weakSelf = self;
+        AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+        manager.responseSerializer.acceptableContentTypes = [NSSet setWithObject:@"text/html"];//这里设置是因为服务端返回的类型是text/html，不在AF默认设置之列
+        manager.requestSerializer.timeoutInterval = kTimeoutInterval;
+        [manager POST:BASE_URL parameters:@{@"scene": @"23",@"phone":account,@"password":password} success:^(AFHTTPRequestOperation *operation, id responseObject) {
+   
+            if ([responseObject isKindOfClass:[NSDictionary class]]) {
+                weakSelf.userId         = [responseObject objectForKey:@"userId"];
+                weakSelf.userNick       = [responseObject objectForKey:@"userNick"];
+                weakSelf.userAvatarURL  = [responseObject objectForKey:@"userAvatarURL"];
+            }
             weakSelf.account  = account;
             weakSelf.passWord = password;
             [weakSelf setAccountInfo];
             if (block) {
-                block(YES, responseDict);
+                block(YES,nil);
             }
-        } else {
+        } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
             if (block) {
-                block(NO, nil);
+                block(NO,nil);
             }
-        }
-        
-    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-        NSLog(@"[HTTPClient Error]: %@", error);
-        if (block) {
-            block(NO, [error description]);
-        }
-    }];
-    */
+        }];
+    }
 }
 
 #pragma mark - Private

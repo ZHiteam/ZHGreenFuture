@@ -9,5 +9,5 @@
 #import <UIKit/UIKit.h>
 
 @interface ZHAuthorizationRegister2VC : UIViewController
-
+@property(nonatomic, copy)NSString *account;
 @end
