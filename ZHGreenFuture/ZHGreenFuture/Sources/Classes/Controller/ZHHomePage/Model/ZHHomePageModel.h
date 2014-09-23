@@ -54,8 +54,10 @@
 @property(nonatomic, strong)ZHSurpriseItem *surpriseItem;
 @property(nonatomic, strong)NSArray *productItems;  //
 @property(nonatomic, assign)NSInteger productCounts;
+@property(nonatomic, assign)BOOL      isHaveMore;
 
 - (void)loadDataWithCompletion:(ZHCompletionBlock)block;
+- (void)loadMoreWithCompletion:(ZHCompletionBlock)block;
 @end
 
 

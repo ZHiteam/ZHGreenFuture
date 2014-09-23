@@ -13,8 +13,6 @@
 #import "ZHOrderProductCell.h"
 #import "ZHOrderSummaryCell.h"
 
-
-
 @interface ZHOrderListVC ()<UITableViewDelegate, UITableViewDataSource>
 @property(nonatomic, strong)HMSegmentedControl *segmentedControl;
 @property(nonatomic, strong)UITableView          *tableView;
@@ -37,10 +35,12 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    self.currentOrderType = ZHOrderTypeAll;
     [self configureNaivBar];
     [self.view addSubview:self.segmentedControl];
     [self.view addSubview:self.tableView];
     self.view.backgroundColor = RGB(234, 234, 234);
+    [self loadAllContent];
 }
 
 - (void)didReceiveMemoryWarning
@@ -52,7 +52,7 @@
 #pragma mark - Getter & Setter
 - (HMSegmentedControl *)segmentedControl{
     if (_segmentedControl == nil) {
-        _segmentedControl = [[HMSegmentedControl alloc] initWithSectionTitles:@[@"全部",@"待付款", @"待发货", @"待收货",@"待评价"]];
+        _segmentedControl = [[HMSegmentedControl alloc] initWithSectionTitles:@[@"全部",@"待付款", @"待发货", @"待收货"]];
         _segmentedControl.frame = CGRectMake(0, 64,[UIScreen mainScreen].bounds.size.width, 44);
         _segmentedControl.font = [UIFont systemFontOfSize:14.0];
         _segmentedControl.selectedTextColor = RGB(102, 170, 0);
@@ -85,13 +85,23 @@
 
 
 #pragma mark - Private Method
+
+- (void)loadAllContent{
+    __weak typeof(self) weakSelf = self;
+    [self.orderModel loadDataWithType:self.currentOrderType completionBlock:^(BOOL isSuccess) {
+        if (isSuccess) {
+            [weakSelf.tableView reloadData];
+        }
+    }];
+}
+
 - (void)configureNaivBar{
     [self.navigationBar setTitle:@"我的订单"];
     //default back
     [self whithNavigationBarStyle];
 }
 
-- (void)addActionButtonWithCell:(UITableViewCell*)cell{
+- (void)addActionButtonWithCell:(UITableViewCell*)cell orderId:(NSString*)orderId{
     
     [cell.contentView removeAllSubviews];
     switch (self.currentOrderType) {
@@ -112,11 +122,13 @@
             [button setFrame:CGRectMake(cell.size.width - 60 -12, 8, 60, 28)];
             [cell.contentView addSubview:button];
             
+            /*
             button = [ZHButton buttonWithType:ZHButtonTypeDefault text:@"删除订单"  clickedBlock:^(ZHButton *button) {
                 NSLog(@">>>>>xxxAction %@",button);
             }];
             [button setFrame:CGRectMake(cell.size.width - 60 - 80 -24, 8, 80, 28)];
             [cell.contentView addSubview:button];
+            */
         }
             break;
         case ZHOrderTypeWaitDeliver:
@@ -130,12 +142,18 @@
             break;
         case ZHOrderTypeWaitReceive:
         {
+            __weak __typeof(self) weakSelf = self;
             ZHButton *button = [ZHButton buttonWithType:ZHButtonTypeStyle1 text:@"确认收货"  clickedBlock:^(ZHButton *button) {
                 NSLog(@">>>>>xxxAction %@",button);
+                [weakSelf.orderModel modifyOrderStatusWithOrderId:orderId operation:@"6" completionBlock:^(BOOL isSuccess) {
+                    ZHALERTVIEW(nil,@"确认收货成功。",nil, @"确定" ,nil,nil);
+
+                } ];
             }];
             [button setFrame:CGRectMake(cell.size.width - 80 -12, 8, 80, 28)];
             [cell.contentView addSubview:button];
             
+            /*
             button = [ZHButton buttonWithType:ZHButtonTypeDefault text:@"查看物流"  clickedBlock:^(ZHButton *button) {
                 NSLog(@">>>>>xxxAction %@",button);
             }];
@@ -148,7 +166,7 @@
             }];
             [button setFrame:CGRectMake(cell.size.width -80 - 80 - 80 -36, 8, 80, 28)];
             [cell.contentView addSubview:button];
-            
+            */
         }
             break;
         case ZHOrderTypeWaitComment:
@@ -174,8 +192,9 @@
 #pragma mark - Event Handler
 - (void)segmentedControlChangedValue:(HMSegmentedControl*)segmentedControl{
     self.currentOrderType = segmentedControl.selectedSegmentIndex;
-    [self.tableView reloadData];
-//TODO:segment
+    [self.orderModel loadDataWithType:self.currentOrderType completionBlock:^(BOOL isSuccess) {
+        [self.tableView reloadData];
+    }];
 }
 
 
@@ -186,7 +205,8 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    return [[[[self.orderModel orderLists] objectAtIndex:section] productLists] count] + 3;
+    NSInteger items = self.currentOrderType == ZHOrderTypeWaitPay || self.currentOrderType == ZHOrderTypeWaitReceive;
+    return [[[[self.orderModel orderLists] objectAtIndex:section] productLists] count] + 2 + items;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
@@ -234,8 +254,9 @@
         if (cell == nil){
             cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
         }
-        [self addActionButtonWithCell:cell];
+        [self addActionButtonWithCell:cell orderId:orderInfo.orderId];
     }
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;
     return cell;
 }
 

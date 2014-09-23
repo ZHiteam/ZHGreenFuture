@@ -44,7 +44,20 @@
     [self loadConent];
     [self configureNaivBar];
     [self.view addSubview:self.tableView];
-    //[self.view insertSubview:self.tableView belowSubview:self.navigationBar];
+    __weak __typeof(self) weakSelf = self;
+    [self.tableView addInfiniteScrollingWithActionHandler:^{
+        if (!weakSelf.homePageModel.isHaveMore) {
+            [weakSelf.tableView.infiniteScrollingView stopAnimating];
+            [FEToastView showWithTitle:@"没有更多了。" animation:YES interval:1.0];
+        } else {
+            [weakSelf.homePageModel loadMoreWithCompletion:^(BOOL isSuccess) {
+                if (isSuccess) {
+                    [weakSelf.tableView reloadData];
+                }
+                [weakSelf.tableView.infiniteScrollingView stopAnimating];
+            }];
+        }
+    }];
 }
 
 - (void)didReceiveMemoryWarning
@@ -79,21 +92,25 @@
 - (void)loadConent{
     __weak typeof(self) weakSelf = self;
     [self.homePageModel loadDataWithCompletion:^(BOOL isSuccess) {
-        [weakSelf.tableView reloadData];
+        if (isSuccess) {
+            [weakSelf.tableView reloadData];
+        }
     }];
 }
 
 - (void)configureNaivBar{
     [self.navigationBar setTitle:@"首页"];
-    UIButton *button = [[UIButton alloc] initWithFrame:CGRectMake(0, 20, 60 , 44)];
+    UIButton *button = [[UIButton alloc] initWithFrame:CGRectMake(0, 20, 40 , 44)];
     button.backgroundColor = [UIColor clearColor];
-    [button setImage:[UIImage imageNamed:@"qr_code"] forState:UIControlStateNormal];
+    [button setImage:[UIImage imageNamed:@"home_qrcode"] forState:UIControlStateNormal];
+    [button setImage:[UIImage imageNamed:@"home_qrcode"] forState:UIControlStateHighlighted];
     [button addTarget:self action:@selector(leftItemPressed:) forControlEvents:UIControlEventTouchUpInside];
     self.navigationBar.leftBarItem = button;
     
-    button = [[UIButton alloc] initWithFrame:CGRectMake([UIScreen mainScreen].bounds.size.width - 60, 20, 60 , 44)];
+    button = [[UIButton alloc] initWithFrame:CGRectMake([UIScreen mainScreen].bounds.size.width - 40, 20, 40 , 44)];
     button.backgroundColor = [UIColor clearColor];
-    [button setImage:[UIImage imageNamed:@"cart"] forState:UIControlStateNormal];
+    [button setImage:[UIImage imageNamed:@"profile_cart"] forState:UIControlStateNormal];
+    [button setImage:[UIImage imageNamed:@"profile_cart"] forState:UIControlStateHighlighted];
     [button addTarget:self action:@selector(rightItemPressed:) forControlEvents:UIControlEventTouchUpInside];
     self.navigationBar.rightBarItem = button;
 }
@@ -172,7 +189,7 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    return section == 0 ? 3 : [self.homePageModel.productItems count];
+    return section == 0 ? 2 : [self.homePageModel.productItems count];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
@@ -257,7 +274,6 @@
 #pragma mark -  UITableViewDelegate
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
-    //TBHomePageOneSectionData* sectionItem;
     if (indexPath.section ==0) {
         switch (indexPath.row) {
             case 0:
@@ -277,6 +293,14 @@
         return [ZHProductTableViewCell height];
     }
     return 0.0;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section{
+    return section == 0 ? 12.0 : 0.0;
+}
+
+- (UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section{
+    return nil;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
