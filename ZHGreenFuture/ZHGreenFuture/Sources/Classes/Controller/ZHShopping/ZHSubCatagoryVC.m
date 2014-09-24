@@ -34,6 +34,9 @@
     }
     
     [self loadContent];
+}
+
+-(void)viewWillAppear:(BOOL)animated{
     
     [self loadRequest];
 }

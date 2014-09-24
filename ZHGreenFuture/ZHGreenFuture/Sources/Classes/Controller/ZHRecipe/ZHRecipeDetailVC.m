@@ -15,6 +15,7 @@
 #import "RecipeTipsCell.h"
 #import "RecipeCommentCell.h"
 #import "RecipeExampleCell.h"
+#import "ZHAuthorizationVC.h"
 
 #import "CameraHelper.h"
 
@@ -32,7 +33,9 @@
 {
     [super viewDidLoad];
     [self loadContnet];
+}
 
+-(void)viewWillAppear:(BOOL)animated{
     [self loadRequest];
 }
 
@@ -110,9 +113,10 @@
         [upload setTitleColor:WHITE_TEXT forState:UIControlStateNormal];
         [_toolBar addSubview:upload];
         
-        [camera addTarget:self action:@selector(cameraAction) forControlEvents:UIControlEventTouchUpInside];
-        [upload addTarget:self action:@selector(cameraAction) forControlEvents:UIControlEventTouchUpInside];
-        [_toolBar addTarget:self action:@selector(cameraAction) forControlEvents:UIControlEventTouchUpInside];
+        UIControl* ctl = [[UIControl alloc]initWithFrame:_toolBar.bounds];
+        [ctl addTarget:self action:@selector(cameraAction) forControlEvents:UIControlEventTouchUpInside];
+        
+        [_toolBar addSubview:ctl];
     }
     return _toolBar;
 }
@@ -121,14 +125,31 @@
 
 #pragma -mark -action 
 - (void)cameraAction{
-    [CameraHelper takePhone:self];
+    if (![[[ZHAuthorizationVC shareInstance] authManager] isLogin])
+    {
+        [ZHAuthorizationVC showLoginVCWithCompletionBlock:^(BOOL isSuccess, id info) {
+            if (isSuccess) {
+                [CameraHelper takePhone:self];
+            }
+        }];
+    }
+    else{
+        [CameraHelper takePhone:self];
+    }
+    
 }
 
 #pragma -mark CameraHelperDelegate
 -(void)cameraTakePhotoSuccess:(UIImage *)image{
     NSMutableDictionary* dic = [NSMutableDictionary dictionaryWithObject:@"ZHRecipePublishVC" forKey:@"controller"];
     if (image){
-        [dic setValue:image forKey:@"userinfo"];
+        NSMutableDictionary* userInfo = [[NSMutableDictionary alloc]initWithCapacity:2];
+        [userInfo setObject:image forKey:@"image"];
+        if (!isEmptyString(self.model.recipeId)){
+            [userInfo setObject:self.model.recipeId forKey:@"recipeId"];
+        }
+        
+        [dic setValue:userInfo forKey:@"userinfo"];
     }
     [[MessageCenter instance]performActionWithUserInfo:dic];
 }
@@ -206,6 +227,12 @@
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    
+    if (5 == indexPath.row){
+        if (!isEmptyString(self.model.recipeId)){
+            [[MessageCenter instance]performActionWithUserInfo:@{@"controller":@"ZHCommentVC",@"userinfo":self.model.recipeId}];
+        }
+    }
 }
 
 #pragma -mark share action

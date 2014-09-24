@@ -10,5 +10,6 @@
 
 @interface ZHRecipePublishVC : ZHViewController
 
-@property (nonatomic,strong) NSMutableArray*       images;
+@property (nonatomic,strong) NSMutableArray*        images;
+@property (nonatomic,strong) NSString*              recipeId;
 @end

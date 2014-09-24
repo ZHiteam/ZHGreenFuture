@@ -170,7 +170,9 @@
     __weak __typeof(self) weakSelf = self;
     [[ZHAuthorizationManager shareInstance] logInWithAccount:userNameStr password:passwordStr completionBlock:^(BOOL isSuccess, id info) {
         if (!isSuccess) {
-            ZHALERTVIEW(@"登录出错", nil , nil,@"确定"  ,nil,nil);
+            /// modify by kongkong
+            ALERT_MESSAGE(@"登录出错");
+//            ZHALERTVIEW(@"登录出错", nil , nil,@"确定"  ,nil,nil);
         } else {
             [ZHAuthorizationVC dismissLoginVC];
         }

@@ -148,7 +148,15 @@
             weakSelf.passWord = password;
             [weakSelf setAccountInfo];
             if (block) {
-                block(YES,nil);
+                
+                /// modify by kongkong
+                if (isEmptyString(weakSelf.userId)){
+                    block(NO,nil);
+                }
+                else{
+                    block(YES,nil);
+                }
+
             }
         } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
             if (block) {

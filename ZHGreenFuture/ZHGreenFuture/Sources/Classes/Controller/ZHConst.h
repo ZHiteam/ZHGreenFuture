@@ -24,6 +24,8 @@ typedef void(^ZHCompletionBlock)(BOOL isSuccess);
 
 #define ALERT_MESSAGE(msg)     DoAlertView* a = [[DoAlertView alloc]init];[a doYes:msg yes:^(DoAlertView *alertView) {}];
 
+#define SHOW_MESSAGE(msg,dur)         DoAlertView* alert = [[DoAlertView alloc]init];[alert doAlert:@"" body:msg duration:dur done:^(DoAlertView *alertView) {}];
+
 #define ZHSTATUS_BAR_CHANGE @"zh_status_bar_change"
 
 #define SHARE_APPKEY                    @"3028b230599a"

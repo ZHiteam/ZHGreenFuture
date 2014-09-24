@@ -308,8 +308,6 @@
 		9CCB1DAB19D14FED009BB25A /* close_black@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9CCB1DA119D14FED009BB25A /* close_black@2x.png */; };
 		9CCB1DAC19D14FED009BB25A /* pic1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 9CCB1DA219D14FED009BB25A /* pic1.jpg */; };
 		9CCB1DAD19D14FED009BB25A /* pic2.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 9CCB1DA319D14FED009BB25A /* pic2.jpg */; };
-		9CCDFD5B19CBC88C008B6882 /* LICENSE.txt in Resources */ = {isa = PBXBuildFile; fileRef = 9CCDFD5019CBC88C008B6882 /* LICENSE.txt */; };
-		9CCDFD5C19CBC88C008B6882 /* README.md in Sources */ = {isa = PBXBuildFile; fileRef = 9CCDFD5119CBC88C008B6882 /* README.md */; };
 		9CCDFD5D19CBC88C008B6882 /* TPKeyboardAvoidingCollectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CCDFD5419CBC88C008B6882 /* TPKeyboardAvoidingCollectionView.m */; };
 		9CCDFD5E19CBC88C008B6882 /* TPKeyboardAvoidingScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CCDFD5619CBC88C008B6882 /* TPKeyboardAvoidingScrollView.m */; };
 		9CCDFD5F19CBC88C008B6882 /* TPKeyboardAvoidingTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CCDFD5819CBC88C008B6882 /* TPKeyboardAvoidingTableView.m */; };
@@ -327,6 +325,9 @@
 		9CCDFD7F19CC240A008B6882 /* btn_delete_with_label@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9CCDFD7D19CC240A008B6882 /* btn_delete_with_label@2x.png */; };
 		9CCDFD8019CC240A008B6882 /* btn_edit_with_label@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9CCDFD7E19CC240A008B6882 /* btn_edit_with_label@2x.png */; };
 		9CCDFD8319D06EC7008B6882 /* ZHAddressEditVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CCDFD8219D06EC7008B6882 /* ZHAddressEditVC.m */; };
+		9CDD6C9319D25D630068DAED /* ZHCommentVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CDD6C9219D25D630068DAED /* ZHCommentVC.m */; };
+		9CDD6C9519D2687E0068DAED /* btn_comment@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9CDD6C9419D2687E0068DAED /* btn_comment@2x.png */; };
+		9CDD6C9819D29FA30068DAED /* ZHAddressManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CDD6C9719D29FA30068DAED /* ZHAddressManager.m */; };
 		A4C9D54E32334D93A158D3F2 /* libPods-ZHGreenFuture.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C548FF18989B4FF8A8B17AD4 /* libPods-ZHGreenFuture.a */; };
 /* End PBXBuildFile section */
 
@@ -806,8 +807,6 @@
 		9CCB1DA119D14FED009BB25A /* close_black@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "close_black@2x.png"; sourceTree = "<group>"; };
 		9CCB1DA219D14FED009BB25A /* pic1.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = pic1.jpg; sourceTree = "<group>"; };
 		9CCB1DA319D14FED009BB25A /* pic2.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = pic2.jpg; sourceTree = "<group>"; };
-		9CCDFD5019CBC88C008B6882 /* LICENSE.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE.txt; sourceTree = "<group>"; };
-		9CCDFD5119CBC88C008B6882 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		9CCDFD5319CBC88C008B6882 /* TPKeyboardAvoidingCollectionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TPKeyboardAvoidingCollectionView.h; sourceTree = "<group>"; };
 		9CCDFD5419CBC88C008B6882 /* TPKeyboardAvoidingCollectionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TPKeyboardAvoidingCollectionView.m; sourceTree = "<group>"; };
 		9CCDFD5519CBC88C008B6882 /* TPKeyboardAvoidingScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TPKeyboardAvoidingScrollView.h; sourceTree = "<group>"; };
@@ -838,6 +837,11 @@
 		9CCDFD7E19CC240A008B6882 /* btn_edit_with_label@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "btn_edit_with_label@2x.png"; sourceTree = "<group>"; };
 		9CCDFD8119D06EC7008B6882 /* ZHAddressEditVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZHAddressEditVC.h; sourceTree = "<group>"; };
 		9CCDFD8219D06EC7008B6882 /* ZHAddressEditVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZHAddressEditVC.m; sourceTree = "<group>"; };
+		9CDD6C9119D25D630068DAED /* ZHCommentVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZHCommentVC.h; sourceTree = "<group>"; };
+		9CDD6C9219D25D630068DAED /* ZHCommentVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZHCommentVC.m; sourceTree = "<group>"; };
+		9CDD6C9419D2687E0068DAED /* btn_comment@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "btn_comment@2x.png"; sourceTree = "<group>"; };
+		9CDD6C9619D29FA30068DAED /* ZHAddressManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZHAddressManager.h; sourceTree = "<group>"; };
+		9CDD6C9719D29FA30068DAED /* ZHAddressManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZHAddressManager.m; sourceTree = "<group>"; };
 		C548FF18989B4FF8A8B17AD4 /* libPods-ZHGreenFuture.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-ZHGreenFuture.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C71C3F53A51D425DB6BCAC4D /* Pods-ZHGreenFuture.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ZHGreenFuture.xcconfig"; path = "Pods/Pods-ZHGreenFuture.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -1144,12 +1148,14 @@
 			children = (
 				84EA64D419B1992600C446A5 /* ZHRecipeVC.h */,
 				84EA64D519B1992600C446A5 /* ZHRecipeVC.m */,
-				9C8983D819B6272D009CB910 /* ZHRecipePublishVC.h */,
-				9C8983D919B6272D009CB910 /* ZHRecipePublishVC.m */,
 				9C0E08B419BF27CF00ED8D87 /* ZHRecipeDetailVC.h */,
 				9C0E08B519BF27CF00ED8D87 /* ZHRecipeDetailVC.m */,
+				9C8983D819B6272D009CB910 /* ZHRecipePublishVC.h */,
+				9C8983D919B6272D009CB910 /* ZHRecipePublishVC.m */,
 				9CCDFD6719CBDD80008B6882 /* ZHImagePreviewVC.h */,
 				9CCDFD6819CBDD80008B6882 /* ZHImagePreviewVC.m */,
+				9CDD6C9119D25D630068DAED /* ZHCommentVC.h */,
+				9CDD6C9219D25D630068DAED /* ZHCommentVC.m */,
 			);
 			path = ZHRecipe;
 			sourceTree = "<group>";
@@ -1587,6 +1593,8 @@
 				9C3862B119B1BDC600679C48 /* MessageCenter.m */,
 				9CCDFD6419CBD85C008B6882 /* CameraHelper.h */,
 				9CCDFD6519CBD85C008B6882 /* CameraHelper.m */,
+				9CDD6C9619D29FA30068DAED /* ZHAddressManager.h */,
+				9CDD6C9719D29FA30068DAED /* ZHAddressManager.m */,
 			);
 			path = Tools;
 			sourceTree = "<group>";
@@ -1594,6 +1602,7 @@
 		9C3862B319B1CB0400679C48 /* images */ = {
 			isa = PBXGroup;
 			children = (
+				9CDD6C9419D2687E0068DAED /* btn_comment@2x.png */,
 				9CCDFD7D19CC240A008B6882 /* btn_delete_with_label@2x.png */,
 				9CCDFD7E19CC240A008B6882 /* btn_edit_with_label@2x.png */,
 				9CCDFD7519CC1182008B6882 /* btn_location@2x.png */,
@@ -2010,8 +2019,6 @@
 		9CCDFD4F19CBC88C008B6882 /* TPKeyboardAvoiding */ = {
 			isa = PBXGroup;
 			children = (
-				9CCDFD5019CBC88C008B6882 /* LICENSE.txt */,
-				9CCDFD5119CBC88C008B6882 /* README.md */,
 				9CCDFD5219CBC88C008B6882 /* TPKeyboardAvoiding */,
 			);
 			path = TPKeyboardAvoiding;
@@ -2168,7 +2175,6 @@
 				84F1FE3819BC43620002605A /* ZHDetailProductGuaranteeCell.xib in Resources */,
 				84F1FE2E19BC3D5F0002605A /* ZHDetailPriceCell.xib in Resources */,
 				84A7A5B719B2C02F0050CACD /* rice@2x.png in Resources */,
-				9CCDFD5B19CBC88C008B6882 /* LICENSE.txt in Resources */,
 				9CCB1DA919D14FED009BB25A /* close@2x.png in Resources */,
 				845C76B219D06FCA00CB3F5E /* profile_favorites@2x.png in Resources */,
 				847E0BBD19C46B7D0055B5C6 /* ZHOrderProductCell.xib in Resources */,
@@ -2204,6 +2210,7 @@
 				9C0E0A2D19BF331300ED8D87 /* Resource.bundle in Resources */,
 				9CCB1DA519D14FED009BB25A /* check@2x.png in Resources */,
 				84A7A5C719B2C90E0050CACD /* ZHRecommendTableViewCell.xib in Resources */,
+				9CDD6C9519D2687E0068DAED /* btn_comment@2x.png in Resources */,
 				84F1FE5719BDDDB10002605A /* detailRecipe@2x.png in Resources */,
 				9CCB1DAC19D14FED009BB25A /* pic1.jpg in Resources */,
 				9C9778D219B1900F00D49E69 /* system.config in Resources */,
@@ -2353,7 +2360,6 @@
 				847E0BB319C42CF50055B5C6 /* ZHProductsVC.m in Sources */,
 				9C89837E19B49BFD009CB910 /* ZHSubCatagoryVC.m in Sources */,
 				9C0E0AE019BFEF2B00ED8D87 /* qrinput.c in Sources */,
-				9CCDFD5C19CBC88C008B6882 /* README.md in Sources */,
 				9CCB1D7F19D08826009BB25A /* SBJsonBase.m in Sources */,
 				84EA64D919B1993700C446A5 /* ZHProfileVC.m in Sources */,
 				9C9778AE19B1900F00D49E69 /* ZHViewController.m in Sources */,
@@ -2362,6 +2368,7 @@
 				9CCB1D8B19D14EBE009BB25A /* DoAlertView.m in Sources */,
 				84F1FE4619BC4A150002605A /* ZHDetailProductCell.m in Sources */,
 				84A7A5C619B2C90E0050CACD /* ZHRecommendTableViewCell.m in Sources */,
+				9CDD6C9819D29FA30068DAED /* ZHAddressManager.m in Sources */,
 				9C9778AC19B1900F00D49E69 /* NavigationViewController.m in Sources */,
 				9C0E0B3919CB3C6B00ED8D87 /* ZHShoppingChartVC.m in Sources */,
 				847E0BB019C42B030055B5C6 /* ZHOrderListVC.m in Sources */,
@@ -2399,6 +2406,7 @@
 				847E0BC119C473A90055B5C6 /* ZHOrderStatusCell.m in Sources */,
 				9C89836A19B46202009CB910 /* ZHView.m in Sources */,
 				9C0E0B3019C9E0F200ED8D87 /* RecipeExampleCell.m in Sources */,
+				9CDD6C9319D25D630068DAED /* ZHCommentVC.m in Sources */,
 				9C0E0B0D19C91B1000ED8D87 /* RecipeTipsCell.m in Sources */,
 				9CCDFD6E19CBFE67008B6882 /* ZHConfirmOrderVC.m in Sources */,
 				9C0E0B0719C8690700ED8D87 /* MadeStepItemView.m in Sources */,

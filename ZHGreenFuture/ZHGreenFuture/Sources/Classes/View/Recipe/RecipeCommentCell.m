@@ -9,7 +9,7 @@
 #import "RecipeCommentCell.h"
 #import "RecipeCommentItemView.h"
 
-#define ITEM_HEIGHT     55
+#define ITEM_HEIGHT     [RecipeCommentItemView itemHeight]
 
 @interface RecipeCommentCell()
 

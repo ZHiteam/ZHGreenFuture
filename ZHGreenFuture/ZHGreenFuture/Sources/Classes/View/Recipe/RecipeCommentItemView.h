@@ -9,7 +9,10 @@
 #import <UIKit/UIKit.h>
 #import "CommentModel.h"
 
-@interface RecipeCommentItemView : UIView
+@interface RecipeCommentItemView : UITableViewCell
 
 @property (nonatomic,strong) CommentModel*  model;
+@property (nonatomic,assign) BOOL           lineTop;
+
++(CGFloat)itemHeight;
 @end

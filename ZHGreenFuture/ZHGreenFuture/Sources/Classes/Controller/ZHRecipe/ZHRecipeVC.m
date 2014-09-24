@@ -8,14 +8,12 @@
 
 #import "ZHRecipeVC.h"
 #import "LunarCalendar.h"
-#import <DBCamera/DBCameraContainerViewController.h>
-#import <DBCamera/DBCameraViewController.h>
 #import "RecipeCell.h"
 #import "ZHTagsView.h"
 
 #import "RecipeModel.h"
 
-@interface ZHRecipeVC ()<DBCameraViewControllerDelegate,DBCameraViewControllerDelegate,UITableViewDataSource,UITableViewDelegate,ZHTagsViewDelegate>
+@interface ZHRecipeVC ()<UITableViewDataSource,UITableViewDelegate,ZHTagsViewDelegate>
 
 @property (nonatomic,strong) UIView*            titleViewPanel;
 @property (nonatomic,strong) UILabel*           weekLabel;
@@ -169,43 +167,6 @@
     [self.tagPanel viewWithTag:-111].top = self.tagPanel.height-1;
 
     [self.recipeContent reloadData];
-}
-
-#pragma -mark -action
-- (void)cameraAction{
-    
-    DBCameraContainerViewController *container = [[DBCameraContainerViewController alloc] initWithDelegate:self];
-    DBCameraViewController *cameraController = [DBCameraViewController initWithDelegate:self];
-    [cameraController setUseCameraSegue:NO];
-    [container setCameraViewController:cameraController];
-
-    [container setFullScreenMode];
-    
-    UIViewController* mainVC = [MemoryStorage valueForKey:k_NAVIGATIONCTL];
-
-    [mainVC presentViewController:container animated:YES completion:^{
-
-    }];
-}
-
-#pragma -mark DBCameraViewControllerDelegate
-- (void) dismissCamera:(id)cameraViewController{
-    [cameraViewController restoreFullScreenMode];
-    UIViewController* mainVC = [MemoryStorage valueForKey:k_NAVIGATIONCTL];
-    [mainVC dismissViewControllerAnimated:YES completion:nil];
-}
-
-- (void) camera:(id)cameraViewController didFinishWithImage:(UIImage *)image withMetadata:(NSDictionary *)metadata{
-    [cameraViewController restoreFullScreenMode];
-    UIViewController* mainVC = [MemoryStorage valueForKey:k_NAVIGATIONCTL];
-    [mainVC dismissViewControllerAnimated:YES completion:nil];
-    
-    NSMutableDictionary* dic = [NSMutableDictionary dictionaryWithObject:@"ZHRecipePublishVC" forKey:@"controller"];
-    
-    if (image){
-        [dic setValue:image forKey:@"userinfo"];
-        [[MessageCenter instance]performActionWithUserInfo:dic];
-    }
 }
 
 #pragma -mark UITableViewDataSource,UITableViewDelegate

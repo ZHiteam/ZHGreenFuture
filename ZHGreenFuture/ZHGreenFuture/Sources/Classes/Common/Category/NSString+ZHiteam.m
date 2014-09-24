@@ -99,6 +99,11 @@
 }
 
 -(NSURL*)greenFutureURL{
+    
+    return [NSURL URLWithString:[self greenFutureURLStr]];
+}
+
+-(NSString*)greenFutureURLStr{
     NSString* string = [self stringByReplacingOccurrencesOfString:@"\\" withString:@"/"];
     
     if (![string hasPrefix:@"http://"]){
@@ -109,8 +114,7 @@
             string = [NSString stringWithFormat:@"%@%@",BASE_SITE,string];
         }
     }
-    
-    return [NSURL URLWithString:string];
+    return string;
 }
 
 //利用正则表达式验证

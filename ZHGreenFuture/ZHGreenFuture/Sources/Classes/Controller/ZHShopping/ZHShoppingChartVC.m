@@ -34,9 +34,10 @@
 {
     [super viewDidLoad];
     [self loadContent];
-    
+}
+
+-(void)viewWillAppear:(BOOL)animated{
     [self loadRequest];
-    // Do any additional setup after loading the view.
 }
 
 - (void)didReceiveMemoryWarning

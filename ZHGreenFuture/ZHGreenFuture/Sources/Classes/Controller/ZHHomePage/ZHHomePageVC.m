@@ -150,8 +150,16 @@
 }
 
 - (void)rightItemPressed:(id)sender{
-//TODO: cart
-//    NSLog(@">>>>%@",NSStringFromSelector(_cmd));
+#warning 为测试屏蔽
+//    if (![[[ZHAuthorizationVC shareInstance] authManager] isLogin]){
+//        [ZHAuthorizationVC showLoginVCWithCompletionBlock:^(BOOL isSuccess, id info) {
+//            if (isSuccess)
+//                [[MessageCenter instance]performActionWithUserInfo:@{@"controller": @"ZHShoppingChartVC"}];
+//        }];
+//    }
+//    else{
+//        [[MessageCenter instance]performActionWithUserInfo:@{@"controller": @"ZHShoppingChartVC"}];
+//    }
     [[MessageCenter instance]performActionWithUserInfo:@{@"controller": @"ZHShoppingChartVC"}];
 }
 

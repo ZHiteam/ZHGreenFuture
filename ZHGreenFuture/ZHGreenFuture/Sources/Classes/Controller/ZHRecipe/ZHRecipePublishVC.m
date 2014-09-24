@@ -48,8 +48,10 @@
 {
     [super viewDidLoad];
     
-    if ([self.userInfo isKindOfClass:[UIImage class]]){
-        self.images = [[NSMutableArray alloc]initWithObjects:self.userInfo, nil];
+    if ([self.userInfo isKindOfClass:[NSDictionary class]]){
+        if ([self.userInfo[@"image"] isKindOfClass:[UIImage class]])
+        self.images = [[NSMutableArray alloc]initWithObjects:self.userInfo[@"image"], nil];
+        self.recipeId = self.userInfo[@"recipeId"];
     }
     
     [self loadContent];
@@ -116,6 +118,10 @@
     imageView.layer.borderColor = GRAY_LINE.CGColor;
     
     imageView.layer.borderWidth = 1;
+    
+    imageView.imageView.contentMode = UIViewContentModeScaleAspectFill;
+    
+    imageView.imageView.clipsToBounds = YES;
     
     if (index < self.images.count){
         [imageView setImage:self.images[index] forState:UIControlStateNormal];
@@ -267,6 +273,49 @@
     [self performSelector:@selector(doneBgResume) withObject:nil afterDelay:0.2];
     
     ZHLOG(@"done");
+    
+    if (isEmptyString(self.descEdit.text)){
+        SHOW_MESSAGE(@"请输入描述", 2);
+        return;
+    }
+    
+    if (self.images.count < 1){
+        SHOW_MESSAGE(@"至少上传一张图片", 2);
+        return;
+    }
+    
+//    userId 用户id
+//    userNickName 用户昵称
+//    recipeId 食谱id
+//    title 作品标题
+//    workImageData 作品图片二进制
+    NSMutableDictionary* dic = [[NSMutableDictionary alloc]initWithCapacity:5];
+    [dic setObject:@"9" forKey:@"scene"];
+#warning 判断用户登录,userID
+    if (!isEmptyString([ZHAuthorizationManager shareInstance].userId)){
+        [dic setObject:[ZHAuthorizationManager shareInstance].userId forKey:@"userId"];
+    }
+
+    
+    [dic setObject:self.descEdit.text forKey:@"title"];
+    
+    for (int  i= 0 ; i < self.images.count; ++i){
+        UIImage* img = self.images[i];
+        if ([img isKindOfClass:[UIImage class]]){
+            NSData *dataObj = UIImageJPEGRepresentation(img, 0.75);
+            [dic setObject:dataObj forKey:@"workImageData"];
+#warning 應该是多张图片，接口暂时只有一张图片，因此 break
+            break;
+        }
+    }
+    
+    [HttpClient postDataWithURL:@"serverAPI.action" paramers:dic success:^(id responseObject) {
+        ZHLOG(@"%@",responseObject);
+        SHOW_MESSAGE(@"上传成功", 2);
+    } failure:^(NSError *error) {
+        SHOW_MESSAGE(@"上传失败", 2);
+    }];
+
 }
 
 -(void)doneBgResume{

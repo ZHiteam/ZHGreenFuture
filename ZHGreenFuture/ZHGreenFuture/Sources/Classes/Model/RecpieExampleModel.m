@@ -24,7 +24,7 @@
     NSDictionary* dic = (NSDictionary*)info;
     
     model.content = dic[@"content"];
-    model.url = dic[@"url"];
+    model.url = [dic[@"url"] greenFutureURLStr];
     
     return model;
 }
@@ -37,5 +37,9 @@
 }
 - (NSInteger)tag{
     return 0;
+}
+
+-(NSString *)placeholderImage{
+    return @"temp_recipe_placehold";
 }
 @end

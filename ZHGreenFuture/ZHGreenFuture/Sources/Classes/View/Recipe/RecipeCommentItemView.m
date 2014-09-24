@@ -7,6 +7,7 @@
 //
 
 #import "RecipeCommentItemView.h"
+#define ITEM_HEIGHT 55
 
 @interface RecipeCommentItemView()
 
@@ -18,11 +19,23 @@
 
 @implementation RecipeCommentItemView
 
+-(instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier{
+    self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
+    
+    if (self){
+        self.frame = CGRectMake(0, 0, FULL_WIDTH, ITEM_HEIGHT);
+        [self loadContent];
+    }
+    return self;
+}
+
 - (id)initWithFrame:(CGRect)frame
 {
     self = [super initWithFrame:frame];
     if (self) {
         [self loadContent];
+        
+        self.userInteractionEnabled = NO;
     }
     return self;
 }
@@ -32,6 +45,7 @@
     self.backgroundColor = WHITE_BACKGROUND;
     UIView* line = [[UIView alloc]initWithFrame:CGRectMake(10, 5, self.width-20, 1)];
     line.backgroundColor = GRAY_LINE;
+    line.tag = -110;
     
     [self addSubview:line];
     [self addSubview:self.avstar];
@@ -92,5 +106,15 @@
     self.name.text = model.userName;
     self.content.text = model.contenet;
     self.date.text = model.comment_date;
+}
++(CGFloat)itemHeight{
+    return ITEM_HEIGHT;
+}
+
+-(void)setLineTop:(BOOL)lineTop{
+    if (!lineTop){
+        UIView* line = [self viewWithTag:-110];
+        line.bottom = self.height;
+    }
 }
 @end

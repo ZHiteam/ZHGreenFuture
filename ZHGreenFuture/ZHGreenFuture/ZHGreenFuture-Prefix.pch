@@ -52,5 +52,6 @@
     #import "ZHConst.h"
     #import "ZHButton.h"
 
-
+    #import "ZHAuthorizationManager.h"
+    #import "ZHAuthorizationVC.h"
 #endif
