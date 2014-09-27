@@ -16,10 +16,11 @@
 - (void)layoutSubviews {
     [super layoutSubviews];
     UIImageView *imageView = [self imageView];
-    CGRect imageFrame = imageView.frame;
+    CGRect imageFrame = CGRectMake(0, 0, 40, 40);
     imageFrame.origin.x = (int)((self.frame.size.width - imageFrame.size.width)/ 2);
     imageFrame.origin.y = 12.0;
     imageView.frame = imageFrame;
+    imageView.hidden= NO;
     
     UILabel *titleLabel = [self titleLabel];
     titleLabel.textAlignment = NSTextAlignmentCenter;
@@ -93,7 +94,11 @@
             ZHCategoryButton * button = [[ZHCategoryButton alloc] initWithFrame:CGRectMake(originX , originY, itemWidth, itemHeight)];
             button.titleLabel.font = [UIFont systemFontOfSize:12.0];
             button.tag = index;
-            [button setImageWithURL:[NSURL URLWithString:item.iconURL] forState:UIControlStateNormal placeholderImage:[UIImage imageNamed:@"rice"]];
+            __weak ZHCategoryButton *weakButton = button;
+            [button.imageView setImageWithURL:[NSURL URLWithString:item.iconURL]  placeholderImage:[UIImage imageNamed:@"rice"] completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType) {
+                weakButton.imageView.hidden = NO;
+                weakButton.imageView.contentMode = UIViewContentModeScaleToFill;
+            }];
             [button setTitle:item.title forState:UIControlStateNormal];
             [button setTitleColor:RGB(119, 119, 119) forState:UIControlStateNormal];
             [button addTarget:self action:@selector(buttonPressed:) forControlEvents:UIControlEventTouchUpInside];
