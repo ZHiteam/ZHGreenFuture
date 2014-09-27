@@ -14,8 +14,9 @@
     #import <UIKit/UIKit.h>
     #import <Foundation/Foundation.h>
 
-    #import <FEFramework/FEFramework.h>
-    #import <FEFramework/UIScrollView+FECover.h>
+    #import "FEFramework.h"
+    #import "UIScrollView+FECover.h"
+    #import "FEToastView.h"
 
     #import <SystemConfiguration/SystemConfiguration.h>
     #import <MobileCoreServices/MobileCoreServices.h>
@@ -26,7 +27,7 @@
     #import <SDWebImage/UIImageView+WebCache.h>
 
     #import <SVPullToRefresh/SVPullToRefresh.h>
-    #import <FEToastView.h>
+
 
     #import "Constant.h"
     #import "Config.h"
