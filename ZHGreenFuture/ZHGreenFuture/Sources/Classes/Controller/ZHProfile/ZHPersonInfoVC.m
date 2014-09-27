@@ -7,6 +7,8 @@
 //
 
 #import "ZHPersonInfoVC.h"
+#import "ZHModifyPersonNickVC.h"
+#import "ZHProfileModel.h"
 
 @interface ZHPersonInfoVC ()<UITableViewDelegate, UITableViewDataSource>
 @property(nonatomic, strong)UITableView          *tableView;
@@ -59,7 +61,7 @@
 - (UIImageView *)avatarView{
     if (_avatarView == nil) {
         _avatarView = [[UIImageView alloc] initWithFrame:CGRectMake([UIScreen mainScreen].bounds.size.width - 120 , 7, 80, 30)];
-        [_avatarView setImageWithURL:[NSURL URLWithString:self.avatarURL] placeholderImage:[UIImage imageNamed:@"avatar"]];
+        [_avatarView setImageWithURL:[NSURL URLWithString:self.avatarURL] placeholderImage:self.profileModel.userAvatarImage];
     }
     return _avatarView;
 }
@@ -126,6 +128,14 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     NSLog(@">>>>>didSelectRowAtIndexPath %@",indexPath);
+    if (indexPath.row == 0) {
+        
+    } else {
+        ZHModifyPersonNickVC *modifyPersonVC = [[ZHModifyPersonNickVC alloc] init];
+        modifyPersonVC.profileModel = self.profileModel;
+        NavigationViewController*   navi = [MemoryStorage valueForKey:k_NAVIGATIONCTL];
+        [navi pushViewController:modifyPersonVC animation:ANIMATE_TYPE_DEFAULT];
+    }
 }
 
 

@@ -7,9 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
-
+@class ZHProfileModel;
 @interface ZHPersonInfoVC : ZHViewController
 @property(nonatomic, strong)NSString *avatarURL;
 @property(nonatomic, strong)NSString *userName;
+@property(nonatomic, weak)ZHProfileModel *profileModel;
 
 @end

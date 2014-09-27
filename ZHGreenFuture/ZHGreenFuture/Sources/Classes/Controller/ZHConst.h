@@ -13,6 +13,7 @@
 #define k_NAVIGATIONCTL @"k_navigation_controller"
 
 typedef void(^ZHCompletionBlock)(BOOL isSuccess);
+typedef void(^ZHProgressBlock)(float progress);
 
 #define GREEN_COLOR         RGB(102,170,0)
 #define GRAY_LINE           RGB(204, 204, 204)
