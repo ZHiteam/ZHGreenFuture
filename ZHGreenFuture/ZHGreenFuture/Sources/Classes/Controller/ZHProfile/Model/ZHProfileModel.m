@@ -55,13 +55,15 @@
         [dic setObject:nickName forKey:@"userNick"];
     }
     UIImage *userImage = avatarImage ? avatarImage : self.userAvatarImage;
+    NSDictionary* imageDic = nil;
     if (userImage) {
         NSData *dataObj = UIImageJPEGRepresentation(userImage, 0.75);
-        [dic setObject:dataObj forKey:@"userAvatarData"];
+//        [dic setObject:dataObj forKey:@"userAvatarData"];
+        [imageDic setValue:dataObj forKey:@"userAvatarData"];
     }
     
     __weak __typeof(self) weakSelf = self;
-    [HttpClient upLoadDataWithURL:@"serverAPI.action" paramers:dic success:^(id responseObject) {
+    [HttpClient upLoadDataWithURL:@"serverAPI.action" paramers:dic datas:imageDic success:^(id responseObject) {
         BaseModel* model = [BaseModel praserModelWithInfo:responseObject];
         completeBlock([model.state boolValue]);
         if ([model.state boolValue]) {

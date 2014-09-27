@@ -2606,10 +2606,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = C71C3F53A51D425DB6BCAC4D /* Pods-ZHGreenFuture.xcconfig */;
 			buildSettings = {
-				ARCHS = (
-					armv7s,
-					armv7,
-				);
+				ARCHS = armv7;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer: lu ye (FD78BG9MG9)";
@@ -2647,7 +2644,6 @@
 					"$(PROJECT_DIR)/ZHGreenFuture/Sources/Libraies/ShareSDK/Extend/WeChatSDK",
 					"$(PROJECT_DIR)/ZHGreenFuture/Sources/Libraies/ShareSDK/Extend/YiXinSDK",
 					"$(PROJECT_DIR)/ZHGreenFuture/Sources/Classes/Common/ZBarSDK",
-					"$(PROJECT_DIR)/ZHGreenFuture/Sources/Libraies/ZBarSDK",
 					"$(PROJECT_DIR)/ZHGreenFuture/Sources/Libraies/alipay",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -2660,10 +2656,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = C71C3F53A51D425DB6BCAC4D /* Pods-ZHGreenFuture.xcconfig */;
 			buildSettings = {
-				ARCHS = (
-					armv7s,
-					armv7,
-				);
+				ARCHS = armv7;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer: lu ye (FD78BG9MG9)";
@@ -2701,7 +2694,6 @@
 					"$(PROJECT_DIR)/ZHGreenFuture/Sources/Libraies/ShareSDK/Extend/WeChatSDK",
 					"$(PROJECT_DIR)/ZHGreenFuture/Sources/Libraies/ShareSDK/Extend/YiXinSDK",
 					"$(PROJECT_DIR)/ZHGreenFuture/Sources/Classes/Common/ZBarSDK",
-					"$(PROJECT_DIR)/ZHGreenFuture/Sources/Libraies/ZBarSDK",
 					"$(PROJECT_DIR)/ZHGreenFuture/Sources/Libraies/alipay",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
