@@ -53,20 +53,14 @@
 
 - (void)getValidateCodeWithAccount:(NSString*)account completionBlock:(ZHAuthCompletionBlock)block{
     if ([account length] >0 ) {
-        AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
-        manager.responseSerializer.acceptableContentTypes = [NSSet setWithObject:@"text/html"];//这里设置是因为服务端返回的类型是text/html，不在AF默认设置之列
-        manager.requestSerializer.timeoutInterval = kTimeoutInterval;
-        [manager POST:BASE_URL parameters:@{@"scene": @"24",@"phone":account} success:^(AFHTTPRequestOperation *operation, id responseObject) {
-            BOOL result = NO;
-            if ([responseObject isKindOfClass:[NSDictionary class]]) {
-                if ([[responseObject objectForKey:@"result"] boolValue]) {
-                    result = YES;
-                }
-            }
+
+        [HttpClient postDataWithParamers:@{@"scene": @"24",@"phone":account} success:^(id responseObject) {
+            BOOL result = [[BaseModel praserModelWithInfo:responseObject].state boolValue];
             if (block) {
                 block(result,nil);
             }
-        } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+
+        } failure:^(NSError *error) {
             if (block) {
                 block(NO,nil);
             }
@@ -77,21 +71,12 @@
 
 - (void)postValidateCode:(NSString*)validateCode account:(NSString*)account completionBlock:(ZHAuthCompletionBlock)block{
     if ([account length] >0 && [validateCode length] >0) {
-        AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
-        manager.responseSerializer.acceptableContentTypes = [NSSet setWithObject:@"text/html"];//这里设置是因为服务端返回的类型是text/html，不在AF默认设置之列
-        manager.requestSerializer.timeoutInterval = kTimeoutInterval;
-        [manager POST:BASE_URL parameters:@{@"scene": @"25",@"phone":account,@"validateCode":validateCode} success:^(AFHTTPRequestOperation *operation, id responseObject) {
-            
-            BOOL result = NO;
-            if ([responseObject isKindOfClass:[NSDictionary class]]) {
-                if ([[responseObject objectForKey:@"result"] boolValue]) {
-                    result = YES;
-                }
-            }
+        [HttpClient postDataWithParamers:@{@"scene": @"25",@"phone":account,@"validateCode":validateCode} success:^(id responseObject) {
+            BOOL result = [[BaseModel praserModelWithInfo:responseObject].state boolValue];
             if (block) {
                 block(result,nil);
             }
-        } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        } failure:^(NSError *error) {
             if (block) {
                 block(NO,nil);
             }
@@ -105,27 +90,23 @@
     
     if ([account length] >0 && [password length] >0) {
         __weak __typeof(self) weakSelf = self;
-        AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
-        manager.responseSerializer.acceptableContentTypes = [NSSet setWithObject:@"text/html"];//这里设置是因为服务端返回的类型是text/html，不在AF默认设置之列
-        manager.requestSerializer.timeoutInterval = kTimeoutInterval;
-        [manager POST:BASE_URL parameters:@{@"scene": @"26",@"phone":account,@"password":password} success:^(AFHTTPRequestOperation *operation, id responseObject) {
-            
-            BOOL result = NO;
-            if ([responseObject isKindOfClass:[NSDictionary class]]) {
-                if ([[responseObject objectForKey:@"result"] boolValue]) {
-                    weakSelf.account  = account;
-                    weakSelf.passWord = password;
-                    [weakSelf setAccountInfo];
-                    result = YES;
-                }
+
+        [HttpClient postDataWithParamers:@{@"scene": @"26",@"phone":account,@"password":password} success:^(id responseObject) {
+            BOOL result = [[BaseModel praserModelWithInfo:responseObject].state boolValue];;
+            if (result) {
+                weakSelf.account  = account;
+                weakSelf.passWord = password;
+                [weakSelf setAccountInfo];
             }
             if (block) {
                 block(result,nil);
             }
-        } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-            if (block) {
+
+        } failure:^(NSError *error) {
+            if (block){
                 block(NO,nil);
             }
+            
         }];
     }
 }
@@ -134,11 +115,8 @@
 {
     if ([account length] >0 && [password length] >0) {
         __weak __typeof(self) weakSelf = self;
-        AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
-        manager.responseSerializer.acceptableContentTypes = [NSSet setWithObject:@"text/html"];//这里设置是因为服务端返回的类型是text/html，不在AF默认设置之列
-        manager.requestSerializer.timeoutInterval = kTimeoutInterval;
-        [manager POST:BASE_URL parameters:@{@"scene": @"23",@"phone":account,@"password":password} success:^(AFHTTPRequestOperation *operation, id responseObject) {
-   
+        
+        [HttpClient postDataWithParamers:@{@"scene": @"23",@"phone":account,@"password":password} success:^(id responseObject) {
             if ([responseObject isKindOfClass:[NSDictionary class]]) {
                 weakSelf.userId         = [responseObject objectForKey:@"userId"];
                 weakSelf.userNick       = [responseObject objectForKey:@"userNick"];
@@ -156,9 +134,9 @@
                 else{
                     block(YES,nil);
                 }
-
+                
             }
-        } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        } failure:^(NSError *error) {
             if (block) {
                 block(NO,nil);
             }

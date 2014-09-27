@@ -8,7 +8,6 @@
 
 #import "RecipeCell.h"
 #import <Comment/Comment.h>
-#import <AFNetworking/AFHTTPRequestOperationManager.h>
 
 @implementation RecipeCell
 

@@ -107,18 +107,16 @@
 #pragma mark - Public Method
 - (void)loadDataWithCompletion:(ZHCompletionBlock)block{
     __weak __typeof(self) weakSelf = self;
-    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
-    manager.responseSerializer.acceptableContentTypes = [NSSet setWithObject:@"text/html"];//这里设置是因为服务端返回的类型是text/html，不在AF默认设置之列
-    manager.requestSerializer.timeoutInterval = kTimeoutInterval;
-    [manager GET:BASE_URL parameters:@{@"scene": @"1"} success:^(AFHTTPRequestOperation *operation, id responseObject) {
+
+    [HttpClient requestDataWithParamers:@{@"scene": @"1"} success:^(id responseObject) {
         if ([responseObject isKindOfClass:[NSDictionary class]]) {
             [weakSelf parserJsonDict:responseObject];
         }
         if (block) {
             block(YES);
         }
-    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-        if (block) {
+    } failure:^(NSError *error) {
+        if (block){
             block(NO);
         }
     }];
@@ -132,10 +130,8 @@
     
     self.pageNumber++;
     __weak __typeof(self) weakSelf = self;
-    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
-    manager.responseSerializer.acceptableContentTypes = [NSSet setWithObject:@"text/html"];//这里设置是因为服务端返回的类型是text/html，不在AF默认设置之列
-    manager.requestSerializer.timeoutInterval = kTimeoutInterval;
-    [manager GET:BASE_URL parameters:@{@"scene": @"2",@"gotoPage":[NSString stringWithFormat:@"%d",self.pageNumber]} success:^(AFHTTPRequestOperation *operation, id responseObject) {
+    
+    [HttpClient requestDataWithParamers:@{@"scene": @"2",@"gotoPage":[NSString stringWithFormat:@"%d",self.pageNumber]} success:^(id responseObject) {
         if ([[responseObject objectForKey:@"lastPage"] boolValue]) {
             weakSelf.isHaveMore = NO;
         }
@@ -153,12 +149,11 @@
         if (block) {
             block(YES);
         }
-    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-        if (block) {
+    } failure:^(NSError *error) {
+        if (block){
             block(NO);
         }
     }];
-    
 }
 
 

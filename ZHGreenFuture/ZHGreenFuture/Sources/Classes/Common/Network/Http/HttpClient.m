@@ -7,8 +7,7 @@
 //
 
 #import "HttpClient.h"
-#import "AFNetworkReachabilityManager.h"
-#import "AFHTTPRequestOperationManager.h"
+#import <AFNetworking/AFNetworking.h>
 
 @interface HttpClient(){
     AFHTTPRequestOperationManager*  _client;
@@ -23,7 +22,7 @@
     
     if (self) {
 
-        NSURL* url = [NSURL URLWithString:[NSString stringWithFormat:@"%@/%@",BASE_SITE,SCHEME]];
+        NSURL* url = [NSURL URLWithString:[NSString stringWithFormat:@"%@",BASE_SITE]];
         _client = [[AFHTTPRequestOperationManager alloc]initWithBaseURL:url];
         _client.responseSerializer.acceptableContentTypes = [NSSet setWithObject:@"text/html"];
         _client.requestSerializer.timeoutInterval = kTimeoutInterval;
@@ -59,50 +58,36 @@
     }];
 }
 
-+(void)requestDataWithURL:(NSString*)url paramers:(NSDictionary*)paramers success:(void (^)(id responseObject))success failure:(void (^)(NSError *error))failure{
++(void)requestDataWithParamers:(NSDictionary*)paramers success:(void (^)(id responseObject))success failure:(void (^)(NSError *error))failure{
     HttpClient* client = [HttpClient instance];
-    [client->_client GET:url parameters:paramers success:^(AFHTTPRequestOperation *operation, id responseObject) {
+    [client->_client GET:@"/greenFuture/serverAPI.action" parameters:paramers success:^(AFHTTPRequestOperation *operation, id responseObject) {
         success(responseObject);
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         failure(error);
     }];
 }
 
-+(void)postDataWithURL:(NSString*)url paramers:(NSDictionary*)paramers success:(void (^)(id responseObject))success failure:(void (^)(NSError *error))failure{
++(void)postDataWithParamers:(NSDictionary*)paramers success:(void (^)(id responseObject))success failure:(void (^)(NSError *error))failure{
     HttpClient* client = [HttpClient instance];
-    [client->_client POST:url parameters:paramers success:^(AFHTTPRequestOperation *operation, id responseObject) {
+    [client->_client POST:@"/greenFuture/serverAPI.action" parameters:paramers success:^(AFHTTPRequestOperation *operation, id responseObject) {
         success(responseObject);
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         failure(error);
     }];
 }
 
-+(void)upLoadDataWithURL:(NSString*)url
-                paramers:(NSDictionary*)paramers
++(void)upLoadDataWithParamers:(NSDictionary*)paramers
                    datas:(NSDictionary*)datas
                  success:(void (^)(id responseObject))success
                  failure:(void (^)(NSError *error))failure
                 progress:(void (^)(NSUInteger bytesWritten, long long totalBytesWritten, long long totalBytesExpectedToWrite))progress{
-    AFHTTPRequestOperationManager*  httpClient = [HttpClient instance]->_client;
     
-    NSMutableURLRequest* request = [httpClient.requestSerializer multipartFormRequestWithMethod:@"POST" URLString:[[NSURL URLWithString:url relativeToURL:httpClient.baseURL]absoluteString] parameters:paramers constructingBodyWithBlock:^(id<AFMultipartFormData> formData) {
+    AFHTTPRequestOperationManager*  httpClient = [HttpClient instance]->_client;    
+    AFHTTPRequestOperation* op = [httpClient POST:@"/greenFuture/serverAPI.action" parameters:@{@"scene":@"27",@"userId":@"1"} constructingBodyWithBlock:^(id<AFMultipartFormData> formData) {
         for (NSString* name in datas.allKeys){
             [formData appendPartWithFileData:datas[name] name:name fileName:@"image.jpg" mimeType:@"image/jpeg"];
         }
-
-    } error:nil];
-    
-    AFHTTPRequestOperation* operation = [[AFHTTPRequestOperation alloc]initWithRequest:request];
-
-    
-    [operation setUploadProgressBlock:^(NSUInteger bytesWritten, long long totalBytesWritten, long long totalBytesExpectedToWrite) {
-        ZHLOG(@"Sent %lld of %lld bytes", totalBytesWritten, totalBytesExpectedToWrite);
-        if (progress){
-            progress(bytesWritten,totalBytesWritten,totalBytesExpectedToWrite);
-        }
-    }];
-    
-    [operation setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
+    } success:^(AFHTTPRequestOperation *operation, id responseObject) {
         if (success){
             success(responseObject);
         }
@@ -112,6 +97,11 @@
         }
     }];
     
-    [operation start];    
+    [op setUploadProgressBlock:^(NSUInteger bytesWritten, long long totalBytesWritten, long long totalBytesExpectedToWrite) {
+        NSLog(@"%lld, %lld",totalBytesWritten,totalBytesExpectedToWrite);
+        if (progress){
+            progress(bytesWritten,totalBytesWritten,totalBytesExpectedToWrite);
+        }
+    }];
 }
 @end

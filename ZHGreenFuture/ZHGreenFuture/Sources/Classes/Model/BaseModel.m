@@ -10,7 +10,7 @@
 
 @implementation BaseModel
 
-+(id)praserModelWithInfo:(id)info{
++(BaseModel*)praserModelWithInfo:(id)info{
     BaseModel* model = [[BaseModel alloc]init];
     if (! [info isKindOfClass:[NSDictionary class]]){
         return model;

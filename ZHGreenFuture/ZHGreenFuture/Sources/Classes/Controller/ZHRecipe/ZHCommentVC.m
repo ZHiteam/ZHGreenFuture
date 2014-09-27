@@ -44,7 +44,7 @@
         return;
     }
     
-    [HttpClient requestDataWithURL:@"serverAPI.action" paramers:@{@"scene":@"28",@"recipeId":self.recipeId} success:^(id responseObject) {
+    [HttpClient requestDataWithParamers:@{@"scene":@"28",@"recipeId":self.recipeId} success:^(id responseObject) {
         
         if ([responseObject isKindOfClass:[NSDictionary class]]){
             if ([responseObject[@"commentList"]isKindOfClass:[NSArray class]]){
@@ -247,7 +247,7 @@
 //        return;
 //    }
 //    
-    [HttpClient requestDataWithURL:@"serverAPI.action" paramers:dic success:^(id responseObject) {
+    [HttpClient requestDataWithParamers:dic success:^(id responseObject) {
         SHOW_MESSAGE(@"评论成功", 2);
         [self loadRequest];
     } failure:^(NSError *error) {

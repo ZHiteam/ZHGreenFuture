@@ -354,7 +354,7 @@
     
     [self showProgress];
     
-    [HttpClient upLoadDataWithURL:@"serverAPI.action" paramers:dic datas:imageData success:^(id responseObject) {
+    [HttpClient upLoadDataWithParamers:dic datas:imageData success:^(id responseObject) {
         BaseModel* model = [BaseModel praserModelWithInfo:responseObject];
         if ([model.state boolValue]){
             SHOW_MESSAGE(@"上传成功", 2);

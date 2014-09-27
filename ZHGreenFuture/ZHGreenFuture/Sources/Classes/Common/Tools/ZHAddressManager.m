@@ -33,7 +33,7 @@
 #warning 用户ID
     NSString* userId = @"1";
     
-    [HttpClient requestDataWithURL:@"serverAPI.action" paramers:@{@"scene":@"16",@"userId":userId} success:^(id responseObject) {
+    [HttpClient requestDataWithParamers:@{@"scene":@"16",@"userId":userId} success:^(id responseObject) {
         [self setAddressWithInfo:responseObject];
         
         if (SuccessBlock){

@@ -136,7 +136,7 @@
     
     if (!isEmptyString(receiveId)){
         /// 发送默认地址请求
-    [HttpClient requestDataWithURL:@"serverAPI.action" paramers:@{@"scene":@"17",@"receiveId":receiveId} success:^(id responseObject) {
+    [HttpClient requestDataWithParamers:@{@"scene":@"17",@"receiveId":receiveId} success:^(id responseObject) {
         
         BaseModel* model = [BaseModel praserModelWithInfo:responseObject];
         if ([model.state boolValue]){

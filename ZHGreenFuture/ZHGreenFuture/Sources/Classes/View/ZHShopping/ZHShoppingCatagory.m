@@ -44,7 +44,7 @@
 */
 
 -(void)loadRequest{
-    [HttpClient requestDataWithURL:@"serverAPI.action" paramers:@{@"scene":@"4"} success:^(id responseObject) {
+    [HttpClient requestDataWithParamers:@{@"scene":@"4"} success:^(id responseObject) {
         ZHLOG(@"%@",responseObject);
 
         if ([responseObject isKindOfClass:[NSArray class]]){

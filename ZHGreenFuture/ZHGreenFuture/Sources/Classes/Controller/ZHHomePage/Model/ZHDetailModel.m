@@ -54,17 +54,15 @@
 #pragma mark - Public Method
 - (void)loadDataWithProductId:(NSString*)productId completionBlock:(ZHCompletionBlock)block{
     __weak __typeof(self) weakSelf = self;
-    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
-    manager.responseSerializer.acceptableContentTypes = [NSSet setWithObject:@"text/html"];//这里设置是因为服务端返回的类型是text/html，不在AF默认设置之列
-    manager.requestSerializer.timeoutInterval = kTimeoutInterval;
-    [manager GET:BASE_URL parameters:@{@"scene": @"10",@"productId":productId} success:^(AFHTTPRequestOperation *operation, id responseObject) {
+    
+    [HttpClient requestDataWithParamers:@{@"scene": @"10",@"productId":productId} success:^(id responseObject) {
         if ([responseObject isKindOfClass:[NSDictionary class]]) {
             [weakSelf parserJsonDict:responseObject];
         }
         if (block) {
             block(YES);
         }
-    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+    } failure:^(NSError *error) {
         if (block) {
             block(NO);
         }

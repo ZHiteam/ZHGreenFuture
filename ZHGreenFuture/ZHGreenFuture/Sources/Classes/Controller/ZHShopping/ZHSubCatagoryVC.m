@@ -136,7 +136,7 @@
     if (isEmptyString(self.model.categoryId)){
         return;
     }
-    [HttpClient requestDataWithURL:@"serverAPI.action" paramers:@{@"scene":@"5",@"categoryId":self.model.categoryId} success:^(id responseObject) {
+    [HttpClient requestDataWithParamers:@{@"scene":@"5",@"categoryId":self.model.categoryId} success:^(id responseObject) {
         NSLog(@"%@",responseObject);
         
         self.model = (SecondCatagoryModel*)[SecondCatagoryModel praserModelWithInfo:responseObject];

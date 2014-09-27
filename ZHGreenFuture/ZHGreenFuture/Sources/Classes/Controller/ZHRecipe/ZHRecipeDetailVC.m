@@ -61,7 +61,7 @@
         return;
     }
     
-    [HttpClient requestDataWithURL:@"serverAPI.action" paramers:@{@"scene":@"7",@"recipeId": self.model.recipeId} success:^(id responseObject) {
+    [HttpClient requestDataWithParamers:@{@"scene":@"7",@"recipeId": self.model.recipeId} success:^(id responseObject) {
         
         ZHLOG(@"%@",responseObject);
         

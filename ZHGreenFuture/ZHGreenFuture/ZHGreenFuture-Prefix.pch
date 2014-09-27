@@ -42,8 +42,6 @@
     #import "UIImageView+ZHiteam.h"
 
     #import "HttpClient.h"
-    #import "ModelManager.h"
-
 
     #import "NavigationViewController.h"
     #import "TabbarViewController.h"

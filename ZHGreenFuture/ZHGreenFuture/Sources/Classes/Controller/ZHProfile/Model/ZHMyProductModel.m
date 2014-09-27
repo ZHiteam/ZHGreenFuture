@@ -40,20 +40,19 @@
     
     if ([userAccount length] >0) {
         __weak __typeof(self) weakSelf = self;
-        AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
-        manager.responseSerializer.acceptableContentTypes = [NSSet setWithObject:@"text/html"];//这里设置是因为服务端返回的类型是text/html，不在AF默认设置之列
-        manager.requestSerializer.timeoutInterval = kTimeoutInterval;
         NSString *userId = userAccount;
         userId = [userId length] == 0 ? @"" : userId;
-        [manager GET:BASE_URL parameters:@{@"scene": @"30",@"userId": userId} success:^(AFHTTPRequestOperation *operation, id responseObject) {
+
+        [HttpClient requestDataWithParamers:@{@"scene": @"30",@"userId": userId} success:^(id responseObject) {
             if ([responseObject isKindOfClass:[NSDictionary class]]) {
                 [weakSelf parserJsonDict:responseObject];
             }
             if (block) {
                 block(YES);
             }
-        } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-            if (block) {
+
+        } failure:^(NSError *error) {
+            if (block){
                 block(NO);
             }
         }];
@@ -64,18 +63,17 @@
 - (void)loadDetailWithId:(NSString*)workId completionBlock:(ZHCompletionBlock)block{
     if ([workId length] >0) {
         __weak __typeof(self) weakSelf = self;
-        AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
-        manager.responseSerializer.acceptableContentTypes = [NSSet setWithObject:@"text/html"];//这里设置是因为服务端返回的类型是text/html，不在AF默认设置之列
-        manager.requestSerializer.timeoutInterval = kTimeoutInterval;
-        [manager GET:BASE_URL parameters:@{@"scene": @"31",@"workId": workId} success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        
+        [HttpClient requestDataWithParamers:@{@"scene": @"31",@"workId": workId} success:^(id responseObject) {
             if ([responseObject isKindOfClass:[NSDictionary class]]) {
                 weakSelf.productDetail = [[ZHMyProductItem alloc] initWithDictionary:responseObject];
             }
             if (block) {
                 block(YES);
             }
-        } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-            if (block) {
+            
+        } failure:^(NSError *error) {
+            if (block){
                 block(NO);
             }
         }];

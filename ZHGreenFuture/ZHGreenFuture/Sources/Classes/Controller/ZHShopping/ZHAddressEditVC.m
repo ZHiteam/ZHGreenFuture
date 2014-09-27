@@ -187,7 +187,7 @@
     NSString* str = [@{@"receiveInfo":userInfo} JSONFragment];
     [dic setObject:str forKey:@"json"];
     
-    [HttpClient postDataWithURL:@"serverAPI.action" paramers:dic success:^(id responseObject) {
+    [HttpClient postDataWithParamers:dic success:^(id responseObject) {
         
         BaseModel* model = [BaseModel praserModelWithInfo:responseObject];
         if ([model.state boolValue]){

@@ -72,20 +72,18 @@
     self.orderType = type;
     
     __weak __typeof(self) weakSelf = self;
-    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
-    manager.responseSerializer.acceptableContentTypes = [NSSet setWithObject:@"text/html"];//这里设置是因为服务端返回的类型是text/html，不在AF默认设置之列
-    manager.requestSerializer.timeoutInterval = kTimeoutInterval;
     NSString *userId = [[ZHAuthorizationManager shareInstance] account];
     userId = [userId length] == 0 ? @"" : userId;
-    [manager GET:BASE_URL parameters:@{@"scene": @"21",@"userId": userId, @"orderType":[NSString stringWithFormat:@"%d",type]} success:^(AFHTTPRequestOperation *operation, id responseObject) {
+
+    [HttpClient requestDataWithParamers:@{@"scene": @"21",@"userId": userId, @"orderType":[NSString stringWithFormat:@"%d",type]} success:^(id responseObject) {
         if ([responseObject isKindOfClass:[NSDictionary class]]) {
             [weakSelf parserJsonDict:responseObject];
         }
         if (block) {
             block(YES);
         }
-    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-        if (block) {
+    } failure:^(NSError *error) {
+        if (block){
             block(NO);
         }
     }];
@@ -94,21 +92,19 @@
 
 - (void)modifyOrderStatusWithOrderId:(NSString*)orderId operation:(NSString*)operation completionBlock:(ZHCompletionBlock)block{
     if ([orderId length] >0 && [operation length] >0) {
-        AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
-        manager.responseSerializer.acceptableContentTypes = [NSSet setWithObject:@"text/html"];//这里设置是因为服务端返回的类型是text/html，不在AF默认设置之列
-        manager.requestSerializer.timeoutInterval = kTimeoutInterval;
         NSString *userId = [[ZHAuthorizationManager shareInstance] account];
         userId = [userId length] == 0 ? @"" : userId;
-        [manager GET:BASE_URL parameters:@{@"scene": @"22",@"userId": userId, @"orderId":orderId, @"operation" : operation} success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        
+        [HttpClient requestDataWithParamers:@{@"scene": @"22",@"userId": userId, @"orderId":orderId, @"operation" : operation} success:^(id responseObject) {
             BOOL result = NO;
             if ([responseObject isKindOfClass:[NSDictionary class]]) {
-               result =[[responseObject objectForKey:@"result"] isEqualToString:@"true"];
+                result =[[responseObject objectForKey:@"result"] isEqualToString:@"true"];
             }
             if (block) {
                 block(result);
             }
-        } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-            if (block) {
+        } failure:^(NSError *error) {
+            if (block){
                 block(NO);
             }
         }];

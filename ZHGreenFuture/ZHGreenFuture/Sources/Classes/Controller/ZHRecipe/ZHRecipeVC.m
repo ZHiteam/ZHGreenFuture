@@ -49,7 +49,7 @@
 }
 
 -(void)loadRequest{
-    [HttpClient requestDataWithURL:@"serverAPI.action" paramers:@{@"scene":@"6"}success:^(id responseObject) {
+    [HttpClient requestDataWithParamers:@{@"scene":@"6"}success:^(id responseObject) {
         ZHLOG(@"%@",responseObject);
         
         self.recipeModel = (RecipeModel*)[RecipeModel praserModelWithInfo:responseObject];
@@ -250,7 +250,7 @@
         return [self loadRequest];
     }
     
-    [HttpClient requestDataWithURL:@"serverAPI.action" paramers:@{@"scene":@"6",@"tagId":tagId}success:^(id responseObject) {
+    [HttpClient requestDataWithParamers:@{@"scene":@"6",@"tagId":tagId}success:^(id responseObject) {
         ZHLOG(@"%@",responseObject);
         if ([responseObject isKindOfClass:[NSDictionary class]]){
             NSDictionary* dic = (NSDictionary*)responseObject;

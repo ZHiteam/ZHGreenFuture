@@ -12,5 +12,5 @@
 
 @property (nonatomic) NSString* state;
 
-+(id)praserModelWithInfo:(id)info;
++(BaseModel*)praserModelWithInfo:(id)info;
 @end

@@ -59,7 +59,7 @@
 //    }
     NSDictionary* param = @{@"scene":@"11",@"userId":@"1"};
     
-    [HttpClient requestDataWithURL:@"serverAPI.action" paramers:param success:^(id responseObject) {
+    [HttpClient requestDataWithParamers:param success:^(id responseObject) {
         if ([responseObject isKindOfClass:[NSDictionary class]]){
             if ([responseObject[@"shoppingCartList"] isKindOfClass:[NSArray class]]){
                 NSArray *shoppingCartList = responseObject[@"shoppingCartList"];
@@ -264,7 +264,7 @@
     NSString* jsonStr = [dic JSONFragment];
     dic = @{@"json":jsonStr,@"scene":@"12"};
     
-    [HttpClient requestDataWithURL:@"serverAPI.action" paramers:dic success:^(id responseObject) {
+    [HttpClient requestDataWithParamers:dic success:^(id responseObject) {
         BaseModel* model = [BaseModel praserModelWithInfo:responseObject];
         if ([model.state boolValue]){
             /// 更新成功
@@ -412,7 +412,7 @@
     [dic setObject:str forKey:@"json"];
     [dic setObject:@"13" forKey:@"scene"];
     
-    [HttpClient requestDataWithURL:@"serverAPI.action" paramers:dic success:^(id responseObject) {
+    [HttpClient requestDataWithParamers:dic success:^(id responseObject) {
         BaseModel* model = [BaseModel praserModelWithInfo:responseObject];
         
         if ([model.state boolValue]){
