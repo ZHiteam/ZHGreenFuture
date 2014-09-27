@@ -32,6 +32,17 @@
     return self;
 }
 
+- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil{
+    if ((self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil])) {
+        _animationType = ANIMATE_TYPE_DEFAULT;
+        _hasNavitaiongBar = YES;
+        [self _initNavigationBar];
+        self.statusStyle = UIStatusBarStyleLightContent;
+    }
+    
+    return self;
+}
+
 -(void)loadView{
     
     /// 增加subView监听，保持NavigationBar在最前
