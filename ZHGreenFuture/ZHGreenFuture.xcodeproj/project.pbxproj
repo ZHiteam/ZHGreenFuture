@@ -328,6 +328,8 @@
 		9CDD6C9319D25D630068DAED /* ZHCommentVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CDD6C9219D25D630068DAED /* ZHCommentVC.m */; };
 		9CDD6C9519D2687E0068DAED /* btn_comment@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9CDD6C9419D2687E0068DAED /* btn_comment@2x.png */; };
 		9CDD6C9819D29FA30068DAED /* ZHAddressManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CDD6C9719D29FA30068DAED /* ZHAddressManager.m */; };
+		9CDD6C9E19D306900068DAED /* ASPopUpView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CDD6C9B19D306900068DAED /* ASPopUpView.m */; };
+		9CDD6C9F19D306900068DAED /* ASProgressPopUpView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CDD6C9D19D306900068DAED /* ASProgressPopUpView.m */; };
 		A4C9D54E32334D93A158D3F2 /* libPods-ZHGreenFuture.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C548FF18989B4FF8A8B17AD4 /* libPods-ZHGreenFuture.a */; };
 /* End PBXBuildFile section */
 
@@ -842,6 +844,10 @@
 		9CDD6C9419D2687E0068DAED /* btn_comment@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "btn_comment@2x.png"; sourceTree = "<group>"; };
 		9CDD6C9619D29FA30068DAED /* ZHAddressManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZHAddressManager.h; sourceTree = "<group>"; };
 		9CDD6C9719D29FA30068DAED /* ZHAddressManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZHAddressManager.m; sourceTree = "<group>"; };
+		9CDD6C9A19D306900068DAED /* ASPopUpView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASPopUpView.h; sourceTree = "<group>"; };
+		9CDD6C9B19D306900068DAED /* ASPopUpView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ASPopUpView.m; sourceTree = "<group>"; };
+		9CDD6C9C19D306900068DAED /* ASProgressPopUpView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASProgressPopUpView.h; sourceTree = "<group>"; };
+		9CDD6C9D19D306900068DAED /* ASProgressPopUpView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ASProgressPopUpView.m; sourceTree = "<group>"; };
 		C548FF18989B4FF8A8B17AD4 /* libPods-ZHGreenFuture.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-ZHGreenFuture.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C71C3F53A51D425DB6BCAC4D /* Pods-ZHGreenFuture.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ZHGreenFuture.xcconfig"; path = "Pods/Pods-ZHGreenFuture.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -1286,6 +1292,7 @@
 		9C0E08B919BF32BB00ED8D87 /* Libraies */ = {
 			isa = PBXGroup;
 			children = (
+				9CDD6C9919D306900068DAED /* ASProgressPopUpView */,
 				9CCB1D8819D14EBE009BB25A /* DoAlertView */,
 				9CCB1D5919D08826009BB25A /* alipay */,
 				9CCDFD4F19CBC88C008B6882 /* TPKeyboardAvoiding */,
@@ -2039,6 +2046,17 @@
 			path = TPKeyboardAvoiding;
 			sourceTree = "<group>";
 		};
+		9CDD6C9919D306900068DAED /* ASProgressPopUpView */ = {
+			isa = PBXGroup;
+			children = (
+				9CDD6C9A19D306900068DAED /* ASPopUpView.h */,
+				9CDD6C9B19D306900068DAED /* ASPopUpView.m */,
+				9CDD6C9C19D306900068DAED /* ASProgressPopUpView.h */,
+				9CDD6C9D19D306900068DAED /* ASProgressPopUpView.m */,
+			);
+			path = ASProgressPopUpView;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -2089,7 +2107,7 @@
 				ORGANIZATIONNAME = ZHiteam;
 				TargetAttributes = {
 					849F7F4619AB81EE00962BB1 = {
-						DevelopmentTeam = 4MHQSMP927;
+						DevelopmentTeam = 3R4K7E9589;
 					};
 					849F7F6A19AB81EE00962BB1 = {
 						TestTargetID = 849F7F4619AB81EE00962BB1;
@@ -2341,6 +2359,7 @@
 				9C0E0AF019C418FC00ED8D87 /* RecipeItemDetailModel.m in Sources */,
 				84A7A5C119B2C8290050CACD /* ZHCategoryTableViewCell.m in Sources */,
 				9C9778A719B1900F00D49E69 /* UIView+ZHiteam.m in Sources */,
+				9CDD6C9E19D306900068DAED /* ASPopUpView.m in Sources */,
 				9CCDFD5F19CBC88C008B6882 /* TPKeyboardAvoidingTableView.m in Sources */,
 				9C0E0B5419CB587900ED8D87 /* ZHEditCountView.m in Sources */,
 				849F7F5B19AB81EE00962BB1 /* AppDelegate.m in Sources */,
@@ -2403,6 +2422,7 @@
 				9CCDFD7919CC13DD008B6882 /* ZHAddressManagerVC.m in Sources */,
 				847E0BD019C54C8C0055B5C6 /* ZHButton.m in Sources */,
 				9C3862C719B2CECE00679C48 /* CatagoryModel.m in Sources */,
+				9CDD6C9F19D306900068DAED /* ASProgressPopUpView.m in Sources */,
 				847E0BC119C473A90055B5C6 /* ZHOrderStatusCell.m in Sources */,
 				9C89836A19B46202009CB910 /* ZHView.m in Sources */,
 				9C0E0B3019C9E0F200ED8D87 /* RecipeExampleCell.m in Sources */,

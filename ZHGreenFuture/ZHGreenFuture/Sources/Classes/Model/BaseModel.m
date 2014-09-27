@@ -10,18 +10,15 @@
 
 @implementation BaseModel
 
--(void)setValue:(id)value forKey:(NSString *)key{
-    
-    NSString* keySet = [NSString stringWithFormat:@"set%@",[key capitalizedString]];
-    if (![self respondsToSelector:NSSelectorFromString(keySet)] ) {
-        return;
++(id)praserModelWithInfo:(id)info{
+    BaseModel* model = [[BaseModel alloc]init];
+    if (! [info isKindOfClass:[NSDictionary class]]){
+        return model;
     }
     
-    return [super setValue:value forKeyPath:key];
-}
-
-+(id)praserModelWithInfo:(id)info{
+    NSDictionary* dic = (NSDictionary*)info;
+    model.state = [NSString stringWithFormat:@"%d", [dic[@"result"]boolValue] ] ;
     
-    return [[BaseModel alloc]init];
+    return model;
 }
 @end

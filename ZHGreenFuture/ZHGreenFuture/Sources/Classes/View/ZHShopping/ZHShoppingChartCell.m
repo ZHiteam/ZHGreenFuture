@@ -11,7 +11,7 @@
 #import "ZHLineLabel.h"
 #import "ZHEditCountView.h"
 
-@interface ZHShoppingChartCell()
+@interface ZHShoppingChartCell()<ZHEditCountDelegate>
 
 @property (nonatomic,strong) ZHCheckbox*        checkBox;
 @property (nonatomic,strong) UIImageView*       productImage;
@@ -59,6 +59,10 @@
     [self addSubview:self.buyCountLabel];
     
     [self addSubview:self.editCountView];
+    
+    UIView* line = [[UIView alloc]initWithFrame:CGRectMake(10, [ZHShoppingChartCell cellHeight]-1, self.width-20, 1)];
+    line.backgroundColor = GRAY_LINE;
+    [self addSubview:line];
 }
 
 -(ZHCheckbox *)checkBox{
@@ -120,8 +124,6 @@
         _promotionPriceLabel = [UILabel labelWithText:@"" font:FONT(16) color:BLACK_TEXT textAlignment:NSTextAlignmentRight];
         
         _promotionPriceLabel.frame = CGRectMake(self.nameLabel.right, self.nameLabel.top, self.width-self.nameLabel.right-10, 15);
-        
-        _promotionPriceLabel.text = @"￥9.89";
     }
     
     return _promotionPriceLabel;
@@ -137,7 +139,6 @@
         _priceLabel.lineType = LineTypeMiddle;
         _priceLabel.font = FONT(16);
         _priceLabel.textAlignment = NSTextAlignmentRight;
-        _priceLabel.text = @"￥19.89";
     }
     
     return _priceLabel;
@@ -160,6 +161,7 @@
         
         _editCountView = [[ZHEditCountView alloc]initWithFrame:CGRectMake(self.nameLabel.left, self.nameLabel.top, self.nameLabel.width, self.productImage.height/2)];
         
+        _editCountView.delegate = self;
         _editCountView.hidden = YES;
     }
     
@@ -215,7 +217,7 @@
 #pragma -mark check action
 -(void)setChecked:(BOOL)checked{
     [self.checkBox setChecked:checked];
-    [self extraCheckAction:checked];
+//    [self extraCheckAction:checked];
 }
 
 -(BOOL)checked{
@@ -224,6 +226,17 @@
 
 -(void)extraCheckAction:(BOOL)check{
     self.model.checked = check;
+    
+    if (check){
+        if ([self.delegate respondsToSelector:@selector(selectChartWithModel:)]){
+            [self.delegate selectChartWithModel:self.model];
+        }
+    }
+    else{
+        if ([self.delegate respondsToSelector:@selector(deSelectChartWithModel:)]){
+            [self.delegate deSelectChartWithModel:self.model];
+        }
+    }
 }
 #pragma -mark check action end
 
@@ -246,8 +259,12 @@
     self.editCountView.count = model.buyCout;
     
     self.checkBox.checked = model.checked;
-    
+}
 
-    
+#pragma -mark ZHEditCountDelegate
+-(void)countChange:(NSString *)count{
+    if ([self.delegate respondsToSelector:@selector(countChangeAtIndex:count:)]){
+        [self.delegate countChangeAtIndex:self.index count:count];
+    }
 }
 @end

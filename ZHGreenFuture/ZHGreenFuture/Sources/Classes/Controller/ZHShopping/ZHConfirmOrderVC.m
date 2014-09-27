@@ -52,6 +52,7 @@
         self.chartList = self.userInfo;
     }
     
+    self.addressModel = [[ZHAddressManager instance]defaultAddress];
     self.navigationBar.title = @"确认订单";
     [self whithNavigationBarStyle];
     

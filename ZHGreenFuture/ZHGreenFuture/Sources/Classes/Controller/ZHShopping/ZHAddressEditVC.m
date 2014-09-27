@@ -7,6 +7,7 @@
 //
 
 #import "ZHAddressEditVC.h"
+#import "JSON.h"
 
 @interface ZHAddressEditVC ()<UITableViewDataSource,UITableViewDelegate>
 @property (nonatomic,assign) NSInteger type;
@@ -160,15 +161,48 @@
         self.model.address = address;
     }
     
+    
+    NSMutableDictionary* userInfo = [[NSMutableDictionary alloc]initWithCapacity:3];
+    [userInfo setObject:name forKey:@"name"];
+    [userInfo setObject:phone forKey:@"phone"];
+    [userInfo setObject:address forKey:@"address"];
+    if (!isEmptyString(self.model.receiveId)){
+        [userInfo setObject:self.model.receiveId forKey:@"receiveId"];
+    }
+
+    
+    NSMutableDictionary* dic = [[NSMutableDictionary alloc]initWithCapacity:2];
     /// 发送网络请求
     /// 编辑请求
     if (0 == self.type){
-        
+        [dic setObject:@"19" forKey:@"scene"];
     }
     /// 新增请求
     else{
-        
+        [dic setObject:@"18" forKey:@"scene"];
+#warning 用户ID
+//        [dic setObject:[ZHAuthorizationManager shareInstance].userId forKey:@"userId"];
+        [userInfo setObject:@"1" forKey:@"userId"];
     }
+    NSString* str = [@{@"receiveInfo":userInfo} JSONFragment];
+    [dic setObject:str forKey:@"json"];
+    
+    [HttpClient postDataWithURL:@"serverAPI.action" paramers:dic success:^(id responseObject) {
+        
+        BaseModel* model = [BaseModel praserModelWithInfo:responseObject];
+        if ([model.state boolValue]){
+            SHOW_MESSAGE(@"操作成功", 2);
+            [self performSelector:@selector(goPrePage) withObject:nil afterDelay:2.1];
+        }
+        else{
+            SHOW_MESSAGE(@"操作失败", 2);
+        }
+    } failure:^(NSError *error) {
+        SHOW_MESSAGE(@"操作失败", 2);
+    }];
+}
+
+-(void)goPrePage{
     [self.navigationCtl pop];
 }
 @end

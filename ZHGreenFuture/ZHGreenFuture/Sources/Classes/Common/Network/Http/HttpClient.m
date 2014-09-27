@@ -33,7 +33,7 @@
     return self;
 }
 
-+(id)instance{
++(HttpClient*)instance{
     return [HttpClient instanceWithCLass:[HttpClient class]];
 }
 
@@ -60,17 +60,6 @@
     }];
 }
 
-
-+(void)requestData{
-    HttpClient* client = [HttpClient instance];
-    
-    [client->_client POST:@"/ZHiteam/test.php" parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
-        NSLog(@"JSON: %@", responseObject);
-    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-        NSLog(@"Error: %@", error);
-    }];
-}
-
 +(void)requestDataWithURL:(NSString*)url paramers:(NSDictionary*)paramers success:(void (^)(id responseObject))success failure:(void (^)(NSError *error))failure{
     HttpClient* client = [HttpClient instance];
     [client->_client GET:url parameters:paramers success:^(AFHTTPRequestOperation *operation, id responseObject) {
@@ -87,5 +76,42 @@
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         failure(error);
     }];
+//    [operation setUploadProgressBlock:^(NSUInteger bytesWritten, long long totalBytesWritten, long long totalBytesExpectedToWrite) {
+//        NSLog(@"Sent %lld of %lld bytes", totalBytesWritten, totalBytesExpectedToWrite);
+//    }];
+//    [operation start];
+}
+
++(void)upLoadDataWithURL:(NSString*)url
+                paramers:(NSDictionary*)paramers
+                 success:(void (^)(id responseObject))success
+                 failure:(void (^)(NSError *error))failure
+                progress:(void (^)(NSUInteger bytesWritten, long long totalBytesWritten, long long totalBytesExpectedToWrite))progress{
+    AFHTTPRequestOperationManager*  httpClient = [HttpClient instance]->_client;
+    
+//    NSMutableURLRequest *request = [httpClient multipartFormRequestWithMethod:@"POST" path:@"/upload" parameters:nil constructingBodyWithBlock: ^(id <AFMultipartFormData>formData) {
+//        [formData appendPartWithFileData:imageData name:@"avatar" fileName:@"avatar.jpg" mimeType:@"image/jpeg"];
+//    }];
+    
+    NSMutableURLRequest *request = [httpClient.requestSerializer requestWithMethod:@"POST" URLString:[[NSURL URLWithString:url relativeToURL:httpClient.baseURL] absoluteString] parameters:paramers error:nil];
+    AFHTTPRequestOperation *operation = [httpClient HTTPRequestOperationWithRequest:request success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        if (success){
+            success(responseObject);
+        }
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        if (failure){
+            failure(error);
+        }
+    }];
+    
+    [operation setUploadProgressBlock:^(NSUInteger bytesWritten, long long totalBytesWritten, long long totalBytesExpectedToWrite) {
+        ZHLOG(@"Sent %lld of %lld bytes", totalBytesWritten, totalBytesExpectedToWrite);
+        if (progress){
+            progress(bytesWritten,totalBytesWritten,totalBytesExpectedToWrite);
+        }
+    }];
+    [operation start];  
+
+    
 }
 @end

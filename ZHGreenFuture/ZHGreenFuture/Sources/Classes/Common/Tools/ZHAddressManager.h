@@ -13,5 +13,9 @@
 
 @property (nonatomic,strong) NSArray*   addressList;
 
-+(id)instance;
++(ZHAddressManager*)instance;
+
+-(AddressModel*)defaultAddress;
+
+-(void)updateAddressListWithBlock:(void (^)(BOOL success))SuccessBlock;
 @end

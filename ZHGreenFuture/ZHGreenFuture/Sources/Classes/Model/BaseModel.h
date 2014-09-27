@@ -10,8 +10,7 @@
 
 @interface BaseModel : NSObject
 
-@property (nonatomic) NSString* title;
-//@property(nonatomic)NSString*   serail; /// 备用
+@property (nonatomic) NSString* state;
 
 +(id)praserModelWithInfo:(id)info;
 @end

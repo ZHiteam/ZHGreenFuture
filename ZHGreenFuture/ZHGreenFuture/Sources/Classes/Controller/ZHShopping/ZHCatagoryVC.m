@@ -139,7 +139,7 @@
 }
 
 -(void)loadRequest{
-    [HttpClient requestDataWithURL:@"" paramers:nil success:^(id responseObject) {
+    [HttpClient requestDataWithURL:@"serverAPI.action" paramers:nil success:^(id responseObject) {
         
     } failure:^(NSError *error) {
         

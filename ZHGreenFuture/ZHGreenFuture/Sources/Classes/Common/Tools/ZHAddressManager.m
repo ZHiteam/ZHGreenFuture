@@ -10,33 +10,80 @@
 
 @implementation ZHAddressManager
 
-+(id)instance{
++(ZHAddressManager*)instance{
     return [ZHAddressManager instanceWithCLass:[ZHAddressManager class]];
 }
 
 -(instancetype)init{
     self = [super init];
     if (self){
-        
+        [self loadListRequest];
     }
     
     return self;
 }
 
--(void)loadListRequest{
-//    if (![[ZHAuthorizationManager shareInstance]isLogin] || isEmptyString([ZHAuthorizationManager shareInstance].userId)){
-//        return;
-//    }
-//
-//    NSString* userId= [ZHAuthorizationManager shareInstance].userId;
+-(void)loadListRequestWithBlock:(void (^)(BOOL success))SuccessBlock{
+
+    //    if (![[ZHAuthorizationManager shareInstance]isLogin] || isEmptyString([ZHAuthorizationManager shareInstance].userId)){
+    //        return;
+    //    }
+    //
+    //    NSString* userId= [ZHAuthorizationManager shareInstance].userId;
 #warning 用户ID
     NSString* userId = @"1";
     
-    [HttpClient requestDataWithURL:@"serverAPI.action" paramers:@{@"userId":userId} success:^(id responseObject) {
+    [HttpClient requestDataWithURL:@"serverAPI.action" paramers:@{@"scene":@"16",@"userId":userId} success:^(id responseObject) {
+        [self setAddressWithInfo:responseObject];
         
+        if (SuccessBlock){
+            SuccessBlock(YES);
+        }
     } failure:^(NSError *error) {
-        
+        if (SuccessBlock){
+            SuccessBlock(NO);
+        }
     }];
+
+    
 }
 
+-(void)loadListRequest{
+    [self loadListRequestWithBlock:nil];
+}
+
+-(void)updateAddressListWithBlock:(void (^)(BOOL success))SuccessBlock{
+    [self loadListRequestWithBlock:SuccessBlock];
+}
+
+-(void)setAddressWithInfo:(id)info{
+    if ([info isKindOfClass:[NSDictionary class]]){
+        if ([info[@"receiveInfoList"] isKindOfClass:[NSArray class]]){
+            NSArray* array = (NSArray*)info[@"receiveInfoList"];
+            
+            NSMutableArray* muData = [[NSMutableArray alloc]initWithCapacity:array.count];
+            for (id val in array){
+                AddressModel* model = [AddressModel praserModelWithInfo:val];
+                if (model){
+                    [muData addObject:model];
+                }
+            }
+            
+            self.addressList = muData;
+        }
+    }
+}
+
+-(AddressModel*)defaultAddress{
+    for (AddressModel* model in self.addressList){
+        if ([model.currentAddress boolValue]){
+            return model;
+        }
+    }
+    
+    if (self.addressList.count > 0){
+        return self.addressList[0];
+    }
+    return nil;
+}
 @end

@@ -10,6 +10,7 @@
 #import "TPKeyboardAvoidingScrollView.h"
 #import "ZHPlaceHolderTextView.h"
 #import "CameraHelper.h"
+#import "ASProgressPopUpView.h"
 
 #define IMAGE_SPAN  12
 #define IMAGE_WIDTH 65
@@ -20,7 +21,7 @@
 /// 最大照片数
 #define MAX_IMAGE_UPLOAD_COUNT  9
 
-@interface ZHRecipePublishVC ()<UITextViewDelegate,CameraHelperDelegate>
+@interface ZHRecipePublishVC ()<UITextViewDelegate,CameraHelperDelegate,ASProgressPopUpViewDataSource>
 
 @property (nonatomic,strong) TPKeyboardAvoidingScrollView*  content;
 @property (nonatomic,strong) UIView*                sampleImagePanel;
@@ -30,7 +31,8 @@
 @property (nonatomic,strong) UIButton*              doneBtn;
 @property (nonatomic,strong) ZHPlaceHolderTextView*            descEdit;
 @property (nonatomic,strong) NSString*                         textEntered;
-
+@property (nonatomic,strong) ASProgressPopUpView*   progressView;
+@property (nonatomic,strong) UIView*                progressPanel;
 @end
 
 @implementation ZHRecipePublishVC
@@ -237,6 +239,29 @@
     self.doneBtn.top = self.sampleImagePanel.bottom + IMAGE_SPAN;
 }
 
+-(UIView *)progressPanel{
+    
+    if (!_progressPanel){
+        _progressPanel = [[UIView alloc]initWithFrame:self.view.bounds];
+        _progressPanel.backgroundColor = RGBA(0, 0, 0, 0.8);
+    }
+    
+    return _progressPanel;
+}
+
+-(ASProgressPopUpView *)progressView{
+    
+    if (!_progressView){
+        _progressView = [[ASProgressPopUpView alloc]initWithFrame:CGRectMake(20, self.progressPanel.height/2-1, self.progressPanel.width-40, 2)];
+        _progressView.font = [UIFont fontWithName:@"Futura-CondensedExtraBold" size:16];
+        _progressView.popUpViewAnimatedColors = @[[UIColor redColor], [UIColor orangeColor], [UIColor greenColor]];
+        [_progressView showPopUpViewAnimated:YES];
+        [self.progressPanel addSubview:_progressView];
+    }
+    
+    return _progressView;
+}
+
 #pragma -mark image action
 -(void)imageChangeAction:(id)sender{
     ZHLOG(@"image change action %@",sender);
@@ -265,6 +290,17 @@
     }
     
     [self cameraAction];
+}
+
+-(void)showProgress{
+    UIView* main = ((NavigationViewController*)[MemoryStorage valueForKey:k_NAVIGATIONCTL]).view;
+    self.progressView.progress = 0.0f;
+    [main addSubview:self.progressPanel];
+}
+
+-(void)stopProgress{
+    [self.progressPanel removeFromSuperview];
+    self.progressView.progress = 0.0f;
 }
 
 #pragma -mark done action
@@ -299,23 +335,41 @@
     
     [dic setObject:self.descEdit.text forKey:@"title"];
     
+//    NSMutableArray* imgDataArray = [[NSMutableArray alloc]initWithCapacity:self.images.count];
     for (int  i= 0 ; i < self.images.count; ++i){
         UIImage* img = self.images[i];
         if ([img isKindOfClass:[UIImage class]]){
             NSData *dataObj = UIImageJPEGRepresentation(img, 0.75);
             [dic setObject:dataObj forKey:@"workImageData"];
+//            [imgDataArray addObject:dataObj];
 #warning 應该是多张图片，接口暂时只有一张图片，因此 break
             break;
         }
     }
+//    if (imgDataArray.count > 0){
+//        [dic setObject:imgDataArray forKey:@"workImageData"];
+//    }
     
-    [HttpClient postDataWithURL:@"serverAPI.action" paramers:dic success:^(id responseObject) {
-        ZHLOG(@"%@",responseObject);
-        SHOW_MESSAGE(@"上传成功", 2);
+    [self showProgress];
+    
+    [HttpClient upLoadDataWithURL:@"serverAPI.action" paramers:dic success:^(id responseObject) {
+        BaseModel* model = [BaseModel praserModelWithInfo:responseObject];
+        if ([model.state boolValue]){
+            SHOW_MESSAGE(@"上传成功", 2);
+        }
+        else{
+            SHOW_MESSAGE(@"上传失败", 2);
+        }
+        
+        [self stopProgress];
+
     } failure:^(NSError *error) {
         SHOW_MESSAGE(@"上传失败", 2);
+        
+        [self stopProgress];
+    } progress:^(NSUInteger bytesWritten, long long totalBytesWritten, long long totalBytesExpectedToWrite) {
+        self.progressView.progress = totalBytesWritten*1.0/totalBytesExpectedToWrite;
     }];
-
 }
 
 -(void)doneBgResume{

@@ -62,7 +62,8 @@
                 
                 [self.content reloadData];
                 if (self.commentList.count > 0){
-                    [self.content scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:self.commentList.count-1 inSection:0] atScrollPosition:UITableViewScrollPositionBottom animated:YES];                    
+                    [self.content scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0] atScrollPosition:UITableViewScrollPositionTop animated:YES];
+                 
                 }
 
             }

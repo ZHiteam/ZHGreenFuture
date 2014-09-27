@@ -10,8 +10,9 @@
 #import "ShoppingChartModel.h"
 #import "ZHShoppingChartCell.h"
 #import "ZHCheckbox.h"
+#import "JSON.h"
 
-@interface ZHShoppingChartVC ()<UITableViewDataSource,UITableViewDelegate>
+@interface ZHShoppingChartVC ()<UITableViewDataSource,UITableViewDelegate,ZHShoppingChartDelegate>
 
 @property (nonatomic,strong) UITableView*   chartTable;
 @property (nonatomic,assign) BOOL           chartEditing;
@@ -22,9 +23,10 @@
 
 @property (nonatomic,strong) UILabel*       totalLabel;
 @property (nonatomic,strong) UILabel*       totalSaveLabel;
+@property (nonatomic,assign) CGFloat        total;
+@property (nonatomic,assign) CGFloat        totalSave;
 
 @property (nonatomic,strong) UILabel*       allSelectedLabel;
-
 @property (nonatomic,strong) NSMutableArray*       shoppingChartLists;
 @end
 
@@ -37,7 +39,11 @@
 }
 
 -(void)viewWillAppear:(BOOL)animated{
+    [self resetMoney];
+    
     [self loadRequest];
+    /// 请求收货地址
+    [ZHAddressManager instance];
 }
 
 - (void)didReceiveMemoryWarning
@@ -47,22 +53,32 @@
 }
 
 -(void)loadRequest{
-#warning TEST
-    self.shoppingChartLists = [[NSMutableArray alloc]initWithCapacity:10];
+#warning 用户ID
+//    if (isEmptyString([ZHAuthorizationManager shareInstance].userId)){
+//        return;
+//    }
+    NSDictionary* param = @{@"scene":@"11",@"userId":@"1"};
     
-    for (int i = 0 ; i < 10; ++i){
-        ShoppingChartModel* model = [[ShoppingChartModel alloc]init];
-        model.title = @"【三千禾】东北农家黑 荞麦米 粗粮 五谷杂 荞麦米 粗粮 五谷杂";
-        model.skuInfo = @"重量：500g；礼盒装";
-        model.marketPrice = @"19.89";
-        model.promotionPrice = @"9.89";
-        model.buyCout = [NSString stringWithFormat:@"%d",i+1];
+    [HttpClient requestDataWithURL:@"serverAPI.action" paramers:param success:^(id responseObject) {
+        if ([responseObject isKindOfClass:[NSDictionary class]]){
+            if ([responseObject[@"shoppingCartList"] isKindOfClass:[NSArray class]]){
+                NSArray *shoppingCartList = responseObject[@"shoppingCartList"];
+                
+                self.shoppingChartLists = [[NSMutableArray alloc]initWithCapacity:shoppingCartList.count];
+                for (id val in shoppingCartList){
+                    ShoppingChartModel* model = [ShoppingChartModel praserModelWithInfo:val];
+                    if (model){
+                        [self.shoppingChartLists addObject:model];
+                    }
+                }
+                
+                [self.chartTable reloadData];
+            }
+        }
         
-        [self.shoppingChartLists addObject:model];
-    }
-    
-    
-    [self.chartTable reloadData];
+    } failure:^(NSError *error) {
+        
+    }];
 }
 
 -(void)loadContent{
@@ -90,7 +106,7 @@
         _chartTable.backgroundColor = WHITE_BACKGROUND;
         _chartTable.showsVerticalScrollIndicator = NO;
         _chartTable.height -= TAB_BAR_HEIGHT;
-        
+        _chartTable.separatorStyle = UITableViewCellSeparatorStyleNone;
         _chartTable.delegate = self;
         _chartTable.dataSource = self;
     }
@@ -123,6 +139,7 @@
         
         [_checkOut addTarget:self action:@selector(checkOutAction) forControlEvents:UIControlEventTouchUpInside];
     }
+    
     
     return _checkOut;
 }
@@ -212,19 +229,64 @@
     }
     else{
         [((UIButton*)self.navigationBar.rightBarItem)setTitle:@"编辑" forState:UIControlStateNormal];
-        
         self.chartTable.allowsSelectionDuringEditing = NO;
+        
+        [self submitUpdateAction];
     }
     
-    [self.chartTable reloadData];
+    [self resetMoney];
+    
     [self reloadToolBar];
 }
 
+-(void)resetMoney{
+    self.allSelect.checked = NO;
+}
+
+-(void)submitUpdateAction{
+    NSMutableArray* arrayData = [[NSMutableArray alloc]initWithCapacity:self.shoppingChartLists.count];
+    for (ShoppingChartModel* model in self.shoppingChartLists){
+        if ([model.oldCount floatValue] > 0){
+            if (isEmptyString(model.shoppingChartId) || isEmptyString(model.buyCout)){
+                continue;
+            }
+            [arrayData addObject:@{@"shoppingCartId":model.shoppingChartId,@"number":model.buyCout}];
+        }
+    }
+    
+    if (arrayData.count <=0){
+        return;
+    }
+    
+#warning 用户ID
+    NSDictionary* dic = @{@"userId":@"1",@"updateShoppingList":arrayData};
+    
+    NSString* jsonStr = [dic JSONFragment];
+    dic = @{@"json":jsonStr,@"scene":@"12"};
+    
+    [HttpClient requestDataWithURL:@"serverAPI.action" paramers:dic success:^(id responseObject) {
+        BaseModel* model = [BaseModel praserModelWithInfo:responseObject];
+        if ([model.state boolValue]){
+            /// 更新成功
+            for (ShoppingChartModel* data in self.shoppingChartLists){
+                data.oldCount = @"-1";
+            }
+        }
+        else{
+            for (ShoppingChartModel* data in self.shoppingChartLists){
+                data.buyCout = data.oldCount;
+                data.oldCount = @"-1";
+            }
+            
+        }
+    } failure:^(NSError *error) {
+        
+    }];
+}
 
 #pragma -mark edit action
 -(void)editAction{
     self.chartEditing = !self.chartEditing;
-    
 }
 
 #pragma -mark checkout action
@@ -232,7 +294,15 @@
     
     /// 删除
     if (self.chartEditing){
-        
+        NSMutableArray* selectedList = [[NSMutableArray alloc]initWithCapacity:self.shoppingChartLists.count];
+        for (ShoppingChartModel* model in self.shoppingChartLists){
+            if (model.checked){
+                if (!isEmptyString(model.shoppingChartId)){
+                    [selectedList addObject:model];
+                }
+            }
+        }
+        [self deleteWithIdList:selectedList];
     }
     /// 结算
     else{
@@ -273,6 +343,7 @@
     
     if (!cell){
         cell = [[ZHShoppingChartCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"cell"];
+        cell.delegate = self;
     }
     
     ShoppingChartModel* model = nil;
@@ -282,6 +353,7 @@
     
     if (model){
         cell.model = model;
+        cell.index = indexPath.row;
     }
     
     cell.chartEditing = self.chartEditing;
@@ -311,7 +383,90 @@
 
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    ZHLOG(@"delected at row %d",indexPath.row);
     [tableView setEditing:NO animated:YES];
+    
+    if (indexPath.row >= self.shoppingChartLists.count){
+        return;
+    }
+    
+    ShoppingChartModel* model = self.shoppingChartLists[indexPath.row];
+    [self deleteWithIdList:@[model.shoppingChartId]];
+}
+
+-(void)deleteWithIdList:(NSArray*)list{
+    if (list.count <= 0){
+        return;
+    }
+    NSMutableDictionary * dic = [[NSMutableDictionary alloc]initWithCapacity:3];
+#warning 用户ID
+    [dic setObject:@"1" forKey:@"userId"];
+    //    if (!isEmptyString([ZHAuthorizationManager shareInstance].userId)){
+    //        [dic setObject:[ZHAuthorizationManager shareInstance].userId forKey:@"userId"];
+    //    }
+    
+    [dic setObject:list forKey:@"deleteShoppingList"];
+    NSString* str = [dic JSONFragment];
+    
+    [dic removeAllObjects];
+    
+    [dic setObject:str forKey:@"json"];
+    [dic setObject:@"13" forKey:@"scene"];
+    
+    [HttpClient requestDataWithURL:@"serverAPI.action" paramers:dic success:^(id responseObject) {
+        BaseModel* model = [BaseModel praserModelWithInfo:responseObject];
+        
+        if ([model.state boolValue]){
+            //            [self loadRequest];
+            ALERT_MESSAGE(@"删除成功");
+            [self performSelector:@selector(loadRequest) withObject:nil afterDelay:0.1];
+        }
+        else{
+            ALERT_MESSAGE(@"删除购物车商品失败");
+        }
+        
+    } failure:^(NSError *error) {
+        ALERT_MESSAGE(@"删除购物车商品失败");
+    }];
+}
+
+#pragma -mark ZHShoppingChartDelegate
+-(void)selectChartWithModel:(ShoppingChartModel *)model{
+    if (!model || self.chartEditing){
+        return;
+    }
+    
+    [self totalWithPrice:[model.marketPrice floatValue] promotionPrice:[model.promotionPrice floatValue]];
+}
+
+-(void)deSelectChartWithModel:(ShoppingChartModel *)model{
+    if (!model || self.chartEditing){
+        return;
+    }
+    [self totalWithPrice:-[model.marketPrice floatValue] promotionPrice:-[model.promotionPrice floatValue]];
+}
+
+-(void)totalWithPrice:(CGFloat)price promotionPrice:(CGFloat)promotionPrice{
+    if (self.chartEditing){
+        return;
+    }
+    
+    self.total += promotionPrice;
+    
+    if (self.total < 0.00f){
+        self.total = 0.00f;
+    }
+    else{
+        self.totalSave += price - promotionPrice;
+    }
+
+    self.totalLabel.text= [NSString stringWithFormat:@"合计：￥%.2f",self.total];;
+    self.totalSaveLabel.text = [NSString stringWithFormat:@"为您节省￥%.2f",self.totalSave];
+}
+
+-(void)countChangeAtIndex:(NSInteger)index count:(NSString *)count{
+    if (index < self.shoppingChartLists.count){
+        ShoppingChartModel* model = self.shoppingChartLists[index];
+        model.buyCout = count;
+    }
 }
 @end

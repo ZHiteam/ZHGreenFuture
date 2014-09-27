@@ -23,7 +23,7 @@
     self = [super initWithFrame:frame];
     if (self) {
         self.maxCount = 999;
-        self.minCount = 0;
+        self.minCount = 1;
         [self loadContent];
     }
     return self;
@@ -99,6 +99,10 @@
     }
     
     self.countLabel.text = [NSString stringWithFormat:@"%d",count];
+    
+    if ([self.delegate respondsToSelector:@selector(countChange:)]){
+        [self.delegate countChange:self.countLabel.text];
+    }
 }
 
 #pragma -mark count getter & setter

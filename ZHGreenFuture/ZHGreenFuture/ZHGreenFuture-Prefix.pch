@@ -54,4 +54,5 @@
 
     #import "ZHAuthorizationManager.h"
     #import "ZHAuthorizationVC.h"
+    #import "ZHAddressManager.h"
 #endif

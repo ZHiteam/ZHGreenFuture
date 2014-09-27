@@ -21,4 +21,5 @@
 @property (nonatomic,strong) NSString*  validate;
 
 @property (nonatomic,assign)    BOOL    checked;
+@property (nonatomic,strong)    NSString*   oldCount;
 @end
