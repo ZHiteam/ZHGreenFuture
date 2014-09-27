@@ -268,10 +268,12 @@
         __weak typeof(cell) weakCell = cell;
         [cell setSegmentControlClickedBlock:^(NSInteger index) {
             NSString *imageURL = [weakSelf.detailModel.introduceImageList objectAtIndex:index];
-            [weakCell.imageView setImageWithUrlString:imageURL placeHodlerImage:[UIImage imageNamed:@"detailSKU"]];
+            [weakCell.infoImageView  setImageWithUrlString:imageURL placeHodlerImage:[UIImage imageNamed:@"detailSKU"]];
         }];
-         NSString *imageURL = [self.detailModel.introduceImageList objectAtIndex:cell.segmentControl.selectedIndex];
-        [cell.imageView setImageWithUrlString:imageURL placeHodlerImage:[UIImage imageNamed:@"detailSKU"]];
+        if (cell.segmentControl.selectedIndex < [self.detailModel.introduceImageList count]) {
+            NSString *imageURL = [self.detailModel.introduceImageList objectAtIndex:cell.segmentControl.selectedIndex];
+            [cell.infoImageView setImageWithUrlString:imageURL placeHodlerImage:[UIImage imageNamed:@"detailSKU"]];
+        }
         return cell;
     }
     else if (indexPath.section ==2){

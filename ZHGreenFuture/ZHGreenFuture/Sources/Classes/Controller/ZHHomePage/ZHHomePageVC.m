@@ -173,9 +173,10 @@
 }
 
 - (void)categoryItemPressed:(NSInteger)index{
-    NSString *categoryId = @"xxx";
-    [[MessageCenter instance]performActionWithUserInfo:@{@"controller": @"ZHSubCatagoryVC",@"userinfo" : categoryId}];
-//TODO: category
+    ZHCategoryItem *item = [self.homePageModel.categoryItems objectAtIndex:index];
+    [[MessageCenter instance] performActionWithUrl:item.innerURL];
+    //NSString *categoryId = @"xxx";
+    //[[MessageCenter instance]performActionWithUserInfo:@{@"controller": @"ZHSubCatagoryVC",@"userinfo" : categoryId}];
     NSLog(@">>>>%@ %d",NSStringFromSelector(_cmd),index);
 }
 
