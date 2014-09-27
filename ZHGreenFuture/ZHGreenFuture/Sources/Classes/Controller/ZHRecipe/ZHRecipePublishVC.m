@@ -335,14 +335,16 @@
     
     [dic setObject:self.descEdit.text forKey:@"title"];
     
+    NSDictionary* imageData = nil;
 //    NSMutableArray* imgDataArray = [[NSMutableArray alloc]initWithCapacity:self.images.count];
     for (int  i= 0 ; i < self.images.count; ++i){
         UIImage* img = self.images[i];
         if ([img isKindOfClass:[UIImage class]]){
             NSData *dataObj = UIImageJPEGRepresentation(img, 0.75);
-            [dic setObject:dataObj forKey:@"workImageData"];
+//            [dic setObject:dataObj forKey:@"workImageData"];
 //            [imgDataArray addObject:dataObj];
 #warning 應该是多张图片，接口暂时只有一张图片，因此 break
+            imageData = @{@"workImageData":dataObj};
             break;
         }
     }
@@ -352,7 +354,7 @@
     
     [self showProgress];
     
-    [HttpClient upLoadDataWithURL:@"serverAPI.action" paramers:dic success:^(id responseObject) {
+    [HttpClient upLoadDataWithURL:@"serverAPI.action" paramers:dic datas:imageData success:^(id responseObject) {
         BaseModel* model = [BaseModel praserModelWithInfo:responseObject];
         if ([model.state boolValue]){
             SHOW_MESSAGE(@"上传成功", 2);

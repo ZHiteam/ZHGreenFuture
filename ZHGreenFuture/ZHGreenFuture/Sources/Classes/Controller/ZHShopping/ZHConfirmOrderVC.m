@@ -41,6 +41,11 @@
     [self loadContent];
 }
 
+-(void)viewWillAppear:(BOOL)animated{
+    /// 重新加载地址数据
+    [self.confiemOrderTable reloadData];
+}
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
@@ -68,6 +73,7 @@
         _confiemOrderTable.separatorStyle = UITableViewCellSeparatorStyleNone;
         _confiemOrderTable.delegate = self;
         _confiemOrderTable.dataSource = self;
+        _confiemOrderTable.height -= TAB_BAR_HEIGHT;
     }
     
     return _confiemOrderTable;
@@ -398,5 +404,11 @@
     self.addressModel = address;
     
     [self.confiemOrderTable reloadData];
+}
+
+-(void)deleteAddress:(AddressModel *)address{
+    if ([address.receiveId isEqualToString:self.addressModel.receiveId]){
+        self.addressModel = [ZHAddressManager instance].defaultAddress;
+    }
 }
 @end

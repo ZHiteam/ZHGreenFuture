@@ -12,7 +12,7 @@
 @protocol ZHAddressManagerDelegate <NSObject>
 
 -(void)selectedAtAddress:(AddressModel*)address;
-
+-(void)deleteAddress:(AddressModel*)address;
 @end
 
 @interface ZHAddressManagerVC : ZHViewController

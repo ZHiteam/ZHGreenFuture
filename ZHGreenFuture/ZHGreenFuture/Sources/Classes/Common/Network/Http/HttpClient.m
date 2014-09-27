@@ -8,7 +8,6 @@
 
 #import "HttpClient.h"
 #import "AFNetworkReachabilityManager.h"
-
 #import "AFHTTPRequestOperationManager.h"
 
 @interface HttpClient(){
@@ -24,7 +23,7 @@
     
     if (self) {
 
-        NSURL* url = [NSURL URLWithString:@"http://115.29.207.63:8080/greenFuture/"];
+        NSURL* url = [NSURL URLWithString:[NSString stringWithFormat:@"%@/%@",BASE_SITE,SCHEME]];
         _client = [[AFHTTPRequestOperationManager alloc]initWithBaseURL:url];
         _client.responseSerializer.acceptableContentTypes = [NSSet setWithObject:@"text/html"];
         _client.requestSerializer.timeoutInterval = kTimeoutInterval;
@@ -76,25 +75,34 @@
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         failure(error);
     }];
-//    [operation setUploadProgressBlock:^(NSUInteger bytesWritten, long long totalBytesWritten, long long totalBytesExpectedToWrite) {
-//        NSLog(@"Sent %lld of %lld bytes", totalBytesWritten, totalBytesExpectedToWrite);
-//    }];
-//    [operation start];
 }
 
 +(void)upLoadDataWithURL:(NSString*)url
                 paramers:(NSDictionary*)paramers
+                   datas:(NSDictionary*)datas
                  success:(void (^)(id responseObject))success
                  failure:(void (^)(NSError *error))failure
                 progress:(void (^)(NSUInteger bytesWritten, long long totalBytesWritten, long long totalBytesExpectedToWrite))progress{
     AFHTTPRequestOperationManager*  httpClient = [HttpClient instance]->_client;
     
-//    NSMutableURLRequest *request = [httpClient multipartFormRequestWithMethod:@"POST" path:@"/upload" parameters:nil constructingBodyWithBlock: ^(id <AFMultipartFormData>formData) {
-//        [formData appendPartWithFileData:imageData name:@"avatar" fileName:@"avatar.jpg" mimeType:@"image/jpeg"];
-//    }];
+    NSMutableURLRequest* request = [httpClient.requestSerializer multipartFormRequestWithMethod:@"POST" URLString:[[NSURL URLWithString:url relativeToURL:httpClient.baseURL]absoluteString] parameters:paramers constructingBodyWithBlock:^(id<AFMultipartFormData> formData) {
+        for (NSString* name in datas.allKeys){
+            [formData appendPartWithFileData:datas[name] name:name fileName:@"image.jpg" mimeType:@"image/jpeg"];
+        }
+
+    } error:nil];
     
-    NSMutableURLRequest *request = [httpClient.requestSerializer requestWithMethod:@"POST" URLString:[[NSURL URLWithString:url relativeToURL:httpClient.baseURL] absoluteString] parameters:paramers error:nil];
-    AFHTTPRequestOperation *operation = [httpClient HTTPRequestOperationWithRequest:request success:^(AFHTTPRequestOperation *operation, id responseObject) {
+    AFHTTPRequestOperation* operation = [[AFHTTPRequestOperation alloc]initWithRequest:request];
+
+    
+    [operation setUploadProgressBlock:^(NSUInteger bytesWritten, long long totalBytesWritten, long long totalBytesExpectedToWrite) {
+        ZHLOG(@"Sent %lld of %lld bytes", totalBytesWritten, totalBytesExpectedToWrite);
+        if (progress){
+            progress(bytesWritten,totalBytesWritten,totalBytesExpectedToWrite);
+        }
+    }];
+    
+    [operation setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
         if (success){
             success(responseObject);
         }
@@ -104,14 +112,6 @@
         }
     }];
     
-    [operation setUploadProgressBlock:^(NSUInteger bytesWritten, long long totalBytesWritten, long long totalBytesExpectedToWrite) {
-        ZHLOG(@"Sent %lld of %lld bytes", totalBytesWritten, totalBytesExpectedToWrite);
-        if (progress){
-            progress(bytesWritten,totalBytesWritten,totalBytesExpectedToWrite);
-        }
-    }];
-    [operation start];  
-
-    
+    [operation start];    
 }
 @end

@@ -35,6 +35,10 @@
     
     [self loadContent];
     
+//    [self loadRequest];
+}
+
+-(void)viewWillAppear:(BOOL)animated{
     [self loadRequest];
 }
 

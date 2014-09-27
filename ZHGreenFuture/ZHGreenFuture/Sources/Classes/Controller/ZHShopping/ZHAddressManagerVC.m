@@ -180,6 +180,9 @@
     /// 删除事件
     if (index < self.addressList.count){
         [self.addressList removeObjectAtIndex:index];
+        if ([self.delegate respondsToSelector:@selector(deleteAddress:)]){
+            [self.delegate deleteAddress:model];
+        }
         
         [self.addressTable reloadData];
     }

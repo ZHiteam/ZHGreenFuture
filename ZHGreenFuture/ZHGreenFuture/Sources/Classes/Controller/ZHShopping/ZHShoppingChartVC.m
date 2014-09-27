@@ -23,8 +23,8 @@
 
 @property (nonatomic,strong) UILabel*       totalLabel;
 @property (nonatomic,strong) UILabel*       totalSaveLabel;
-@property (nonatomic,assign) CGFloat        total;
-@property (nonatomic,assign) CGFloat        totalSave;
+//@property (nonatomic,assign) CGFloat        total;
+//@property (nonatomic,assign) CGFloat        totalSave;
 
 @property (nonatomic,strong) UILabel*       allSelectedLabel;
 @property (nonatomic,strong) NSMutableArray*       shoppingChartLists;
@@ -434,34 +434,50 @@
     if (!model || self.chartEditing){
         return;
     }
-    
-    [self totalWithPrice:[model.marketPrice floatValue] promotionPrice:[model.promotionPrice floatValue]];
+    [self checkPrice];
+//    [self totalWithPrice:[model.marketPrice floatValue] promotionPrice:[model.promotionPrice floatValue] count:[model.buyCout intValue]];
 }
 
 -(void)deSelectChartWithModel:(ShoppingChartModel *)model{
     if (!model || self.chartEditing){
         return;
     }
-    [self totalWithPrice:-[model.marketPrice floatValue] promotionPrice:-[model.promotionPrice floatValue]];
+    [self checkPrice];
+//    [self totalWithPrice:-[model.marketPrice floatValue] promotionPrice:-[model.promotionPrice floatValue] count:[model.buyCout intValue]];
 }
 
--(void)totalWithPrice:(CGFloat)price promotionPrice:(CGFloat)promotionPrice{
-    if (self.chartEditing){
-        return;
+-(void)checkPrice{
+    CGFloat total = 0.0f;
+    CGFloat totalSave = 0.0f;
+    for (ShoppingChartModel* model in self.shoppingChartLists){
+        if ([model isKindOfClass:[ShoppingChartModel class]] && model.checked){
+            total += [model.promotionPrice floatValue]*[model.buyCout intValue];
+            totalSave += [model.marketPrice floatValue]*[model.buyCout intValue];
+        }
     }
     
-    self.total += promotionPrice;
-    
-    if (self.total < 0.00f){
-        self.total = 0.00f;
-    }
-    else{
-        self.totalSave += price - promotionPrice;
-    }
+    self.totalLabel.text= [NSString stringWithFormat:@"合计：￥%.2f",total];;
+    self.totalSaveLabel.text = [NSString stringWithFormat:@"为您节省￥%.2f",totalSave];
 
-    self.totalLabel.text= [NSString stringWithFormat:@"合计：￥%.2f",self.total];;
-    self.totalSaveLabel.text = [NSString stringWithFormat:@"为您节省￥%.2f",self.totalSave];
 }
+
+//-(void)totalWithPrice:(CGFloat)price promotionPrice:(CGFloat)promotionPrice count:(NSInteger)count{
+//    if (self.chartEditing){
+//        return;
+//    }
+//    
+//    self.total += promotionPrice*count;
+//    
+//    if (self.total < 0.00f){
+//        self.total = 0.00f;
+//    }
+//    else{
+//        self.totalSave += (price - promotionPrice)*count;
+//    }
+//
+//    self.totalLabel.text= [NSString stringWithFormat:@"合计：￥%.2f",self.total];;
+//    self.totalSaveLabel.text = [NSString stringWithFormat:@"为您节省￥%.2f",self.totalSave];
+//}
 
 -(void)countChangeAtIndex:(NSInteger)index count:(NSString *)count{
     if (index < self.shoppingChartLists.count){

@@ -32,7 +32,10 @@ typedef void(^ZHCompletionBlock)(BOOL isSuccess);
 #define COMMENT_URL                     @"http://cmt.sharesdk.cn:5566/countInteract"
 
 #define BASE_SITE                       @"http://115.29.207.63:8080"
-#define BASE_URL                        [NSString stringWithFormat:@"%@/greenFuture/serverAPI.action",BASE_SITE]
+#define SCHEME                          @"greenFuture"
+//#define BASE_SITE                       @"http://192.168.18.38:8983"
+//#define SCHEME                          @"gf"
+#define BASE_URL                        [NSString stringWithFormat:@"%@/%@/serverAPI.action",SCHEME,BASE_SITE]
 #define kTimeoutInterval                6.0
 
 #define ZHALERTVIEW(TARGET,TITLE,MESSAGE,CANCELBUTTON,OTHERBUTTONS...) {UIAlertView *av =[[UIAlertView alloc] initWithTitle:TITLE message:MESSAGE delegate:TARGET cancelButtonTitle:CANCELBUTTON otherButtonTitles:OTHERBUTTONS];[av show];av=nil;}

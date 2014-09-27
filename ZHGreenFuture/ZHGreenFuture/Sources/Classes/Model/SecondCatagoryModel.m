@@ -23,7 +23,7 @@
         model.title = dic[@"title"];
     }
     
-    model.categoryId = dic[@"categoryId"];
+    model.categoryId = [NSString stringWithFormat:@"%d",[dic[@"categoryId"]intValue]];
     model.descript = dic[@"description"];
     if (isEmptyString(model.descript)){
         model.descript = dic[@"subTitle"];
