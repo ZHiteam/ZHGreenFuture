@@ -20,4 +20,7 @@
 - (NSDictionary *)dictionaryForKey:(NSString *)keyName;
 -(void)setBool:(BOOL)value forKey:(NSString*)keyName;
 -(void)setInteger:(NSInteger)value forKey:(NSString*)keyName;
+
++ (NSDictionary *)dictionaryWithURLQuery:(NSString *)query;
+- (NSString *)URLQuery;
 @end

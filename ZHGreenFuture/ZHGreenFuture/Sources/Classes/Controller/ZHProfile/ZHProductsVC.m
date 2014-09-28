@@ -73,7 +73,7 @@
 #pragma mark - Private Method
 - (void)loadAllContent{
     __weak typeof(self) weakSelf = self;
-    [self.myProductModel loadDataWithUserAccount:[[ZHAuthorizationManager shareInstance] account] completionBlock:^(BOOL isSuccess) {
+    [self.myProductModel loadDataWithUserAccount:[[ZHAuthorizationManager shareInstance] userId] completionBlock:^(BOOL isSuccess) {
         [weakSelf.tableView reloadData];
     }];
 

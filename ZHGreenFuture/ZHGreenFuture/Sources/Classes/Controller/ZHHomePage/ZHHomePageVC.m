@@ -163,21 +163,17 @@
     [[MessageCenter instance]performActionWithUserInfo:@{@"controller": @"ZHShoppingChartVC"}];
 }
 
-- (void)bannerItemPressed:(NSInteger)index{
-    //TODO: banner
-    NSLog(@">>>>%@ %d",NSStringFromSelector(_cmd),index);
-    
-    ZHWebVC *webView = [[ZHWebVC alloc] initWithURL:@"banner"];
-    NavigationViewController*   navi = [MemoryStorage valueForKey:k_NAVIGATIONCTL];
-    [navi pushViewController:webView animation:ANIMATE_TYPE_DEFAULT];
+- (void)bannerItemPressed:(NSString*)urlStr{
+    //NSLog(@">>>>%@ %@",NSStringFromSelector(_cmd),urlStr);
+    [[MessageCenter instance] performActionWithUrl:urlStr];
 }
 
 - (void)categoryItemPressed:(NSInteger)index{
-    ZHCategoryItem *item = [self.homePageModel.categoryItems objectAtIndex:index];
-    [[MessageCenter instance] performActionWithUrl:item.innerURL];
-    //NSString *categoryId = @"xxx";
-    //[[MessageCenter instance]performActionWithUserInfo:@{@"controller": @"ZHSubCatagoryVC",@"userinfo" : categoryId}];
-    NSLog(@">>>>%@ %d",NSStringFromSelector(_cmd),index);
+    // NSLog(@">>>>%@ %d",NSStringFromSelector(_cmd),index);
+    if (index < [self.homePageModel.categoryItems count]) {
+        ZHCategoryItem *item = [self.homePageModel.categoryItems objectAtIndex:index];
+        [[MessageCenter instance] performActionWithUrl:item.innerURL];
+    }
 }
 
 - (void)surpriseItemPressed{
@@ -211,7 +207,10 @@
                 __weak __typeof(self) weakSelf = self;
                 [cell.bannerScrollView setImageItems:self.homePageModel.bannerItems selectedBlock:^(FEImageItem *sender) {
                     //do nothing here now
-                    [weakSelf bannerItemPressed:sender.tag];
+                    if ([sender isKindOfClass:[ZHBannerItem class]]) {
+                        ZHBannerItem *item = (ZHBannerItem*)sender;
+                        [weakSelf bannerItemPressed:item.clickImageURL];
+                    }
                 } isAutoPlay:YES];
                 return cell;
             }

@@ -32,6 +32,7 @@ typedef void(^ZHProgressBlock)(float progress);
 #define SHARE_APPKEY                    @"3028b230599a"
 #define COMMENT_URL                     @"http://cmt.sharesdk.cn:5566/countInteract"
 
+
 #define BASE_SITE                       @"http://115.29.207.63:8080"
 #define SCHEME                          @"greenFuture"
 //#define BASE_SITE                       @"http://192.168.18.38:8983"
@@ -40,3 +41,16 @@ typedef void(^ZHProgressBlock)(float progress);
 #define kTimeoutInterval                6.0
 
 #define ZHALERTVIEW(TARGET,TITLE,MESSAGE,CANCELBUTTON,OTHERBUTTONS...) {UIAlertView *av =[[UIAlertView alloc] initWithTitle:TITLE message:MESSAGE delegate:TARGET cancelButtonTitle:CANCELBUTTON otherButtonTitles:OTHERBUTTONS];[av show];av=nil;}
+
+
+//URL
+#define ZHGotoDetailVC(productId)      {   productId = [productId length] > 0 ? productId : @"";                       \
+    [[MessageCenter instance]performActionWithUserInfo:@{@"controller": @"ZHDetailVC",@"userinfo" : productId}];       \
+}
+
+
+#define ZHGotoCategoryDetailVC(categoryId,type)      {   categoryId = [categoryId length] > 0 ? categoryId : @"";       \
+type = [type length] > 0 ? type : @"";                                                                                  \
+SecondCatagoryModel* secondModel =  [[SecondCatagoryModel alloc] init]; secondModel.categoryId = categoryId;            \
+[[MessageCenter instance]performActionWithUserInfo:@{@"controller": @"ZHSubCatagoryVC",@"userinfo" : secondModel}];     \
+}

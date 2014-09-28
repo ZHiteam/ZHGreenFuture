@@ -8,6 +8,7 @@
 
 #import "MessageCenter.h"
 
+
 @implementation MessageCenter
 
 +(id)instance{
@@ -18,8 +19,25 @@
 /**
  * @brief : 跳转URL
  */
--(void)performActionWithUrl:(NSString*)url{
-    
+-(void)performActionWithUrl:(NSString*)urlStr{
+    //greenfuture://productDetail/topath?productId=4
+    //[scheme]://[host]/[path]?[query]
+    NSURL *url = [NSURL URLWithString:urlStr];
+    if ([url.scheme isEqualToString:@"greenfuture"]) {
+        NSDictionary *queryDict = [NSDictionary dictionaryWithURLQuery:url.query];
+        NSString *host = url.host;
+        if ([host length] >0) {
+            //这里规则就暂时写死吧。
+            if ([host isEqualToString:@"productDetail"]) {
+                NSString*productId = [queryDict objectForKey:@"productId"];
+                ZHGotoDetailVC(productId);
+            } else if ([host isEqualToString:@"catagoryDetail"]) {
+                NSString*categoryId = [queryDict objectForKey:@"categoryId"];
+                NSString*type = [queryDict objectForKey:@"type"];
+                ZHGotoCategoryDetailVC(categoryId,type);
+            }
+        }
+    }
 }
 
 /**

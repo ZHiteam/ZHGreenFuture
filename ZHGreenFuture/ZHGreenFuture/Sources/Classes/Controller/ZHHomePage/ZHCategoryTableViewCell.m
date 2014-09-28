@@ -66,7 +66,7 @@
         cell.seperateMarginView = [[UIView alloc] initWithFrame:CGRectMake(0, 148, [UIScreen mainScreen].bounds.size.width, 12)];
         cell.seperateMarginView.backgroundColor = RGB(234, 234, 234);
         [cell.contentView addSubview:cell.seperateMarginView];
-        
+        cell.selectionStyle = UITableViewCellSelectionStyleNone;
         return cell;
     }
     return nil;
@@ -90,10 +90,10 @@
         if ([item isKindOfClass:[ZHCategoryItem class]]) {
             originX = itemWidth * (index % maxPerRow);
             originY = itemHeight * (index / maxPerRow);
-            index ++ ;
             ZHCategoryButton * button = [[ZHCategoryButton alloc] initWithFrame:CGRectMake(originX , originY, itemWidth, itemHeight)];
             button.titleLabel.font = [UIFont systemFontOfSize:12.0];
             button.tag = index;
+            index ++ ;
             __weak ZHCategoryButton *weakButton = button;
             [button.imageView setImageWithURL:[NSURL URLWithString:item.iconURL]  placeholderImage:[UIImage imageNamed:@"rice"] completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType) {
                 weakButton.imageView.hidden = NO;
