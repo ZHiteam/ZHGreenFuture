@@ -118,7 +118,7 @@
         
         [HttpClient postDataWithParamers:@{@"scene": @"23",@"phone":account,@"password":password} success:^(id responseObject) {
             if ([responseObject isKindOfClass:[NSDictionary class]]) {
-                weakSelf.userId         = [responseObject objectForKey:@"userId"];
+                weakSelf.userId         = [NSString stringWithFormat:@"%d",[[responseObject objectForKey:@"userId"]intValue]];
                 weakSelf.userNick       = [responseObject objectForKey:@"userNick"];
                 weakSelf.userAvatarURL  = [responseObject objectForKey:@"userAvatarURL"];
             }

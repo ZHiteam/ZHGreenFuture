@@ -50,6 +50,8 @@
         [weakSelf regetAuthCode];
     }];
     
+    self.infoLabel.text = [NSString stringWithFormat:@"验证短信已经发送到:%@",self.account];
+    
     [self configureNaivBar];
 }
 
