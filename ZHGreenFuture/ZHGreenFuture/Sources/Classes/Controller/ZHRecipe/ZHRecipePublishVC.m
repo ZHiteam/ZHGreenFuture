@@ -331,26 +331,25 @@
     if (!isEmptyString([ZHAuthorizationManager shareInstance].userId)){
         [dic setObject:[ZHAuthorizationManager shareInstance].userId forKey:@"userId"];
     }
-
+    
+    if (!isEmptyString(self.recipeId)){
+        [dic setObject:self.recipeId forKey:@"recipeId"];
+    }
     
     [dic setObject:self.descEdit.text forKey:@"title"];
     
-    NSDictionary* imageData = nil;
-//    NSMutableArray* imgDataArray = [[NSMutableArray alloc]initWithCapacity:self.images.count];
+    
+    NSMutableArray* imgDataArray = [[NSMutableArray alloc]initWithCapacity:self.images.count];
     for (int  i= 0 ; i < self.images.count; ++i){
         UIImage* img = self.images[i];
         if ([img isKindOfClass:[UIImage class]]){
             NSData *dataObj = UIImageJPEGRepresentation(img, 0.75);
-//            [dic setObject:dataObj forKey:@"workImageData"];
-//            [imgDataArray addObject:dataObj];
-#warning 應该是多张图片，接口暂时只有一张图片，因此 break
-            imageData = @{@"workImageData":dataObj};
-            break;
+            [imgDataArray addObject:dataObj];
+//#warning 應该是多张图片，接口暂时只有一张图片，因此 break
+//            break;
         }
     }
-//    if (imgDataArray.count > 0){
-//        [dic setObject:imgDataArray forKey:@"workImageData"];
-//    }
+    NSDictionary* imageData = @{@"workImageData":imgDataArray};
     
     [self showProgress];
     
@@ -381,8 +380,6 @@
 #pragma -mark CameraHelperDelegate
 -(void)cameraTakePhotoSuccess:(UIImage *)image{
     [self.images addObject:image];
-//    NSLog(@"%lf",image.size.height);
-//    [self performSelector:@selector(layoutImages) withObject:nil afterDelay:0.5];
 }
 
 #pragma -mark -action

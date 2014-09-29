@@ -83,9 +83,25 @@
                 progress:(void (^)(NSUInteger bytesWritten, long long totalBytesWritten, long long totalBytesExpectedToWrite))progress{
     
     AFHTTPRequestOperationManager*  httpClient = [HttpClient instance]->_client;    
-    AFHTTPRequestOperation* op = [httpClient POST:@"/greenFuture/serverAPI.action" parameters:@{@"scene":@"27",@"userId":@"1"} constructingBodyWithBlock:^(id<AFMultipartFormData> formData) {
+    AFHTTPRequestOperation* op = [httpClient POST:@"/greenFuture/serverAPI.action" parameters:paramers constructingBodyWithBlock:^(id<AFMultipartFormData> formData) {
         for (NSString* name in datas.allKeys){
-            [formData appendPartWithFileData:datas[name] name:name fileName:@"image.jpg" mimeType:@"image/jpeg"];
+            id val = datas[name];
+            if ([val isKindOfClass:[NSData class]]){
+                [formData appendPartWithFileData:val
+                                            name:name
+                                        fileName:@"image.jpg"
+                                        mimeType:@"image/jpeg"];
+            }
+            else if ([val isKindOfClass:[NSArray class]]){
+                for (id value in val){
+                    if ([value isKindOfClass:[NSData class]]){
+                        [formData appendPartWithFileData:value
+                                                    name:name
+                                                fileName:@"image.jpg"
+                                                mimeType:@"image/jpeg"];
+                    }
+                }
+            }
         }
     } success:^(AFHTTPRequestOperation *operation, id responseObject) {
         if (success){
