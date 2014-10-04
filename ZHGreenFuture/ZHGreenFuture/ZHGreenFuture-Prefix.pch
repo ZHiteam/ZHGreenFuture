@@ -17,6 +17,8 @@
     #import "FEFramework.h"
     #import "UIScrollView+FECover.h"
     #import "FEToastView.h"
+    #import "FEStrikeThroughLabel.h"
+
 
     #import <SystemConfiguration/SystemConfiguration.h>
     #import <MobileCoreServices/MobileCoreServices.h>

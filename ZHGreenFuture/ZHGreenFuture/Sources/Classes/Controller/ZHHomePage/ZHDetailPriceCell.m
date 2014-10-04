@@ -7,7 +7,7 @@
 //
 
 #import "ZHDetailPriceCell.h"
-
+#import "FEStrikeThroughLabel.h"
 @implementation ZHDetailPriceCell
 
 - (void)awakeFromNib

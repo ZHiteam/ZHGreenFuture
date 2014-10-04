@@ -8,9 +8,10 @@
 
 #import <UIKit/UIKit.h>
 
+@class FEStrikeThroughLabel;
 @interface ZHDetailPriceCell : UITableViewCell
 @property (weak, nonatomic) IBOutlet UILabel *promotionPriceLabel;
-@property (weak, nonatomic) IBOutlet UILabel *marketPirceLabel;
+@property (weak, nonatomic) IBOutlet FEStrikeThroughLabel *marketPirceLabel;
 @property (weak, nonatomic) IBOutlet UILabel *priceTagLabel;
 
 + (instancetype)tableViewCell;

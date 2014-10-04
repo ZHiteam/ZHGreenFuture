@@ -82,6 +82,9 @@
     [[[[UIApplication sharedApplication] keyWindow] rootViewController] dismissViewControllerAnimated:YES completion:nil];
 }
 
+- (ZHAuthorizationManager *)authManager{
+    return [ZHAuthorizationManager shareInstance];
+}
 
 #pragma mark - Getter & Setter
 - (UITableView *)tableView{
@@ -169,16 +172,17 @@
     
     __weak __typeof(self) weakSelf = self;
     [[ZHAuthorizationManager shareInstance] logInWithAccount:userNameStr password:passwordStr completionBlock:^(BOOL isSuccess, id info) {
+        if (weakSelf.completionBlock) {
+            weakSelf.completionBlock(isSuccess,info);
+        }
+        
         if (!isSuccess) {
             /// modify by kongkong
             ALERT_MESSAGE(@"登录出错");
-//            ZHALERTVIEW(@"登录出错", nil , nil,@"确定"  ,nil,nil);
+            //            ZHALERTVIEW(@"登录出错", nil , nil,@"确定"  ,nil,nil);
         } else {
             [ZHAuthorizationVC dismissLoginVC];
-        }
-        
-        if (weakSelf.completionBlock) {
-            weakSelf.completionBlock(isSuccess,info);
+            [FEToastView showWithTitle:@"登录成功" animation:YES interval:2.0];
         }
         weakSelf.isRunning = NO;
     }];

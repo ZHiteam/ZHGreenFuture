@@ -107,10 +107,17 @@
     NSMutableArray *dstArray = [NSMutableArray arrayWithCapacity:10];
     //banner
     srcArray = [jsonDict objectForKey:@"bannerImageList"];
-    for (NSDictionary *banner in srcArray) {
-        ZHBannerItem  *obj = [[ZHBannerItem alloc] initWithDictionary:banner];
-        [dstArray addObject:obj];
+    for (NSString *imageUrl in srcArray) {
+        if ([imageUrl length] >0) {
+            ZHBannerItem *item = [[ZHBannerItem alloc] init];
+            item.imageURL = imageUrl;
+            [dstArray addObject:item];
+        }
     }
+//    for (NSDictionary *banner in srcArray) {
+//        ZHBannerItem  *obj = [[ZHBannerItem alloc] initWithDictionary:banner];
+//        [dstArray addObject:obj];
+//    }
     self.bannerImages = [dstArray copy];
     
     //introduceImageList
