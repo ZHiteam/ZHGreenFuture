@@ -59,7 +59,7 @@
         [dic setObject:nickName forKey:@"userNick"];
     }
     UIImage *userImage = avatarImage ? avatarImage : self.userAvatarImage;
-    NSDictionary* imageDic = nil;
+    NSMutableDictionary* imageDic = [[NSMutableDictionary alloc] init];
     if (userImage) {
         NSData *dataObj = UIImageJPEGRepresentation(userImage, 0.75);
 //        [dic setObject:dataObj forKey:@"userAvatarData"];
