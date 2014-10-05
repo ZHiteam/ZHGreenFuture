@@ -42,7 +42,7 @@
 }
 
 - (void)modifyProfileInfo:(UIImage *)avatarImage progressBlock:(ZHProgressBlock)progressBlock completionBlock:(ZHCompletionBlock)completeBlock{
-    [self modifyProfileInfo:avatarImage userName:[ZHAuthorizationManager shareInstance].userId progressBlock:progressBlock completionBlock:completeBlock];
+    [self modifyProfileInfo:avatarImage userName:self.userName progressBlock:progressBlock completionBlock:completeBlock];
 }
 
 - (void)modifyProfileInfo:(UIImage *)avatarImage userName:(NSString *)userName progressBlock:(ZHProgressBlock)progressBlock completionBlock:(ZHCompletionBlock)completeBlock{
