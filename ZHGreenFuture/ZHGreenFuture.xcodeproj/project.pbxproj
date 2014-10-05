@@ -20,6 +20,10 @@
 		84260FE319CD8CF800216C78 /* ZHAuthorizationRegister3VC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84260FE119CD8CF800216C78 /* ZHAuthorizationRegister3VC.xib */; };
 		84260FE619CD8F5C00216C78 /* ZHNaviBackButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 84260FE519CD8F5C00216C78 /* ZHNaviBackButton.m */; };
 		84488DF319DFD81A00285609 /* FEStrikeThroughLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 84488DF119DFD81A00285609 /* FEStrikeThroughLabel.m */; };
+		84488E0119E18FB400285609 /* RSKImageCropViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84488DFA19E18FB400285609 /* RSKImageCropViewController.m */; };
+		84488E0219E18FB500285609 /* RSKImageScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 84488DFC19E18FB400285609 /* RSKImageScrollView.m */; };
+		84488E0319E18FB500285609 /* RSKTouchView.m in Sources */ = {isa = PBXBuildFile; fileRef = 84488DFE19E18FB400285609 /* RSKTouchView.m */; };
+		84488E0419E18FB500285609 /* UIImage+FixOrientation.m in Sources */ = {isa = PBXBuildFile; fileRef = 84488E0019E18FB400285609 /* UIImage+FixOrientation.m */; };
 		845C76AF19D06E0900CB3F5E /* profile_setting@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 845C76AD19D06E0900CB3F5E /* profile_setting@2x.png */; };
 		845C76B019D06E0900CB3F5E /* profile_cart@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 845C76AE19D06E0900CB3F5E /* profile_cart@2x.png */; };
 		845C76B219D06FCA00CB3F5E /* profile_favorites@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 845C76B119D06FCA00CB3F5E /* profile_favorites@2x.png */; };
@@ -392,6 +396,15 @@
 		84260FE519CD8F5C00216C78 /* ZHNaviBackButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZHNaviBackButton.m; sourceTree = "<group>"; };
 		84488DF119DFD81A00285609 /* FEStrikeThroughLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FEStrikeThroughLabel.m; sourceTree = "<group>"; };
 		84488DF219DFD81A00285609 /* FEStrikeThroughLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FEStrikeThroughLabel.h; sourceTree = "<group>"; };
+		84488DF819E18FB400285609 /* RSKImageCropper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RSKImageCropper.h; sourceTree = "<group>"; };
+		84488DF919E18FB400285609 /* RSKImageCropViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RSKImageCropViewController.h; sourceTree = "<group>"; };
+		84488DFA19E18FB400285609 /* RSKImageCropViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RSKImageCropViewController.m; sourceTree = "<group>"; };
+		84488DFB19E18FB400285609 /* RSKImageScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RSKImageScrollView.h; sourceTree = "<group>"; };
+		84488DFC19E18FB400285609 /* RSKImageScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RSKImageScrollView.m; sourceTree = "<group>"; };
+		84488DFD19E18FB400285609 /* RSKTouchView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RSKTouchView.h; sourceTree = "<group>"; };
+		84488DFE19E18FB400285609 /* RSKTouchView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RSKTouchView.m; sourceTree = "<group>"; };
+		84488DFF19E18FB400285609 /* UIImage+FixOrientation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+FixOrientation.h"; sourceTree = "<group>"; };
+		84488E0019E18FB400285609 /* UIImage+FixOrientation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+FixOrientation.m"; sourceTree = "<group>"; };
 		845C76AD19D06E0900CB3F5E /* profile_setting@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "profile_setting@2x.png"; sourceTree = "<group>"; };
 		845C76AE19D06E0900CB3F5E /* profile_cart@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "profile_cart@2x.png"; sourceTree = "<group>"; };
 		845C76B119D06FCA00CB3F5E /* profile_favorites@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "profile_favorites@2x.png"; sourceTree = "<group>"; };
@@ -1045,6 +1058,22 @@
 			path = Auth;
 			sourceTree = "<group>";
 		};
+		84488DF719E18FB400285609 /* RSKImageCropper */ = {
+			isa = PBXGroup;
+			children = (
+				84488DF819E18FB400285609 /* RSKImageCropper.h */,
+				84488DF919E18FB400285609 /* RSKImageCropViewController.h */,
+				84488DFA19E18FB400285609 /* RSKImageCropViewController.m */,
+				84488DFB19E18FB400285609 /* RSKImageScrollView.h */,
+				84488DFC19E18FB400285609 /* RSKImageScrollView.m */,
+				84488DFD19E18FB400285609 /* RSKTouchView.h */,
+				84488DFE19E18FB400285609 /* RSKTouchView.m */,
+				84488DFF19E18FB400285609 /* UIImage+FixOrientation.h */,
+				84488E0019E18FB400285609 /* UIImage+FixOrientation.m */,
+			);
+			path = RSKImageCropper;
+			sourceTree = "<group>";
+		};
 		8468C65619C3EC2800B80868 /* Common */ = {
 			isa = PBXGroup;
 			children = (
@@ -1375,6 +1404,7 @@
 		9C0E08B919BF32BB00ED8D87 /* Libraies */ = {
 			isa = PBXGroup;
 			children = (
+				84488DF719E18FB400285609 /* RSKImageCropper */,
 				9CB366E719D71A3500C45741 /* FEFramework */,
 				9CCB1D8819D14EBE009BB25A /* DoAlertView */,
 				9CCB1D5919D08826009BB25A /* alipay */,
@@ -2457,7 +2487,9 @@
 				84260FDD19CD844400216C78 /* ZHAuthorizationRegister2VC.m in Sources */,
 				84927EBA19D6F45400805E22 /* ZHMyProductCell.m in Sources */,
 				84488DF319DFD81A00285609 /* FEStrikeThroughLabel.m in Sources */,
+				84488E0419E18FB500285609 /* UIImage+FixOrientation.m in Sources */,
 				9CB3675919D71A3600C45741 /* CAKeyframeAnimation+FEEasing.m in Sources */,
+				84488E0219E18FB500285609 /* RSKImageScrollView.m in Sources */,
 				8468C65C19C3EC4D00B80868 /* ZHWebVC.m in Sources */,
 				9CB3674B19D71A3600C45741 /* UIScreen+FEFrame.m in Sources */,
 				9CB3675219D71A3600C45741 /* FEMicroMsgPopoverView.m in Sources */,
@@ -2478,6 +2510,7 @@
 				9C0E0A6219BF3E5200ED8D87 /* RecipeModel.m in Sources */,
 				9C0E0B3319C9E12900ED8D87 /* RecipeBaseCell.m in Sources */,
 				9C9778A119B1900F00D49E69 /* NSDictionary+ZHiteam.m in Sources */,
+				84488E0319E18FB500285609 /* RSKTouchView.m in Sources */,
 				9C89857419B70CC4009CB910 /* TagModel.m in Sources */,
 				9C9778A219B1900F00D49E69 /* NSObject+Instance.m in Sources */,
 				9CCB1D9719D14F2A009BB25A /* UIImage+ResizeMagick.m in Sources */,
@@ -2501,6 +2534,7 @@
 				9C8983D319B6158C009CB910 /* NSDate+Calendar.m in Sources */,
 				9CB3674E19D71A3600C45741 /* UIView+FEAutoResizeKeyboard.m in Sources */,
 				9CB3674519D71A3600C45741 /* NSString+FEExtension.m in Sources */,
+				84488E0119E18FB400285609 /* RSKImageCropViewController.m in Sources */,
 				84F1FE3219BC413F0002605A /* ZHDetailLogisticsInfoCell.m in Sources */,
 				9CB3673E19D71A3600C45741 /* NSArray+FEExtension.m in Sources */,
 				9C9778A019B1900F00D49E69 /* NSData+AESEncryption.m in Sources */,
