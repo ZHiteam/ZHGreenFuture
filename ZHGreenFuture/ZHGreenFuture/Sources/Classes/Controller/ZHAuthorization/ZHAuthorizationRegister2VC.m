@@ -12,6 +12,7 @@
 
 
 @interface ZHAuthorizationRegister2VC ()
+@property (strong, nonatomic)dispatch_source_t timer;
 @property (weak, nonatomic) IBOutlet UILabel *infoLabel;
 @property (weak, nonatomic) IBOutlet UITextField *authCodeTextField;
 @property (weak, nonatomic) IBOutlet UILabel *regetAuthCodeLabel;
@@ -53,6 +54,7 @@
     self.infoLabel.text = [NSString stringWithFormat:@"验证短信已经发送到:%@",self.account];
     
     [self configureNaivBar];
+    [self startTimeOut];
 }
 
 - (void)didReceiveMemoryWarning
@@ -82,14 +84,57 @@
     self.navigationItem.leftBarButtonItem  = [[UIBarButtonItem alloc] initWithCustomView:button];
 }
 
+#pragma mark - Privte Method
+-(void)startTimeOut{
+    UILabel *weakLeable = self.regetAuthCodeLabel;
+    weakLeable.textColor = RGB(170, 170, 170);
+    weakLeable.text = [NSString stringWithFormat:@"重新获取(60)"];
+    __block int timeout=10; //倒计时时间
+    dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
+    _timer = dispatch_source_create(DISPATCH_SOURCE_TYPE_TIMER, 0, 0,queue);
+    dispatch_source_set_timer(_timer,dispatch_walltime(NULL, 0),1.0*NSEC_PER_SEC, 0); //每秒执行
+    dispatch_source_set_event_handler(_timer, ^{
+        if(timeout<=0){ //倒计时结束，关闭
+            dispatch_source_cancel(_timer);
+            dispatch_async(dispatch_get_main_queue(), ^{
+                weakLeable.text = [NSString stringWithFormat:@"重新获取"];
+                weakLeable.textColor = RGB(102, 170, 0);
+                weakLeable.userInteractionEnabled = YES;
+            });
+        }else{
+            int seconds = timeout % 60;
+            NSString *strTime = [NSString stringWithFormat:@"%.2d", seconds];
+            dispatch_async(dispatch_get_main_queue(), ^{
+                NSLog(@">>>%@",strTime);
+                weakLeable.text = [NSString stringWithFormat:@"重新获取(%@)",strTime];
+                weakLeable.textColor = RGB(170, 170, 170);
+                weakLeable.userInteractionEnabled = NO;
+                
+            });
+            timeout--;
+            
+        }
+    });
+    dispatch_resume(_timer);
+    
+}
+
+- (void)cancelTimout{
+    if (_timer) {
+        dispatch_source_cancel(_timer);
+        _timer = nil;
+    }
+    
+}
 #pragma mark - Event Handler
 - (IBAction)commitButtonPressed:(id)sender {
     NSString *authCode = self.authCodeTextField.text;
-    if (authCode==nil || [authCode length]==0)
-	{
+    if (authCode==nil || [authCode length]==0){
 		ZHALERTVIEW(nil,@"验证码错误，请重新输入。",nil, @"确定" ,nil,nil);
         return;
 	}
+    [self cancelTimout];
+    
     __weak __typeof(self) weakSelf = self;
     [[ZHAuthorizationManager shareInstance] postValidateCode:authCode account:self.account completionBlock:^(BOOL isSuccess, id info) {
         if (!isSuccess) {
@@ -103,7 +148,14 @@
 }
 
 - (void)regetAuthCode{
-
+    __weak __typeof(self) weakSelf = self;
+    [[ZHAuthorizationManager shareInstance] getValidateCodeWithAccount:self.account completionBlock:^(BOOL isSuccess, id info) {
+        if (!isSuccess) {
+            ZHALERTVIEW(nil, @"出错了，请再试一次" , nil,@"确定"  ,nil,nil);
+        }else {
+            [weakSelf startTimeOut];
+        }
+    }];
 }
 
 - (void)backItemPressed:(id)sender{

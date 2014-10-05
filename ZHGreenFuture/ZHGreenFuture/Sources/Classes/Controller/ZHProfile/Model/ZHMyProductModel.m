@@ -15,10 +15,7 @@
     if (self) {
         if ([dict isKindOfClass:[NSDictionary class]]) {
             self.workId         = [NSString stringWithFormat:@"%@",[dict objectForKey:@"workId"]];
-            //NSDictionary *tt = [dict objectForKey:@"publishDate"];
-            //NSLog(@">>>%@ %@",tt, [dict objectForKey:@"publishDate"]);
-            //NSDate *date =[NSDate dateWithTimeIntervalSince1970:[[tt objectForKey:@"time"] doubleValue]];
-            self.publishDate    = @"2014/10/4";//[dict objectForKey:@"publishDate"];
+            self.publishDate    = [dict objectForKey:@"publishDate"];
             self.workImageURL   = [dict objectForKey:@"workImageURL"];
             self.followName     = [dict objectForKey:@"followName"];
             self.content        = [dict objectForKey:@"content"];
