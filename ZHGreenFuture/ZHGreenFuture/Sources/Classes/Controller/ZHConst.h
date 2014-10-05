@@ -49,8 +49,16 @@ typedef void(^ZHProgressBlock)(float progress);
 }
 
 
-#define ZHGotoCategoryDetailVC(categoryId,type)      {   categoryId = [categoryId length] > 0 ? categoryId : @"";       \
+#define ZHGotoSubCategoryDetailVC(categoryId,type)      {   categoryId = [categoryId length] > 0 ? categoryId : @"";       \
 type = [type length] > 0 ? type : @"";                                                                                  \
 SecondCatagoryModel* secondModel =  [[SecondCatagoryModel alloc] init]; secondModel.categoryId = categoryId;            \
 [[MessageCenter instance]performActionWithUserInfo:@{@"controller": @"ZHSubCatagoryVC",@"userinfo" : secondModel}];     \
 }
+
+#define ZHGotoCategoryDetailVC(categoryId,type)      {   categoryId = [categoryId length] > 0 ? categoryId : @"";       \
+type = [type length] > 0 ? type : @"";                                                                                  \
+CatagoryModel* model =  [[CatagoryModel alloc] init]; model.categoryId = categoryId;                                    \
+[[MessageCenter instance]performActionWithUserInfo:@{@"controller": @"ZHCatagoryVC",@"userinfo":model}];                \
+}
+
+
