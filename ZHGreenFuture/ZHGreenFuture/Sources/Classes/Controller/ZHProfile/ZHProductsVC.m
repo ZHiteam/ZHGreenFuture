@@ -53,7 +53,7 @@
 #pragma mark - Getter & Setter
 - (UITableView *)tableView{
     if (_tableView == nil) {
-        _tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, self.contentBounds.origin.y, self.contentBounds.size.width, self.contentBounds.size.height-44)];
+        _tableView = [[UITableView alloc] initWithFrame:self.contentBounds];
         //_tableView.clipsToBounds = NO;
         _tableView.delegate = self;
         _tableView.dataSource = self;
@@ -125,22 +125,13 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
-    if (indexPath.row ==0) {
-        UIActionSheet *choiceSheet = [[UIActionSheet alloc] initWithTitle:nil
-                                                                 delegate:self
-                                                        cancelButtonTitle:@"取消"
-                                                   destructiveButtonTitle:nil
-                                                        otherButtonTitles:@"拍照", @"从相册中选取", nil];
-        [choiceSheet showInView:self.view];
-    } else if (indexPath.row ==1) {
-        ZHMyProductItem *item = [[self.myProductModel myProductList] objectAtIndex:indexPath.section];
-
-        ZHMyProductDetailVC *detailVC = [[ZHMyProductDetailVC alloc] init];
-        detailVC.myProductModel = self.myProductModel;
-        detailVC.myProductItem  = item;
-        NavigationViewController    *navi = [MemoryStorage valueForKey:k_NAVIGATIONCTL];
-        [navi pushViewController:detailVC animation:ANIMATE_TYPE_DEFAULT];
-    }
+    ZHMyProductItem *item = [[self.myProductModel myProductList] objectAtIndex:indexPath.section];
+    
+    ZHMyProductDetailVC *detailVC = [[ZHMyProductDetailVC alloc] init];
+    detailVC.myProductModel = self.myProductModel;
+    detailVC.myProductItem  = item;
+    NavigationViewController    *navi = [MemoryStorage valueForKey:k_NAVIGATIONCTL];
+    [navi pushViewController:detailVC animation:ANIMATE_TYPE_DEFAULT];
 }
 
 @end

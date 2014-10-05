@@ -117,7 +117,7 @@
         _avatarImageView = [[UIImageView alloc] initWithFrame:rect];
         _avatarImageView.layer.cornerRadius  = rect.size.height/2.0;
         _avatarImageView.layer.masksToBounds = YES;
-        _avatarImageView.backgroundColor = [UIColor orangeColor];
+        _avatarImageView.backgroundColor = [UIColor clearColor];
     }
     return _avatarImageView;
 }
