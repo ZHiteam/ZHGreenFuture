@@ -12,6 +12,7 @@
 #import "ZHOrderStatusCell.h"
 #import "ZHOrderProductCell.h"
 #import "ZHOrderSummaryCell.h"
+#import "PayHelper.h"
 
 @interface ZHOrderListVC ()<UITableViewDelegate, UITableViewDataSource>
 @property(nonatomic, strong)HMSegmentedControl *segmentedControl;
@@ -101,7 +102,7 @@
     [self whithNavigationBarStyle];
 }
 
-- (void)addActionButtonWithCell:(UITableViewCell*)cell orderId:(NSString*)orderId{
+- (void)addActionButtonWithCell:(UITableViewCell*)cell orderInfo:(ZHOrderInfo*)orderInfo{
     
     [cell.contentView removeAllSubviews];
     switch (self.currentOrderType) {
@@ -117,7 +118,14 @@
         case ZHOrderTypeWaitPay:
         {
             ZHButton *button = [ZHButton buttonWithType:ZHButtonTypeStyle1 text:@"付款"  clickedBlock:^(ZHButton *button) {
-                NSLog(@">>>>>xxxAction %@",button);
+                if ([orderInfo.totalPrice length] >0 && [orderInfo.orderId length] >0) {
+                    [PayHelper aliPayWithTitle:@"放心粮支付"
+                                   productInfo:@"放心粮订单"
+                                    totalPrice:orderInfo.totalPrice
+                                       orderId:orderInfo.orderId];
+                } else {
+                    [FEToastView showWithTitle:@"支付出错" animation:YES interval:2.0];
+                }
             }];
             [button setFrame:CGRectMake(cell.size.width - 60 -12, 8, 60, 28)];
             [cell.contentView addSubview:button];
@@ -145,7 +153,7 @@
             __weak __typeof(self) weakSelf = self;
             ZHButton *button = [ZHButton buttonWithType:ZHButtonTypeStyle1 text:@"确认收货"  clickedBlock:^(ZHButton *button) {
                 NSLog(@">>>>>xxxAction %@",button);
-                [weakSelf.orderModel modifyOrderStatusWithOrderId:orderId operation:@"6" completionBlock:^(BOOL isSuccess) {
+                [weakSelf.orderModel modifyOrderStatusWithOrderId:orderInfo.orderId operation:@"6" completionBlock:^(BOOL isSuccess) {
                     ZHALERTVIEW(nil,@"确认收货成功。",nil, @"确定" ,nil,nil);
 
                 } ];
@@ -254,7 +262,7 @@
         if (cell == nil){
             cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
         }
-        [self addActionButtonWithCell:cell orderId:orderInfo.orderId];
+        [self addActionButtonWithCell:cell orderInfo:orderInfo];
     }
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     return cell;
