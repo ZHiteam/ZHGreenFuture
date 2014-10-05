@@ -25,17 +25,12 @@
 @property (nonatomic,strong) UIView*                        toolBar;
 @property (nonatomic,strong) UIButton*                      checkOut;
 @property (nonatomic,strong) UILabel*                       total;
+@property (nonatomic,strong) ZHInsetTextField*              note;
 @end
 
 @implementation ZHConfirmOrderVC
 
 - (void)viewDidLoad {
-#pragma TEST
-//    AddressModel* model = [[AddressModel alloc]init];
-//    model.name = @"王百万";
-//    model.phone = @"15067192558";
-//    model.address = @"浙江省杭州市西湖区东部软件园科技广场617";
-//    self.addressModel = model;
     
     [super viewDidLoad];
     [self loadContent];
@@ -53,11 +48,18 @@
 
 -(void)loadContent{
     self.view.backgroundColor = WHITE_BACKGROUND;
-    if ([self.userInfo isKindOfClass:[NSArray class]]){
-        self.chartList = self.userInfo;
+    
+    if ([self.userInfo isKindOfClass:[ConfirmOrderModel class]]){
+        self.orderModel = self.userInfo;
     }
     
-    self.addressModel = [[ZHAddressManager instance]defaultAddress];
+    if (self.orderModel.receiveInfo){
+        self.addressModel = self.orderModel.receiveInfo;
+    }
+    else{
+        self.addressModel = [[ZHAddressManager instance]defaultAddress];
+    }
+
     self.navigationBar.title = @"确认订单";
     [self whithNavigationBarStyle];
     
@@ -97,14 +99,14 @@
         _total  =[UILabel labelWithText:@"" font:FONT(16) color:GREEN_COLOR textAlignment:NSTextAlignmentLeft];
         _total.frame = CGRectMake(10, 0, 200, TAB_BAR_HEIGHT);
         
-        CGFloat totalMoney = 0.0f;
-        for (ShoppingChartModel* model  in self.chartList) {
-            totalMoney += [model.promotionPrice floatValue]*[model.buyCout intValue];
-        }
-        
-        _total.text = [NSString stringWithFormat:@"合计：￥%.2f",totalMoney];
+//        CGFloat totalMoney = 0.0f;
+//        for (ShoppingChartModel* model  in self.model.shoppingList) {
+//            totalMoney += [model.promotionPrice floatValue]*[model.buyCout intValue];
+//        }
+//        
+//        _total.text = [NSString stringWithFormat:@"合计：￥%.2f",totalMoney];
     }
-    
+    _total.text = [NSString stringWithFormat:@"合计：￥%@",self.orderModel.totalPrice];
     return _total;
 }
 
@@ -239,7 +241,7 @@
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     if (0 != section){
-        return self.chartList.count+4;
+        return self.orderModel.shoppingList.count+4;
     }
     
     return 1;
@@ -252,11 +254,11 @@
     if (0 == indexPath.section){
         cell = self.addressView;
     }
-    else if(indexPath.row < self.chartList.count){
+    else if(indexPath.row < self.orderModel.shoppingList.count){
         cell = [self charCellAtIndex:indexPath];
     }
-    else if (indexPath.row < self.chartList.count+3){
-        cell = [self otherCellAtIndex:[NSIndexPath indexPathForRow:indexPath.row-self.chartList.count inSection:indexPath.section]];
+    else if (indexPath.row < self.orderModel.shoppingList.count+3){
+        cell = [self otherCellAtIndex:[NSIndexPath indexPathForRow:indexPath.row-self.orderModel.shoppingList.count inSection:indexPath.section]];
     }
     else{
         cell = [self noteCellAtIndex:indexPath];
@@ -270,10 +272,10 @@
         return self.addressView.height;
     }
     
-    if(indexPath.row < self.chartList.count){
+    if(indexPath.row < self.orderModel.shoppingList.count){
         return [ZHShoppingChartCell cellHeight];
     }
-    else if (indexPath.row < self.chartList.count+3){
+    else if (indexPath.row < self.orderModel.shoppingList.count+3){
         return 40;
     }
     return 60;
@@ -304,8 +306,8 @@
         cell.showCheckBox = NO;
     }
     
-    if (index.row < self.chartList.count){
-        cell.model = self.chartList[index.row];
+    if (index.row < self.orderModel.shoppingList.count){
+        cell.model = self.orderModel.shoppingList[index.row];
     }
     
     return cell;
@@ -339,15 +341,18 @@
     
     if (0 ==index.row){
         label.text = @"商品总价：";
-        desc.text = @"￥19.89";
+        desc.text = [NSString stringWithFormat:@"￥%@",self.orderModel.productTotalPrice];
+//        desc.text = @"￥19.89";
     }
     else if (1 == index.row){
         label.text = @"运费：";
-        desc.text = @"全国包邮";
+        desc.text = self.orderModel.express;
+//        desc.text = @"全国包邮";
     }
     else{
         label.text = @"优惠：";
-        desc.text = @"-￥7.89";
+        desc.text = [NSString stringWithFormat:@"￥%@",self.orderModel.reducePrice];
+//        desc.text = @"-￥7.89";
     }
     
     return cell;
@@ -367,8 +372,8 @@
         note.font = FONT(14);
         note.placeholder = @"给卖家留言...";
         note.backgroundColor = RGB(238, 238, 238);
-        
-        note.tag = -103;
+        self.note = note;
+//        note.tag = -103;
         
         [cell addSubview:note];
     }
@@ -393,9 +398,67 @@
     DoAlertView* alert = [[DoAlertView alloc]init];
     NSString* msg = [NSString stringWithFormat:@"确认支付金额\n%@",self.total.text];
     [alert doYesNo:msg yes:^(DoAlertView *alertView) {
-        
+        [self requestOrderId];
     } no:^(DoAlertView *alertView) {
         
+    }];
+}
+
+-(void)requestOrderId{
+    /// 留言
+    NSString* comment = @"";
+    if (!isEmptyString(self.note.text)){
+        comment = self.note.text;
+    }
+    
+    /// 购物车id列表异常
+    NSMutableString* list = [[NSMutableString alloc]initWithString:@""];
+    if (isEmptyString( self.orderModel.shoppingCartIdList)){
+        for (ShoppingChartModel* model  in self.orderModel.shoppingList) {
+            if (!isEmptyString(list)){
+                [list appendString:@","];
+            }
+            
+            [list appendString:model.shoppingChartId];
+        }
+    }
+    else{
+        [list appendString:self.orderModel.shoppingCartIdList];
+    }
+    
+    NSDictionary* info = @{@"shoppingCartIdList":list,@"userId":[ZHAuthorizationManager shareInstance].userId,@"receiveId":self.addressModel.receiveId,@"scene":@"33",@"comment":comment};
+    
+    [HttpClient postDataWithParamers:info success:^(id responseObject) {
+#warning 服务端没有传 result字段，异常处理
+        if ([responseObject isKindOfClass:[NSDictionary class]]){
+            if (responseObject[@"orderId"]){
+                NSString* orderId = [NSString stringWithFormat:@"%d",[responseObject[@"orderId"]intValue]];
+                ZHLOG(@"order id :%@",responseObject[@"orderId"]);
+                
+                if ([self.orderModel.totalPrice floatValue] > 0.01){
+                    [PayHelper aliPayWithTitle:@"放心粮支付"
+                                   productInfo:@"放心粮订单"
+                                    totalPrice:self.orderModel.totalPrice
+                                       orderId:orderId];
+                    
+                }
+            }
+            else{
+                SHOW_MESSAGE(@"订单生成失败", 2);
+            }
+        }
+//        BaseModel* model = [BaseModel praserModelWithInfo:responseObject];
+//        if ([model.state boolValue]){
+//            NSString* orderId = [NSString stringWithFormat:@"%d",[responseObject[@"orderId"]intValue]];
+//            
+//            ZHLOG(@"order id :%@",orderId);
+//            
+//        }
+//        else{
+//            SHOW_MESSAGE(@"订单生成失败", 2);
+//        }
+    } failure:^(NSError *error) {
+        SHOW_MESSAGE(@"订单生成失败", 2);
     }];
 }
 

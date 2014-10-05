@@ -192,8 +192,40 @@
 }
 
 - (void)addCartButtonPressed:(id)sender{
-    NSString *productId = [self.detailModel.productId length] > 0 ? self.detailModel.productId : @" ";
-    [[MessageCenter instance]performActionWithUserInfo:@{@"controller": @"ZHShoppingChartVC",@"userinfo" : productId}];
+    /// modify by kongkong
+    if (![[ZHAuthorizationManager shareInstance]isLogin]){
+        [ZHAuthorizationVC showLoginVCWithCompletionBlock:^(BOOL isSuccess, id info) {
+            if (isSuccess){
+                [self doAddChart];
+            }
+        }];
+    }
+    else{
+        [self doAddChart];
+    }
+//    NSString *productId = [self.detailModel.productId length] > 0 ? self.detailModel.productId : @" ";
+//    [[MessageCenter instance]performActionWithUserInfo:@{@"controller": @"ZHShoppingChartVC",@"userinfo" : productId}];
+}
+
+-(void)doAddChart{
+//    NSString *productId = [self.detailModel.productId length] > 0 ? self.detailModel.productId : @"";
+    if (isEmptyString(self.detailModel.productId)){
+        SHOW_MESSAGE(@"加入购物车失败",2);
+    }
+    NSDictionary* dic = @{@"productId":self.detailModel.productId,@"userId":[ZHAuthorizationManager shareInstance].userId,@"quantity":@"1",@"scene":@"32"};
+    
+    [HttpClient postDataWithParamers:dic success:^(id responseObject) {
+        BaseModel* model = [BaseModel praserModelWithInfo:responseObject];
+    
+        if ([model.state boolValue]){
+            SHOW_MESSAGE(@"加入购车成功", 2);
+        }
+        else{
+            SHOW_MESSAGE(@"加入购物车失败", 2);
+        }
+    } failure:^(NSError *error) {
+        SHOW_MESSAGE(@"加入购物车失败", 2);
+    }];
 }
 
 #pragma mark - UITableViewDataSource

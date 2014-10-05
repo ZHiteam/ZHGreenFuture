@@ -17,7 +17,7 @@
     }
     
     NSDictionary* dic = (NSDictionary*)info;
-    model.state = [NSString stringWithFormat:@"%d", [dic[@"result"]boolValue] ] ;
+    model.state = [NSString stringWithFormat:@"%d", [dic[@"result"]boolValue]] ;
     
     return model;
 }

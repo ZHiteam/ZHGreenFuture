@@ -11,6 +11,7 @@
 #import "ZHShoppingChartCell.h"
 #import "ZHCheckbox.h"
 #import "JSON.h"
+#import "ConfirmOrderModel.h"
 
 @interface ZHShoppingChartVC ()<UITableViewDataSource,UITableViewDelegate,ZHShoppingChartDelegate>
 
@@ -307,24 +308,7 @@
     /// 结算
     else{
         if (self.shoppingChartLists.count > 0){
-            
-            NSMutableArray* selectedList = [[NSMutableArray alloc]initWithCapacity:self.shoppingChartLists.count];
-            for (ShoppingChartModel* model in self.shoppingChartLists){
-                if (model.checked){
-                    [selectedList addObject:model];
-                }
-            }
-            
-            if (selectedList.count > 0){
-                NSDictionary* userInfo = @{@"controller":@"ZHConfirmOrderVC",
-                                           @"userinfo":selectedList
-                                           };
-                
-                [[MessageCenter instance] performActionWithUserInfo:userInfo];
-            }
-            else{
-                ALERT_MESSAGE(@"请选择宝贝后，再提交订单");
-            }
+            [self confirmOrderAction];
         }
     }
 }
@@ -452,7 +436,7 @@
     for (ShoppingChartModel* model in self.shoppingChartLists){
         if ([model isKindOfClass:[ShoppingChartModel class]] && model.checked){
             total += [model.promotionPrice floatValue]*[model.buyCout intValue];
-            totalSave += [model.marketPrice floatValue]*[model.buyCout intValue];
+            totalSave += [model.marketPrice floatValue]*[model.buyCout intValue]-[model.promotionPrice floatValue]*[model.buyCout intValue];
         }
     }
     
@@ -461,28 +445,62 @@
 
 }
 
-//-(void)totalWithPrice:(CGFloat)price promotionPrice:(CGFloat)promotionPrice count:(NSInteger)count{
-//    if (self.chartEditing){
-//        return;
-//    }
-//    
-//    self.total += promotionPrice*count;
-//    
-//    if (self.total < 0.00f){
-//        self.total = 0.00f;
-//    }
-//    else{
-//        self.totalSave += (price - promotionPrice)*count;
-//    }
-//
-//    self.totalLabel.text= [NSString stringWithFormat:@"合计：￥%.2f",self.total];;
-//    self.totalSaveLabel.text = [NSString stringWithFormat:@"为您节省￥%.2f",self.totalSave];
-//}
-
 -(void)countChangeAtIndex:(NSInteger)index count:(NSString *)count{
     if (index < self.shoppingChartLists.count){
         ShoppingChartModel* model = self.shoppingChartLists[index];
         model.buyCout = count;
     }
 }
+
+-(void)confirmOrderAction{
+    NSMutableArray* selectedList = [[NSMutableArray alloc]initWithCapacity:self.shoppingChartLists.count];
+    for (ShoppingChartModel* model in self.shoppingChartLists){
+        if (model.checked){
+            [selectedList addObject:model];
+        }
+    }
+    
+    if (selectedList.count > 0){
+        
+        NSMutableString* list = [[NSMutableString alloc]init];
+        for (ShoppingChartModel* model  in selectedList) {
+            if (!isEmptyString(list)){
+                [list appendString:@","];
+            }
+            
+            [list appendString:model.shoppingChartId];
+        }
+        
+        NSDictionary* info = @{@"userId":[ZHAuthorizationManager shareInstance].userId,@"shoppingCartIdList":list,@"scene":@"15"};
+        [HttpClient postDataWithParamers:info success:^(id responseObject) {
+            
+//            NSDictionary* userInfo = @{@"controller":@"ZHConfirmOrderVC",
+//                                       @"userinfo":selectedList
+//                                       };
+//            
+//            [[MessageCenter instance] performActionWithUserInfo:userInfo];
+            ConfirmOrderModel* model = [ConfirmOrderModel praserModelWithInfo:responseObject];
+            if (model){
+            NSDictionary* userInfo = @{@"controller":@"ZHConfirmOrderVC",
+                                       @"userinfo":model
+                                       };
+
+            [[MessageCenter instance] performActionWithUserInfo:userInfo];
+
+            }
+            
+        } failure:^(NSError *error) {
+            
+        }];
+        
+    }
+    else{
+        ALERT_MESSAGE(@"请选择宝贝后，再提交订单");
+    }
+}
+
+-(void)doConfirmOrder{
+}
+
+
 @end

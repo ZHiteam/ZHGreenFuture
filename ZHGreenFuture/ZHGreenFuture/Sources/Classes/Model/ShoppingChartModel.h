@@ -12,8 +12,8 @@
 
 @property (nonatomic,strong) NSString*  shoppingChartId;
 @property (nonatomic,strong) NSString*  imageURL;
-@property (nonatomic,strong) NSString*  title;
-@property (nonatomic,strong) NSString*  skuInfo;
+@property (nonatomic,strong) NSString*  title;      /// 商品名称
+@property (nonatomic,strong) NSString*  skuInfo;    /// 商品描述
 @property (nonatomic,strong) NSString*  marketPrice;
 @property (nonatomic,strong) NSString*  promotionPrice;
 @property (nonatomic,strong) NSString*  buyCout;

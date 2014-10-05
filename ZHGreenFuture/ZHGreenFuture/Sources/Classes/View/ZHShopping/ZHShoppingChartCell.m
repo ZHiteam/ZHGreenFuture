@@ -83,7 +83,7 @@
     
     if (!_productImage){
         _productImage = [[UIImageView alloc]initWithFrame:CGRectMake(self.checkBox.right+10, ([ZHShoppingChartCell cellHeight]-60)/2, 60, 60)];
-        _productImage.image = [UIImage themeImageNamed:@"temp_recipe_placehold"];
+//        _productImage.image = [UIImage themeImageNamed:@"temp_recipe_placehold"];
         _productImage.contentMode = UIViewContentModeScaleAspectFill;
         _productImage.clipsToBounds = YES;
         _productImage.layer.borderColor = GRAY_LINE.CGColor;
@@ -257,8 +257,9 @@
     self.promotionPriceLabel.text = [NSString stringWithFormat:@"￥%@", model.promotionPrice];///model.promotionPrice;
     self.buyCountLabel.text = [NSString stringWithFormat:@"x %@",model.buyCout];
     self.editCountView.count = model.buyCout;
-    
     self.checkBox.checked = model.checked;
+    
+    [self.productImage setImageWithUrlString:model.imageURL placeHodlerImage:nil];
 }
 
 #pragma -mark ZHEditCountDelegate

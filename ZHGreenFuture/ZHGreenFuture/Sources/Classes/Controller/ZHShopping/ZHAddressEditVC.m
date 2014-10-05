@@ -182,7 +182,7 @@
         [dic setObject:@"18" forKey:@"scene"];
 //#warning 用户ID
         [userInfo setObject:[ZHAuthorizationManager shareInstance].userId forKey:@"userId"];
-        [userInfo setObject:@"1" forKey:@"userId"];
+//        [userInfo setObject:@"1" forKey:@"userId"];
     }
     NSString* str = [@{@"receiveInfo":userInfo} JSONFragment];
     [dic setObject:str forKey:@"json"];

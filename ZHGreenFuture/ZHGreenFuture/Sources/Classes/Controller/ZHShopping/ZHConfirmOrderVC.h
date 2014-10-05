@@ -7,8 +7,10 @@
 //
 
 #import "ZHViewController.h"
+#import "ConfirmOrderModel.h"
 
 @interface ZHConfirmOrderVC : ZHViewController
 
-@property (nonatomic,strong) NSArray*   chartList;
+@property (nonatomic,strong) ConfirmOrderModel* orderModel;
+//@property (nonatomic,strong) NSArray*   chartList;
 @end

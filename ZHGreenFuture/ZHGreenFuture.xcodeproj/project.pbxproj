@@ -253,6 +253,7 @@
 		9C89857119B70B5E009CB910 /* ZHTagsView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C89857019B70B5E009CB910 /* ZHTagsView.m */; };
 		9C89857419B70CC4009CB910 /* TagModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C89857319B70CC4009CB910 /* TagModel.m */; };
 		9C89857719BEB280009CB910 /* gradient_layer@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9C89857619BEB280009CB910 /* gradient_layer@2x.png */; };
+		9C8DA7FF19E12E2A003EA62F /* ConfirmOrderModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C8DA7FE19E12E2A003EA62F /* ConfirmOrderModel.m */; };
 		9C9778A019B1900F00D49E69 /* NSData+AESEncryption.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C97782D19B1900F00D49E69 /* NSData+AESEncryption.m */; };
 		9C9778A119B1900F00D49E69 /* NSDictionary+ZHiteam.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C97782F19B1900F00D49E69 /* NSDictionary+ZHiteam.m */; };
 		9C9778A219B1900F00D49E69 /* NSObject+Instance.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C97783119B1900F00D49E69 /* NSObject+Instance.m */; };
@@ -276,6 +277,8 @@
 		9C9778D219B1900F00D49E69 /* system.config in Resources */ = {isa = PBXBuildFile; fileRef = 9C97789F19B1900F00D49E69 /* system.config */; };
 		9C9778D419B1905F00D49E69 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9C9778D319B1905F00D49E69 /* MobileCoreServices.framework */; };
 		9C9778D619B1907300D49E69 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9C9778D519B1907300D49E69 /* SystemConfiguration.framework */; };
+		9CA4D6D419E13CCC00B3E4BD /* PayHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CA4D6D319E13CCC00B3E4BD /* PayHelper.m */; };
+		9CA4D6D819E13DEB00B3E4BD /* ZHAliPayHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CA4D6D719E13DEB00B3E4BD /* ZHAliPayHelper.m */; };
 		9CB3673E19D71A3600C45741 /* NSArray+FEExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CB366EE19D71A3500C45741 /* NSArray+FEExtension.m */; };
 		9CB3673F19D71A3600C45741 /* NSDate+FEExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CB366F019D71A3500C45741 /* NSDate+FEExtension.m */; };
 		9CB3674019D71A3600C45741 /* NSDictionary+FEExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CB366F219D71A3500C45741 /* NSDictionary+FEExtension.m */; };
@@ -719,6 +722,8 @@
 		9C89857219B70CC4009CB910 /* TagModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TagModel.h; sourceTree = "<group>"; };
 		9C89857319B70CC4009CB910 /* TagModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TagModel.m; sourceTree = "<group>"; };
 		9C89857619BEB280009CB910 /* gradient_layer@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "gradient_layer@2x.png"; sourceTree = "<group>"; };
+		9C8DA7FD19E12E2A003EA62F /* ConfirmOrderModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ConfirmOrderModel.h; sourceTree = "<group>"; };
+		9C8DA7FE19E12E2A003EA62F /* ConfirmOrderModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ConfirmOrderModel.m; sourceTree = "<group>"; };
 		9C97782C19B1900F00D49E69 /* NSData+AESEncryption.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSData+AESEncryption.h"; sourceTree = "<group>"; };
 		9C97782D19B1900F00D49E69 /* NSData+AESEncryption.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSData+AESEncryption.m"; sourceTree = "<group>"; };
 		9C97782E19B1900F00D49E69 /* NSDictionary+ZHiteam.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDictionary+ZHiteam.h"; sourceTree = "<group>"; };
@@ -762,6 +767,10 @@
 		9C97789F19B1900F00D49E69 /* system.config */ = {isa = PBXFileReference; lastKnownFileType = file; path = system.config; sourceTree = "<group>"; };
 		9C9778D319B1905F00D49E69 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
 		9C9778D519B1907300D49E69 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		9CA4D6D219E13CCC00B3E4BD /* PayHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PayHelper.h; sourceTree = "<group>"; };
+		9CA4D6D319E13CCC00B3E4BD /* PayHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PayHelper.m; sourceTree = "<group>"; };
+		9CA4D6D619E13DEB00B3E4BD /* ZHAliPayHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZHAliPayHelper.h; sourceTree = "<group>"; };
+		9CA4D6D719E13DEB00B3E4BD /* ZHAliPayHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZHAliPayHelper.m; sourceTree = "<group>"; };
 		9CB366ED19D71A3500C45741 /* NSArray+FEExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSArray+FEExtension.h"; sourceTree = "<group>"; };
 		9CB366EE19D71A3500C45741 /* NSArray+FEExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSArray+FEExtension.m"; sourceTree = "<group>"; };
 		9CB366EF19D71A3500C45741 /* NSDate+FEExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+FEExtension.h"; sourceTree = "<group>"; };
@@ -1568,6 +1577,8 @@
 				9C0E0B4019CB40B600ED8D87 /* ShoppingChartModel.m */,
 				9CCDFD7219CC0FF2008B6882 /* AddressModel.h */,
 				9CCDFD7319CC0FF2008B6882 /* AddressModel.m */,
+				9C8DA7FD19E12E2A003EA62F /* ConfirmOrderModel.h */,
+				9C8DA7FE19E12E2A003EA62F /* ConfirmOrderModel.m */,
 			);
 			name = Shopping;
 			sourceTree = "<group>";
@@ -1575,6 +1586,7 @@
 		9C3862AF19B1BC3D00679C48 /* Tools */ = {
 			isa = PBXGroup;
 			children = (
+				9CA4D6D519E13DD400B3E4BD /* Pay */,
 				9C8983D419B6168F009CB910 /* LunarCalendar */,
 				9C89838F19B5CD93009CB910 /* Timer */,
 				9C3862B019B1BDC600679C48 /* MessageCenter.h */,
@@ -1908,6 +1920,17 @@
 				9C97789F19B1900F00D49E69 /* system.config */,
 			);
 			path = Resources;
+			sourceTree = "<group>";
+		};
+		9CA4D6D519E13DD400B3E4BD /* Pay */ = {
+			isa = PBXGroup;
+			children = (
+				9CA4D6D219E13CCC00B3E4BD /* PayHelper.h */,
+				9CA4D6D319E13CCC00B3E4BD /* PayHelper.m */,
+				9CA4D6D619E13DEB00B3E4BD /* ZHAliPayHelper.h */,
+				9CA4D6D719E13DEB00B3E4BD /* ZHAliPayHelper.m */,
+			);
+			name = Pay;
 			sourceTree = "<group>";
 		};
 		9CB366E719D71A3500C45741 /* FEFramework */ = {
@@ -2492,6 +2515,7 @@
 				9CB3674619D71A3600C45741 /* UIButton+FEExtension.m in Sources */,
 				9CCB1D7F19D08826009BB25A /* SBJsonBase.m in Sources */,
 				84EA64D919B1993700C446A5 /* ZHProfileVC.m in Sources */,
+				9CA4D6D819E13DEB00B3E4BD /* ZHAliPayHelper.m in Sources */,
 				9C9778AE19B1900F00D49E69 /* ZHViewController.m in Sources */,
 				9CB3675419D71A3600C45741 /* FEScrollPageViewController.m in Sources */,
 				9CCDFD6919CBDD80008B6882 /* ZHImagePreviewVC.m in Sources */,
@@ -2506,6 +2530,7 @@
 				847E0BB019C42B030055B5C6 /* ZHOrderListVC.m in Sources */,
 				84927EC719D6FCC600805E22 /* ZHMyProductDetaillCell.m in Sources */,
 				84927EC319D6FA8F00805E22 /* ZHMyProductDetailVC.m in Sources */,
+				9CA4D6D419E13CCC00B3E4BD /* PayHelper.m in Sources */,
 				9C9778A919B1900F00D49E69 /* HttpClient.m in Sources */,
 				9CB3674C19D71A3600C45741 /* UITableView+FEAutoResizeKeyboard.m in Sources */,
 				9CB3674D19D71A3600C45741 /* UIView+FEAnimation.m in Sources */,
@@ -2530,6 +2555,7 @@
 				84EA64C819B192D700C446A5 /* ZHRootViewController.m in Sources */,
 				9CB3675819D71A3600C45741 /* FEViewTranslate.m in Sources */,
 				9C89838719B56746009CB910 /* UIImageView+ZHiteam.m in Sources */,
+				9C8DA7FF19E12E2A003EA62F /* ConfirmOrderModel.m in Sources */,
 				9CB3675E19D71A3600C45741 /* FEReachAbilityManager.m in Sources */,
 				9C89837919B48C1E009CB910 /* ZHSwipSegment.m in Sources */,
 				9C0E0AFB19C860FD00ED8D87 /* MaterialItemView.m in Sources */,
@@ -2735,8 +2761,8 @@
 				ARCHS = armv7;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Developer: lu ye (FD78BG9MG9)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: lu ye (FD78BG9MG9)";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: lu ye (3R4K7E9589)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: lu ye (3R4K7E9589)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/ZHGreenFuture/Sources/Libraies/ShareSDK/Connection",
