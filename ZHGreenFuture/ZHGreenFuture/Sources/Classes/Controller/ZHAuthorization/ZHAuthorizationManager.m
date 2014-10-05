@@ -51,7 +51,9 @@
 
 #pragma mark - Public Methods
 - (BOOL)isLogin {
-    return [self.passWord length] >0;
+    /// modify by kongkong
+    return !isEmptyString(self.userId);
+//    return [self.passWord length] >0;
 }
 
 - (void)getValidateCodeWithAccount:(NSString*)account completionBlock:(ZHAuthCompletionBlock)block{

@@ -124,18 +124,18 @@
 
 #pragma -mark -action 
 - (void)cameraAction{
-#warning 测试屏蔽登录
-//    if (![[[ZHAuthorizationVC shareInstance] authManager] isLogin])
-//    {
-//        [ZHAuthorizationVC showLoginVCWithCompletionBlock:^(BOOL isSuccess, id info) {
-//            if (isSuccess) {
-//                [CameraHelper takePhone:self];
-//            }
-//        }];
-//    }
-//    else{
+//#warning 测试屏蔽登录
+    if (![[[ZHAuthorizationVC shareInstance] authManager] isLogin])
+    {
+        [ZHAuthorizationVC showLoginVCWithCompletionBlock:^(BOOL isSuccess, id info) {
+            if (isSuccess) {
+                [CameraHelper takePhone:self];
+            }
+        }];
+    }
+    else{
         [CameraHelper takePhone:self];
-//    }
+    }
     
 }
 

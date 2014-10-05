@@ -180,8 +180,8 @@
     /// 新增请求
     else{
         [dic setObject:@"18" forKey:@"scene"];
-#warning 用户ID
-//        [dic setObject:[ZHAuthorizationManager shareInstance].userId forKey:@"userId"];
+//#warning 用户ID
+        [userInfo setObject:[ZHAuthorizationManager shareInstance].userId forKey:@"userId"];
         [userInfo setObject:@"1" forKey:@"userId"];
     }
     NSString* str = [@{@"receiveInfo":userInfo} JSONFragment];

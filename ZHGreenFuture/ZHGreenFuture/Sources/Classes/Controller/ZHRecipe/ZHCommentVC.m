@@ -237,7 +237,7 @@
     if (!isEmptyString(self.edit.text)){
         [dic setObject:self.edit.text forKey:@"content"];
     }
-#warning 缺少userID,暂时屏蔽下面判断
+//#warning 缺少userID,暂时屏蔽下面判断
     if (!isEmptyString([ZHAuthorizationManager shareInstance].userId)){
         [dic setObject:[ZHAuthorizationManager shareInstance].userId forKey:@"userId"];
     }

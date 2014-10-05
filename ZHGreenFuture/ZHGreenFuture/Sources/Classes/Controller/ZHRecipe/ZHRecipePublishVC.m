@@ -327,7 +327,7 @@
 //    workImageData 作品图片二进制
     NSMutableDictionary* dic = [[NSMutableDictionary alloc]initWithCapacity:5];
     [dic setObject:@"9" forKey:@"scene"];
-#warning 判断用户登录,userID
+//#warning 判断用户登录,userID
     if (!isEmptyString([ZHAuthorizationManager shareInstance].userId)){
         [dic setObject:[ZHAuthorizationManager shareInstance].userId forKey:@"userId"];
     }

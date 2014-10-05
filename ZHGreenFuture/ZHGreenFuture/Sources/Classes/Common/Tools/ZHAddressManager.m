@@ -25,13 +25,13 @@
 
 -(void)loadListRequestWithBlock:(void (^)(BOOL success))SuccessBlock{
 
-    //    if (![[ZHAuthorizationManager shareInstance]isLogin] || isEmptyString([ZHAuthorizationManager shareInstance].userId)){
-    //        return;
-    //    }
-    //
-    //    NSString* userId= [ZHAuthorizationManager shareInstance].userId;
-#warning 用户ID
-    NSString* userId = @"1";
+    if (![[ZHAuthorizationManager shareInstance]isLogin] || isEmptyString([ZHAuthorizationManager shareInstance].userId)){
+        return;
+    }
+
+    NSString* userId= [ZHAuthorizationManager shareInstance].userId;
+//#warning 用户ID
+//    NSString* userId = @"1";
     
     [HttpClient requestDataWithParamers:@{@"scene":@"16",@"userId":userId} success:^(id responseObject) {
         [self setAddressWithInfo:responseObject];

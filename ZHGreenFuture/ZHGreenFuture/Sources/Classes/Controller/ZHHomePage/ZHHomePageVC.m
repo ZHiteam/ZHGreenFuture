@@ -151,17 +151,17 @@
 }
 
 - (void)rightItemPressed:(id)sender{
-#warning 没用户ID为测试屏蔽
-//    if (![[[ZHAuthorizationVC shareInstance] authManager] isLogin]){
-//        [ZHAuthorizationVC showLoginVCWithCompletionBlock:^(BOOL isSuccess, id info) {
-//            if (isSuccess)
-//                [[MessageCenter instance]performActionWithUserInfo:@{@"controller": @"ZHShoppingChartVC"}];
-//        }];
-//    }
-//    else{
-//        [[MessageCenter instance]performActionWithUserInfo:@{@"controller": @"ZHShoppingChartVC"}];
-//    }
-    [[MessageCenter instance]performActionWithUserInfo:@{@"controller": @"ZHShoppingChartVC"}];
+//#warning 没用户ID为测试屏蔽
+    if (![[[ZHAuthorizationVC shareInstance] authManager] isLogin]){
+        [ZHAuthorizationVC showLoginVCWithCompletionBlock:^(BOOL isSuccess, id info) {
+            if (isSuccess)
+                [[MessageCenter instance]performActionWithUserInfo:@{@"controller": @"ZHShoppingChartVC"}];
+        }];
+    }
+    else{
+        [[MessageCenter instance]performActionWithUserInfo:@{@"controller": @"ZHShoppingChartVC"}];
+    }
+//    [[MessageCenter instance]performActionWithUserInfo:@{@"controller": @"ZHShoppingChartVC"}];
 }
 
 - (void)bannerItemPressed:(NSString*)urlStr{

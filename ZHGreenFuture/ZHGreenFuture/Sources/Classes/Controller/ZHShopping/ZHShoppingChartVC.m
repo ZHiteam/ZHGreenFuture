@@ -53,11 +53,11 @@
 }
 
 -(void)loadRequest{
-#warning 用户ID
-//    if (isEmptyString([ZHAuthorizationManager shareInstance].userId)){
-//        return;
-//    }
-    NSDictionary* param = @{@"scene":@"11",@"userId":@"1"};
+//#warning 用户ID
+    if (isEmptyString([ZHAuthorizationManager shareInstance].userId)){
+        return;
+    }
+    NSDictionary* param = @{@"scene":@"11",@"userId":[ZHAuthorizationManager shareInstance].userId};
     
     [HttpClient requestDataWithParamers:param success:^(id responseObject) {
         if ([responseObject isKindOfClass:[NSDictionary class]]){
@@ -258,8 +258,8 @@
         return;
     }
     
-#warning 用户ID
-    NSDictionary* dic = @{@"userId":@"1",@"updateShoppingList":arrayData};
+//#warning 用户ID
+    NSDictionary* dic = @{@"userId":[ZHAuthorizationManager shareInstance].userId,@"updateShoppingList":arrayData};
     
     NSString* jsonStr = [dic JSONFragment];
     dic = @{@"json":jsonStr,@"scene":@"12"};
@@ -398,11 +398,11 @@
         return;
     }
     NSMutableDictionary * dic = [[NSMutableDictionary alloc]initWithCapacity:3];
-#warning 用户ID
-    [dic setObject:@"1" forKey:@"userId"];
-    //    if (!isEmptyString([ZHAuthorizationManager shareInstance].userId)){
-    //        [dic setObject:[ZHAuthorizationManager shareInstance].userId forKey:@"userId"];
-    //    }
+//#warning 用户ID
+//    [dic setObject:@"1" forKey:@"userId"];
+    if (!isEmptyString([ZHAuthorizationManager shareInstance].userId)){
+        [dic setObject:[ZHAuthorizationManager shareInstance].userId forKey:@"userId"];
+    }
     
     [dic setObject:list forKey:@"deleteShoppingList"];
     NSString* str = [dic JSONFragment];
