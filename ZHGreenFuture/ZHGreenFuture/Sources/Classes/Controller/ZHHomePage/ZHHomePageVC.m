@@ -150,7 +150,7 @@
 }
 
 - (void)rightItemPressed:(id)sender{
-#warning 为测试屏蔽
+#warning 没用户ID为测试屏蔽
 //    if (![[[ZHAuthorizationVC shareInstance] authManager] isLogin]){
 //        [ZHAuthorizationVC showLoginVCWithCompletionBlock:^(BOOL isSuccess, id info) {
 //            if (isSuccess)

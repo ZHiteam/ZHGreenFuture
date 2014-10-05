@@ -60,6 +60,18 @@
     }];
 }
 
+//-(void)loadMore{
+//    [HttpClient requestDataWithParamers:@{@"scene":@"6"}success:^(id responseObject) {
+//        ZHLOG(@"%@",responseObject);
+//        
+//        self.recipeModel = (RecipeModel*)[RecipeModel praserModelWithInfo:responseObject];
+//        
+//        [self autoResizeContent];
+//    } failure:^(NSError *error) {
+//        
+//    }];
+//}
+
 -(void)loadContent{
     [self loadTitleContent];
     
@@ -158,11 +170,19 @@
         _recipeContent.pagingEnabled = NO;
         _recipeContent.separatorStyle = UITableViewCellSeparatorStyleNone;
         _recipeContent.showsVerticalScrollIndicator = NO;
-
+        
+//        [_recipeContent addPullToRefreshWithActionHandler:^{
+//            [_recipeContent.pullToRefreshView startAnimating];
+//        }];
+//        __block __typeof(self)recipeVc = self;
+//        [_recipeContent addInfiniteScrollingWithActionHandler:^{
+//            [recipeVc loadMore];
+//        }];
     }
     
     return _recipeContent;
 }
+
 
 -(void)autoResizeContent{
     [self.tagView loadContentWithTags:self.recipeModel.tags];

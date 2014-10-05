@@ -42,8 +42,9 @@
         model.material = [muData mutableCopy];
     }
     
-    if ([dic[@"practice"] isKindOfClass:[NSArray class]]){
-        NSArray* array = (NSArray*)dic[@"practice"];
+    /// 服务端对调了
+    if ([dic[@"example"] isKindOfClass:[NSArray class]]){
+        NSArray* array = (NSArray*)dic[@"example"];
         NSMutableArray* muData = [[NSMutableArray alloc]initWithCapacity:array.count];
         
         for (id val in array){
@@ -56,8 +57,8 @@
         model.practice = [muData mutableCopy];
     }
     
-    if ([dic[@"example"] isKindOfClass:[NSArray class]]){
-        NSArray* array = (NSArray*)dic[@"example"];
+    if ([dic[@"practice"] isKindOfClass:[NSArray class]]){
+        NSArray* array = (NSArray*)dic[@"practice"];
         NSMutableArray* muData = [[NSMutableArray alloc]initWithCapacity:array.count];
         
         for (id val in array){

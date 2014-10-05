@@ -178,13 +178,32 @@
 
 -(void)deleteWithModel:(AddressModel *)model index:(NSInteger)index{
     /// 删除事件
-    if (index < self.addressList.count){
-        [self.addressList removeObjectAtIndex:index];
-        if ([self.delegate respondsToSelector:@selector(deleteAddress:)]){
-            [self.delegate deleteAddress:model];
-        }
+    DoAlertView* alert = [[DoAlertView alloc]init];
+    
+    [alert doYesNo:@"确认删除收货地址" body:model.address yes:^(DoAlertView *alertView) {
         
-        [self.addressTable reloadData];
-    }
+        [HttpClient requestDataWithParamers:@{@"scene":@"20",@"receiveId":model.receiveId} success:^(id responseObject) {
+            
+            BaseModel* base = [BaseModel praserModelWithInfo:responseObject];
+            
+            if (index < self.addressList.count && [base.state boolValue]){
+                [self.addressList removeObjectAtIndex:index];
+                if ([self.delegate respondsToSelector:@selector(deleteAddress:)]){
+                    [self.delegate deleteAddress:model];
+                }
+                
+                [self.addressTable reloadData];
+            }
+        } failure:^(NSError *error) {
+            ALERT_MESSAGE(@"删除失败");
+        }];
+        
+
+    } no:^(DoAlertView *alertView) {
+        
+    }];
+
+    
+
 }
 @end

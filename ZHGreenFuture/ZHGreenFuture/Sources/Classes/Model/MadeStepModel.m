@@ -18,8 +18,8 @@
     
     NSDictionary* dic = (NSDictionary*)info;
     
-    model.title = dic[@"title"];
-    model.imageUrl = dic[@"imageURL"];
+    model.title = dic[@"content"];
+    model.imageUrl = dic[@"url"];
     
     return model;
 }

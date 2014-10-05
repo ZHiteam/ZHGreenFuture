@@ -21,7 +21,7 @@
 /// 最大照片数
 #define MAX_IMAGE_UPLOAD_COUNT  9
 
-@interface ZHRecipePublishVC ()<UITextViewDelegate,CameraHelperDelegate,ASProgressPopUpViewDataSource>
+@interface ZHRecipePublishVC ()<UITextViewDelegate,CameraHelperDelegate>
 
 @property (nonatomic,strong) TPKeyboardAvoidingScrollView*  content;
 @property (nonatomic,strong) UIView*                sampleImagePanel;

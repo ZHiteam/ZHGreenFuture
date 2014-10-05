@@ -55,7 +55,7 @@
     if ([account length] >0 ) {
 
         [HttpClient postDataWithParamers:@{@"scene": @"24",@"phone":account} success:^(id responseObject) {
-            BOOL result = [[BaseModel praserModelWithInfo:responseObject].state boolValue];
+            BOOL result = [((BaseModel*)[BaseModel praserModelWithInfo:responseObject]).state boolValue];
             if (block) {
                 block(result,nil);
             }
@@ -72,7 +72,7 @@
 - (void)postValidateCode:(NSString*)validateCode account:(NSString*)account completionBlock:(ZHAuthCompletionBlock)block{
     if ([account length] >0 && [validateCode length] >0) {
         [HttpClient postDataWithParamers:@{@"scene": @"25",@"phone":account,@"validateCode":validateCode} success:^(id responseObject) {
-            BOOL result = [[BaseModel praserModelWithInfo:responseObject].state boolValue];
+            BOOL result = [((BaseModel*)[BaseModel praserModelWithInfo:responseObject]).state boolValue];
             if (block) {
                 block(result,nil);
             }
@@ -92,7 +92,7 @@
         __weak __typeof(self) weakSelf = self;
 
         [HttpClient postDataWithParamers:@{@"scene": @"26",@"phone":account,@"password":password} success:^(id responseObject) {
-            BOOL result = [[BaseModel praserModelWithInfo:responseObject].state boolValue];;
+            BOOL result = [((BaseModel*)[BaseModel praserModelWithInfo:responseObject]).state boolValue];
             if (result) {
                 weakSelf.account  = account;
                 weakSelf.passWord = password;

@@ -82,7 +82,9 @@
                  failure:(void (^)(NSError *error))failure
                 progress:(void (^)(NSUInteger bytesWritten, long long totalBytesWritten, long long totalBytesExpectedToWrite))progress{
     
-    AFHTTPRequestOperationManager*  httpClient = [HttpClient instance]->_client;    
+    AFHTTPRequestOperationManager*  httpClient = [HttpClient instance]->_client;
+    
+    httpClient.requestSerializer.timeoutInterval = 10;
     AFHTTPRequestOperation* op = [httpClient POST:@"/greenFuture/serverAPI.action" parameters:paramers constructingBodyWithBlock:^(id<AFMultipartFormData> formData) {
         for (NSString* name in datas.allKeys){
             id val = datas[name];
