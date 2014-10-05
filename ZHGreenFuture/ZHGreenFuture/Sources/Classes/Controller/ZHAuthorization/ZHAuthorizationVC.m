@@ -71,6 +71,8 @@
     if (!vc.isRunning) {
         vc.isRunning       = YES;
         vc.completionBlock = block;
+        vc.accountTextField.text  = nil;
+        vc.passwordTextField.text = nil;
         vc.modalPresentationStyle = UIModalPresentationCurrentContext;
         
         UINavigationController *naviVC = [[UINavigationController alloc] initWithRootViewController:vc];

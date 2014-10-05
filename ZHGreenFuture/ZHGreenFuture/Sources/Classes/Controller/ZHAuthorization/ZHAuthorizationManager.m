@@ -151,6 +151,17 @@
     }
 }
 
+- (void)logout{
+    [self resetAccountInfo];
+    self.isLogin = NO;
+    self.account = nil;
+    self.passWord = nil;
+    self.userId  = nil;
+    self.userNick = nil;
+    self.userAvatarURL = nil;
+}
+
+
 #pragma mark - Private
 - (void)setAccountInfo
 {

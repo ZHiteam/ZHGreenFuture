@@ -56,6 +56,10 @@
 @end
 
 
+@interface ZHOrderModel ()
+@property(nonatomic, assign)BOOL isRuning;
+@end
+
 @implementation ZHOrderModel
 - (instancetype)init
 {
@@ -69,25 +73,27 @@
 #pragma mark - Public Method
 
 - (void)loadDataWithType:(ZHOrderType)type completionBlock:(ZHCompletionBlock)block{
-    self.orderType = type;
-    
-    __weak __typeof(self) weakSelf = self;
-    NSString *userId = [[ZHAuthorizationManager shareInstance] account];
-    userId = [userId length] == 0 ? @"" : userId;
-
-    [HttpClient requestDataWithParamers:@{@"scene": @"21",@"userId": userId, @"orderType":[NSString stringWithFormat:@"%d",type]} success:^(id responseObject) {
-        if ([responseObject isKindOfClass:[NSDictionary class]]) {
-            [weakSelf parserJsonDict:responseObject];
-        }
-        if (block) {
-            block(YES);
-        }
-    } failure:^(NSError *error) {
-        if (block){
-            block(NO);
-        }
-    }];
-    
+    if (!self.isRuning) {
+        self.isRuning = YES;
+        self.orderType = type;
+        __weak __typeof(self) weakSelf = self;
+        NSString *userId = [[ZHAuthorizationManager shareInstance] userId];
+        userId = [userId length] > 0 ? userId : @"" ;
+        [HttpClient requestDataWithParamers:@{@"scene": @"21",@"userId": userId, @"orderType":[NSString stringWithFormat:@"%d",type]} success:^(id responseObject) {
+            if ([responseObject isKindOfClass:[NSDictionary class]]) {
+                [weakSelf parserJsonDict:responseObject];
+            }
+            if (block) {
+                block(YES);
+            }
+            weakSelf.isRuning = NO;
+        } failure:^(NSError *error) {
+            if (block){
+                block(NO);
+            }
+            weakSelf.isRuning = NO;
+        }];
+    }
 }
 
 - (void)modifyOrderStatusWithOrderId:(NSString*)orderId operation:(NSString*)operation completionBlock:(ZHCompletionBlock)block{

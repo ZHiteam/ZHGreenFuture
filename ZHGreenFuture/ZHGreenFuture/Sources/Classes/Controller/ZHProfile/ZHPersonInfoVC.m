@@ -18,6 +18,7 @@
 @property(nonatomic, strong)NSArray              *contentArray;
 @property(nonatomic, strong)UIImageView          *avatarView;
 @property(nonatomic, strong)UILabel              *userNameLabel;
+@property(nonatomic, strong)UIButton             *logoutButton;
 
 @end
 
@@ -38,6 +39,7 @@
     self.contentArray = @[@"头像",@"昵称"];
     [self configureNaivBar];
     [self.view addSubview:self.tableView];
+    self.tableView.tableFooterView = [self logoutButton];
 }
 
 - (void)viewWillAppear:(BOOL)animated{
@@ -90,6 +92,27 @@
     [self whithNavigationBarStyle];
 }
 
+- (UIButton *)logoutButton{
+    if (_logoutButton == nil) {
+        _logoutButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 12, self.view.frame.size.width -36 , 48)];
+        _logoutButton.backgroundColor = RGB(102, 170, 0);
+        _logoutButton.titleLabel.textAlignment = NSTextAlignmentRight;
+        [_logoutButton setTitle:@"退出登录" forState:UIControlStateNormal];
+        [_logoutButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+        [_logoutButton setTitleColor:[[UIColor whiteColor] colorWithAlphaComponent:0.7] forState:UIControlStateHighlighted ];
+        [_logoutButton setTitleColor:[[UIColor whiteColor] colorWithAlphaComponent:0.7] forState: UIControlStateSelected];
+        [_logoutButton addTarget:self action:@selector(logoutButtonPressed:) forControlEvents:UIControlEventTouchUpInside];
+    }
+    return _logoutButton;
+}
+
+
+#pragma mark - Event Handler 
+- (void)logoutButtonPressed:(id)sender{
+    [[[ZHAuthorizationVC shareInstance] authManager] logout];
+    NavigationViewController*   navi = [MemoryStorage valueForKey:k_NAVIGATIONCTL];
+    [navi popToRoot];
+}
 
 #pragma mark - UITableViewDataSource
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{

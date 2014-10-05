@@ -24,4 +24,5 @@ typedef void(^ZHAuthCompletionBlock)(BOOL isSuccess, id info);
 - (void)postValidateCode:(NSString*)validateCode account:(NSString*)account completionBlock:(ZHAuthCompletionBlock)block;
 - (void)registerWithAccount:(NSString*)account password:(NSString*)password completionBlock:(ZHAuthCompletionBlock)block;
 - (void)logInWithAccount:(NSString*)account password:(NSString*)password completionBlock:(ZHAuthCompletionBlock)block;
+- (void)logout;
 @end
