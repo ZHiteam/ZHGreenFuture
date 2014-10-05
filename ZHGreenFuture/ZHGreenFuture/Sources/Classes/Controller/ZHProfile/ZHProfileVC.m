@@ -49,9 +49,11 @@
     [self.tableView addCoverWithImage:[UIImage imageNamed:@"myBG.png"] withTopView:nil aboveView:self.containerView enableBlur:NO];
     self.tableView.tableHeaderView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width, FECoverViewHeight + 0)];
     self.tableView.tableHeaderView.userInteractionEnabled = NO;
-    [self.avatarImageView setImageWithURL:[NSURL URLWithString:self.profileModel.userAvatar] placeholderImage:[UIImage imageNamed:@"avatar"]];
+    [self.avatarImageView setImageWithURL:[NSURL URLWithString:self.profileModel.userAvatar] placeholderImage:self.profileModel.userAvatarImage];
+    __weak typeof(self) weakSelf = self;
     [self.avatarImageView touchEndedBlock:^(NSSet *touches, UIEvent *event) {
         ZHPersonInfoVC *personInfoVC = [[ZHPersonInfoVC alloc] init];
+        personInfoVC.profileModel = weakSelf.profileModel;
         NavigationViewController*   navi = [MemoryStorage valueForKey:k_NAVIGATIONCTL];
         [navi pushViewController:personInfoVC animation:ANIMATE_TYPE_DEFAULT];
     }];
@@ -60,9 +62,7 @@
 
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
-
-    if (![[[ZHAuthorizationVC shareInstance] authManager] isLogin])
-    {
+    if (![[[ZHAuthorizationVC shareInstance] authManager] isLogin]){
         [ZHAuthorizationVC showLoginVCWithCompletionBlock:^(BOOL isSuccess, id info) {
             if (!isSuccess) {
                 ZHRootViewController *rootVC = [[[UIApplication sharedApplication] delegate] performSelector:@selector(rootViewController)];
@@ -70,6 +70,8 @@
                 [tabbarVC selectAtIndex:0 animation:YES];
             }
         }];
+    } else {
+        [self loadConent];
     }
 }
 
@@ -159,9 +161,12 @@
 
 - (void)loadConent{
     __weak typeof(self) weakSelf = self;
-    [self.profileModel loadDataWithCompletion:^(BOOL isSuccess) {
+    NSString *userId = [[[ZHAuthorizationVC shareInstance] authManager] userId];
+    [self.profileModel loadDataWithUserId:userId completionBlock:^(BOOL isSuccess) {
         if (isSuccess) {
             [weakSelf.tableView reloadData];
+            [weakSelf.avatarImageView setImageWithURL:[NSURL URLWithString:weakSelf.profileModel.userAvatar] placeholderImage:weakSelf.profileModel.userAvatarImage];
+            [weakSelf.userNameLabel setText:weakSelf.profileModel.userName];
         }
     }];
 }

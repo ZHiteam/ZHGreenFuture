@@ -105,7 +105,7 @@
             int seconds = timeout % 60;
             NSString *strTime = [NSString stringWithFormat:@"%.2d", seconds];
             dispatch_async(dispatch_get_main_queue(), ^{
-                NSLog(@">>>%@",strTime);
+                //NSLog(@">>>%@",strTime);
                 weakLeable.text = [NSString stringWithFormat:@"重新获取(%@)",strTime];
                 weakLeable.textColor = RGB(170, 170, 170);
                 weakLeable.userInteractionEnabled = NO;

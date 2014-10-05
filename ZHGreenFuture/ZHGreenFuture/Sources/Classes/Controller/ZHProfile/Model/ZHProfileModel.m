@@ -21,27 +21,33 @@
     return self;
 }
 
+
 #pragma mark - Public Method
-- (void)loadDataWithCompletion:(ZHCompletionBlock)block{
-    __weak __typeof(self) weakSelf = self;
-    
-    [HttpClient requestDataWithParamers:@{@"scene": @"8"} success:^(id responseObject) {
-        if ([responseObject isKindOfClass:[NSDictionary class]]) {
-            [weakSelf parserJsonDict:responseObject];
-        }
-        if (block) {
-            block(YES);
-        }
-    } failure:^(NSError *error) {
-        if (block) {
-            block(NO);
-        }
-    }];
+- (void)loadDataWithUserId:(NSString*)userId completionBlock:(ZHCompletionBlock)block{
+    if ([userId length] >0) {
+        __weak __typeof(self) weakSelf = self;
+        [HttpClient requestDataWithParamers:@{@"scene": @"8",@"userId":userId} success:^(id responseObject) {
+            if ([responseObject isKindOfClass:[NSDictionary class]]) {
+                [weakSelf parserJsonDict:responseObject];
+            }
+            if (block) {
+                block(YES);
+            }
+        } failure:^(NSError *error) {
+            if (block) {
+                block(NO);
+            }
+        }];
+    }
 }
+
+- (void)modifyProfileInfo:(UIImage *)avatarImage progressBlock:(ZHProgressBlock)progressBlock completionBlock:(ZHCompletionBlock)completeBlock{
+    [self modifyProfileInfo:avatarImage userName:[ZHAuthorizationManager shareInstance].userId progressBlock:progressBlock completionBlock:completeBlock];
+}
+
 - (void)modifyProfileInfo:(UIImage *)avatarImage userName:(NSString *)userName progressBlock:(ZHProgressBlock)progressBlock completionBlock:(ZHCompletionBlock)completeBlock{
     NSMutableDictionary* dic = [[NSMutableDictionary alloc]initWithCapacity:5];
-    [dic setObject:@"27" forKey:@"scene"];
-
+    [dic setObject:@"27" forKey:@"scene"];    
     if ([[ZHAuthorizationManager shareInstance].userId length] >0){
         [dic setObject:[ZHAuthorizationManager shareInstance].userId forKey:@"userId"];
     }
@@ -63,13 +69,14 @@
     __weak __typeof(self) weakSelf = self;
     [HttpClient upLoadDataWithParamers:dic datas:imageDic success:^(id responseObject) {
         BaseModel* model = [BaseModel praserModelWithInfo:responseObject];
-        completeBlock([model.state boolValue]);
         if ([model.state boolValue]) {
-            weakSelf.userName = userName;
-            weakSelf.userAvatarImage = avatarImage;
+            weakSelf.userAvatar = [[responseObject objectForKey:@"userAvatarURL"] greenFutureURLStr];
             [weakSelf saveAvatarImage:avatarImage];
             [weakSelf saveUserName:userName];
+            //weakSelf.userName = userName;
+            //weakSelf.userAvatarImage = avatarImage;
         }
+        completeBlock([model.state boolValue]);
     } failure:^(NSError *error) {
         completeBlock(NO);
     } progress:^(NSUInteger bytesWritten, long long totalBytesWritten, long long totalBytesExpectedToWrite) {
@@ -101,13 +108,15 @@
             self.waitCommentCount     = [NSString stringWithFormat:@"%d",[[orderDict objectForKey:@"waitCommentCount"] integerValue]];
         }
     }
-    self.userAvatarImage = [self loadAvatarImage];
+    
+    //self.userAvatarImage = [self loadAvatarImage];
     self.userName = [self.userName length] > 0 ? self.userName : [self loadUserName];
-//    if ([self.userAvatar length]==0) {
-//        self.userAvatarImage = [self loadAvatarImage];
-//    } else {
-//       // self.userAvatarImage = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:self.userAvatar]]];
-//    }
+    if ([self.userAvatar length]==0) {
+        _userAvatarImage = [self loadAvatarImage];
+    } else {
+        self.userAvatar = [self.userAvatar greenFutureURLStr];
+       // self.userAvatarImage = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:self.userAvatar]]];
+    }
 }
 
 - (NSString *)avatarImagePath{
@@ -131,9 +140,12 @@
 
 -(void) saveAvatarImage:(UIImage*)image
 {
-	NSString* imagePath = self.avatarImagePath;
-    [[NSFileManager defaultManager] removeItemAtPath:imagePath error:nil];
-	[UIImagePNGRepresentation(image) writeToFile:imagePath atomically:YES];
+    if (image != self.userAvatarImage) {
+        self.userAvatarImage = image;
+        NSString* imagePath = self.avatarImagePath;
+        [[NSFileManager defaultManager] removeItemAtPath:imagePath error:nil];
+        [UIImagePNGRepresentation(image) writeToFile:imagePath atomically:YES];
+    }
 }
 
 -(NSString*)loadUserName{
@@ -142,8 +154,11 @@
 }
 
 -(void)saveUserName:(NSString*)userName{
-    [[NSUserDefaults standardUserDefaults] setObject:userName forKey:@"kUserName"];
-    [[NSUserDefaults standardUserDefaults] synchronize];
+    if (userName != self.userName) {
+        self.userName = userName;
+        [[NSUserDefaults standardUserDefaults] setObject:userName forKey:@"kUserName"];
+        [[NSUserDefaults standardUserDefaults] synchronize];
+    }
 }
 
 @end

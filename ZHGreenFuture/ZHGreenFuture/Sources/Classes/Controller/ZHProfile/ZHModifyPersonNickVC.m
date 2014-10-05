@@ -97,20 +97,16 @@
     if ([self.textField.text length] >0) {
         [self.textField resignFirstResponder];
         
-        [self showProgress];
-        __weak __typeof(self) weakSelf = self;
+        [FEToastView showWithTitle:@"正在上传..." animation:YES];
+        //__weak __typeof(self) weakSelf = self;
         [self.profileModel modifyProfileInfo:self.profileModel.userAvatarImage userName:self.textField.text progressBlock:^(float progress) {
-            self.progressView.progress = progress;
+            //weakSelf.progressView.progress = progress;
         } completionBlock:^(BOOL isSuccess) {
-            if (isSuccess) {
-                SHOW_MESSAGE(@"上传成功", 2);
-            } else {
-                SHOW_MESSAGE(@"上传失败", 2);
-            }
-            [weakSelf stopProgress];
+            [FEToastView dismissWithAnimation:YES];
+            NSString *message = isSuccess ? @"上传成功" : @"上传失败";
+            [FEToastView showWithTitle:message animation:YES interval:2.0];
         }];
     }
-    
 }
 
 

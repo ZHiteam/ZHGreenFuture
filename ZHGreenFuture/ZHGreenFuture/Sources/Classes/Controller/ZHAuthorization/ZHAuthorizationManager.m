@@ -102,6 +102,7 @@
             if (result) {
                 weakSelf.account  = account;
                 weakSelf.passWord = password;
+                weakSelf.userId   = [NSString stringWithFormat:@"%@",[responseObject objectForKey:@"userId"]];
                 [weakSelf setAccountInfo];
             }
             if (block) {
