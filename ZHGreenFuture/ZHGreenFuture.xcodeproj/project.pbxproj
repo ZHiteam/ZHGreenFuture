@@ -19,6 +19,7 @@
 		84260FE219CD8CF800216C78 /* ZHAuthorizationRegister3VC.m in Sources */ = {isa = PBXBuildFile; fileRef = 84260FE019CD8CF800216C78 /* ZHAuthorizationRegister3VC.m */; };
 		84260FE319CD8CF800216C78 /* ZHAuthorizationRegister3VC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84260FE119CD8CF800216C78 /* ZHAuthorizationRegister3VC.xib */; };
 		84260FE619CD8F5C00216C78 /* ZHNaviBackButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 84260FE519CD8F5C00216C78 /* ZHNaviBackButton.m */; };
+		84488DF319DFD81A00285609 /* FEStrikeThroughLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 84488DF119DFD81A00285609 /* FEStrikeThroughLabel.m */; };
 		845C76AF19D06E0900CB3F5E /* profile_setting@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 845C76AD19D06E0900CB3F5E /* profile_setting@2x.png */; };
 		845C76B019D06E0900CB3F5E /* profile_cart@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 845C76AE19D06E0900CB3F5E /* profile_cart@2x.png */; };
 		845C76B219D06FCA00CB3F5E /* profile_favorites@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 845C76B119D06FCA00CB3F5E /* profile_favorites@2x.png */; };
@@ -386,6 +387,8 @@
 		84260FE119CD8CF800216C78 /* ZHAuthorizationRegister3VC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ZHAuthorizationRegister3VC.xib; sourceTree = "<group>"; };
 		84260FE419CD8F5C00216C78 /* ZHNaviBackButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZHNaviBackButton.h; sourceTree = "<group>"; };
 		84260FE519CD8F5C00216C78 /* ZHNaviBackButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZHNaviBackButton.m; sourceTree = "<group>"; };
+		84488DF119DFD81A00285609 /* FEStrikeThroughLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FEStrikeThroughLabel.m; sourceTree = "<group>"; };
+		84488DF219DFD81A00285609 /* FEStrikeThroughLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FEStrikeThroughLabel.h; sourceTree = "<group>"; };
 		845C76AD19D06E0900CB3F5E /* profile_setting@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "profile_setting@2x.png"; sourceTree = "<group>"; };
 		845C76AE19D06E0900CB3F5E /* profile_cart@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "profile_cart@2x.png"; sourceTree = "<group>"; };
 		845C76B119D06FCA00CB3F5E /* profile_favorites@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "profile_favorites@2x.png"; sourceTree = "<group>"; };
@@ -1979,6 +1982,8 @@
 		9CB3671619D71A3500C45741 /* FECommonUI */ = {
 			isa = PBXGroup;
 			children = (
+				84488DF119DFD81A00285609 /* FEStrikeThroughLabel.m */,
+				84488DF219DFD81A00285609 /* FEStrikeThroughLabel.h */,
 				9CB3671719D71A3500C45741 /* FEMicroMsgPopoverView.h */,
 				9CB3671819D71A3500C45741 /* FEMicroMsgPopoverView.m */,
 				9CB3671919D71A3500C45741 /* FEScrollPageView.h */,
@@ -2428,6 +2433,7 @@
 				9C3862B219B1BDC600679C48 /* MessageCenter.m in Sources */,
 				84260FDD19CD844400216C78 /* ZHAuthorizationRegister2VC.m in Sources */,
 				84927EBA19D6F45400805E22 /* ZHMyProductCell.m in Sources */,
+				84488DF319DFD81A00285609 /* FEStrikeThroughLabel.m in Sources */,
 				9CB3675919D71A3600C45741 /* CAKeyframeAnimation+FEEasing.m in Sources */,
 				8468C65C19C3EC4D00B80868 /* ZHWebVC.m in Sources */,
 				9CB3674B19D71A3600C45741 /* UIScreen+FEFrame.m in Sources */,

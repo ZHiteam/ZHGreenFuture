@@ -47,8 +47,9 @@
     __weak __typeof(self) weakSelf = self;
     [self.tableView addInfiniteScrollingWithActionHandler:^{
         if (!weakSelf.homePageModel.isHaveMore) {
-            [weakSelf.tableView.infiniteScrollingView stopAnimating];
+            //weakSelf.tableView.infiniteScrollingView.state = SVInfiniteScrollingStateStopped;
             [FEToastView showWithTitle:@"没有更多了。" animation:YES interval:1.0];
+            [weakSelf.tableView.infiniteScrollingView stopAnimating];
         } else {
             [weakSelf.homePageModel loadMoreWithCompletion:^(BOOL isSuccess) {
                 if (isSuccess) {
@@ -69,7 +70,7 @@
 #pragma mark - Getter & Setter
 - (UITableView *)tableView{
     if (_tableView == nil) {
-        _tableView = [[UITableView alloc] initWithFrame:self.contentBounds];
+        _tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, self.contentBounds.origin.y, self.contentBounds.size.width, self.contentBounds.size.height + 56)];
         //_tableView.clipsToBounds = NO;
         _tableView.delegate = self;
         _tableView.dataSource = self;

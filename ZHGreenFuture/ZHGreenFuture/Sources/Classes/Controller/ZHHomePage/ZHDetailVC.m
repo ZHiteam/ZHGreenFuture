@@ -17,6 +17,7 @@
 #import "ZHDetailProductCell.h"
 #import "ZHDetailProductHeadView.h"
 
+
 @interface ZHDetailVC ()<UITableViewDelegate, UITableViewDataSource>
 @property(nonatomic, strong)UIColor             *backColor;
 @property(nonatomic, strong)UITableView         *tableView;
@@ -191,13 +192,19 @@
 }
 
 - (void)addCartButtonPressed:(id)sender{
-    //TODO: add cart
-    NSLog(@">>>>>%@",NSStringFromSelector(_cmd));
+    NSString *productId = [self.detailModel.productId length] > 0 ? self.detailModel.productId : @" ";
+    [[MessageCenter instance]performActionWithUserInfo:@{@"controller": @"ZHShoppingChartVC",@"userinfo" : productId}];
 }
 
 #pragma mark - UITableViewDataSource
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
-    return 4;
+    if ([self.detailModel.recommendRecipeList count] >0) {
+        if ([self.detailModel.otherBuyList count] >0) {
+            return 4;
+        }
+        return 3;
+    }
+    return 2;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{

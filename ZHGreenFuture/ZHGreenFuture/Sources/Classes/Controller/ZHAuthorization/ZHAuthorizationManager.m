@@ -10,6 +10,7 @@
 
 #define kAccountInfo					@"kAccountInfo"
 #define kPassWordInfo					@"kPassWordInfo"
+#define kUserIdInfo                     @"kUserIdInfo"
 #define koldAccountInfo					@"koldAccountInfo"
 #define kisHaveRegisterAccount			@"kIsHaveRegisterAccount"
 
@@ -36,6 +37,7 @@
 		NSUserDefaults* userDefault = [NSUserDefaults standardUserDefaults];
 		self.account  = [userDefault objectForKey:kAccountInfo];
 		self.passWord = [userDefault objectForKey:kPassWordInfo];
+        self.userId   = [userDefault objectForKey:kUserIdInfo];
 	}
 	return self;
 }
@@ -44,6 +46,7 @@
 {
 	self.account  = nil;
 	self.passWord = nil;
+    self.userId   = nil;
 }
 
 #pragma mark - Public Methods
@@ -68,6 +71,7 @@
     }
 
 }
+
 
 - (void)postValidateCode:(NSString*)validateCode account:(NSString*)account completionBlock:(ZHAuthCompletionBlock)block{
     if ([account length] >0 && [validateCode length] >0) {
@@ -151,6 +155,7 @@
 	[userDefault setBool:YES			 forKey:kisHaveRegisterAccount];
 	[userDefault setObject:self.account  forKey:kAccountInfo];
 	[userDefault setObject:self.passWord forKey:kPassWordInfo];
+    [userDefault setObject:self.userId   forKey:kUserIdInfo];
 	[userDefault synchronize];
 }
 
@@ -160,6 +165,7 @@
 	[userDefault setBool:NO			 forKey:kisHaveRegisterAccount];
 	[userDefault removeObjectForKey:kAccountInfo];
 	[userDefault removeObjectForKey:kPassWordInfo];
+    [userDefault removeObjectForKey:kUserIdInfo];
 	[userDefault synchronize];
 }
 

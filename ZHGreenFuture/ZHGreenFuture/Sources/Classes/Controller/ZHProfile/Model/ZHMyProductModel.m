@@ -14,11 +14,12 @@
     self = [super init];
     if (self) {
         if ([dict isKindOfClass:[NSDictionary class]]) {
-            self.workId         = [dict objectForKey:@"workId"];
+            self.workId         = [NSString stringWithFormat:@"%@",[dict objectForKey:@"workId"]];
             self.publishDate    = [dict objectForKey:@"publishDate"];
             self.workImageURL   = [dict objectForKey:@"workImageURL"];
             self.followName     = [dict objectForKey:@"followName"];
             self.content        = [dict objectForKey:@"content"];
+            self.workImageURL = [self.workImageURL greenFutureURLStr];
         }
     }
     return self;
@@ -44,8 +45,8 @@
         userId = [userId length] == 0 ? @"" : userId;
 
         [HttpClient requestDataWithParamers:@{@"scene": @"30",@"userId": userId} success:^(id responseObject) {
-            if ([responseObject isKindOfClass:[NSDictionary class]]) {
-                [weakSelf parserJsonDict:responseObject];
+            if ([responseObject isKindOfClass:[NSArray class]]) {
+                [weakSelf parserJsonArray:responseObject];
             }
             if (block) {
                 block(YES);
@@ -94,10 +95,10 @@
 }
 
 
-- (void)parserJsonDict:(NSDictionary*)jsonDict{
-    if ([jsonDict isKindOfClass:[NSArray class]]) {
+- (void)parserJsonArray:(NSArray*)jsonArray{
+    if ([jsonArray isKindOfClass:[NSArray class]]) {
         NSMutableArray *dstArray = [NSMutableArray arrayWithCapacity:10];
-        for (NSDictionary *orderItem in jsonDict) {
+        for (NSDictionary *orderItem in jsonArray) {
             ZHMyProductItem * obj = [[ZHMyProductItem alloc] initWithDictionary:orderItem];
             [dstArray addObject:obj];
         }

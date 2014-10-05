@@ -84,6 +84,7 @@
 - (IBAction)commitButtonPressed:(id)sender {
     NSString *pass1 = self.passwordTextField.text;
     NSString *pass2 = self.password2TextField.text;
+    
     if ([pass1 length] >0 && [pass1 isEqualToString:pass2]) {
         [[ZHAuthorizationManager shareInstance] registerWithAccount:self.account password:pass1 completionBlock:^(BOOL isSuccess, id info) {
             if (!isSuccess) {
@@ -94,6 +95,10 @@
                 [ZHAuthorizationVC shareInstance].isRunning = NO;
             }
         }];
+    }else {
+        {
+            ZHALERTVIEW(nil,@"两次密码不一致，请重新输入。",nil, @"确定" ,nil,nil);
+        }
     }
 }
 @end

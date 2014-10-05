@@ -46,7 +46,7 @@
 }
 
 + (CGFloat)height{
-    return 640.0f;
+    return 960.0f;
 }
 
 - (void)setSegmentControlClickedBlock:(ZHSegmentControlClickedBlock)segmentClickedBlock{
