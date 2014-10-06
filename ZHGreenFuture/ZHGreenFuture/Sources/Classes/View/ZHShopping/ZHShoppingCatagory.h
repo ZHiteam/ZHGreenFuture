@@ -10,4 +10,5 @@
 
 @interface ZHShoppingCatagory : UITableView
 
+-(void)loadRequest;
 @end

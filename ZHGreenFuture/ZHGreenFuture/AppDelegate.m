@@ -15,7 +15,6 @@
 #import <TencentOpenAPI/QQApiInterface.h>
 #import <TencentOpenAPI/TencentOAuth.h>
 
-
 @implementation AppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
@@ -157,4 +156,13 @@
 //                            redirectUri:@"http://sharesdk.cn"];
 }
 
+//独立客户端回调函数
+- (BOOL)application:(UIApplication *)application handleOpenURL:(NSURL *)url {
+    
+    /// 支付宝回掉
+    if ([url.scheme.lowercaseString isEqualToString:@"gf4alipay"]){
+        [[NSNotificationCenter defaultCenter]postNotificationName:NOTIFY_ALI_PAY_BACK object:url];
+    }
+    return YES;
+}
 @end

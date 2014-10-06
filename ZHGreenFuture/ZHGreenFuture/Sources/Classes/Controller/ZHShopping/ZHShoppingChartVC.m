@@ -474,11 +474,6 @@
         NSDictionary* info = @{@"userId":[ZHAuthorizationManager shareInstance].userId,@"shoppingCartIdList":list,@"scene":@"15"};
         [HttpClient postDataWithParamers:info success:^(id responseObject) {
             
-//            NSDictionary* userInfo = @{@"controller":@"ZHConfirmOrderVC",
-//                                       @"userinfo":selectedList
-//                                       };
-//            
-//            [[MessageCenter instance] performActionWithUserInfo:userInfo];
             ConfirmOrderModel* model = [ConfirmOrderModel praserModelWithInfo:responseObject];
             if (model){
             NSDictionary* userInfo = @{@"controller":@"ZHConfirmOrderVC",

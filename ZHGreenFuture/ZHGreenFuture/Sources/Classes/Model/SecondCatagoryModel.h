@@ -8,15 +8,21 @@
 
 #import "BaseModel.h"
 #import "ZHProductItem.h"
+#import "PageingDelegate.h"
 
-@interface SecondCatagoryModel : BaseModel
+@protocol CategoryPageingDelegate <PageingDelegate>
+-(NSString*)categoryIdentify;
+@end
+
+@interface SecondCatagoryModel : BaseModel<CategoryPageingDelegate>
 
 @property (nonatomic,strong) NSString*  title;
 @property (nonatomic,strong) NSString*  imageUrl;
 @property (nonatomic,strong) NSString*  descript;
 @property (nonatomic,strong) NSString*  categoryId;
 
-@property (nonatomic,assign) BOOL       lastPage;
+@property (nonatomic,strong) NSMutableArray*   dataItems;
 
-@property (nonatomic,strong) NSArray*   productList;
+@property (nonatomic,assign) BOOL       lastPage;
+@property (nonatomic,assign) NSInteger  page;
 @end

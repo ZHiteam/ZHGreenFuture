@@ -32,6 +32,9 @@
     [self loadContent];
 }
 
+-(void)viewWillAppear:(BOOL)animated{
+    [self.catagory loadRequest];
+}
 
 -(void)loadContent{
     

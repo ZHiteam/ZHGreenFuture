@@ -18,12 +18,17 @@
     }
     
     NSDictionary* dic = (NSDictionary*)info;
+    
+    model.page = 0;
+    model.lastPage = NO;
+    
     model.title = dic[@"name"];
     if (isEmptyString(model.title)){
         model.title = dic[@"title"];
     }
     
     model.categoryId = [NSString stringWithFormat:@"%d",[dic[@"categoryId"]intValue]];
+    
     model.descript = dic[@"description"];
     if (isEmptyString(model.descript)){
         model.descript = dic[@"subTitle"];
@@ -45,11 +50,52 @@
                 }
             }
         }
-        
-        model.productList = [array mutableCopy];
+        [model setData:array];
     }
     
     return model;
 }
 
+#pragma -mark CategoryPageingDelegate
+-(BOOL)isLastPage{
+    return self.lastPage;
+}
+
+-(NSInteger)currentPage{
+    return self.page;
+}
+
+-(void)setCurrentPage:(NSInteger)page{
+    self.page = page;
+}
+
+-(void)setLastPage:(BOOL)bLastPage{
+    _lastPage = bLastPage;
+}
+
+-(void)appendData:(NSArray*)data{
+    if (!self.dataItems){
+        [self setData:data];
+    }
+    else{
+        [self.dataItems addObjectsFromArray:data];
+    }
+}
+
+-(void)setData:(NSArray*)data{
+    if (!data){
+        self.dataItems = nil;
+    }
+    else{
+        self.dataItems = [NSMutableArray arrayWithArray:data];
+    }
+}
+
+-(NSArray *)datas{
+    return self.dataItems;
+}
+
+-(NSString *)categoryIdentify{
+    return self.categoryId;
+}
 @end

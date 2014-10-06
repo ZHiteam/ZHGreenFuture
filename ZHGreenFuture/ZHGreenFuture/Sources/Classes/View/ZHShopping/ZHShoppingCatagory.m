@@ -29,7 +29,6 @@
         self.separatorStyle = UITableViewCellSeparatorStyleNone;
         
         self.showsVerticalScrollIndicator = NO;
-        [self loadRequest];
     }
     return self;
 }

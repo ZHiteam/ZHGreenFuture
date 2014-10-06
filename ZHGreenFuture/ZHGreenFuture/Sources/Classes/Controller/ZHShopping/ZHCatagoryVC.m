@@ -18,7 +18,7 @@
 
 @property (nonatomic,strong) ZHSwipSegment*     catagoryList;
 
-@property (nonatomic,strong) NSArray*   productList;
+@property (nonatomic,strong) NSMutableArray*   productList;
 //@property (nonatomic,strong) NSTimer*   resumeTimer;
 @property (nonatomic,assign) BOOL       needResume;
 @property (nonatomic,assign) BOOL       resumeDelay;
@@ -30,8 +30,6 @@
 @property (nonatomic,assign) CGFloat    direct;
 
 @property (nonatomic,assign) NSTimeInterval     lastTimeInterval;
-
-
 @end
 
 @implementation ZHCatagoryVC
@@ -41,6 +39,9 @@
     [super viewDidLoad];
     
     [self loadContent];
+}
+
+-(void)viewWillAppear:(BOOL)animated{
     [self loadRequest];
 }
 
@@ -86,7 +87,7 @@
         _contentTableView.delegate = self;
         _contentTableView.clipsToBounds = NO;
         _contentTableView.pagingEnabled = NO;
-        
+        _contentTableView.separatorStyle = UITableViewCellSeparatorStyleNone;
         _contentTableView.showsVerticalScrollIndicator = NO;
         
     }
@@ -95,25 +96,31 @@
 
 -(ZHSwipSegment *)catagoryList{
     if (!_catagoryList){
-        
-        NSMutableArray* items = [[NSMutableArray alloc]initWithCapacity:self.model.productList.count];
-        [items addObject:@"全部"];
-        for (SecondCatagoryModel* sc in self.model.productList){
-            if (!isEmptyString(sc.title)){
-                [items addObject:sc.title];
-            }
-        }
-        
-        _catagoryList = [[ZHSwipSegment alloc]initWithFrame:CGRectMake(0, self.contentView.top, self.view.width, 40) segments:items];
+        _catagoryList = [[ZHSwipSegment alloc]initWithFrame:CGRectMake(0, self.contentView.top, self.view.width, 40)];
         _catagoryList.segmentDelegate = self;
         
         [_catagoryList touchEndedBlock:^(NSSet *touches, UIEvent *event) {
             self.resumeDelay = YES;
             ZHLOG(@"resume delay");
         }];
+        
+        [self reloadCatagoryList];
     }
     
+    
     return _catagoryList;
+}
+
+-(void)reloadCatagoryList{
+    NSMutableArray* items = [[NSMutableArray alloc]initWithCapacity:self.model.productList.count];
+    [items addObject:@"全部"];
+    for (SecondCatagoryModel* sc in self.model.productList){
+        if (!isEmptyString(sc.title)){
+            [items addObject:sc.title];
+        }
+    }
+    [_catagoryList loadContentWithItems:items];
+    
 }
 
 -(ZHSegmentView *)segmentView{
@@ -139,29 +146,108 @@
 }
 
 -(void)loadRequest{
-    [HttpClient requestDataWithParamers:nil success:^(id responseObject) {
-        
+    /// 请求分类信息
+    NSMutableDictionary* dic = [[NSMutableDictionary alloc]initWithDictionary:@{@"scene":@"3"}];
+    if (!isEmptyString(self.model.categoryId)){
+        [dic setValue:self.model.categoryId forKey:@"categoryId"];
+    }
+    [HttpClient requestDataWithParamers:dic success:^(id responseObject) {
+        if ([responseObject isKindOfClass:[NSDictionary class]]){
+            [self praserCatagoryWithInfo:responseObject];
+            
+            [self reloadCatagoryList];
+            [self requestSubCatagoryDataWithIndex:self.catagoryList.selectedIndex];
+        }
     } failure:^(NSError *error) {
         
     }];
-    
-#warning test data
-    NSMutableArray* array = [[NSMutableArray alloc]initWithCapacity:10];
-    for(int i = 0 ;i < 10; ++i){
-        //4.product
-        ZHProductItem *productItem = [[ZHProductItem alloc] init];
-        productItem.title = @"东北特产全胚芽燕麦850g";
-        productItem.subTitle = @"它的营养价值很高，其脂肪含量是大米的4倍";
-        productItem.price = @"288.81";
-        productItem.buyCount = @"435";
-        [array addObject:productItem];
-    }
-    self.productList = [array mutableCopy];
-    
-    [self.contentTableView reloadData];
-    [self resumeNormal];
 }
 
+-(void)praserCatagoryWithInfo:(NSDictionary*)info{
+    if (![info[@"categoryNameList"] isKindOfClass:[NSArray class]]){
+        return;
+    }
+    
+    NSArray* array = info[@"categoryNameList"];
+    NSMutableArray* list = [[NSMutableArray alloc]initWithCapacity:array.count];
+    for (NSDictionary* item in array){
+        if (![item isKindOfClass:[NSDictionary class]]){
+            continue;
+        }
+        SecondCatagoryModel* model = [SecondCatagoryModel praserModelWithInfo:item];
+        [list addObject:model];
+    }
+    self.model.productList = list;
+}
+
+-(void)requestSubCatagoryDataWithIndex:(NSInteger)index{
+    id<CategoryPageingDelegate> pageingItem = nil;
+    if (0 == index){
+        pageingItem = self.model;
+    }
+    else if ((index-1) < self.model.productList.count){
+        pageingItem = self.model.productList[index-1];
+    }
+    
+    if (!pageingItem){
+        return;
+    }
+    
+    [pageingItem setLastPage:NO];
+    [pageingItem setCurrentPage:0];
+
+    self.productList = [[NSMutableArray alloc]initWithCapacity:10];
+
+    [self loadPageWithPageingItem:pageingItem];
+}
+
+-(void)loadPageWithPageingItem:(id<CategoryPageingDelegate>)pageingItem{
+    
+    if ([pageingItem isLastPage]){
+        return;
+    }
+    
+    NSString* gotoPage = [NSString stringWithFormat:@"%d",[pageingItem currentPage]];
+    NSString* categoryId = isEmptyString([pageingItem categoryIdentify])?@"":[pageingItem categoryIdentify];
+    
+    NSDictionary* info = @{@"scene":@"34",@"gotoPage":gotoPage,@"catagoryId":categoryId};
+    
+    [HttpClient requestDataWithParamers:info success:^(id responseObject) {
+        
+        [pageingItem setCurrentPage:[pageingItem currentPage]+1];
+        
+        if ([responseObject isKindOfClass:[NSDictionary class]]){
+            NSDictionary* dic = (NSDictionary*)responseObject;
+            if (dic[@"lastPage"]){
+                [pageingItem setLastPage:[dic[@"lastPage"]boolValue]];
+            }
+            else{
+                [pageingItem setLastPage:YES];
+            }
+            
+            if ([dic[@"freshList"] isKindOfClass:[NSArray class]] ){
+                NSArray* datas = (NSArray*)dic[@"freshList"];
+                for (NSDictionary* info in datas) {
+                    if ([info isKindOfClass:[NSDictionary class]]){
+                        ZHProductItem* item = [ZHProductItem praserModelWithInfo:info];
+                        [self.productList addObject:item];
+                    }
+                }
+
+                [self.contentTableView reloadData];
+                [self resumeNormal];
+            }
+        }
+        
+    } failure:^(NSError *error) {
+        SHOW_MESSAGE(@"数据异常", 2);
+        self.productList = nil;
+        
+        [self.contentTableView reloadData];
+        [self resumeNormal];
+
+    }];
+}
 #pragma -mark UITableViewDataSource,UITableViewDelegate
 -(UITableViewCell*)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     
@@ -321,7 +407,7 @@
         [self resumeNormal];
     }
 
-    
+    [self requestSubCatagoryDataWithIndex:index];
     ZHLOG(@"segment:%@ Index :%d",[segment class],index);
 }
 

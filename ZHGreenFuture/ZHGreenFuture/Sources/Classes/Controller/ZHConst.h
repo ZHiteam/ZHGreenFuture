@@ -27,6 +27,10 @@ typedef void(^ZHProgressBlock)(float progress);
 
 #define SHOW_MESSAGE(msg,dur)         DoAlertView* alert = [[DoAlertView alloc]init];[alert doAlert:@"" body:msg duration:dur done:^(DoAlertView *alertView) {}];
 
+/// notify const start
+#define NOTIFY_ALI_PAY_BACK     @"notify_alipay_back"
+#define NOTIFY_TRADE_SUCCESS    @"notify_trade_success"
+
 #define ZHSTATUS_BAR_CHANGE @"zh_status_bar_change"
 
 #define SHARE_APPKEY                    @"3028b230599a"

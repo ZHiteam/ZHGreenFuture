@@ -30,7 +30,7 @@
 
     #import <SVPullToRefresh/SVPullToRefresh.h>
 
-
+    #import "CatagoryModel.h"
     #import "Constant.h"
     #import "Config.h"
     #import "MemoryStorage.h"

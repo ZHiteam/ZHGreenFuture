@@ -27,7 +27,7 @@
 			<string>Editor</string>
 			<key>CFBundleURLSchemes</key>
 			<array>
-				<string>greenFuture</string>
+				<string>gf4alipay</string>
 			</array>
 		</dict>
 	</array>

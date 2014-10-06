@@ -7,6 +7,11 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "DataSigner.h"
+#import "AlixPayResult.h"
+#import "DataVerifier.h"
+#import "AlixPayOrder.h"
+#import "AlixLibService.h"
 
 //合作身份者id，以2088开头的16位纯数字
 #define PartnerID @"2088611330484194"

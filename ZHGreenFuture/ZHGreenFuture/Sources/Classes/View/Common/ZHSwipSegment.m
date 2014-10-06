@@ -28,6 +28,7 @@
 }
 
 -(void)loadContentWithItems:(NSArray*)items{
+
     self.backgroundColor = [UIColor clearColor];
     
     if (items.count == 0){
@@ -52,7 +53,7 @@
     
     self.contentSize = CGSizeMake(SEGMENT_ITEM_WIDTH*items.count, self.height);
     self.showsHorizontalScrollIndicator = NO;
-    
+    self.selectedIndex = 0;
     [self addSubview:self.selectedSign];
 }
 

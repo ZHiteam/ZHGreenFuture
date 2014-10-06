@@ -784,6 +784,7 @@
 		9CA4D6D319E13CCC00B3E4BD /* PayHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PayHelper.m; sourceTree = "<group>"; };
 		9CA4D6D619E13DEB00B3E4BD /* ZHAliPayHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZHAliPayHelper.h; sourceTree = "<group>"; };
 		9CA4D6D719E13DEB00B3E4BD /* ZHAliPayHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZHAliPayHelper.m; sourceTree = "<group>"; };
+		9CA4D6D919E2434400B3E4BD /* PageingDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PageingDelegate.h; sourceTree = "<group>"; };
 		9CB366ED19D71A3500C45741 /* NSArray+FEExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSArray+FEExtension.h"; sourceTree = "<group>"; };
 		9CB366EE19D71A3500C45741 /* NSArray+FEExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSArray+FEExtension.m"; sourceTree = "<group>"; };
 		9CB366EF19D71A3500C45741 /* NSDate+FEExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+FEExtension.h"; sourceTree = "<group>"; };
@@ -1699,6 +1700,7 @@
 				9C3862CB19B2CEFD00679C48 /* SecondCatagoryModel.m */,
 				9C89837119B47C58009CB910 /* ZHProductItem.h */,
 				9C89837219B47C58009CB910 /* ZHProductItem.m */,
+				9CA4D6D919E2434400B3E4BD /* PageingDelegate.h */,
 			);
 			name = Catagory;
 			sourceTree = "<group>";

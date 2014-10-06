@@ -26,6 +26,7 @@
 @property (nonatomic,strong) UIButton*                      checkOut;
 @property (nonatomic,strong) UILabel*                       total;
 @property (nonatomic,strong) ZHInsetTextField*              note;
+@property (nonatomic,strong) NSString*                      orderId;
 @end
 
 @implementation ZHConfirmOrderVC
@@ -33,7 +34,12 @@
 - (void)viewDidLoad {
     
     [super viewDidLoad];
+    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(notifyAction:) name:NOTIFY_TRADE_SUCCESS object:nil];
     [self loadContent];
+}
+
+-(void)dealloc{
+    [[NSNotificationCenter defaultCenter]removeObserver:self];
 }
 
 -(void)viewWillAppear:(BOOL)animated{
@@ -434,14 +440,21 @@
             if (responseObject[@"orderId"]){
                 NSString* orderId = [NSString stringWithFormat:@"%d",[responseObject[@"orderId"]intValue]];
                 ZHLOG(@"order id :%@",responseObject[@"orderId"]);
+                self.orderId = orderId;
                 
-                if ([self.orderModel.totalPrice floatValue] > 0.01){
+#warning 测试支付0.01元
                     [PayHelper aliPayWithTitle:@"放心粮支付"
                                    productInfo:@"放心粮订单"
-                                    totalPrice:self.orderModel.totalPrice
+                                    totalPrice:@"0.01"
                                        orderId:orderId];
-                    
-                }
+
+//                if ([self.orderModel.totalPrice floatValue] > 0.01 ){
+//                    [PayHelper aliPayWithTitle:@"放心粮支付"
+//                                   productInfo:@"放心粮订单"
+//                                    totalPrice:self.orderModel.totalPrice
+//                                       orderId:orderId];
+//                    
+//                }
             }
             else{
                 SHOW_MESSAGE(@"订单生成失败", 2);
@@ -473,5 +486,24 @@
     if ([address.receiveId isEqualToString:self.addressModel.receiveId]){
         self.addressModel = [ZHAddressManager instance].defaultAddress;
     }
+}
+
+-(void)notifyAction:(NSNotification*)notify{
+    /// 交易成功
+    if (isEmptyString(self.orderId)){
+        return;
+    }
+    NSDictionary* info = @{@"userId":[ZHAuthorizationManager shareInstance].userId,
+                           @"orderId":self.orderId,
+                           @"operation":@"2",
+                           @"scene":@"22"};
+    [HttpClient postDataWithParamers:info success:^(id responseObject) {
+        BaseModel* model = [BaseModel praserModelWithInfo:responseObject];
+        if ([model.state boolValue]){
+            SHOW_MESSAGE(@"支付成功", 2);
+        }
+    } failure:^(NSError *error) {
+        
+    }];
 }
 @end

@@ -141,7 +141,7 @@
         
         self.model = (SecondCatagoryModel*)[SecondCatagoryModel praserModelWithInfo:responseObject];
         
-        self.productList = self.model.productList;
+        self.productList = self.model.dataItems;
 
         [self.bannerView setImageWithUrlString:self.model.imageUrl placeHodlerImage:nil];
         [self.contentView reloadData];
