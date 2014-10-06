@@ -28,8 +28,8 @@
 	return (long long)round(secondsSince1970);
 }
 
-
-+ (NSString*)dateWithDateFormatStyle:(CFDateFormatterStyle)dateFormatStyle
+/// modify by kongkong
++ (NSString*)dateWithDateFormatStyle:(NSDateFormatterStyle)dateFormatStyle
 {
     NSDate* now = [NSDate date];
      NSDateFormatter* fmt = [[NSDateFormatter alloc] init];

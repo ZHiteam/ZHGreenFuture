@@ -435,26 +435,26 @@
     NSDictionary* info = @{@"shoppingCartIdList":list,@"userId":[ZHAuthorizationManager shareInstance].userId,@"receiveId":self.addressModel.receiveId,@"scene":@"33",@"comment":comment};
     
     [HttpClient postDataWithParamers:info success:^(id responseObject) {
-#warning 服务端没有传 result字段，异常处理
+//#warning 服务端没有传 result字段，异常处理
         if ([responseObject isKindOfClass:[NSDictionary class]]){
             if (responseObject[@"orderId"]){
                 NSString* orderId = [NSString stringWithFormat:@"%d",[responseObject[@"orderId"]intValue]];
                 ZHLOG(@"order id :%@",responseObject[@"orderId"]);
                 self.orderId = orderId;
-                
-#warning 测试支付0.01元
-                    [PayHelper aliPayWithTitle:@"放心粮支付"
-                                   productInfo:@"放心粮订单"
-                                    totalPrice:@"0.01"
-                                       orderId:orderId];
-
-//                if ([self.orderModel.totalPrice floatValue] > 0.01 ){
+//                
+//#warning 测试支付0.01元
 //                    [PayHelper aliPayWithTitle:@"放心粮支付"
 //                                   productInfo:@"放心粮订单"
-//                                    totalPrice:self.orderModel.totalPrice
+//                                    totalPrice:@"0.01"
 //                                       orderId:orderId];
-//                    
-//                }
+
+                if ([self.orderModel.totalPrice floatValue] > 0.01 ){
+                    [PayHelper aliPayWithTitle:@"放心粮支付"
+                                   productInfo:@"放心粮订单"
+                                    totalPrice:self.orderModel.totalPrice
+                                       orderId:orderId];
+                    
+                }
             }
             else{
                 SHOW_MESSAGE(@"订单生成失败", 2);

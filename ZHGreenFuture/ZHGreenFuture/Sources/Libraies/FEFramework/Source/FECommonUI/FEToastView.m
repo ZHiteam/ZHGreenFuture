@@ -35,7 +35,8 @@ static const CGFloat kLeftMargin   = 2.0;
 static const CGFloat kTopMargin    = 16.0;
 static const CGFloat kBottomMargin = 15.0;
 static const CGFloat kRowMargin	   = 5.0;
-static const CGFloat kColumnMargin = 10.0;
+/// modify by kongkong
+//static const CGFloat kColumnMargin = 10.0;
 
 static const CGFloat width_ = 100.0;
 
@@ -88,7 +89,8 @@ static const CGFloat width_ = 100.0;
 	[toastView layout];
 	
 	toastView.alpha = 0.0f;
-	UIWindow* keyWindow = [[UIApplication sharedApplication] keyWindow];
+    /// modify by kongkong
+	UIView* keyWindow = [[UIApplication sharedApplication] keyWindow];
     keyWindow = keyWindow == nil ? [[[[UIApplication sharedApplication] delegate] window] rootViewController].view : keyWindow;
 	[keyWindow addSubview:toastView];
 	if (animation) {
@@ -119,7 +121,8 @@ static const CGFloat width_ = 100.0;
 	[toastView layout];
 	
 	toastView.alpha = 0.0f;
-	UIWindow* keyWindow = [[UIApplication sharedApplication] keyWindow];
+    
+	UIView* keyWindow = [[UIApplication sharedApplication] keyWindow];
     keyWindow = keyWindow == nil ? [[[[UIApplication sharedApplication] delegate] window] rootViewController].view : keyWindow;
 	[keyWindow addSubview:toastView];
 	if (animation) {
@@ -167,9 +170,9 @@ static const CGFloat width_ = 100.0;
 		titleLabel_  = [[UILabel alloc] initWithFrame:CGRectZero];
 		titleLabel_.textColor = [UIColor whiteColor];
 		titleLabel_.font = [UIFont systemFontOfSize:14];
-		titleLabel_.textAlignment = UITextAlignmentCenter;
+		titleLabel_.textAlignment = NSTextAlignmentCenter;
 		titleLabel_.backgroundColor = [UIColor clearColor];
-		titleLabel_.lineBreakMode = UILineBreakModeWordWrap;
+		titleLabel_.lineBreakMode = NSLineBreakByWordWrapping;
 		titleLabel_.numberOfLines = 0; 
 		[backGroundView_ addSubview:titleLabel_];
 	}
@@ -191,7 +194,7 @@ static const CGFloat width_ = 100.0;
 - (CGSize)titleLabelSize
 {
 	CGFloat wid = width_-2*kLeftMargin ;
-	CGSize size = [titleLabel_.text sizeWithFont:titleLabel_.font constrainedToSize:CGSizeMake(wid, 100) lineBreakMode:UILineBreakModeWordWrap];
+	CGSize size = [titleLabel_.text sizeWithFont:titleLabel_.font constrainedToSize:CGSizeMake(wid, 100) lineBreakMode:NSLineBreakByWordWrapping];
 	return size;
 }
 

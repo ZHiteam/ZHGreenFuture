@@ -40,10 +40,10 @@
         originY = rect.size.height/2;
     }
     
-    
-    if ([self textAlignment] == UITextAlignmentRight) {
+    /// modify by kongkong
+    if ([self textAlignment] == NSTextAlignmentRight) {
         lineRect = CGRectMake(rect.size.width - strikeWidth, originY, strikeWidth, 1);
-    } else if ([self textAlignment] == UITextAlignmentCenter) {
+    } else if ([self textAlignment] == NSTextAlignmentCenter) {
         lineRect = CGRectMake(rect.size.width/2 - strikeWidth/2, originY, strikeWidth, 1);
     } else {
         lineRect = CGRectMake(0, originY, strikeWidth, 1);

@@ -26,7 +26,9 @@
 //kCFDateFormatterMediumStyle = 2,   // 2013年10月9日 下午3:57:48
 //kCFDateFormatterLongStyle = 3,     // 2013年10月9日 GMT+8下午3:57:51
 //kCFDateFormatterFullStyle = 4      // 2013年10月9日 星期三 中国标准时间下午3:59:42
-+ (NSString*)dateWithDateFormatStyle:(CFDateFormatterStyle)dateFormatStyle;
+
+/// modify by kongkong
++ (NSString*)dateWithDateFormatStyle:(NSDateFormatterStyle)dateFormatStyle;
 
 //@"yyyy-MM-dd a HH:mm:ss EEEE";
 + (NSString*)dateWithCustomFormat;

@@ -33,7 +33,7 @@
     order.partner = PartnerID;
     order.seller = SellerID;
     
-    order.tradeNO               = [self generateTradeNO]; //订单ID（由商家自行制定）
+    order.tradeNO               = orderId;/// [self generateTradeNO]; //订单ID（由商家自行制定）
     order.productName           = productTitle; //商品标题
     order.productDescription    = info; /// 商品描述
     order.amount                = totalPrice;

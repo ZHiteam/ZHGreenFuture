@@ -182,8 +182,11 @@
 
 -(void)requestSubCatagoryDataWithIndex:(NSInteger)index{
     id<CategoryPageingDelegate> pageingItem = nil;
+    NSString* sceneId = @"2";
+    
     if (0 == index){
         pageingItem = self.model;
+        sceneId = @"34";
     }
     else if ((index-1) < self.model.productList.count){
         pageingItem = self.model.productList[index-1];
@@ -198,10 +201,10 @@
 
     self.productList = [[NSMutableArray alloc]initWithCapacity:10];
 
-    [self loadPageWithPageingItem:pageingItem];
+    [self loadPageWithPageingItem:pageingItem sceneId:sceneId];
 }
 
--(void)loadPageWithPageingItem:(id<CategoryPageingDelegate>)pageingItem{
+-(void)loadPageWithPageingItem:(id<CategoryPageingDelegate>)pageingItem sceneId:(NSString*)sceneId{
     
     if ([pageingItem isLastPage]){
         return;
@@ -210,7 +213,7 @@
     NSString* gotoPage = [NSString stringWithFormat:@"%d",[pageingItem currentPage]];
     NSString* categoryId = isEmptyString([pageingItem categoryIdentify])?@"":[pageingItem categoryIdentify];
     
-    NSDictionary* info = @{@"scene":@"34",@"gotoPage":gotoPage,@"catagoryId":categoryId};
+    NSDictionary* info = @{@"scene":sceneId,@"gotoPage":gotoPage,@"catagoryId":categoryId};
     
     [HttpClient requestDataWithParamers:info success:^(id responseObject) {
         
@@ -261,7 +264,6 @@
     [cell.imageURL setImageWithURL:[NSURL URLWithString:item.imageURL] placeholderImage:[UIImage imageNamed:@"productPlaceholder"]];
     cell.title.text = item.title;
     cell.subTitle.text = item.subTitle;
-    ///435人已买
     cell.priceTitle.text = item.price;
     cell.buyCount.text = [item.buyCount length] >0 ? [NSString stringWithFormat:@"/%@人已买",item.buyCount] :@"1人已买";
     [cell updateBuyCountLabelPositon];

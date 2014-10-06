@@ -43,7 +43,8 @@
     imageFrame.origin.y = imageFrame.origin.y;
     imageView.frame = imageFrame;
     
-    titleLabel.textAlignment = UITextAlignmentLeft;
+    /// modify by kongkong
+    titleLabel.textAlignment = NSTextAlignmentLeft;
     //titleLabel.autoresizingMask = UIViewAutoresizingFlexibleWidth;
     CGRect labelRect = titleLabel.frame;
     labelRect.origin = CGPointMake(imageFrame.origin.x + imageFrame.size.width + 3 , titleLabel.frame.origin.y);

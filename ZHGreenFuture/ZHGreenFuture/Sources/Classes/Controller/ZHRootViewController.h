@@ -10,4 +10,6 @@
 
 @interface ZHRootViewController : NavigationViewController
 
+/// add by kongkong
+- (TabbarViewController *)tabCtl;
 @end
