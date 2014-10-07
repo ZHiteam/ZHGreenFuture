@@ -285,7 +285,7 @@ static const CGFloat kLandscapeCancelAndChooseButtonsVerticalMargin = 12.0f;
     if (!_chooseButton) {
         _chooseButton = [[UIButton alloc] init];
         _chooseButton.translatesAutoresizingMaskIntoConstraints = NO;
-        [_chooseButton setTitle:@"选择" forState:UIControlStateNormal];
+        [_chooseButton setTitle:@"确定" forState:UIControlStateNormal];
         [_chooseButton addTarget:self action:@selector(onChooseButtonTouch:) forControlEvents:UIControlEventTouchUpInside];
         _chooseButton.opaque = NO;
     }
