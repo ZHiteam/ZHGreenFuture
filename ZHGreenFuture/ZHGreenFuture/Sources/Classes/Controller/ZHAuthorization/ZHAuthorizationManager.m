@@ -77,7 +77,7 @@
         [HttpClient postDataWithParamers:@{@"scene": @"24",@"phone":account} success:^(id responseObject) {
             BOOL result = [((BaseModel*)[BaseModel praserModelWithInfo:responseObject]).state boolValue];
             if (block) {
-                block(result,nil);
+                block(result,[responseObject objectForKey:@"errorMsg"]);
             }
 
         } failure:^(NSError *error) {

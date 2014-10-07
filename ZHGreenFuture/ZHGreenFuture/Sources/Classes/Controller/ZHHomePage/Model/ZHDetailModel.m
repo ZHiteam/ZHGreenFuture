@@ -46,7 +46,7 @@
 {
     self = [super init];
     if (self) {
-        [self initMockData];
+        //[self initMockData];
     }
     return self;
 }

@@ -152,8 +152,14 @@
 #pragma mark - Privte Method
 - (void)loadConent{
     __weak typeof(self) weakSelf = self;
+    [FEToastView showWithTitle:@"正在加载数据..." animation:YES];
     [self.detailModel loadDataWithProductId:self.productId completionBlock:^(BOOL isSuccess) {
-        [weakSelf.tableView reloadData];
+        [FEToastView dismissWithAnimation:YES];
+        if (isSuccess) {
+            [weakSelf.tableView reloadData];
+        } else {
+            [FEToastView showWithTitle:@"加载数据失败，请稍候再试。" animation:YES interval:2.0];
+        }
     }];
 }
 
