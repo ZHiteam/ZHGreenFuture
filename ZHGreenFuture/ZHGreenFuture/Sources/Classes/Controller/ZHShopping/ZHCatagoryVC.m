@@ -216,8 +216,8 @@
     
     NSString* gotoPage = [NSString stringWithFormat:@"%d",[pageingItem currentPage]];
     NSString* categoryId = isEmptyString([pageingItem categoryIdentify])?@"":[pageingItem categoryIdentify];
-    
-    NSDictionary* info = @{@"scene":sceneId,@"gotoPage":gotoPage,@"catagoryId":categoryId};
+    NSString* type = [NSString stringWithFormat:@"%d",self.segmentView.selectedIndex+1];
+    NSDictionary* info = @{@"scene":sceneId,@"gotoPage":gotoPage,@"categoryId":categoryId,@"type":type};
     
     [HttpClient requestDataWithParamers:info success:^(id responseObject) {
         
@@ -417,7 +417,7 @@
         [self resumeNormal];
     }
 
-    [self requestSubCatagoryDataWithIndex:index];
+    [self requestSubCatagoryDataWithIndex:self.catagoryList.selectedIndex];
     FELOG(@"segment:%@ Index :%d",[segment class],index);
 }
 
