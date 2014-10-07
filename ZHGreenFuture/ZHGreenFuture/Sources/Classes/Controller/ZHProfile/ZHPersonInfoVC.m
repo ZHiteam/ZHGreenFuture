@@ -80,7 +80,7 @@
 - (UILabel *)userNameLabel{
     if (_userNameLabel == nil) {
         _userNameLabel = [[UILabel alloc] initWithFrame:CGRectMake([UIScreen mainScreen].bounds.size.width - 120 , 7, 80, 30)];
-        //_userNameLabel.text = [self.profileModel.userName length] > 0 ? self.profileModel.userName : @"艾米饭";
+        _userNameLabel.textAlignment = NSTextAlignmentRight;
     }
     return _userNameLabel;
 }
@@ -94,7 +94,7 @@
 
 - (UIButton *)logoutButton{
     if (_logoutButton == nil) {
-        _logoutButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 12, self.view.frame.size.width -36 , 48)];
+        _logoutButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 12, self.view.frame.size.width , 48)];
         _logoutButton.backgroundColor = RGB(102, 170, 0);
         _logoutButton.titleLabel.textAlignment = NSTextAlignmentRight;
         [_logoutButton setTitle:@"退出登录" forState:UIControlStateNormal];
@@ -180,7 +180,9 @@
     }
 }
 
-
+- (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section{
+    return 12.0;
+}
 
 #pragma mark UIActionSheetDelegate
 - (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex {

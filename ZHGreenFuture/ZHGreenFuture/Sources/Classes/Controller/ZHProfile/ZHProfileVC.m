@@ -57,7 +57,6 @@
         NavigationViewController*   navi = [MemoryStorage valueForKey:k_NAVIGATIONCTL];
         [navi pushViewController:personInfoVC animation:ANIMATE_TYPE_DEFAULT];
     }];
-    [self loadConent];
 }
 
 - (void)viewWillAppear:(BOOL)animated{
@@ -129,7 +128,6 @@
         _userNameLabel.textColor = [UIColor whiteColor];
         _userNameLabel.textAlignment = NSTextAlignmentCenter;
         _userNameLabel.font = [UIFont systemFontOfSize:18];
-        _userNameLabel.text = @"艾米饭";
     }
     return _userNameLabel;
 }

@@ -102,7 +102,7 @@
                 weakLeable.userInteractionEnabled = YES;
             });
         }else{
-            int seconds = timeout % 60;
+            int seconds = timeout % 61;
             NSString *strTime = [NSString stringWithFormat:@"%.2d", seconds];
             dispatch_async(dispatch_get_main_queue(), ^{
                 //NSLog(@">>>%@",strTime);
