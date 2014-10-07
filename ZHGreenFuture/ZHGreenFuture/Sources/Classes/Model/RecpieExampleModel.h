@@ -14,9 +14,11 @@
 @property (nonatomic,strong) NSArray*   images;
 @end
 
-@interface RecipeExampleImageContent : BaseModel<FEImageItemProtocol>
+@interface RecipeExampleImageContent : BaseModel
 
 @property (nonatomic,strong) NSString*  url;
 @property (nonatomic,strong) NSString*  content;
 @property (nonatomic,strong) NSString*  placeholderImage;
+@property (nonatomic,strong) NSString*  creataDate;
+@property (nonatomic,strong) NSString*  nickName;
 @end

@@ -7,11 +7,12 @@
 //
 
 #import "RecipeExampleCell.h"
+#import "RecipeExampleItem.h"
 
 @interface RecipeExampleCell()
 
 @property (nonatomic,strong) UILabel*   titleLabel;
-@property (nonatomic,strong) FEScrollPageView*  contentImageView;
+@property (nonatomic,strong) UIScrollView*  contentImageView;
 @end
 
 @implementation RecipeExampleCell
@@ -49,11 +50,13 @@
     return _titleLabel;
 }
 
--(FEScrollPageView *)contentImageView{
+-(UIScrollView *)contentImageView{
     
     if (!_contentImageView){
-        _contentImageView = [[FEScrollPageView alloc]initWithFrame:CGRectMake(0, _titleLabel.bottom+5, self.width, self.height-40) imageItems:nil selectedBlock:nil isAutoPlay:NO];
+        _contentImageView = [[UIScrollView alloc]initWithFrame:CGRectMake(0, _titleLabel.bottom+5, self.width, [RecipeExampleCell viewHeightWithContent:nil]-40)];
         _contentImageView.backgroundColor = WHITE_BACKGROUND;
+        _contentImageView.showsHorizontalScrollIndicator = NO;
+        _contentImageView.pagingEnabled = YES;
     }
     
     return _contentImageView;
@@ -66,12 +69,23 @@
     
     self.titleLabel.text = [NSString stringWithFormat:@"大家照着菜谱做 (%@)",model.example.count];
     
-    [self.contentImageView setImageItems:model.example.images selectedBlock:nil isAutoPlay:NO];
-    [self.contentImageView updateLayout];
+    [self.contentImageView removeAllSubviews];
+    CGFloat xOffset = 10;
+    CGFloat height = self.contentImageView.height-10;
+    for (int i =0; i < model.example.images.count; ++i){
+        RecipeExampleItem* item = [[RecipeExampleItem alloc]initWithFrame:CGRectMake(xOffset, 0, height-40, height)];
+        [item setModel:model.example.images[i]];
+        [self.contentImageView addSubview:item];
+        xOffset += 10+item.width;
+    }
+    
+    self.contentImageView.contentSize = CGSizeMake(xOffset, self.contentImageView.height);
+//    [self.contentImageView setImageItems:model.example.images selectedBlock:nil isAutoPlay:NO];
+//    [self.contentImageView updateLayout];
     
 }
 
 +(CGFloat)viewHeightWithContent:(id)content{
-    return 120+10.0f;
+    return 160+10.0f;
 }
 @end

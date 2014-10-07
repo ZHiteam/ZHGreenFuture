@@ -299,7 +299,7 @@
         for (ShoppingChartModel* model in self.shoppingChartLists){
             if (model.checked){
                 if (!isEmptyString(model.shoppingChartId)){
-                    [selectedList addObject:model];
+                    [selectedList addObject:model.shoppingChartId];
                 }
             }
         }

@@ -274,6 +274,7 @@
 		9C9778B419B1900F00D49E69 /* TabbarView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C97786019B1900F00D49E69 /* TabbarView.m */; };
 		9C9778D419B1905F00D49E69 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9C9778D319B1905F00D49E69 /* MobileCoreServices.framework */; };
 		9C9778D619B1907300D49E69 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9C9778D519B1907300D49E69 /* SystemConfiguration.framework */; };
+		9C98032219E43CB9008F70B5 /* RecipeExampleItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C98032119E43CB9008F70B5 /* RecipeExampleItem.m */; };
 		9CA4D6D419E13CCC00B3E4BD /* PayHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CA4D6D319E13CCC00B3E4BD /* PayHelper.m */; };
 		9CA4D6D819E13DEB00B3E4BD /* ZHAliPayHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CA4D6D719E13DEB00B3E4BD /* ZHAliPayHelper.m */; };
 		9CB3673E19D71A3600C45741 /* NSArray+FEExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CB366EE19D71A3500C45741 /* NSArray+FEExtension.m */; };
@@ -763,6 +764,8 @@
 		9C9778D519B1907300D49E69 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		9C98031E19E40E41008F70B5 /* ZHConst.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZHConst.h; sourceTree = "<group>"; };
 		9C98031F19E40F52008F70B5 /* Constant.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Constant.h; sourceTree = "<group>"; };
+		9C98032019E43CB9008F70B5 /* RecipeExampleItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RecipeExampleItem.h; sourceTree = "<group>"; };
+		9C98032119E43CB9008F70B5 /* RecipeExampleItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RecipeExampleItem.m; sourceTree = "<group>"; };
 		9CA4D6D219E13CCC00B3E4BD /* PayHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PayHelper.h; sourceTree = "<group>"; };
 		9CA4D6D319E13CCC00B3E4BD /* PayHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PayHelper.m; sourceTree = "<group>"; };
 		9CA4D6D619E13DEB00B3E4BD /* ZHAliPayHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZHAliPayHelper.h; sourceTree = "<group>"; };
@@ -1390,6 +1393,8 @@
 				9C0E0B1519C9298600ED8D87 /* RecipeCommentItemView.m */,
 				9C0E0B2E19C9E0F200ED8D87 /* RecipeExampleCell.h */,
 				9C0E0B2F19C9E0F200ED8D87 /* RecipeExampleCell.m */,
+				9C98032019E43CB9008F70B5 /* RecipeExampleItem.h */,
+				9C98032119E43CB9008F70B5 /* RecipeExampleItem.m */,
 			);
 			path = Recipe;
 			sourceTree = "<group>";
@@ -2558,6 +2563,7 @@
 				9C89837919B48C1E009CB910 /* ZHSwipSegment.m in Sources */,
 				9C0E0AFB19C860FD00ED8D87 /* MaterialItemView.m in Sources */,
 				84F1FE4F19BD76840002605A /* ZHDetailProductHeadView.m in Sources */,
+				9C98032219E43CB9008F70B5 /* RecipeExampleItem.m in Sources */,
 				9CCB1D7D19D08826009BB25A /* NSString+SBJSON.m in Sources */,
 				9C9778AF19B1900F00D49E69 /* BaseModel.m in Sources */,
 				9CCB1D7E19D08826009BB25A /* SBJSON.m in Sources */,

@@ -23,23 +23,11 @@
     
     NSDictionary* dic = (NSDictionary*)info;
     
-    model.content = dic[@"content"];
-    model.url = [dic[@"url"] greenFutureURLStr];
+    model.content = dic[@"title"];
+    model.url = [dic[@"imageURL"] greenFutureURLStr];
+    model.creataDate = dic[@"createDate"];
+    model.nickName = dic[@"userNickName"];
     
     return model;
-}
-
-- (NSString*)title{
-    return self.content;
-}
-- (NSString*)imageURL{
-    return self.url;
-}
-- (NSInteger)tag{
-    return 0;
-}
-
--(NSString *)placeholderImage{
-    return @"temp_recipe_placehold";
 }
 @end

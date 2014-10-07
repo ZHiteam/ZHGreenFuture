@@ -222,18 +222,17 @@
     
     if (!_addressView){
         _addressView = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"addressCell"];
-
     }
 
-    [_addressView removeAllSubviews];
+    [_addressView.contentView removeAllSubviews];
     
     if (!self.addressModel){
         _addressView.height = self.noAddressStyleView.height;
-        [_addressView addSubview:self.noAddressStyleView];
+        [_addressView.contentView addSubview:self.noAddressStyleView];
     }
     else{
         _addressView.height = self.addressStyleView.height;
-        [_addressView addSubview:self.addressStyleView];
+        [_addressView.contentView addSubview:self.addressStyleView];
     }
     
     return _addressView;

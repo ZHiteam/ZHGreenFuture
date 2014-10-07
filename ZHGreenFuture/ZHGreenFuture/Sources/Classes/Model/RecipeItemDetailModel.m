@@ -68,8 +68,8 @@
             }
         }
         model.example = [[RecpieExampleModel alloc]init];
-        model.example.count = [NSString stringWithFormat:@"%d", [dic[@"exampleCount"]intValue]];
         model.example.images = [muData mutableCopy];
+        model.example.count = [NSString stringWithFormat:@"%d", [dic[@"practiceCount"]intValue]];
     }
     
     if ([dic[@"commentList"] isKindOfClass:[NSArray class]]){
