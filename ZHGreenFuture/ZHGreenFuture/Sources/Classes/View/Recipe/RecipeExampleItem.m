@@ -7,6 +7,7 @@
 //
 
 #import "RecipeExampleItem.h"
+#import "ZHMyProductModel.h"
 
 @interface RecipeExampleItem()
 @property (nonatomic,strong) UIImageView*       image;
@@ -14,6 +15,7 @@
 @property (nonatomic,strong) UILabel*           titleLabel;
 @property (nonatomic,strong) UILabel*           createDateLabel;
 @property (nonatomic,strong) UILabel*           author;
+@property (nonatomic,strong) UIControl*         mask;
 
 @end
 
@@ -38,6 +40,29 @@
     [self addSubview:self.createDateLabel];
     
     [self addSubview:self.author];
+    
+    [self addSubview:self.mask];
+}
+
+-(UIControl *)mask{
+    if (!_mask) {
+        _mask = [[UIControl alloc]initWithFrame:self.bounds];
+        
+        _mask.backgroundColor = [UIColor clearColor];
+        
+        __block __typeof(self)weakSelf = self;
+        [_mask setTouchUpInsideBlock:^(UIControl *ctl) {
+            if (!isEmptyString(weakSelf.model.workId)){
+                ZHMyProductItem* item = [[ZHMyProductItem alloc]init];
+                item.workId = weakSelf.model.workId;
+                item.followName = weakSelf.model.content;
+                
+                NSDictionary* info = @{@"controller":@"ZHMyProductDetailVC",@"userinfo":item};
+                [[MessageCenter instance]performActionWithUserInfo:info];
+            }
+        }];
+    }
+    return _mask;
 }
 
 -(UIImageView *)image{
@@ -97,7 +122,7 @@
     if (!model){
         return;
     }
-    
+    _model = model;
     [self.image setImageWithUrlString:model.url placeholderImage:nil];
     self.titleLabel.text = model.content;
     self.createDateLabel.text = model.creataDate;

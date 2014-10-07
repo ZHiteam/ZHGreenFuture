@@ -440,12 +440,6 @@
                 NSString* orderId = [NSString stringWithFormat:@"%d",[responseObject[@"orderId"]intValue]];
                 FELOG(@"order id :%@",responseObject[@"orderId"]);
                 self.orderId = orderId;
-//                
-//#warning 测试支付0.01元
-//                    [PayHelper aliPayWithTitle:@"放心粮支付"
-//                                   productInfo:@"放心粮订单"
-//                                    totalPrice:@"0.01"
-//                                       orderId:orderId];
 
                 if ([self.orderModel.totalPrice floatValue] > 0.01 ){
                     [PayHelper aliPayWithTitle:@"放心粮支付"
@@ -459,16 +453,6 @@
                 SHOW_MESSAGE(@"订单生成失败", 2);
             }
         }
-//        BaseModel* model = [BaseModel praserModelWithInfo:responseObject];
-//        if ([model.state boolValue]){
-//            NSString* orderId = [NSString stringWithFormat:@"%d",[responseObject[@"orderId"]intValue]];
-//            
-//            FELOG(@"order id :%@",orderId);
-//            
-//        }
-//        else{
-//            SHOW_MESSAGE(@"订单生成失败", 2);
-//        }
     } failure:^(NSError *error) {
         SHOW_MESSAGE(@"订单生成失败", 2);
     }];
@@ -500,9 +484,13 @@
         BaseModel* model = [BaseModel praserModelWithInfo:responseObject];
         if ([model.state boolValue]){
             SHOW_MESSAGE(@"支付成功", 2);
+            [self jumpToOrderList];
         }
     } failure:^(NSError *error) {
-        
     }];
+}
+
+-(void)jumpToOrderList{
+    [[MessageCenter instance]performActionWithUserInfo:@{@"controller":@"ZHOrderListVC"}];
 }
 @end

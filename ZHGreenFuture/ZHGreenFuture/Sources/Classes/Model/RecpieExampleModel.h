@@ -21,4 +21,5 @@
 @property (nonatomic,strong) NSString*  placeholderImage;
 @property (nonatomic,strong) NSString*  creataDate;
 @property (nonatomic,strong) NSString*  nickName;
+@property (nonatomic,strong) NSString*  workId;
 @end

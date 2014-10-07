@@ -37,8 +37,11 @@
     order.productName           = productTitle; //商品标题
     order.productDescription    = info; /// 商品描述
 #warning 测试做成一分钱
+#ifdef DEBUG
     order.amount                = @"0.01";
-//    order.amount                = totalPrice;
+#else
+    order.amount                = totalPrice;    
+#endif
     order.notifyURL             =  @"http%3A%2F%2Fwwww.greenFuture.com"; //回调URL
     
     NSString* orderInfo = [order description];

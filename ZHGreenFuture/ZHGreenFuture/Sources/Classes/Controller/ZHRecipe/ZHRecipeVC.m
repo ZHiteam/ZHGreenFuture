@@ -49,6 +49,8 @@
 }
 
 -(void)loadRequest{
+    self.recipeModel.lastPage = NO;
+    self.recipeModel.page = 0;
     [self loadRequestWithPage:0];
 }
 
@@ -57,6 +59,13 @@
 }
 
 -(void)loadRequestWithPage:(NSInteger)page{
+    
+    if (self.recipeModel.lastPage){
+        [self.recipeContent.infiniteScrollingView stopAnimating];
+        [self.recipeContent.pullToRefreshView stopAnimating];
+        return;
+    }
+    
     NSString* gotoPage = [NSString stringWithFormat:@"%d",page];
     
     [HttpClient requestDataWithParamers:@{@"scene":@"6",@"gotoPage":gotoPage}success:^(id responseObject) {

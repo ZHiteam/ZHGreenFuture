@@ -30,6 +30,13 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    /// add by kongkong
+    if ([self.userInfo isKindOfClass:[ZHMyProductItem class]]) {
+        self.myProductItem = self.userInfo;
+        self.myProductModel = [[ZHMyProductModel alloc]init];
+    }
+    
     //self.view.backgroundColor = [UIColor whiteColor];
     [self.navigationBar setTitle:self.myProductItem.followName];
     [self whithNavigationBarStyle];
