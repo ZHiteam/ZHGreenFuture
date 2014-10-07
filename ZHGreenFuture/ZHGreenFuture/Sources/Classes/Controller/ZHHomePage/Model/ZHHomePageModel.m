@@ -97,7 +97,7 @@
 {
     self = [super init];
     if (self) {
-        [self initMockData];
+        //[self initMockData];
         self.pageNumber = 0;
         self.isHaveMore = YES;
     }

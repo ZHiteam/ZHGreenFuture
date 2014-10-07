@@ -36,7 +36,7 @@
         cell.contentView.backgroundColor = [UIColor whiteColor];
         [cell.segmentControl setSegmentItems:@[@"产地故事",@"宝贝详情",@"服务承诺"]];
         //[cell.segmentControl setFrame:CGRectMake(12, 12, 280, 28)];
-        cell.segmentControl.segmentDelegate = self;
+        cell.segmentControl.segmentDelegate = cell;
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
         cell.infoImageView.contentMode = UIViewContentModeScaleToFill;
         cell.contentView.clipsToBounds = YES;

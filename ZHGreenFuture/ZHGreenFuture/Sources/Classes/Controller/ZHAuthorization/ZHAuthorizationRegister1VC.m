@@ -113,17 +113,23 @@
 
 #pragma mark - Event Handler
 - (void)registerButtonPressed:(id)sender{
-    if ([self.accountTextField.text length] >0) {
+    if ([self.accountTextField.text length] >=11) {
         __weak __typeof(self) weakSelf = self;
         [[ZHAuthorizationManager shareInstance] getValidateCodeWithAccount:self.accountTextField.text completionBlock:^(BOOL isSuccess, id info) {
             if (!isSuccess) {
-                ZHALERTVIEW(nil, @"出错了，请再试一次" , nil,@"确定"  ,nil,nil);
+                if (info && [info isKindOfClass:[NSString class]]) {
+                    ZHALERTVIEW(nil, info , nil,@"确定"  ,nil,nil);
+                } else {
+                    ZHALERTVIEW(nil, @"出错了，请再试一次" , nil,@"确定"  ,nil,nil);
+                }
             }else {
                 ZHAuthorizationRegister2VC * vc = [[ZHAuthorizationRegister2VC alloc] initWithNibName:@"ZHAuthorizationRegister2VC" bundle:nil];
                 vc.account = weakSelf.accountTextField.text;
                 [weakSelf.navigationController pushViewController:vc animated:YES];
             }
         }];
+    } else {
+        ZHALERTVIEW(nil, @"请输入正确内容。" , nil,@"确定"  ,nil,nil);
     }
 }
 
