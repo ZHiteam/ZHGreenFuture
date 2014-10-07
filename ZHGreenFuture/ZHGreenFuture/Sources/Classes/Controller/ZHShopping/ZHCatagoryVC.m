@@ -90,6 +90,15 @@
         _contentTableView.separatorStyle = UITableViewCellSeparatorStyleNone;
         _contentTableView.showsVerticalScrollIndicator = NO;
         
+        __block __typeof(self)weakSelf = self;
+        
+        [_contentTableView addPullToRefreshWithActionHandler:^{
+            [weakSelf requestDataWithIndex:weakSelf.catagoryList.selectedIndex];
+        }];
+        
+        [_contentTableView addInfiniteScrollingWithActionHandler:^{
+            [weakSelf loadMore];
+        }];
     }
     return _contentTableView;
 }
@@ -145,6 +154,8 @@
     return _segmentPanel;
 }
 
+#pragma -mark
+#pragma -mark request
 -(void)loadRequest{
     /// 请求分类信息
     NSMutableDictionary* dic = [[NSMutableDictionary alloc]initWithDictionary:@{@"scene":@"3"}];
@@ -156,7 +167,7 @@
             [self praserCatagoryWithInfo:responseObject];
             
             [self reloadCatagoryList];
-            [self requestSubCatagoryDataWithIndex:self.catagoryList.selectedIndex];
+            [self requestDataWithIndex:self.catagoryList.selectedIndex];
         }
     } failure:^(NSError *error) {
         
@@ -184,33 +195,48 @@
     self.model.productList = list;
 }
 
--(void)requestSubCatagoryDataWithIndex:(NSInteger)index{
+-(void)requestDataWithIndex:(NSInteger)index{
+    id<CategoryPageingDelegate> pageingItem = [self getPageingWithIndex:index];
+    
+    [self clearPageingItemData:pageingItem];
+
+    [self loadPageWithPageingItem:pageingItem sceneId:[pageingItem sceneId]];
+}
+
+-(void)loadMore{
+    id<CategoryPageingDelegate> pageingItem = [self getPageingWithIndex:self.catagoryList.selectedIndex];
+    
+    [self loadPageWithPageingItem:pageingItem sceneId:[pageingItem sceneId]];
+}
+
+-(id<CategoryPageingDelegate>)getPageingWithIndex:(NSInteger)index{
     id<CategoryPageingDelegate> pageingItem = nil;
-    NSString* sceneId = @"2";
     
     if (0 == index){
         pageingItem = self.model;
-        sceneId = @"34";
     }
     else if ((index-1) < self.model.productList.count){
         pageingItem = self.model.productList[index-1];
     }
     
     if (!pageingItem){
-        return;
+        return nil;
     }
     
+    return pageingItem;
+}
+
+-(void)clearPageingItemData:(id<PageingDelegate>)pageingItem{
     [pageingItem setLastPage:NO];
     [pageingItem setCurrentPage:0];
-
     self.productList = [[NSMutableArray alloc]initWithCapacity:10];
-
-    [self loadPageWithPageingItem:pageingItem sceneId:sceneId];
 }
 
 -(void)loadPageWithPageingItem:(id<CategoryPageingDelegate>)pageingItem sceneId:(NSString*)sceneId{
     
     if ([pageingItem isLastPage]){
+        [self.contentTableView.infiniteScrollingView stopAnimating];
+        [self.contentTableView.pullToRefreshView stopAnimating];
         return;
     }
     
@@ -241,6 +267,8 @@
                     }
                 }
 
+                [self.contentTableView.infiniteScrollingView stopAnimating];
+                [self.contentTableView.pullToRefreshView stopAnimating];
                 [self.contentTableView reloadData];
                 [self resumeNormal];
             }
@@ -248,6 +276,9 @@
         
     } failure:^(NSError *error) {
         SHOW_MESSAGE(@"数据异常", 2);
+        [self.contentTableView.infiniteScrollingView stopAnimating];
+        [self.contentTableView.pullToRefreshView stopAnimating];
+        
         self.productList = nil;
         
         [self.contentTableView reloadData];
@@ -417,7 +448,7 @@
         [self resumeNormal];
     }
 
-    [self requestSubCatagoryDataWithIndex:self.catagoryList.selectedIndex];
+    [self requestDataWithIndex:self.catagoryList.selectedIndex];
     FELOG(@"segment:%@ Index :%d",[segment class],index);
 }
 

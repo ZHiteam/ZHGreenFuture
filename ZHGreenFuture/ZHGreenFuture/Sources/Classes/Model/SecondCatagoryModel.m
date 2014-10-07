@@ -98,4 +98,8 @@
 -(NSString *)categoryIdentify{
     return self.categoryId;
 }
+
+-(NSString*)sceneId{
+    return @"2";
+}
 @end

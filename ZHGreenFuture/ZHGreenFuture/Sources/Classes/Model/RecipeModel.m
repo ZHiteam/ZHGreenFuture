@@ -16,6 +16,9 @@
     if (![info isKindOfClass:[NSDictionary class]]){
         return model;
     }
+
+    model.page = 0;
+    model.lastPage = NO;
     
     id val = info[@"tagList"];
     if ([val isKindOfClass:[NSArray class]]){
@@ -36,6 +39,7 @@
         }
         model.recipeItemList = [recipeList mutableCopy];
     }
+    model.lastPage = [info[@"lastPage"]boolValue];
     
     return model;
 }

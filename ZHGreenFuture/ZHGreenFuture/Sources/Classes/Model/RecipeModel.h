@@ -14,5 +14,7 @@
 
 @property (nonatomic,strong) NSArray*       tags;
 @property (nonatomic,strong) NSArray*       recipeItemList;
+@property (nonatomic,assign) BOOL           lastPage;
+@property (nonatomic,assign) NSInteger      page;
 
 @end

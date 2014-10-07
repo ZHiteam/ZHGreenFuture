@@ -49,28 +49,31 @@
 }
 
 -(void)loadRequest{
-    [HttpClient requestDataWithParamers:@{@"scene":@"6"}success:^(id responseObject) {
+    [self loadRequestWithPage:0];
+}
+
+-(void)loadMore{
+    [self loadRequestWithPage:self.recipeModel.page+1];
+}
+
+-(void)loadRequestWithPage:(NSInteger)page{
+    NSString* gotoPage = [NSString stringWithFormat:@"%d",page];
+    
+    [HttpClient requestDataWithParamers:@{@"scene":@"6",@"gotoPage":gotoPage}success:^(id responseObject) {
         FELOG(@"%@",responseObject);
         
         self.recipeModel = (RecipeModel*)[RecipeModel praserModelWithInfo:responseObject];
-        
+        self.recipeModel.page = page;
         [self autoResizeContent];
-    } failure:^(NSError *error) {
         
+        [self.recipeContent.infiniteScrollingView stopAnimating];
+        [self.recipeContent.pullToRefreshView stopAnimating];
+    } failure:^(NSError *error) {
+        [self.recipeContent.infiniteScrollingView stopAnimating];
+        [self.recipeContent.pullToRefreshView stopAnimating];
     }];
 }
 
-//-(void)loadMore{
-//    [HttpClient requestDataWithParamers:@{@"scene":@"6"}success:^(id responseObject) {
-//        FELOG(@"%@",responseObject);
-//        
-//        self.recipeModel = (RecipeModel*)[RecipeModel praserModelWithInfo:responseObject];
-//        
-//        [self autoResizeContent];
-//    } failure:^(NSError *error) {
-//        
-//    }];
-//}
 
 -(void)loadContent{
     [self loadTitleContent];
@@ -171,13 +174,15 @@
         _recipeContent.separatorStyle = UITableViewCellSeparatorStyleNone;
         _recipeContent.showsVerticalScrollIndicator = NO;
         
-//        [_recipeContent addPullToRefreshWithActionHandler:^{
-//            [_recipeContent.pullToRefreshView startAnimating];
-//        }];
-//        __block __typeof(self)recipeVc = self;
-//        [_recipeContent addInfiniteScrollingWithActionHandler:^{
-//            [recipeVc loadMore];
-//        }];
+        __block __typeof(self)weakSelf = self;
+        
+        [_recipeContent addPullToRefreshWithActionHandler:^{
+            [weakSelf loadRequest];
+        }];
+
+        [_recipeContent addInfiniteScrollingWithActionHandler:^{
+            [weakSelf loadMore];
+        }];
     }
     
     return _recipeContent;

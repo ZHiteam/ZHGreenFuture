@@ -117,7 +117,6 @@
 
 -(UITableView *)contentView{
     if (!_contentView){
-//        _contentView = [[ZHTableView alloc]initWithFrame:CGRectMake(self.bannerView.left, self.bannerView.bottom, self.bannerView.width, self.contentBounds.size.height-self.bannerView.height)];
         _contentView = [[ZHTableView alloc]initWithFrame:self.contentBounds];
         _contentView.showsVerticalScrollIndicator = NO;
         _contentView.backgroundColor = RGB(238, 238, 238);
@@ -127,28 +126,63 @@
         _contentView.clipsToBounds = NO;
         
         _contentView.pagingEnabled = NO;
+        
+        __block __typeof(self)weakSelf = self;
+        [_contentView addInfiniteScrollingWithActionHandler:^{
+            [weakSelf loadMore];
+        }];
+        
+        [_contentView addPullToRefreshWithActionHandler:^{
+            [weakSelf loadRequest];
+        }];
     }
     
     return _contentView;
 }
 
 -(void)loadRequest{
+    self.model.lastPage = NO;
+    [self loadRequestWithPage:0];
+}
+
+-(void)loadMore{
+    [self loadRequestWithPage:self.model.page+1];
+}
+
+-(void)loadRequestWithPage:(NSInteger)page{
     if (isEmptyString(self.model.categoryId)){
         return;
     }
-    [HttpClient requestDataWithParamers:@{@"scene":@"5",@"categoryId":self.model.categoryId} success:^(id responseObject) {
+    
+    if (self.model.lastPage) {
+        [self.contentView.infiniteScrollingView stopAnimating];
+        [self.contentView.pullToRefreshView stopAnimating];
+        return;
+    }
+    
+    NSString* gotoPage = [NSString stringWithFormat:@"%d",page];
+    NSString* catagoryId = [self.model.categoryId mutableCopy];
+    [HttpClient requestDataWithParamers:@{@"scene":@"5",@"categoryId":catagoryId,@"gotoPage":gotoPage} success:^(id responseObject) {
         NSLog(@"%@",responseObject);
         
         self.model = (SecondCatagoryModel*)[SecondCatagoryModel praserModelWithInfo:responseObject];
-        
-        self.productList = self.model.dataItems;
-
+        self.model.page = page;
+        self.model.categoryId = catagoryId;
         [self.bannerView setImageWithUrlString:self.model.imageUrl];
+        
+        self.productList = [NSArray arrayWithArray:self.model.dataItems];
+        
+        [self.contentView.infiniteScrollingView stopAnimating];
+        [self.contentView.pullToRefreshView stopAnimating];
+        
         [self.contentView reloadData];
     } failure:^(NSError *error) {
-        
+        SHOW_MESSAGE(@"数据异常", 2);
+        [self.contentView.infiniteScrollingView stopAnimating];
+        [self.contentView.pullToRefreshView stopAnimating];
     }];
 }
+
 
 #pragma -mark UITableViewDataSource,UITableViewDelegate
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{

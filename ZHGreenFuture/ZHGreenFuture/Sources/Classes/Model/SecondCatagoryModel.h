@@ -12,6 +12,7 @@
 
 @protocol CategoryPageingDelegate <PageingDelegate>
 -(NSString*)categoryIdentify;
+-(NSString*)sceneId;
 @end
 
 @interface SecondCatagoryModel : BaseModel<CategoryPageingDelegate>
