@@ -36,11 +36,11 @@
     [self.view addSubview:self.detailCell];
     
     //TMP
-    [self.imageView setImageWithUrlString:self.myProductItem.workImageURL placeHodlerImage:[UIImage imageNamed:@"profile_myproductDetail"]];
+    [self.imageView setImageWithUrlString:self.myProductItem.workImageURL];
     
     __weak typeof(self) weakSelf = self;
     [self.myProductModel loadDetailWithId:self.myProductItem.workId completionBlock:^(BOOL isSuccess) {
-        [weakSelf.imageView setImageWithUrlString:self.myProductItem.workImageURL placeHodlerImage:[UIImage imageNamed:@"profile_myproductDetail"]];
+        [weakSelf.imageView setImageWithUrlString:self.myProductItem.workImageURL];
         weakSelf.detailCell.publishDateLabel.text = weakSelf.myProductModel.productDetail.publishDate;
         weakSelf.detailCell.contentLabel.text = weakSelf.myProductModel.productDetail.content;
     }];

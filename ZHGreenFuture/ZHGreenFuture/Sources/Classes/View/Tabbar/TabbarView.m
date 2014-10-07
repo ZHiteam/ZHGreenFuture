@@ -203,7 +203,7 @@
 //        }];
     }
     @catch (NSException *exception) {
-        ZHLOG(@"%@",exception);
+        FELOG(@"%@",exception);
     }
     @finally {
         

@@ -153,7 +153,7 @@
         
         _allSelect = [[ZHCheckbox alloc]initWithFrame:CGRectMake(10, (TAB_BAR_HEIGHT-20)/2, 20, 20)];
         [_allSelect setCheckBlock:^(BOOL checked) {
-            ZHLOG(@"selected %d",checked);
+            FELOG(@"selected %d",checked);
 
             for (ShoppingChartModel* model in chart.shoppingChartLists){
                 model.checked = checked;

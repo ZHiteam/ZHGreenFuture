@@ -73,7 +73,7 @@
         [_bannerView addSubview:self.titleLabel];
         [_bannerView addSubview:self.descriptionLabel];
         
-        [_bannerView setImageWithUrlString:self.model.imageUrl placeHodlerImage:nil];///[UIImage themeImageNamed:@"temp_banner_01"]];
+        [_bannerView setImageWithUrlString:self.model.imageUrl];///[UIImage themeImageNamed:@"temp_banner_01"]];
         
         
         self.descriptionLabel.top = _bannerView.height-_descriptionLabel.height-10;
@@ -143,7 +143,7 @@
         
         self.productList = self.model.dataItems;
 
-        [self.bannerView setImageWithUrlString:self.model.imageUrl placeHodlerImage:nil];
+        [self.bannerView setImageWithUrlString:self.model.imageUrl];
         [self.contentView reloadData];
     } failure:^(NSError *error) {
         
@@ -176,7 +176,7 @@
     }
     
     ZHProductItem *item = [self.productList objectAtIndex:indexPath.row];
-    [cell.imageURL setImageWithURL:[NSURL URLWithString:item.imageURL] placeholderImage:[UIImage imageNamed:@"productPlaceholder"]];
+    [cell.imageURL setImageWithUrlString:item.imageURL];
     cell.title.text = item.title;
     cell.subTitle.text = item.subTitle;
     ///435人已买

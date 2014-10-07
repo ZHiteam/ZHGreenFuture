@@ -264,7 +264,7 @@
 
 #pragma -mark image action
 -(void)imageChangeAction:(id)sender{
-    ZHLOG(@"image change action %@",sender);
+    FELOG(@"image change action %@",sender);
     UIButton* btn = (UIButton*)sender;
     int index = btn.tag - IMAGE_TAG_START;
     
@@ -282,7 +282,7 @@
 }
 
 -(void)addImageAction{
-//    ZHLOG(@"add image action");
+//    FELOG(@"add image action");
     
     if (self.images.count >= MAX_IMAGE_UPLOAD_COUNT){
         ALERT_MESSAGE(@"已达上传照片数上限");
@@ -308,7 +308,7 @@
     [self.doneBtn setBackgroundColor:GRAY_LINE];
     [self performSelector:@selector(doneBgResume) withObject:nil afterDelay:0.2];
     
-    ZHLOG(@"done");
+    FELOG(@"done");
     
     if (isEmptyString(self.descEdit.text)){
         SHOW_MESSAGE(@"请输入描述", 2);

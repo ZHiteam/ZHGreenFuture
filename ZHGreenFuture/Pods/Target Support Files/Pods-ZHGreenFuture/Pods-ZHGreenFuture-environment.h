@@ -60,6 +60,12 @@
 #define COCOAPODS_VERSION_MINOR_DBCamera 3
 #define COCOAPODS_VERSION_PATCH_DBCamera 2
 
+// DRImagePlaceholderHelper
+#define COCOAPODS_POD_AVAILABLE_DRImagePlaceholderHelper
+#define COCOAPODS_VERSION_MAJOR_DRImagePlaceholderHelper 1
+#define COCOAPODS_VERSION_MINOR_DRImagePlaceholderHelper 0
+#define COCOAPODS_VERSION_PATCH_DRImagePlaceholderHelper 1
+
 // GPUImage
 #define COCOAPODS_POD_AVAILABLE_GPUImage
 #define COCOAPODS_VERSION_MAJOR_GPUImage 0

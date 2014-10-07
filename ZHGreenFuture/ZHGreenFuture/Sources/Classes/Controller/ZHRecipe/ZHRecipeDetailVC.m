@@ -65,7 +65,7 @@
     }
     
     [HttpClient requestDataWithParamers:@{@"scene":@"7",@"recipeId": self.model.recipeId} success:^(id responseObject) {
-        ZHLOG(@"%@",responseObject);
+        FELOG(@"%@",responseObject);
         
         self.detailData = [RecipeItemDetailModel praserModelWithInfo:responseObject];
         

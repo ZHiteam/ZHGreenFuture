@@ -101,7 +101,7 @@
         
         [_catagoryList touchEndedBlock:^(NSSet *touches, UIEvent *event) {
             self.resumeDelay = YES;
-            ZHLOG(@"resume delay");
+            FELOG(@"resume delay");
         }];
         
         [self reloadCatagoryList];
@@ -265,7 +265,7 @@
     }
     
     ZHProductItem *item = [self.productList objectAtIndex:indexPath.row];
-    [cell.imageURL setImageWithURL:[NSURL URLWithString:item.imageURL] placeholderImage:[UIImage imageNamed:@"productPlaceholder"]];
+    [cell.imageURL setImageWithUrlString:item.imageURL];
     cell.title.text = item.title;
     cell.subTitle.text = item.subTitle;
     cell.priceTitle.text = item.price;
@@ -368,12 +368,12 @@
 -(void)scrollViewDidScroll:(UIScrollView *)scrollView{
     if (self.startScroll){
         if (scrollView.contentOffset.y - self.direct > 0){
-            ZHLOG(@"UP");
+            FELOG(@"UP");
             
             [self hideSegment];
         }
         else if (scrollView.contentOffset.y - self.direct < 0){
-            ZHLOG(@"DOWN");
+            FELOG(@"DOWN");
             
             [self showSegment];
         }
@@ -418,7 +418,7 @@
     }
 
     [self requestSubCatagoryDataWithIndex:index];
-    ZHLOG(@"segment:%@ Index :%d",[segment class],index);
+    FELOG(@"segment:%@ Index :%d",[segment class],index);
 }
 
 @end

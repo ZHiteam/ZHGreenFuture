@@ -92,7 +92,7 @@
         
         _imageView.top = _detail.bottom;
         
-        [_imageView setImageWithUrlString:model.imageUrl placeHodlerImage:nil];
+        [_imageView setImageWithUrlString:model.imageUrl];
         
         _imageView.hidden = NO;
     }

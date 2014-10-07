@@ -122,15 +122,8 @@
             /// 关于有好粮
         case 5:
         {
-            DoAlertView* alert = [[DoAlertView alloc]init];
-            alert.iImage = [UIImage themeImageNamed:@"logo.png"];
-            alert.nContentMode = DoContentImage;
-            
-            NSString* version = [NSString stringWithFormat:@"版本号：%@\nBuild：%@",VERSION,BUILD];
-            [alert doYes:version yes:^(DoAlertView *alertView) {
-                
-            }];
-//            alert do
+            NSString* msg = [NSString stringWithFormat:@"版本号：%@\nBuild：%@",ZH_VERSION,ZH_BUILD];
+            ALERT_IMAGE_MESSAGE([UIImage themeImageNamed:@"logo.png"], msg);
         }
             break;
             

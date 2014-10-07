@@ -7,26 +7,16 @@
 //
 
 #import "UIImageView+ZHiteam.h"
-
 #import "UIImageView+WebCache.h"
+#import "DRImagePlaceholderHelper.h"
 
 @implementation UIImageView (ZHiteam)
 
 
 
--(void)setImageWithUrlString:(NSString*)url placeHodlerImage:(UIImage*)image{
-    [self startAnimating];
-    __block UIImageView* imageView = self;
-        NSURL *encodedString = [url greenFutureURL];
-//    NSURL *encodedString = [NSURL URLWithString:url];
-
-    [self setImageWithURL:encodedString placeholderImage:image completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType) {
-        [imageView stopLoading];
-//        imageView.alpha = 0.0f;
-//        [[imageView viewWithTag:-10024]removeFromSuperview];
-//        [UIView animateWithDuration:ANIMATE_DURATION animations:^{
-//            imageView.alpha = 1.0f;
-//        }];
-    }];
+-(void)setImageWithUrlString:(NSString*)url{
+    NSURL *encodedString = [url greenFutureURL];
+    UIImage* placeholderImage = [[DRImagePlaceholderHelper sharedInstance]placerholderImageWithSize:self.size text:@"放心粮" fillColor:GRAY_LINE];
+    [self setImageWithURL:encodedString placeholderImage:placeholderImage completed:nil];
 }
 @end

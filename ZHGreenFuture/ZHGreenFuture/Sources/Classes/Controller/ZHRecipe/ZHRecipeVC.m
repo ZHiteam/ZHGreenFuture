@@ -50,7 +50,7 @@
 
 -(void)loadRequest{
     [HttpClient requestDataWithParamers:@{@"scene":@"6"}success:^(id responseObject) {
-        ZHLOG(@"%@",responseObject);
+        FELOG(@"%@",responseObject);
         
         self.recipeModel = (RecipeModel*)[RecipeModel praserModelWithInfo:responseObject];
         
@@ -62,7 +62,7 @@
 
 //-(void)loadMore{
 //    [HttpClient requestDataWithParamers:@{@"scene":@"6"}success:^(id responseObject) {
-//        ZHLOG(@"%@",responseObject);
+//        FELOG(@"%@",responseObject);
 //        
 //        self.recipeModel = (RecipeModel*)[RecipeModel praserModelWithInfo:responseObject];
 //        
@@ -271,7 +271,7 @@
     }
     
     [HttpClient requestDataWithParamers:@{@"scene":@"6",@"tagId":tagId}success:^(id responseObject) {
-        ZHLOG(@"%@",responseObject);
+        FELOG(@"%@",responseObject);
         if ([responseObject isKindOfClass:[NSDictionary class]]){
             NSDictionary* dic = (NSDictionary*)responseObject;
             if ([dic[@"recipeList"] isKindOfClass:[NSArray class]]){

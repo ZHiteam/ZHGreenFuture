@@ -121,7 +121,7 @@
 
 #pragma -mark getter end
 -(void)setModel:(RecipeItemDetailModel *)model{
-    [self.imagePanel setImageWithUrlString:model.backgroundImage placeHodlerImage:nil];
+    [self.imagePanel setImageWithUrlString:model.backgroundImage];
     
     if (!isEmptyString(model.author)){
         self.author.text = [NSString stringWithFormat:@"by %@",model.author];

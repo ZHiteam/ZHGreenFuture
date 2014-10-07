@@ -15,6 +15,7 @@
     #import <Foundation/Foundation.h>
 
     #import "FEFramework.h"
+    #import "FEDebug.h"
     #import "UIScrollView+FECover.h"
     #import "FEToastView.h"
     #import "FEStrikeThroughLabel.h"

@@ -313,11 +313,11 @@
         __weak typeof(cell) weakCell = cell;
         [cell setSegmentControlClickedBlock:^(NSInteger index) {
             NSString *imageURL = [weakSelf.detailModel.introduceImageList objectAtIndex:index];
-            [weakCell.infoImageView  setImageWithUrlString:imageURL placeHodlerImage:[UIImage imageNamed:@"detailSKU"]];
+            [weakCell.infoImageView  setImageWithUrlString:imageURL];
         }];
         if (cell.segmentControl.selectedIndex < [self.detailModel.introduceImageList count]) {
             NSString *imageURL = [self.detailModel.introduceImageList objectAtIndex:cell.segmentControl.selectedIndex];
-            [cell.infoImageView setImageWithUrlString:imageURL placeHodlerImage:[UIImage imageNamed:@"detailSKU"]];
+            [cell.infoImageView setImageWithUrlString:imageURL];
         }
         return cell;
     }
@@ -347,8 +347,7 @@
         
         //left item
         ZHOtherBuyItem *leftItem  = [buyLists objectAtIndex:indexPath.row*2];
-        UIImage *placeHolder = [UIImage imageNamed:@"detailProduct"];
-        [cell.leftImageView setImageWithUrlString:leftItem.imageURL placeHodlerImage:placeHolder];
+        [cell.leftImageView setImageWithUrlString:leftItem.imageURL];
         [cell.leftPriceLabel setText:leftItem.price];
         [cell.leftTitleLabel setText:leftItem.title];
         
@@ -368,7 +367,7 @@
             cell.rightOverLayerView.backgroundColor = [UIColor clearColor];
             cell.rightOverLayerView.userInteractionEnabled = YES;
             ZHOtherBuyItem *rightItem = [buyLists objectAtIndex:indexPath.row*2 + 1];
-            [cell.rightImageView setImageWithUrlString:leftItem.imageURL  placeHodlerImage:placeHolder];
+            [cell.rightImageView setImageWithUrlString:leftItem.imageURL];
             [cell.rightPriceLabel setText:rightItem.price];
             [cell.rightTitleLabel setText:rightItem.title];
             

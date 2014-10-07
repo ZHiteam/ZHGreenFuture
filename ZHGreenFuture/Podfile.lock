@@ -23,6 +23,7 @@ PODS:
   - ASProgressPopUpView (0.8)
   - DBCamera (2.3.2):
     - GPUImage (~> 0.1)
+  - DRImagePlaceholderHelper (1.0.1)
   - GPUImage (0.1.6)
   - HMSegmentedControl (1.4.0)
   - SDWebImage (3.6):
@@ -37,6 +38,7 @@ DEPENDENCIES:
   - AFNetworking (= 2.4.1)
   - ASProgressPopUpView (= 0.8)
   - DBCamera (= 2.3.2)
+  - DRImagePlaceholderHelper (= 1.0.1)
   - HMSegmentedControl (= 1.4.0)
   - SDWebImage (= 3.6.0)
   - SVProgressHUD (= 1.0)
@@ -49,6 +51,7 @@ SPEC CHECKSUMS:
   AFNetworking: 0aabc6fae66d6e5d039eeb21c315843c7aae51ab
   ASProgressPopUpView: 7443b650bb54acb6557ab8495eaa6adea2183577
   DBCamera: 83f13967ede8cac9e734ac32e72d5d39d0e0e0cd
+  DRImagePlaceholderHelper: 86d36d98cf726617d1d1394dd00dc00e499cddbb
   GPUImage: cecb0830bb9428f50192042e3c7b53810f51388e
   HMSegmentedControl: c0517a8d4b80c978b8386f863f1c44729cfd7d6f
   SDWebImage: c6989652c1cdf27cbdf3f56957e2030f825af5bc

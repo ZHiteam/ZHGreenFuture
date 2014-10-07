@@ -47,19 +47,19 @@
     NSString* ctl =  userInfo[@"controller"];
     
     if (isEmptyString(ctl)){
-        ZHLOG(@"跳转页面异常001：\n%@",userInfo);
+        FELOG(@"跳转页面异常001：\n%@",userInfo);
         return;
     }
     
     Class class = NSClassFromString(ctl);
     if (!class){
-        ZHLOG(@"跳转页面异常002：类不识别 %@",userInfo);
+        FELOG(@"跳转页面异常002：类不识别 %@",userInfo);
         return;
     }
     
     id vc = [[class alloc]init];
     if (![vc isKindOfClass:[ZHViewController class]]){
-        ZHLOG(@"跳转页面异常003：类型非ZHViewController");
+        FELOG(@"跳转页面异常003：类型非ZHViewController");
     }
     
     ZHViewController* viewCtl = (ZHViewController*)vc;

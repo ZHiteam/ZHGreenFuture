@@ -38,20 +38,20 @@
 
 -(void)prepareData{
     [[AFNetworkReachabilityManager sharedManager] setReachabilityStatusChangeBlock:^(AFNetworkReachabilityStatus status) {
-        ZHLOG(@"Reachability: %@", AFStringFromNetworkReachabilityStatus(status));
+        FELOG(@"Reachability: %@", AFStringFromNetworkReachabilityStatus(status));
         
         switch (status) {
             case AFNetworkReachabilityStatusUnknown:
-                ZHLOG(@"网络切换到未知");
+                FELOG(@"网络切换到未知");
                 break;
             case AFNetworkReachabilityStatusNotReachable:
-                ZHLOG(@"网络不可用");
+                FELOG(@"网络不可用");
                 break;
             case AFNetworkReachabilityStatusReachableViaWWAN:
-                ZHLOG(@"使用2G/3G网络");
+                FELOG(@"使用2G/3G网络");
                 break;
             case AFNetworkReachabilityStatusReachableViaWiFi:
-                ZHLOG(@"使用wifi网络");
+                FELOG(@"使用wifi网络");
                 break;
             default:
                 break;

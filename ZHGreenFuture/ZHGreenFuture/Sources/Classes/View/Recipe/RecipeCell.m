@@ -124,7 +124,7 @@
     self.disussCountLabel.text = recipeItem.comment;
     self.likeCountLabe.text = recipeItem.like;
     
-    [self.imageContent setImageWithUrlString:recipeItem.backgroundImageUrl placeHodlerImage:nil];
+    [self.imageContent setImageWithUrlString:recipeItem.backgroundImageUrl];
 }
 #pragma -mark setter end
 

@@ -236,8 +236,8 @@
                 cell.dateLabel.text = self.homePageModel.calenderItem.date;
                 cell.titleLabel.text = self.homePageModel.calenderItem.title;
                 cell.subTitleLabel.text = self.homePageModel.calenderItem.subTitle;
-                [cell.surpriseImageView setImageWithURL:[NSURL URLWithString:self.homePageModel.surpriseItem.imageURL] placeholderImage:[UIImage imageNamed:@"surprise"]];
-                [cell.creditsImageView setImageWithURL:[NSURL URLWithString:self.homePageModel.creditsItem.imageURL] placeholderImage:[UIImage imageNamed:@"credits"]];
+                [cell.surpriseImageView setImageWithUrlString:self.homePageModel.surpriseItem.imageURL];
+                [cell.creditsImageView setImageWithUrlString:self.homePageModel.creditsItem.imageURL];
                 cell.selectionStyle = UITableViewCellSelectionStyleNone;
 
                 __weak __typeof(self) weakSelf = self;
@@ -271,7 +271,7 @@
         }
         
         ZHProductItem *item = [self.homePageModel.productItems objectAtIndex:indexPath.row];
-        [cell.imageURL setImageWithURL:[NSURL URLWithString:item.imageURL] placeholderImage:[UIImage imageNamed:@"productPlaceholder"]];
+        [cell.imageURL setImageWithUrlString:item.imageURL];
         cell.title.text = item.title;
         cell.subTitle.text = item.subTitle;
         ///435人已买

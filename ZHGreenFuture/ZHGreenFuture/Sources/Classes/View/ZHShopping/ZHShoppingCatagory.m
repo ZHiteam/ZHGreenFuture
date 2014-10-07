@@ -44,7 +44,7 @@
 
 -(void)loadRequest{
     [HttpClient requestDataWithParamers:@{@"scene":@"4"} success:^(id responseObject) {
-        ZHLOG(@"%@",responseObject);
+        FELOG(@"%@",responseObject);
 
         if ([responseObject isKindOfClass:[NSArray class]]){
             NSMutableArray* array = [[NSMutableArray alloc]initWithCapacity:((NSArray*)responseObject).count];
@@ -117,7 +117,7 @@
 
 #pragma -mark ZHCatagoryCellDelegate
 -(void)catagorySelectedAtIndex:(NSIndexPath *)index{
-    ZHLOG(@" catagorySelectedAtIndex index:%d subIndex:%d",index.section,index.row);
+    FELOG(@" catagorySelectedAtIndex index:%d subIndex:%d",index.section,index.row);
     
     if (index.section >= self.catagorys.count){
         return;

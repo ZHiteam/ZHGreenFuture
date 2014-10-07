@@ -100,7 +100,7 @@
         cell = [ZHMyProductCell tableViewCell];
     }
     ZHMyProductItem *item = [[self.myProductModel myProductList] objectAtIndex:indexPath.section];
-    [cell.productImageView setImageWithUrlString:item.workImageURL placeHodlerImage:[UIImage imageNamed:@"profile_myProduct"]];
+    [cell.productImageView setImageWithUrlString:item.workImageURL];
     cell.titleLabel.text        = item.followName;
     cell.contentLabel.text      = item.content;
     cell.publishDateLabel.text  = item.publishDate;

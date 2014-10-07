@@ -263,9 +263,7 @@
 		9C9778A519B1900F00D49E69 /* UIImage+ZHiteam.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C97783719B1900F00D49E69 /* UIImage+ZHiteam.m */; };
 		9C9778A619B1900F00D49E69 /* UILabel+ZHiteam.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C97783919B1900F00D49E69 /* UILabel+ZHiteam.m */; };
 		9C9778A719B1900F00D49E69 /* UIView+ZHiteam.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C97783B19B1900F00D49E69 /* UIView+ZHiteam.m */; };
-		9C9778A819B1900F00D49E69 /* Config.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C97783E19B1900F00D49E69 /* Config.m */; };
 		9C9778A919B1900F00D49E69 /* HttpClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C97784319B1900F00D49E69 /* HttpClient.m */; };
-		9C9778AA19B1900F00D49E69 /* LocalSotrage.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C97784619B1900F00D49E69 /* LocalSotrage.m */; };
 		9C9778AB19B1900F00D49E69 /* MemoryStorage.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C97784819B1900F00D49E69 /* MemoryStorage.m */; };
 		9C9778AC19B1900F00D49E69 /* NavigationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C97784C19B1900F00D49E69 /* NavigationViewController.m */; };
 		9C9778AD19B1900F00D49E69 /* TabbarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C97784E19B1900F00D49E69 /* TabbarViewController.m */; };
@@ -274,8 +272,6 @@
 		9C9778B219B1900F00D49E69 /* NavigationBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C97785B19B1900F00D49E69 /* NavigationBar.m */; };
 		9C9778B319B1900F00D49E69 /* TabbarItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C97785E19B1900F00D49E69 /* TabbarItem.m */; };
 		9C9778B419B1900F00D49E69 /* TabbarView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C97786019B1900F00D49E69 /* TabbarView.m */; };
-		9C9778D119B1900F00D49E69 /* Property.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9C97789E19B1900F00D49E69 /* Property.plist */; };
-		9C9778D219B1900F00D49E69 /* system.config in Resources */ = {isa = PBXBuildFile; fileRef = 9C97789F19B1900F00D49E69 /* system.config */; };
 		9C9778D419B1905F00D49E69 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9C9778D319B1905F00D49E69 /* MobileCoreServices.framework */; };
 		9C9778D619B1907300D49E69 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9C9778D519B1907300D49E69 /* SystemConfiguration.framework */; };
 		9CA4D6D419E13CCC00B3E4BD /* PayHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CA4D6D319E13CCC00B3E4BD /* PayHelper.m */; };
@@ -498,7 +494,6 @@
 		84B9604819B36E820042A670 /* avatar@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "avatar@2x.png"; sourceTree = "<group>"; };
 		84EA64C619B192D700C446A5 /* ZHRootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZHRootViewController.h; sourceTree = "<group>"; };
 		84EA64C719B192D700C446A5 /* ZHRootViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZHRootViewController.m; sourceTree = "<group>"; };
-		84EA64C919B196E500C446A5 /* ZHConst.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ZHConst.h; sourceTree = "<group>"; };
 		84EA64CE19B198FE00C446A5 /* ZHHomePageVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZHHomePageVC.h; sourceTree = "<group>"; };
 		84EA64CF19B198FE00C446A5 /* ZHHomePageVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZHHomePageVC.m; sourceTree = "<group>"; };
 		84EA64D119B1991300C446A5 /* ZHShoppingVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZHShoppingVC.h; sourceTree = "<group>"; };
@@ -746,13 +741,8 @@
 		9C97783919B1900F00D49E69 /* UILabel+ZHiteam.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UILabel+ZHiteam.m"; sourceTree = "<group>"; };
 		9C97783A19B1900F00D49E69 /* UIView+ZHiteam.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+ZHiteam.h"; sourceTree = "<group>"; };
 		9C97783B19B1900F00D49E69 /* UIView+ZHiteam.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+ZHiteam.m"; sourceTree = "<group>"; };
-		9C97783D19B1900F00D49E69 /* Config.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Config.h; sourceTree = "<group>"; };
-		9C97783E19B1900F00D49E69 /* Config.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Config.m; sourceTree = "<group>"; };
-		9C97783F19B1900F00D49E69 /* Constant.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Constant.h; sourceTree = "<group>"; };
 		9C97784219B1900F00D49E69 /* HttpClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HttpClient.h; sourceTree = "<group>"; };
 		9C97784319B1900F00D49E69 /* HttpClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HttpClient.m; sourceTree = "<group>"; };
-		9C97784519B1900F00D49E69 /* LocalSotrage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocalSotrage.h; sourceTree = "<group>"; };
-		9C97784619B1900F00D49E69 /* LocalSotrage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocalSotrage.m; sourceTree = "<group>"; };
 		9C97784719B1900F00D49E69 /* MemoryStorage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MemoryStorage.h; sourceTree = "<group>"; };
 		9C97784819B1900F00D49E69 /* MemoryStorage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MemoryStorage.m; sourceTree = "<group>"; };
 		9C97784B19B1900F00D49E69 /* NavigationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NavigationViewController.h; sourceTree = "<group>"; };
@@ -769,10 +759,10 @@
 		9C97785E19B1900F00D49E69 /* TabbarItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TabbarItem.m; sourceTree = "<group>"; };
 		9C97785F19B1900F00D49E69 /* TabbarView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TabbarView.h; sourceTree = "<group>"; };
 		9C97786019B1900F00D49E69 /* TabbarView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TabbarView.m; sourceTree = "<group>"; };
-		9C97789E19B1900F00D49E69 /* Property.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Property.plist; sourceTree = "<group>"; };
-		9C97789F19B1900F00D49E69 /* system.config */ = {isa = PBXFileReference; lastKnownFileType = file; path = system.config; sourceTree = "<group>"; };
 		9C9778D319B1905F00D49E69 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
 		9C9778D519B1907300D49E69 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		9C98031E19E40E41008F70B5 /* ZHConst.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZHConst.h; sourceTree = "<group>"; };
+		9C98031F19E40F52008F70B5 /* Constant.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Constant.h; sourceTree = "<group>"; };
 		9CA4D6D219E13CCC00B3E4BD /* PayHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PayHelper.h; sourceTree = "<group>"; };
 		9CA4D6D319E13CCC00B3E4BD /* PayHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PayHelper.m; sourceTree = "<group>"; };
 		9CA4D6D619E13DEB00B3E4BD /* ZHAliPayHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZHAliPayHelper.h; sourceTree = "<group>"; };
@@ -1797,9 +1787,8 @@
 		9C97783C19B1900F00D49E69 /* Config */ = {
 			isa = PBXGroup;
 			children = (
-				9C97783D19B1900F00D49E69 /* Config.h */,
-				9C97783E19B1900F00D49E69 /* Config.m */,
-				9C97783F19B1900F00D49E69 /* Constant.h */,
+				9C98031F19E40F52008F70B5 /* Constant.h */,
+				9C98031E19E40E41008F70B5 /* ZHConst.h */,
 			);
 			path = Config;
 			sourceTree = "<group>";
@@ -1824,8 +1813,6 @@
 		9C97784419B1900F00D49E69 /* Storage */ = {
 			isa = PBXGroup;
 			children = (
-				9C97784519B1900F00D49E69 /* LocalSotrage.h */,
-				9C97784619B1900F00D49E69 /* LocalSotrage.m */,
 				9C97784719B1900F00D49E69 /* MemoryStorage.h */,
 				9C97784819B1900F00D49E69 /* MemoryStorage.m */,
 			);
@@ -1844,7 +1831,6 @@
 				84260FC419CD2AA900216C78 /* ZHAuthorization */,
 				84EA64C619B192D700C446A5 /* ZHRootViewController.h */,
 				84EA64C719B192D700C446A5 /* ZHRootViewController.m */,
-				84EA64C919B196E500C446A5 /* ZHConst.h */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -1930,8 +1916,6 @@
 			isa = PBXGroup;
 			children = (
 				9C3862B319B1CB0400679C48 /* images */,
-				9C97789E19B1900F00D49E69 /* Property.plist */,
-				9C97789F19B1900F00D49E69 /* system.config */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -2364,13 +2348,11 @@
 				9CDD6C9519D2687E0068DAED /* btn_comment@2x.png in Resources */,
 				84F1FE5719BDDDB10002605A /* detailRecipe@2x.png in Resources */,
 				9CCB1DAC19D14FED009BB25A /* pic1.jpg in Resources */,
-				9C9778D219B1900F00D49E69 /* system.config in Resources */,
 				9C0E0A1219BF331300ED8D87 /* InstapaperResource.bundle in Resources */,
 				9CCB1DAD19D14FED009BB25A /* pic2.jpg in Resources */,
 				9C0E0A3F19BF331300ED8D87 /* ShareSDKFlatShareViewUI.bundle in Resources */,
 				9C0E08B319BF20BA00ED8D87 /* temp_recipe_placehold@2x.png in Resources */,
 				9C0E0A2C19BF331300ED8D87 /* ShareSDKLocalizable.strings in Resources */,
-				9C9778D119B1900F00D49E69 /* Property.plist in Resources */,
 				84A7A5C219B2C8290050CACD /* ZHCategoryTableViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -2445,7 +2427,6 @@
 				9C89837619B4845C009CB910 /* ZHSegmentView.m in Sources */,
 				9CB3675F19D71A3600C45741 /* FEUtil.m in Sources */,
 				9C0E0B1619C9298600ED8D87 /* RecipeCommentItemView.m in Sources */,
-				9C9778A819B1900F00D49E69 /* Config.m in Sources */,
 				9C9778B419B1900F00D49E69 /* TabbarView.m in Sources */,
 				9CB3675519D71A3600C45741 /* FEToastView.m in Sources */,
 				9C89837319B47C58009CB910 /* ZHProductItem.m in Sources */,
@@ -2557,7 +2538,6 @@
 				9C0E0AF519C831AB00ED8D87 /* RecipeMaterialCell.m in Sources */,
 				9C0E0B5119CB56E300ED8D87 /* ZHLineLabel.m in Sources */,
 				9C8983DA19B6272D009CB910 /* ZHRecipePublishVC.m in Sources */,
-				9C9778AA19B1900F00D49E69 /* LocalSotrage.m in Sources */,
 				9C0E0B0A19C8748B00ED8D87 /* VerticallyAlignedLabel.m in Sources */,
 				9CB3675D19D71A3600C45741 /* FEReachability.m in Sources */,
 				84F1FE2819BB46770002605A /* ZHDetailBannerCell.m in Sources */,

@@ -94,11 +94,9 @@
             button.titleLabel.font = [UIFont systemFontOfSize:12.0];
             button.tag = index;
             index ++ ;
-            __weak ZHCategoryButton *weakButton = button;
-            [button.imageView setImageWithURL:[NSURL URLWithString:item.iconURL]  placeholderImage:[UIImage imageNamed:@"rice"] completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType) {
-                weakButton.imageView.hidden = NO;
-                weakButton.imageView.contentMode = UIViewContentModeScaleToFill;
-            }];
+            button.imageView.contentMode = UIViewContentModeScaleToFill;
+//            __weak ZHCategoryButton *weakButton = button;
+            [button.imageView setImageWithUrlString:item.iconURL];
             [button setTitle:item.title forState:UIControlStateNormal];
             [button setTitleColor:RGB(119, 119, 119) forState:UIControlStateNormal];
             [button addTarget:self action:@selector(buttonPressed:) forControlEvents:UIControlEventTouchUpInside];

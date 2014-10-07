@@ -36,7 +36,9 @@
     order.tradeNO               = orderId;/// [self generateTradeNO]; //订单ID（由商家自行制定）
     order.productName           = productTitle; //商品标题
     order.productDescription    = info; /// 商品描述
-    order.amount                = totalPrice;
+#warning 测试做成一分钱
+    order.amount                = @"0.01";
+//    order.amount                = totalPrice;
     order.notifyURL             =  @"http%3A%2F%2Fwwww.greenFuture.com"; //回调URL
     
     NSString* orderInfo = [order description];
@@ -103,7 +105,7 @@
             if ([verifier verifyString:result.resultString withSign:result.signString])
             {
                 //验证签名成功，交易结果无篡改
-                ZHLOG(@"交易成功");
+                FELOG(@"交易成功");
                 [[NSNotificationCenter defaultCenter]postNotificationName:NOTIFY_TRADE_SUCCESS object:nil];
             }
             

@@ -259,7 +259,7 @@
     self.editCountView.count = model.buyCout;
     self.checkBox.checked = model.checked;
     
-    [self.productImage setImageWithUrlString:model.imageURL placeHodlerImage:nil];
+    [self.productImage setImageWithUrlString:model.imageURL];
 }
 
 #pragma -mark ZHEditCountDelegate

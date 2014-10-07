@@ -15,20 +15,17 @@
 typedef void(^ZHCompletionBlock)(BOOL isSuccess);
 typedef void(^ZHProgressBlock)(float progress);
 
-#define VERSION         [[[NSBundle mainBundle] infoDictionary]objectForKey:@"CFBundleShortVersionString"]
-#define BUILD           [[NSBundle mainBundle] objectForInfoDictionaryKey: (NSString *)kCFBundleVersionKey]
-
 #define GREEN_COLOR         RGB(102,170,0)
 #define GRAY_LINE           RGB(204, 204, 204)
 #define WHITE_BACKGROUND    RGB(255,255,255)
 #define WHITE_TEXT          RGB(255,255,255)
 #define BLACK_TEXT          RGB(0,0,0)
 
-//#define ALERT_MESSAGE(msg)  {UIAlertView* alert = [[UIAlertView alloc]initWithTitle:@"" message:msg delegate:nil cancelButtonTitle:@"确定" otherButtonTitles: nil];[alert show];}
+#define ALERT_MESSAGE(msg)     {DoAlertView* a = [[DoAlertView alloc]init];[a doYes:msg yes:^(DoAlertView *alertView) {}];}
 
-#define ALERT_MESSAGE(msg)     DoAlertView* a = [[DoAlertView alloc]init];[a doYes:msg yes:^(DoAlertView *alertView) {}];
+#define SHOW_MESSAGE(msg,dur)         {DoAlertView* alert = [[DoAlertView alloc]init];[alert doAlert:@"" body:msg duration:dur done:^(DoAlertView *alertView) {}];}
 
-#define SHOW_MESSAGE(msg,dur)         DoAlertView* alert = [[DoAlertView alloc]init];[alert doAlert:@"" body:msg duration:dur done:^(DoAlertView *alertView) {}];
+#define ALERT_IMAGE_MESSAGE(image,msg) {DoAlertView* alert = [[DoAlertView alloc]init];alert.iImage = image;alert.nContentMode = DoContentImage;[alert doYes:msg yes:^(DoAlertView *alertView) {}];}
 
 /// notify const start
 #define NOTIFY_ALI_PAY_BACK     @"notify_alipay_back"

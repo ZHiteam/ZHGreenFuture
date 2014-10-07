@@ -49,7 +49,7 @@
     [self.tableView addCoverWithImage:[UIImage imageNamed:@"myBG.png"] withTopView:nil aboveView:self.containerView enableBlur:NO];
     self.tableView.tableHeaderView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width, FECoverViewHeight + 0)];
     self.tableView.tableHeaderView.userInteractionEnabled = NO;
-    [self.avatarImageView setImageWithURL:[NSURL URLWithString:self.profileModel.userAvatar] placeholderImage:self.profileModel.userAvatarImage];
+    [self.avatarImageView setImageWithUrlString:self.profileModel.userAvatar];
     __weak typeof(self) weakSelf = self;
     [self.avatarImageView touchEndedBlock:^(NSSet *touches, UIEvent *event) {
         ZHPersonInfoVC *personInfoVC = [[ZHPersonInfoVC alloc] init];
@@ -163,7 +163,7 @@
     [self.profileModel loadDataWithUserId:userId completionBlock:^(BOOL isSuccess) {
         if (isSuccess) {
             [weakSelf.tableView reloadData];
-            [weakSelf.avatarImageView setImageWithURL:[NSURL URLWithString:weakSelf.profileModel.userAvatar] placeholderImage:weakSelf.profileModel.userAvatarImage];
+            [weakSelf.avatarImageView setImageWithUrlString:weakSelf.profileModel.userAvatar];
             [weakSelf.userNameLabel setText:weakSelf.profileModel.userName];
         }
     }];

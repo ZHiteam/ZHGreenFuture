@@ -147,7 +147,7 @@
                 [self.avatarView removeFromSuperview];
             }
             [cell.contentView addSubview:self.avatarView];
-            [self.avatarView setImageWithURL:[NSURL URLWithString:self.profileModel.userAvatar] placeholderImage:self.profileModel.userAvatarImage];
+            [self.avatarView setImageWithUrlString:self.profileModel.userAvatar];
         }else {
             if (self.userNameLabel.superview) {
                 [self.userNameLabel removeFromSuperview];

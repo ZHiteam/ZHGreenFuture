@@ -439,7 +439,7 @@
         if ([responseObject isKindOfClass:[NSDictionary class]]){
             if (responseObject[@"orderId"]){
                 NSString* orderId = [NSString stringWithFormat:@"%d",[responseObject[@"orderId"]intValue]];
-                ZHLOG(@"order id :%@",responseObject[@"orderId"]);
+                FELOG(@"order id :%@",responseObject[@"orderId"]);
                 self.orderId = orderId;
 //                
 //#warning 测试支付0.01元
@@ -464,7 +464,7 @@
 //        if ([model.state boolValue]){
 //            NSString* orderId = [NSString stringWithFormat:@"%d",[responseObject[@"orderId"]intValue]];
 //            
-//            ZHLOG(@"order id :%@",orderId);
+//            FELOG(@"order id :%@",orderId);
 //            
 //        }
 //        else{

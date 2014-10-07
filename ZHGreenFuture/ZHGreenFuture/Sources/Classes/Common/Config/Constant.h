@@ -11,10 +11,8 @@
 
 /******************** 程序信息 **************************************************/
 /// 版本号
-#define VERSION         [[[NSBundle mainBundle] infoDictionary]objectForKey:@"CFBundleShortVersionString"]
-#define BUILD           [[NSBundle mainBundle] objectForInfoDictionaryKey: (NSString *)kCFBundleVersionKey]
-#define VERSION_KEY     @"versionKey"
-#define CLIENT_IPHONE   @"2"
+#define ZH_VERSION         [[[NSBundle mainBundle] infoDictionary]objectForKey:@"CFBundleShortVersionString"]
+#define ZH_BUILD           [[NSBundle mainBundle] objectForInfoDictionaryKey: (NSString *)kCFBundleVersionKey]
 
 #define CURRENT_LANG    [[NSLocale preferredLanguages]objectAtIndex:0]
 
@@ -51,11 +49,11 @@
 
 #define ADDOBJECT(object,key,dic) (object==nil)?(0==0):[dic setObject:object forKey:key];
 
-#ifdef DEBUG
-#define ZHLOG NSLog
-#else
-#define ZHLOG (void)
-#endif
+//#ifdef DEBUG
+//#define FELOG NSLog
+//#else
+//#define FELOG (void)
+//#endif
 
 
 /******************** key值配置 **************************************************/

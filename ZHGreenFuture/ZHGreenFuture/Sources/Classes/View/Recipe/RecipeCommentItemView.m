@@ -102,7 +102,7 @@
         return;
     }
     
-    [self.avstar setImageWithUrlString:model.userAvatarURL placeHodlerImage:nil];
+    [self.avstar setImageWithUrlString:model.userAvatarURL];
     self.name.text = model.userName;
     self.content.text = model.contenet;
     self.date.text = model.comment_date;
