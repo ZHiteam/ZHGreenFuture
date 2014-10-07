@@ -168,6 +168,10 @@
         return;
     }
     
+    if ([info[@"parentCategoryName"] isKindOfClass:[NSString class]]){
+        self.navigationBar.title = info[@"parentCategoryName"];
+    }
+    
     NSArray* array = info[@"categoryNameList"];
     NSMutableArray* list = [[NSMutableArray alloc]initWithCapacity:array.count];
     for (NSDictionary* item in array){
