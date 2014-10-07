@@ -37,13 +37,9 @@
     return self;
 }
 
-- (void)loadDataWithUserAccount:(NSString*)userAccount completionBlock:(ZHCompletionBlock)block{
-    
-    if ([userAccount length] >0) {
+- (void)loadDataWithUserId:(NSString*)userId completionBlock:(ZHCompletionBlock)block{
+    if ([userId length] >0) {
         __weak __typeof(self) weakSelf = self;
-        NSString *userId = userAccount;
-        userId = [userId length] == 0 ? @"" : userId;
-
         [HttpClient requestDataWithParamers:@{@"scene": @"30",@"userId": userId} success:^(id responseObject) {
             if ([responseObject isKindOfClass:[NSArray class]]) {
                 [weakSelf parserJsonArray:responseObject];

@@ -21,7 +21,7 @@
 @interface ZHMyProductModel : NSObject
 @property(nonatomic, strong)NSArray         *myProductList;
 @property(nonatomic, strong)ZHMyProductItem *productDetail;
-- (void)loadDataWithUserAccount:(NSString*)userAccount completionBlock:(ZHCompletionBlock)block;
+- (void)loadDataWithUserId:(NSString*)userId completionBlock:(ZHCompletionBlock)block;
 - (void)loadDetailWithId:(NSString*)workId completionBlock:(ZHCompletionBlock)block;
 
 @end

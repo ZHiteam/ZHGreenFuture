@@ -7,9 +7,12 @@
 //
 
 #import "ZHAuthorizationManager.h"
+#import "ZHProfileModel.h"
+
 
 #define kAccountInfo					@"kAccountInfo"
 #define kPassWordInfo					@"kPassWordInfo"
+#define kNickNameInfo					@"kNickNameInfo"
 #define kUserIdInfo                     @"kUserIdInfo"
 #define koldAccountInfo					@"koldAccountInfo"
 #define kisHaveRegisterAccount			@"kIsHaveRegisterAccount"
@@ -38,6 +41,7 @@
 		self.account  = [userDefault objectForKey:kAccountInfo];
 		self.passWord = [userDefault objectForKey:kPassWordInfo];
         self.userId   = [userDefault objectForKey:kUserIdInfo];
+        self.userNick = [userDefault objectForKey:kNickNameInfo];
 	}
 	return self;
 }
@@ -47,6 +51,17 @@
 	self.account  = nil;
 	self.passWord = nil;
     self.userId   = nil;
+    self.userNick = nil;
+}
+
+#pragma mark - Getter & Setter 
+- (void)setUserNick:(NSString *)userNick{
+    if (_userNick != userNick) {
+        _userNick = userNick;
+        NSUserDefaults* userDefault = [NSUserDefaults standardUserDefaults];
+        [userDefault setObject:_userNick forKey:kNickNameInfo];
+        [userDefault synchronize];
+    }
 }
 
 #pragma mark - Public Methods
@@ -103,6 +118,7 @@
                 weakSelf.account  = account;
                 weakSelf.passWord = password;
                 weakSelf.userId   = [NSString stringWithFormat:@"%@",[responseObject objectForKey:@"userId"]];
+                weakSelf.userNick = [account length] <= 4 ? account : [account substringFromIndex:[account length]-4];
                 [weakSelf setAccountInfo];
             }
             if (block) {
@@ -128,6 +144,9 @@
                 weakSelf.userId         = [NSString stringWithFormat:@"%d",[[responseObject objectForKey:@"userId"]intValue]];
                 weakSelf.userNick       = [responseObject objectForKey:@"userNick"];
                 weakSelf.userAvatarURL  = [responseObject objectForKey:@"userAvatarURL"];
+                if ([weakSelf.userNick length] ==0) {
+                   weakSelf.userNick = [account length] <= 4 ? account : [account substringFromIndex:[account length]-4];
+                }
             }
             weakSelf.account  = account;
             weakSelf.passWord = password;
@@ -152,6 +171,7 @@
 }
 
 - (void)logout{
+    [ZHProfileModel resetUserInfo];
     [self resetAccountInfo];
     self.isLogin = NO;
     self.account = nil;
@@ -169,6 +189,7 @@
 	[userDefault setBool:YES			 forKey:kisHaveRegisterAccount];
 	[userDefault setObject:self.account  forKey:kAccountInfo];
 	[userDefault setObject:self.passWord forKey:kPassWordInfo];
+    [userDefault setObject:self.userNick forKey:kNickNameInfo];
     [userDefault setObject:self.userId   forKey:kUserIdInfo];
 	[userDefault synchronize];
 }
@@ -179,6 +200,7 @@
 	[userDefault setBool:NO			 forKey:kisHaveRegisterAccount];
 	[userDefault removeObjectForKey:kAccountInfo];
 	[userDefault removeObjectForKey:kPassWordInfo];
+    [userDefault removeObjectForKey:kNickNameInfo];
     [userDefault removeObjectForKey:kUserIdInfo];
 	[userDefault synchronize];
 }

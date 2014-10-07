@@ -17,7 +17,9 @@
 @property(nonatomic, strong)NSString* comfirmShoppingCount;
 @property(nonatomic, strong)NSString* waitCommentCount;
 @property(nonatomic, strong)UIImage* userAvatarImage;
+
 - (void)loadDataWithUserId:(NSString*)userId completionBlock:(ZHCompletionBlock)block;
 - (void)modifyProfileInfo:(UIImage *)avatarImage progressBlock:(ZHProgressBlock)progressBlock completionBlock:(ZHCompletionBlock)completeBlock;
 - (void)modifyProfileInfo:(UIImage *)avatarImage userName:(NSString *)userName progressBlock:(ZHProgressBlock)progressBlock completionBlock:(ZHCompletionBlock)completeBlock;
++ (void)resetUserInfo;
 @end

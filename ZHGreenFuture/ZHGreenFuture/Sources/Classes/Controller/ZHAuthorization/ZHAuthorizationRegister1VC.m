@@ -69,7 +69,8 @@
     if (_accountTextField == nil) {
         _accountTextField =  [[UITextField alloc] initWithFrame:CGRectMake(38, 26, [UIScreen mainScreen].bounds.size.width - 56, 20)];
         _accountTextField.font = [UIFont systemFontOfSize:14.0];
-       _accountTextField.placeholder = @"输入常用手机号";
+        _accountTextField.placeholder = @"输入常用手机号";
+        _accountTextField.keyboardType= UIKeyboardTypeNumbersAndPunctuation;
     }
     return _accountTextField;
 }

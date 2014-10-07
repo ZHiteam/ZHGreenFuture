@@ -7,8 +7,12 @@
 //
 
 #import "ZHProfileModel.h"
+#import "ZHAuthorizationManager.h"
+
+
 @interface ZHProfileModel ()
 @property(nonatomic, strong)NSString *avatarImagePath;
+@property(nonatomic, assign)BOOL isRuning;
 @end
 
 @implementation ZHProfileModel
@@ -24,20 +28,25 @@
 
 #pragma mark - Public Method
 - (void)loadDataWithUserId:(NSString*)userId completionBlock:(ZHCompletionBlock)block{
-    if ([userId length] >0) {
-        __weak __typeof(self) weakSelf = self;
-        [HttpClient requestDataWithParamers:@{@"scene": @"8",@"userId":userId} success:^(id responseObject) {
-            if ([responseObject isKindOfClass:[NSDictionary class]]) {
-                [weakSelf parserJsonDict:responseObject];
-            }
-            if (block) {
-                block(YES);
-            }
-        } failure:^(NSError *error) {
-            if (block) {
-                block(NO);
-            }
-        }];
+    if (!self.isRuning) {
+        self.isRuning = YES;
+        if ([userId length] >0) {
+            __weak __typeof(self) weakSelf = self;
+            [HttpClient requestDataWithParamers:@{@"scene": @"8",@"userId":userId} success:^(id responseObject) {
+                if ([responseObject isKindOfClass:[NSDictionary class]]) {
+                    [weakSelf parserJsonDict:responseObject];
+                }
+                if (block) {
+                    block(YES);
+                }
+                weakSelf.isRuning = NO;
+            } failure:^(NSError *error) {
+                if (block) {
+                    block(NO);
+                }
+                weakSelf.isRuning = NO;
+            }];
+        }
     }
 }
 
@@ -86,6 +95,10 @@
     }];
 }
 
++ (void)resetUserInfo{
+    NSString * path = [NSHomeDirectory() stringByAppendingString:@"Documents/avatar.png"];
+    [[NSFileManager defaultManager] removeItemAtPath:path error:nil];
+}
 
 #pragma mark - Privte Method
 - (void)initMockData{
@@ -149,15 +162,17 @@
 }
 
 -(NSString*)loadUserName{
-    NSString *userName = [[NSUserDefaults standardUserDefaults] objectForKey:@"kUserName"];
-    return [userName length] > 0 ? userName : @"艾米饭";
+    return [[ZHAuthorizationManager shareInstance] userNick];
+    //NSString *userName = [[NSUserDefaults standardUserDefaults] objectForKey:@"kUserName"];
+    //return [userName length] > 0 ? userName : @"艾米饭";
 }
 
 -(void)saveUserName:(NSString*)userName{
     if (userName != self.userName) {
         self.userName = userName;
-        [[NSUserDefaults standardUserDefaults] setObject:userName forKey:@"kUserName"];
-        [[NSUserDefaults standardUserDefaults] synchronize];
+        [[ZHAuthorizationManager shareInstance] setUserNick:userName];
+//        [[NSUserDefaults standardUserDefaults] setObject:userName forKey:@"kUserName"];
+//        [[NSUserDefaults standardUserDefaults] synchronize];
     }
 }
 
