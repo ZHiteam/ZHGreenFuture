@@ -17,6 +17,7 @@
 #import "ZHAuthorizationVC.h"
 #import "ZHRootViewController.h"
 #import "TabbarViewController.h"
+#import "DRImagePlaceholderHelper.h"
 
 @interface ZHProfileVC ()<UITableViewDelegate, UITableViewDataSource>
 @property(nonatomic, strong)UITableView          *tableView;
@@ -163,7 +164,7 @@
     [self.profileModel loadDataWithUserId:userId completionBlock:^(BOOL isSuccess) {
         if (isSuccess) {
             [weakSelf.tableView reloadData];
-            [weakSelf.avatarImageView setImageWithUrlString:weakSelf.profileModel.userAvatar];
+            [weakSelf.avatarImageView setImageWithUrlString:weakSelf.profileModel.userAvatar placeholderImage:[[DRImagePlaceholderHelper sharedInstance]placerholderAvatarWithSize:weakSelf.avatarImageView.size] ];
             [weakSelf.userNameLabel setText:weakSelf.profileModel.userName];
         }
     }];

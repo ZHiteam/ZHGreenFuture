@@ -12,11 +12,16 @@
 
 @implementation UIImageView (ZHiteam)
 
-
+-(void)setImageWithUrlString:(NSString *)url placeholderImage:(UIImage *)placeholderImage{
+    NSURL *encodedString = [url greenFutureURL];
+    
+    [self setImageWithURL:encodedString placeholderImage:placeholderImage completed:nil];
+}
 
 -(void)setImageWithUrlString:(NSString*)url{
-    NSURL *encodedString = [url greenFutureURL];
+
     UIImage* placeholderImage = [[DRImagePlaceholderHelper sharedInstance]placerholderImageWithSize:self.size text:@"放心粮" fillColor:GRAY_LINE];
-    [self setImageWithURL:encodedString placeholderImage:placeholderImage completed:nil];
+    
+    [self setImageWithUrlString:url placeholderImage:placeholderImage];
 }
 @end

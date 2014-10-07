@@ -12,4 +12,5 @@
 
 -(void)setImageWithUrlString:(NSString*)url;
 
+-(void)setImageWithUrlString:(NSString*)url placeholderImage:(UIImage*)placeholderImage;
 @end
