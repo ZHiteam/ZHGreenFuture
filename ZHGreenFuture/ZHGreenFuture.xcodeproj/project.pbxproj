@@ -317,6 +317,7 @@
 		9CB3676019D71A3600C45741 /* FEZip.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CB3673C19D71A3600C45741 /* FEZip.m */; };
 		9CB3676619D7202800C45741 /* ZHZbarPrivateVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CB3676319D7202800C45741 /* ZHZbarPrivateVC.m */; };
 		9CB3676719D7202800C45741 /* ZHZbarVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CB3676519D7202800C45741 /* ZHZbarVC.m */; };
+		9CC095C319E3EB7400416E67 /* logo@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9CC095C219E3EB7400416E67 /* logo@2x.png */; };
 		9CCB1D5819D08659009BB25A /* ZHCheckoutVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CCB1D5719D08659009BB25A /* ZHCheckoutVC.m */; };
 		9CCB1D7619D08826009BB25A /* AlipayRsaLib.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9CCB1D5A19D08826009BB25A /* AlipayRsaLib.a */; };
 		9CCB1D7719D08826009BB25A /* Alixpay.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 9CCB1D5C19D08826009BB25A /* Alixpay.bundle */; };
@@ -856,6 +857,7 @@
 		9CB3676319D7202800C45741 /* ZHZbarPrivateVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZHZbarPrivateVC.m; sourceTree = "<group>"; };
 		9CB3676419D7202800C45741 /* ZHZbarVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZHZbarVC.h; sourceTree = "<group>"; };
 		9CB3676519D7202800C45741 /* ZHZbarVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZHZbarVC.m; sourceTree = "<group>"; };
+		9CC095C219E3EB7400416E67 /* logo@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "logo@2x.png"; sourceTree = "<group>"; };
 		9CCB1D5619D08659009BB25A /* ZHCheckoutVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZHCheckoutVC.h; sourceTree = "<group>"; };
 		9CCB1D5719D08659009BB25A /* ZHCheckoutVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZHCheckoutVC.m; sourceTree = "<group>"; };
 		9CCB1D5A19D08826009BB25A /* AlipayRsaLib.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = AlipayRsaLib.a; sourceTree = "<group>"; };
@@ -924,8 +926,9 @@
 		9CDD6C9419D2687E0068DAED /* btn_comment@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "btn_comment@2x.png"; sourceTree = "<group>"; };
 		9CDD6C9619D29FA30068DAED /* ZHAddressManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZHAddressManager.h; sourceTree = "<group>"; };
 		9CDD6C9719D29FA30068DAED /* ZHAddressManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = ZHAddressManager.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
+		A986DE455251FFC3F3018744 /* Pods-ZHGreenFuture.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ZHGreenFuture.release.xcconfig"; path = "Pods/Target Support Files/Pods-ZHGreenFuture/Pods-ZHGreenFuture.release.xcconfig"; sourceTree = "<group>"; };
+		BD470D81B00702C7193FC0DE /* Pods-ZHGreenFuture.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ZHGreenFuture.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ZHGreenFuture/Pods-ZHGreenFuture.debug.xcconfig"; sourceTree = "<group>"; };
 		C548FF18989B4FF8A8B17AD4 /* libPods-ZHGreenFuture.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-ZHGreenFuture.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		C71C3F53A51D425DB6BCAC4D /* Pods-ZHGreenFuture.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ZHGreenFuture.xcconfig"; path = "Pods/Pods-ZHGreenFuture.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -1096,7 +1099,7 @@
 				849F7F7219AB81EE00962BB1 /* ZHGreenFutureTests */,
 				849F7F4919AB81EE00962BB1 /* Frameworks */,
 				849F7F4819AB81EE00962BB1 /* Products */,
-				C71C3F53A51D425DB6BCAC4D /* Pods-ZHGreenFuture.xcconfig */,
+				92563B41BCEDBDFF8D972BCB /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -1363,6 +1366,15 @@
 			path = detail;
 			sourceTree = "<group>";
 		};
+		92563B41BCEDBDFF8D972BCB /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				BD470D81B00702C7193FC0DE /* Pods-ZHGreenFuture.debug.xcconfig */,
+				A986DE455251FFC3F3018744 /* Pods-ZHGreenFuture.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		9C0E08A519BF03F300ED8D87 /* Recipe */ = {
 			isa = PBXGroup;
 			children = (
@@ -1602,6 +1614,7 @@
 		9C3862B319B1CB0400679C48 /* images */ = {
 			isa = PBXGroup;
 			children = (
+				9CC095C219E3EB7400416E67 /* logo@2x.png */,
 				9CDD6C9419D2687E0068DAED /* btn_comment@2x.png */,
 				9CCDFD7D19CC240A008B6882 /* btn_delete_with_label@2x.png */,
 				9CCDFD7E19CC240A008B6882 /* btn_edit_with_label@2x.png */,
@@ -2344,6 +2357,7 @@
 				84260FDE19CD844400216C78 /* ZHAuthorizationRegister2VC.xib in Resources */,
 				9C8983DD19B63409009CB910 /* bar_item_04@2x.png in Resources */,
 				84A7A5B519B2C02F0050CACD /* credits@2x.png in Resources */,
+				9CC095C319E3EB7400416E67 /* logo@2x.png in Resources */,
 				9C0E0A2D19BF331300ED8D87 /* Resource.bundle in Resources */,
 				9CCB1DA519D14FED009BB25A /* check@2x.png in Resources */,
 				84A7A5C719B2C90E0050CACD /* ZHRecommendTableViewCell.xib in Resources */,
@@ -2399,7 +2413,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Pods-ZHGreenFuture-resources.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ZHGreenFuture/Pods-ZHGreenFuture-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -2710,7 +2724,7 @@
 		};
 		849F7F7D19AB81EE00962BB1 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = C71C3F53A51D425DB6BCAC4D /* Pods-ZHGreenFuture.xcconfig */;
+			baseConfigurationReference = BD470D81B00702C7193FC0DE /* Pods-ZHGreenFuture.debug.xcconfig */;
 			buildSettings = {
 				ARCHS = armv7;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
@@ -2728,16 +2742,7 @@
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "ZHGreenFuture/ZHGreenFuture-Prefix.pch";
-				HEADER_SEARCH_PATHS = (
-					"\"${PODS_ROOT}/Headers\"",
-					"\"${PODS_ROOT}/Headers/AFNetworking\"",
-					"\"${PODS_ROOT}/Headers/DBCamera\"",
-					"\"${PODS_ROOT}/Headers/FEFramework\"",
-					"\"${PODS_ROOT}/Headers/GPUImage\"",
-					"\"${PODS_ROOT}/Headers/JSONKit\"",
-					"\"${PODS_ROOT}/Headers/SDWebImage\"",
-					"\"${PODS_ROOT}/Headers/SVPullToRefresh\"",
-				);
+				HEADER_SEARCH_PATHS = "$(inherited)";
 				INFOPLIST_FILE = "ZHGreenFuture/ZHGreenFuture-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				LIBRARY_SEARCH_PATHS = (
@@ -2755,7 +2760,7 @@
 		};
 		849F7F7E19AB81EE00962BB1 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = C71C3F53A51D425DB6BCAC4D /* Pods-ZHGreenFuture.xcconfig */;
+			baseConfigurationReference = A986DE455251FFC3F3018744 /* Pods-ZHGreenFuture.release.xcconfig */;
 			buildSettings = {
 				ARCHS = armv7;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
@@ -2773,16 +2778,7 @@
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "ZHGreenFuture/ZHGreenFuture-Prefix.pch";
-				HEADER_SEARCH_PATHS = (
-					"\"${PODS_ROOT}/Headers\"",
-					"\"${PODS_ROOT}/Headers/AFNetworking\"",
-					"\"${PODS_ROOT}/Headers/DBCamera\"",
-					"\"${PODS_ROOT}/Headers/FEFramework\"",
-					"\"${PODS_ROOT}/Headers/GPUImage\"",
-					"\"${PODS_ROOT}/Headers/JSONKit\"",
-					"\"${PODS_ROOT}/Headers/SDWebImage\"",
-					"\"${PODS_ROOT}/Headers/SVPullToRefresh\"",
-				);
+				HEADER_SEARCH_PATHS = "$(inherited)";
 				INFOPLIST_FILE = "ZHGreenFuture/ZHGreenFuture-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				LIBRARY_SEARCH_PATHS = (

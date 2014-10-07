@@ -47,7 +47,7 @@
 #define RGB(r, g, b)       RGBA(r, g, b, 1.0f)
 
 #define trim(str) [str stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]]
-#define isEmptyString(str) (!str || [trim(str) isEqualToString:@""] || [str isEqualToString:@"<null>"])
+#define isEmptyString(str) ([str isKindOfClass:[NSNull class]] || !str || [trim(str) isEqualToString:@""] || [str isEqualToString:@"<null>"])
 
 #define ADDOBJECT(object,key,dic) (object==nil)?(0==0):[dic setObject:object forKey:key];
 

@@ -285,6 +285,10 @@
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
+
+    ZHProductItem *item = [self.productList objectAtIndex:indexPath.row];
+    NSString *productId = [item.productId length] >0 ? item.productId : @"";
+    [[MessageCenter instance]performActionWithUserInfo:@{@"controller": @"ZHDetailVC",@"userinfo" : productId}];
 }
 
 

@@ -23,11 +23,12 @@ PODS:
   - ASProgressPopUpView (0.8)
   - DBCamera (2.3.2):
     - GPUImage (~> 0.1)
-  - GPUImage (0.1.5)
+  - GPUImage (0.1.6)
   - HMSegmentedControl (1.4.0)
   - SDWebImage (3.6):
     - SDWebImage/Core
   - SDWebImage/Core (3.6)
+  - SVProgressHUD (1.0)
   - SVPullToRefresh (0.4.1)
   - TPKeyboardAvoiding (1.2.4)
   - ZBarSDK (1.3.1)
@@ -38,6 +39,7 @@ DEPENDENCIES:
   - DBCamera (= 2.3.2)
   - HMSegmentedControl (= 1.4.0)
   - SDWebImage (= 3.6.0)
+  - SVProgressHUD (= 1.0)
   - SVPullToRefresh
   - SVPullToRefresh (= 0.4.1)
   - TPKeyboardAvoiding (= 1.2.4)
@@ -47,11 +49,12 @@ SPEC CHECKSUMS:
   AFNetworking: 0aabc6fae66d6e5d039eeb21c315843c7aae51ab
   ASProgressPopUpView: 7443b650bb54acb6557ab8495eaa6adea2183577
   DBCamera: 83f13967ede8cac9e734ac32e72d5d39d0e0e0cd
-  GPUImage: 5114a47f5fc33eb312f3731550a3cea379416d04
+  GPUImage: cecb0830bb9428f50192042e3c7b53810f51388e
   HMSegmentedControl: c0517a8d4b80c978b8386f863f1c44729cfd7d6f
   SDWebImage: c6989652c1cdf27cbdf3f56957e2030f825af5bc
+  SVProgressHUD: 5034c6e22b8c2ca3e09402e48d41ed0340aa1c50
   SVPullToRefresh: d5161ebc833a38b465364412e5e307ca80bbb190
   TPKeyboardAvoiding: 925e1e1912597d1a4956697eec3bd9656552153c
   ZBarSDK: 3ed560856963f765b66d834f464590bd6ba13b44
 
-COCOAPODS: 0.33.1
+COCOAPODS: 0.34.1

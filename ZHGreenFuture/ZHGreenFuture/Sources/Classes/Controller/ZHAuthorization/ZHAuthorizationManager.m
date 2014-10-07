@@ -56,6 +56,11 @@
 
 #pragma mark - Getter & Setter 
 - (void)setUserNick:(NSString *)userNick{
+    /// add by kongkong for Null Exception
+    if (isEmptyString(userNick)){
+        userNick = @"";
+    }
+    
     if (_userNick != userNick) {
         _userNick = userNick;
         NSUserDefaults* userDefault = [NSUserDefaults standardUserDefaults];
@@ -144,7 +149,8 @@
                 weakSelf.userId         = [NSString stringWithFormat:@"%d",[[responseObject objectForKey:@"userId"]intValue]];
                 weakSelf.userNick       = [responseObject objectForKey:@"userNick"];
                 weakSelf.userAvatarURL  = [responseObject objectForKey:@"userAvatarURL"];
-                if ([weakSelf.userNick length] ==0) {
+                /// modify by kongkong for Null Exception
+                if (isEmptyString(weakSelf.userNick)) {
                    weakSelf.userNick = [account length] <= 4 ? account : [account substringFromIndex:[account length]-4];
                 }
             }

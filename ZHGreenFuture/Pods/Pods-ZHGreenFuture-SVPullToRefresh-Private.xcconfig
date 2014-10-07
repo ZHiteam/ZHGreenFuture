@@ -1,5 +1,0 @@
-#include "Pods-ZHGreenFuture-SVPullToRefresh.xcconfig"
-GCC_PREPROCESSOR_DEFINITIONS = COCOAPODS=1
-HEADER_SEARCH_PATHS = "${PODS_ROOT}/BuildHeaders" "${PODS_ROOT}/BuildHeaders/SVPullToRefresh" "${PODS_ROOT}/Headers" "${PODS_ROOT}/Headers/AFNetworking" "${PODS_ROOT}/Headers/ASProgressPopUpView" "${PODS_ROOT}/Headers/DBCamera" "${PODS_ROOT}/Headers/GPUImage" "${PODS_ROOT}/Headers/HMSegmentedControl" "${PODS_ROOT}/Headers/SDWebImage" "${PODS_ROOT}/Headers/SVPullToRefresh" "${PODS_ROOT}/Headers/TPKeyboardAvoiding" "${PODS_ROOT}/Headers/ZBarSDK"
-OTHER_LDFLAGS = -ObjC ${PODS_ZHGREENFUTURE_SVPULLTOREFRESH_OTHER_LDFLAGS}
-PODS_ROOT = ${SRCROOT}

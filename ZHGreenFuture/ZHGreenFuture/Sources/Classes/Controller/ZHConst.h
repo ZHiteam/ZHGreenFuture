@@ -15,6 +15,9 @@
 typedef void(^ZHCompletionBlock)(BOOL isSuccess);
 typedef void(^ZHProgressBlock)(float progress);
 
+#define VERSION         [[[NSBundle mainBundle] infoDictionary]objectForKey:@"CFBundleShortVersionString"]
+#define BUILD           [[NSBundle mainBundle] objectForInfoDictionaryKey: (NSString *)kCFBundleVersionKey]
+
 #define GREEN_COLOR         RGB(102,170,0)
 #define GRAY_LINE           RGB(204, 204, 204)
 #define WHITE_BACKGROUND    RGB(255,255,255)

@@ -51,11 +51,12 @@
 #define DO_ROUND            3
 
 typedef NS_ENUM(int, DoAlertViewTransitionStyle) {
-    DoTransitionStyleTopDown = 0,
+    DoTransitionStyleLine = 0,
+    DoTransitionStyleTopDown ,///= 0,
     DoTransitionStyleBottomUp,
     DoTransitionStyleFade,
     DoTransitionStylePop,
-    DoTransitionStyleLine,
+//    DoTransitionStyleLine,
 };
 
 typedef NS_ENUM(int, DoAlertViewContentType) {

@@ -116,6 +116,28 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     NSLog(@">>>>>didSelectRowAtIndexPath %@",indexPath);
+    
+    /// add by kongkong for version
+    switch (indexPath.row) {
+            /// 关于有好粮
+        case 5:
+        {
+            DoAlertView* alert = [[DoAlertView alloc]init];
+            alert.iImage = [UIImage themeImageNamed:@"logo.png"];
+            alert.nContentMode = DoContentImage;
+            
+            NSString* version = [NSString stringWithFormat:@"版本号：%@\nBuild：%@",VERSION,BUILD];
+            [alert doYes:version yes:^(DoAlertView *alertView) {
+                
+            }];
+//            alert do
+        }
+            break;
+            
+        default:
+            break;
+    }
+    
 }
 
 

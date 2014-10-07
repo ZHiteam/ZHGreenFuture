@@ -12,6 +12,7 @@
 @interface HttpClient(){
     AFHTTPRequestOperationManager*  _client;
 }
+@property (nonatomic,strong) UIControl*    mask;
 @end
 
 
@@ -60,18 +61,24 @@
 
 +(void)requestDataWithParamers:(NSDictionary*)paramers success:(void (^)(id responseObject))success failure:(void (^)(NSError *error))failure{
     HttpClient* client = [HttpClient instance];
+    [client startAnimation];
     [client->_client GET:@"/greenFuture/serverAPI.action" parameters:paramers success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        [client stopAnimation];
         success(responseObject);
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        [client stopAnimation];
         failure(error);
     }];
 }
 
 +(void)postDataWithParamers:(NSDictionary*)paramers success:(void (^)(id responseObject))success failure:(void (^)(NSError *error))failure{
     HttpClient* client = [HttpClient instance];
+    [client startAnimation];
     [client->_client POST:@"/greenFuture/serverAPI.action" parameters:paramers success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        [client stopAnimation];
         success(responseObject);
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        [client stopAnimation];
         failure(error);
     }];
 }
@@ -82,7 +89,8 @@
                  failure:(void (^)(NSError *error))failure
                 progress:(void (^)(NSUInteger bytesWritten, long long totalBytesWritten, long long totalBytesExpectedToWrite))progress{
     
-    AFHTTPRequestOperationManager*  httpClient = [HttpClient instance]->_client;
+    HttpClient* client = [HttpClient instance];
+    AFHTTPRequestOperationManager*  httpClient = client->_client;
     
     httpClient.requestSerializer.timeoutInterval = 10;
     AFHTTPRequestOperation* op = [httpClient POST:@"/greenFuture/serverAPI.action" parameters:paramers constructingBodyWithBlock:^(id<AFMultipartFormData> formData) {
@@ -106,20 +114,55 @@
             }
         }
     } success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        [client stopAnimation];
         if (success){
             success(responseObject);
         }
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        [client stopAnimation];
         if (failure){
             failure(error);
         }
     }];
-    
+    [client startAnimationWithProgress:0];
     [op setUploadProgressBlock:^(NSUInteger bytesWritten, long long totalBytesWritten, long long totalBytesExpectedToWrite) {
         NSLog(@"%lld, %lld",totalBytesWritten,totalBytesExpectedToWrite);
         if (progress){
+            [client startAnimationWithProgress:(totalBytesWritten*1.0/totalBytesExpectedToWrite)];
             progress(bytesWritten,totalBytesWritten,totalBytesExpectedToWrite);
         }
     }];
+}
+
+-(UIView*)mainView{
+    UIView* mainView = [UIApplication sharedApplication].keyWindow;
+    if (!mainView){
+        mainView = ((NavigationViewController*)[MemoryStorage valueForKey:k_NAVIGATIONCTL]).view;
+    }
+    
+    return mainView;
+}
+
+-(UIControl *)mask{
+    if (!_mask){
+        _mask = [[UIControl alloc]initWithFrame:self.mainView.bounds];
+        _mask.backgroundColor = [UIColor clearColor];
+    }
+    return _mask;
+}
+
+-(void)startAnimation{
+    [[self mainView] addSubview:self.mask];
+    [SVProgressHUD showWithStatus:@"加载中..."];
+}
+
+-(void)stopAnimation{
+    [self.mask removeFromSuperview];
+    [SVProgressHUD dismiss];
+}
+
+-(void)startAnimationWithProgress:(CGFloat)progress{
+    [self.mask removeFromSuperview];
+    [SVProgressHUD showProgress:progress status:@"上传中..."];
 }
 @end

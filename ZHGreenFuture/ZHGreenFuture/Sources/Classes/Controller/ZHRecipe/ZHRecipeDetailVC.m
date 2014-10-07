@@ -36,6 +36,9 @@
 }
 
 -(void)viewWillAppear:(BOOL)animated{
+//    if (self.navigationCtl.topViewController != self){
+//        return;
+//    }
     [self loadRequest];
 }
 
@@ -238,7 +241,7 @@
 #pragma -mark share action
 -(void)shareAction{
 //    NSString *imagePath = [[NSBundle mainBundle] pathForResource:@"ShareSDK"  ofType:@"jpg"];
-#warning TEST SHARE
+//#warning TEST SHARE
     //构造分享内容
     id<ISSContent> publishContent = [ShareSDK content:self.model.title
                                        defaultContent:@"默认分享内容，没内容时显示"

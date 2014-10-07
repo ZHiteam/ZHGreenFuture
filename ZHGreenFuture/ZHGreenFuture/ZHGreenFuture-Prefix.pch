@@ -19,6 +19,7 @@
     #import "FEToastView.h"
     #import "FEStrikeThroughLabel.h"
 
+    #import <SVProgressHUD/SVProgressHUD.h>
 
     #import <SystemConfiguration/SystemConfiguration.h>
     #import <MobileCoreServices/MobileCoreServices.h>

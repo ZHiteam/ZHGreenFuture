@@ -351,25 +351,27 @@
     }
     NSDictionary* imageData = @{@"workImageData":imgDataArray};
     
-    [self showProgress];
+//    [self showProgress];
     
     [HttpClient upLoadDataWithParamers:dic datas:imageData success:^(id responseObject) {
         BaseModel* model = [BaseModel praserModelWithInfo:responseObject];
         if ([model.state boolValue]){
             SHOW_MESSAGE(@"上传成功", 2);
+//            [self.navigationCtl pop];
+            [self.navigationCtl performSelector:@selector(pop) withObject:nil afterDelay:0.3];
         }
         else{
             SHOW_MESSAGE(@"上传失败", 2);
         }
         
-        [self stopProgress];
+//        [self stopProgress];
 
     } failure:^(NSError *error) {
         SHOW_MESSAGE(@"上传失败", 2);
         
         [self stopProgress];
     } progress:^(NSUInteger bytesWritten, long long totalBytesWritten, long long totalBytesExpectedToWrite) {
-        self.progressView.progress = totalBytesWritten*1.0/totalBytesExpectedToWrite;
+//        self.progressView.progress = totalBytesWritten*1.0/totalBytesExpectedToWrite;
     }];
 }
 
