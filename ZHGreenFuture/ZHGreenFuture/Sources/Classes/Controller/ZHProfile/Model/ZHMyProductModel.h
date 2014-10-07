@@ -12,6 +12,7 @@
 @property(nonatomic, strong)NSString *workId;
 @property(nonatomic, strong)NSString *publishDate;
 @property(nonatomic, strong)NSString *workImageURL;
+@property(nonatomic, strong)NSArray  *workImageURLArray;
 @property(nonatomic, strong)NSString *followName;
 @property(nonatomic, strong)NSString *content;
 - (instancetype)initWithDictionary:(NSDictionary*)dict;

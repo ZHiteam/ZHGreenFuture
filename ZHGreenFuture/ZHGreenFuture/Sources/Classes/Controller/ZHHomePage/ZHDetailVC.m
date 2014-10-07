@@ -152,9 +152,9 @@
 #pragma mark - Privte Method
 - (void)loadConent{
     __weak typeof(self) weakSelf = self;
-    [FEToastView showWithTitle:@"正在加载数据..." animation:YES];
+    //[FEToastView showWithTitle:@"正在加载数据..." animation:YES];
     [self.detailModel loadDataWithProductId:self.productId completionBlock:^(BOOL isSuccess) {
-        [FEToastView dismissWithAnimation:YES];
+        //[FEToastView dismissWithAnimation:YES];
         if (isSuccess) {
             [weakSelf.tableView reloadData];
         } else {

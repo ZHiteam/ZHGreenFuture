@@ -20,6 +20,11 @@
             self.followName     = [dict objectForKey:@"followName"];
             self.content        = [dict objectForKey:@"content"];
             self.workImageURL = [self.workImageURL greenFutureURLStr];
+            
+            NSArray *array = [dict objectForKey:@"workImageURLList"];
+            if ([array isKindOfClass:[NSArray class]]) {
+                self.workImageURLArray = [array copy];
+            }
         }
     }
     return self;
