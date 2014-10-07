@@ -58,6 +58,16 @@
     return self;
 }
 
+- (id)initWithFrame:(CGRect)frame{
+    self = [super initWithFrame:frame];
+    if (self) {
+        self.edgeInsets = UIEdgeInsetsZero;
+        self.itemWidth =  [[UIScreen mainScreen] bounds].size.width;
+        self.scrollView = [[UIScrollView alloc] initWithFrame:self.bounds];
+    }
+    return self;
+}
+
 - (instancetype)initWithFrame:(CGRect)frame
                    imageItems:(NSArray*)items
                 selectedBlock:(FEScrollPageSelectedBlock)selectedBlock

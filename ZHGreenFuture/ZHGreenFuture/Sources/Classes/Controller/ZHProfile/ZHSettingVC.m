@@ -7,6 +7,8 @@
 //
 
 #import "ZHSettingVC.h"
+#import <ShareSDK/ShareSDK.h>
+
 
 @interface ZHSettingVC ()<UITableViewDelegate, UITableViewDataSource>
 @property(nonatomic, strong)UITableView          *tableView;
@@ -30,7 +32,7 @@
     [super viewDidLoad];
 
     
-    self.contentArray = @[@"消息推送",@"清除缓存",@"给有好粮评分",@"意见反馈",@"分享给朋友",@"关于有好粮"];
+    self.contentArray = @[@"清除缓存",@"给有好粮评分",@"分享给朋友",@"关于有好粮"];//@"消息推送" @"意见反馈"
     [self.view addSubview:self.tableView];
     [self configureNaivBar];
     
@@ -105,7 +107,7 @@
         }
         
         cell.textLabel.text = [self.contentArray objectAtIndex:indexPath.row];
-        cell.accessoryView = indexPath.row == 0 ? self.switchButton : nil;
+        //cell.accessoryView = indexPath.row == 0 ? self.switchButton : nil;
         return cell;
     }
     return nil;
@@ -119,8 +121,39 @@
     
     /// add by kongkong for version
     switch (indexPath.row) {
+        case 0:
+        {
+            ZHALERTVIEW(nil, @"缓存清除完成。" , nil,@"确定"  ,nil,nil);
+        }
+            break;
+        case 2://@"分享给朋友"
+        {
+            id<ISSContent> publishContent = [ShareSDK content:@"有好粮"
+                                               defaultContent:@"健康粮食"
+                                                        image:nil
+                                                        title:nil
+                                                          url:@"http://fir.im/gfapp"//appstore地址
+                                                  description:nil
+                                                    mediaType:SSPublishContentMediaTypeNews];
+            
+            [ShareSDK showShareActionSheet:nil
+                                 shareList:nil
+                                   content:publishContent
+                             statusBarTips:YES
+                               authOptions:nil
+                              shareOptions: nil
+                                    result:^(ShareType type, SSResponseState state, id<ISSPlatformShareInfo> statusInfo, id<ICMErrorInfo> error, BOOL end) {
+                                        if (state == SSResponseStateSuccess){
+                                            NSLog(@"分享成功");
+                                        }
+                                        else if (state == SSResponseStateFail){
+                                            NSLog(@"分享失败,错误码:%d,错误描述:%@", [error errorCode], [error errorDescription]);
+                                        }
+                                    }];
+        }
+            break;
             /// 关于有好粮
-        case 5:
+        case 3:
         {
             NSString* msg = [NSString stringWithFormat:@"版本号：%@\nBuild：%@",ZH_VERSION,ZH_BUILD];
             ALERT_IMAGE_MESSAGE([UIImage themeImageNamed:@"logo.png"], msg);

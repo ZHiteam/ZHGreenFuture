@@ -91,10 +91,10 @@
 
 #pragma mark - Privte Method
 - (void)loadConent{
-    [FEToastView showWithTitle:@"正在加载数据..." animation:YES];
+    //[FEToastView showWithTitle:@"正在加载数据..." animation:YES];
     __weak typeof(self) weakSelf = self;
     [self.homePageModel loadDataWithCompletion:^(BOOL isSuccess) {
-        [FEToastView dismissWithAnimation:YES];
+        //[FEToastView dismissWithAnimation:YES];
         if (isSuccess) {
             [weakSelf.tableView reloadData];
         } else {
