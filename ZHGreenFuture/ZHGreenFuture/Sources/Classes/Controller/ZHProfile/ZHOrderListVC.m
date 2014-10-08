@@ -108,8 +108,16 @@
     switch (self.currentOrderType) {
         case ZHOrderTypeAll:
         {
+            __weak __typeof(self) weakSelf = self;
             ZHButton *button = [ZHButton buttonWithType:ZHButtonTypeDefault text:@"删除订单"  clickedBlock:^(ZHButton *button) {
-                NSLog(@">>>>>xxxAction %@",button);
+                [weakSelf.orderModel modifyOrderStatusWithOrderId:orderInfo.orderId operation:@"4" completionBlock:^(BOOL isSuccess) {
+                    if (isSuccess) {
+                        ZHALERTVIEW(nil,@"删除订单成功。",nil, @"确定" ,nil,nil);
+                        [weakSelf loadAllContent];
+                    } else {
+                        ZHALERTVIEW(nil,@"删除订单失败，请稍后再试。",nil, @"确定" ,nil,nil);
+                    }
+                }];
             }];
             [button setFrame:CGRectMake(cell.size.width - 80 -12, 8, 80, 28)];
             [cell.contentView addSubview:button];
@@ -130,19 +138,34 @@
             [button setFrame:CGRectMake(cell.size.width - 60 -12, 8, 60, 28)];
             [cell.contentView addSubview:button];
             
-            /*
+            __weak __typeof(self) weakSelf = self;
             button = [ZHButton buttonWithType:ZHButtonTypeDefault text:@"删除订单"  clickedBlock:^(ZHButton *button) {
-                NSLog(@">>>>>xxxAction %@",button);
+            [weakSelf.orderModel modifyOrderStatusWithOrderId:orderInfo.orderId operation:@"4" completionBlock:^(BOOL isSuccess) {
+                    if (isSuccess) {
+                        ZHALERTVIEW(nil,@"删除订单成功。",nil, @"确定" ,nil,nil);
+                        [weakSelf loadAllContent];
+                    } else {
+                        ZHALERTVIEW(nil,@"删除订单失败，请稍后再试。",nil, @"确定" ,nil,nil);
+                    }
+                }];
             }];
             [button setFrame:CGRectMake(cell.size.width - 60 - 80 -24, 8, 80, 28)];
             [cell.contentView addSubview:button];
-            */
+            
         }
             break;
         case ZHOrderTypeWaitDeliver:
         {
+            __weak __typeof(self) weakSelf = self;
             ZHButton *button = [ZHButton buttonWithType:ZHButtonTypeDefault text:@"提醒发货"  clickedBlock:^(ZHButton *button) {
-                NSLog(@">>>>>xxxAction %@",button);
+                [weakSelf.orderModel modifyOrderStatusWithOrderId:orderInfo.orderId operation:@"2" completionBlock:^(BOOL isSuccess) {
+                    if (isSuccess) {
+                        ZHALERTVIEW(nil,@"提醒发货成功。",nil, @"确定" ,nil,nil);
+                        [weakSelf loadAllContent];
+                    } else {
+                        ZHALERTVIEW(nil,@"提醒发货失败，请稍后再试。",nil, @"确定" ,nil,nil);
+                    }
+                } ];
             }];
             [button setFrame:CGRectMake(cell.size.width - 80 -12, 8, 80, 28)];
             [cell.contentView addSubview:button];
@@ -152,10 +175,13 @@
         {
             __weak __typeof(self) weakSelf = self;
             ZHButton *button = [ZHButton buttonWithType:ZHButtonTypeStyle1 text:@"确认收货"  clickedBlock:^(ZHButton *button) {
-                NSLog(@">>>>>xxxAction %@",button);
                 [weakSelf.orderModel modifyOrderStatusWithOrderId:orderInfo.orderId operation:@"6" completionBlock:^(BOOL isSuccess) {
-                    ZHALERTVIEW(nil,@"确认收货成功。",nil, @"确定" ,nil,nil);
-
+                    if (isSuccess) {
+                        ZHALERTVIEW(nil,@"确认收货成功。",nil, @"确定" ,nil,nil);
+                        [weakSelf loadAllContent];
+                    } else {
+                        ZHALERTVIEW(nil,@"确认收货失败，请稍后再试。",nil, @"确定" ,nil,nil);
+                    }
                 } ];
             }];
             [button setFrame:CGRectMake(cell.size.width - 80 -12, 8, 80, 28)];

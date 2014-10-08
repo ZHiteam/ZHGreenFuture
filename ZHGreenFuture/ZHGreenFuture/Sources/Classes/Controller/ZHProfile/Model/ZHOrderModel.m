@@ -98,7 +98,7 @@
 
 - (void)modifyOrderStatusWithOrderId:(NSString*)orderId operation:(NSString*)operation completionBlock:(ZHCompletionBlock)block{
     if ([orderId length] >0 && [operation length] >0) {
-        NSString *userId = [[ZHAuthorizationManager shareInstance] account];
+        NSString *userId = [[ZHAuthorizationManager shareInstance] userId];
         userId = [userId length] == 0 ? @"" : userId;
         
         [HttpClient requestDataWithParamers:@{@"scene": @"22",@"userId": userId, @"orderId":orderId, @"operation" : operation} success:^(id responseObject) {
