@@ -18,8 +18,8 @@
             
             self.imageURL   = [dict objectForKey:@"imageURL"];
             self.title      = [dict objectForKey:@"title"];
-            self.skuInfo    = [dict objectForKey:@"skuInfo"];
-            self.promotionPrice = [NSString stringWithFormat:@"%.2f",[[dict objectForKey:@"promotionPrice"] floatValue]];
+            self.skuInfo    = [dict objectForKey:@"subTitle"];
+            self.promotionPrice = [NSString stringWithFormat:@"%.2f",[[dict objectForKey:@"price"] floatValue]];
             self.buyCount   = [NSString stringWithFormat:@"%d",[[dict objectForKey:@"buyCount"] integerValue]];
             self.productId  = [NSString stringWithFormat:@"%d",[[dict objectForKey:@"productId"] integerValue]];
         }
