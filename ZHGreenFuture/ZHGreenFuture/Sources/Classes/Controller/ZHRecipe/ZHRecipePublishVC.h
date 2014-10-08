@@ -12,4 +12,5 @@
 
 @property (nonatomic,strong) NSMutableArray*        images;
 @property (nonatomic,strong) NSString*              recipeId;
+@property (nonatomic,strong) NSString*              recipeName;
 @end

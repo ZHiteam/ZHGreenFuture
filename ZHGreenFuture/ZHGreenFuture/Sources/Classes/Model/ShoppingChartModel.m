@@ -34,11 +34,6 @@
     model.title             = VALIDATE_VALUE(dic[@"title"]);
     model.skuInfo           = VALIDATE_VALUE(dic[@"skuInfo"]);
     model.marketPrice       = VALIDATE_VALUE(dic[@"marketPrice"]);
-    
-    /// 容错服务端错别字
-    if ([model.marketPrice isEqualToString:@"0.00"]){
-        model.marketPrice   = VALIDATE_VALUE(dic[@"marketPirce"]);
-    }
     model.promotionPrice    = VALIDATE_VALUE(dic[@"promotionPrice"]);
     model.buyCout           = VALIDATE_VALUE(dic[@"buyCount"]);
     model.productId         = VALIDATE_VALUE(dic[@"productId"]);

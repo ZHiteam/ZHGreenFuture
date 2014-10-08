@@ -54,6 +54,7 @@
         if ([self.userInfo[@"image"] isKindOfClass:[UIImage class]])
         self.images = [[NSMutableArray alloc]initWithObjects:self.userInfo[@"image"], nil];
         self.recipeId = self.userInfo[@"recipeId"];
+        self.recipeName = self.userInfo[@"recipeName"];
     }
     
     [self loadContent];
@@ -335,6 +336,10 @@
     if (!isEmptyString(self.recipeId)){
         [dic setObject:self.recipeId forKey:@"recipeId"];
     }
+//    
+//    if (!isEmptyString(self.recipeName)){
+//        [dic setObject:self.recipeName forKey:@"title"];
+//    }
     
     [dic setObject:self.descEdit.text forKey:@"title"];
     
