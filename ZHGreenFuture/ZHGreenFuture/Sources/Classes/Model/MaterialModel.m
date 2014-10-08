@@ -18,8 +18,8 @@
     
     NSDictionary* dic = (NSDictionary*)info;
     
-    model.title = dic[@"title"];
-    model.weight = dic[@"weight"];
+    model.title     = VALIDATE_VALUE(dic[@"title"]);
+    model.weight    = VALIDATE_VALUE(dic[@"weight"]);
     
     return model;
 }

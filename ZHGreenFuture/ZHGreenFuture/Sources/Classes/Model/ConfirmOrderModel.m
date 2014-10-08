@@ -40,17 +40,12 @@
     }
     
     
-    model.productTotalPrice     = [NSString stringWithFormat:@"%.2f",[dic[@"productTotalPrice"]floatValue]];
-    model.reducePrice           = [NSString stringWithFormat:@"%.2f",[dic[@"reducePrice"]floatValue]];
-    model.totalPrice            = [NSString stringWithFormat:@"%.2f",[dic[@"totalPrice"]floatValue]];
-    if ([dic[@"express"] isKindOfClass:[NSString class]]){
-        model.express           = dic[@"express"];
-    }
-    else{
-        model.express           = [NSString stringWithFormat:@"%.2f",[dic[@"express"]floatValue]];
-    }
+    model.productTotalPrice     = VALIDATE_VALUE(dic[@"productTotalPrice"]);
+    model.reducePrice           = VALIDATE_VALUE(dic[@"reducePrice"]);
+    model.totalPrice            = VALIDATE_VALUE(dic[@"totalPrice"]);
+    model.express               = VALIDATE_VALUE(dic[@"express"]);
     
-    model.shoppingCartIdList    = dic[@"shoppingCartIdList"];
+    model.shoppingCartIdList    = VALIDATE_VALUE(dic[@"shoppingCartIdList"]);
 
     return model;
 }

@@ -18,8 +18,8 @@
     
     NSDictionary* dic = (NSDictionary*)info;
     
-    model.title = dic[@"content"];
-    model.imageUrl = dic[@"url"];
+    model.title     = VALIDATE_VALUE(dic[@"content"]);
+    model.imageUrl  = VALIDATE_VALUE(dic[@"url"]);
     
     return model;
 }

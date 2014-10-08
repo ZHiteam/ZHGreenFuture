@@ -29,19 +29,20 @@
     
     NSDictionary* dic = (NSDictionary*)info;
     
-    model.shoppingChartId   = [NSString stringWithFormat:@"%d",[dic[@"shoppingCartId"]intValue]];
-    model.imageURL          = dic[@"imageURL"];
-    model.title             = dic[@"title"];
-    model.skuInfo           = dic[@"skuInfo"];
-    model.marketPrice       = [NSString stringWithFormat:@"%.2f",[dic[@"marketPrice"]floatValue]];
+    model.shoppingChartId   = VALIDATE_VALUE(dic[@"shoppingCartId"]);
+    model.imageURL          = VALIDATE_VALUE(dic[@"imageURL"]);
+    model.title             = VALIDATE_VALUE(dic[@"title"]);
+    model.skuInfo           = VALIDATE_VALUE(dic[@"skuInfo"]);
+    model.marketPrice       = VALIDATE_VALUE(dic[@"marketPrice"]);
+    
     /// 容错服务端错别字
     if ([model.marketPrice isEqualToString:@"0.00"]){
-        model.marketPrice       = [NSString stringWithFormat:@"%.2f",[dic[@"marketPirce"]floatValue]];
+        model.marketPrice   = VALIDATE_VALUE(dic[@"marketPirce"]);
     }
-    model.promotionPrice    = [NSString stringWithFormat:@"%.2f",[dic[@"promotionPrice"]floatValue]];
-    model.buyCout           = [NSString stringWithFormat:@"%d",[dic[@"buyCount"]intValue]];
-    model.productId         = [NSString stringWithFormat:@"%d",[dic[@"productId"]intValue]];
-    model.validate          = dic[@"validate"];
+    model.promotionPrice    = VALIDATE_VALUE(dic[@"promotionPrice"]);
+    model.buyCout           = VALIDATE_VALUE(dic[@"buyCount"]);
+    model.productId         = VALIDATE_VALUE(dic[@"productId"]);
+    model.validate          = VALIDATE_VALUE(dic[@"validate"]);
     
     model.oldCount          = @"-1";
     return model;

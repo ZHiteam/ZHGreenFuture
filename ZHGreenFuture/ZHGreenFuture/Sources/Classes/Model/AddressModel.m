@@ -19,11 +19,11 @@
     
     NSDictionary* dic = (NSDictionary*)info;
     
-    model.address   = dic[@"address"];
-    model.name      = dic[@"name"];
-    model.phone     = dic[@"phone"];
-    model.currentAddress    = [NSString stringWithFormat:@"%d",[dic[@"currentAddress"]intValue]];
-    model.receiveId = [NSString stringWithFormat:@"%d", [dic[@"receiveId"]intValue]];
+    model.address   = VALIDATE_VALUE(dic[@"address"]);
+    model.name      = VALIDATE_VALUE(dic[@"name"]);
+    model.phone     = VALIDATE_VALUE(dic[@"phone"]);
+    model.currentAddress    = VALIDATE_VALUE(dic[@"currentAddress"]);
+    model.receiveId = VALIDATE_VALUE(dic[@"receiveId"]);
     
     return model;
 }

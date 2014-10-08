@@ -29,7 +29,7 @@ typedef void(^ZHProgressBlock)(float progress);
 
 /// notify const start
 #define NOTIFY_ALI_PAY_BACK     @"notify_alipay_back"
-#define NOTIFY_TRADE_SUCCESS    @"notify_trade_success"
+#define NOTIFY_TRADE_STATE    @"notify_trade_state"
 
 #define ZHSTATUS_BAR_CHANGE @"zh_status_bar_change"
 

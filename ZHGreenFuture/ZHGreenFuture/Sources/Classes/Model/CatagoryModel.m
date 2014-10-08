@@ -19,10 +19,10 @@
     NSDictionary* dic = (NSDictionary*)info;
 
     model.lastPage = NO;
-    model.title                 = dic[@"title"];
-    model.subtitle              = dic[@"title"];
-    model.backgourndImageUrl    = dic[@"iconURL"];
-    model.categoryId            = [NSString stringWithFormat:@"%d",[dic[@"categoryId"]intValue]];
+    model.title                 = VALIDATE_VALUE(dic[@"title"]);
+    model.subtitle              = VALIDATE_VALUE(dic[@"title"]);
+    model.backgourndImageUrl    = VALIDATE_VALUE(dic[@"iconURL"]);
+    model.categoryId            = VALIDATE_VALUE(dic[@"categoryId"]);
 
     id val = dic[@"shortTitles"];
     if ([val isKindOfClass:[NSArray class]]){

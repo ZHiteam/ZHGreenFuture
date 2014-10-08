@@ -23,11 +23,11 @@
     
     NSDictionary* dic = (NSDictionary*)info;
     
-    model.content       = dic[@"title"];
-    model.url           = [dic[@"imageURL"] greenFutureURLStr];
-    model.creataDate    = dic[@"createDate"];
-    model.nickName      = dic[@"userNickName"];
-    model.workId        = [NSString stringWithFormat:@"%d",[dic[@"workId"]intValue]];
+    model.content       = VALIDATE_VALUE(dic[@"title"]);
+    model.url           = VALIDATE_VALUE([dic[@"imageURL"] greenFutureURLStr]);
+    model.creataDate    = VALIDATE_VALUE(dic[@"createDate"]);
+    model.nickName      = VALIDATE_VALUE(dic[@"userNickName"]);
+    model.workId        = VALIDATE_VALUE(dic[@"workId"]);
 
     
     return model;

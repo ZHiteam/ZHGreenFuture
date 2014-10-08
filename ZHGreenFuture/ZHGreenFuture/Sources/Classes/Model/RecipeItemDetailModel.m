@@ -19,13 +19,13 @@
     
     NSDictionary* dic = (NSDictionary*)info;
     
-    model.backgroundImage       = dic[@"backgoundImageUrl"];
-    model.recipeName            = dic[@"recipeName"];
-    model.author                = dic[@"author"];
-    model.health                = dic[@"health"];
-    model.tips                  = dic[@"tips"];
-    model.commentCount          = [NSString stringWithFormat:@"%d",[dic[@"commentCount"]intValue]];
-    model.done                  = [NSString stringWithFormat:@"%d",[dic[@"done"]intValue]];
+    model.backgroundImage       = VALIDATE_VALUE(dic[@"backgoundImageUrl"]);
+    model.recipeName            = VALIDATE_VALUE(dic[@"recipeName"]);
+    model.author                = VALIDATE_VALUE(dic[@"author"]);
+    model.health                = VALIDATE_VALUE(dic[@"health"]);
+    model.tips                  = VALIDATE_VALUE(dic[@"tips"]);
+    model.commentCount          = VALIDATE_VALUE(dic[@"commentCount"]);
+    model.done                  = VALIDATE_VALUE(dic[@"done"]);
     
     
     if ([dic[@"material"] isKindOfClass:[NSArray class]]){
@@ -69,7 +69,7 @@
         }
         model.example = [[RecpieExampleModel alloc]init];
         model.example.images = [muData mutableCopy];
-        model.example.count = [NSString stringWithFormat:@"%d", [dic[@"practiceCount"]intValue]];
+        model.example.count = VALIDATE_VALUE(dic[@"practiceCount"]);
     }
     
     if ([dic[@"commentList"] isKindOfClass:[NSArray class]]){

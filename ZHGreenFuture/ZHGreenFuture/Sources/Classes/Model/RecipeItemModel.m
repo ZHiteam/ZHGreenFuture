@@ -17,12 +17,12 @@
     }
     NSDictionary* dic = (NSDictionary*)info;
     
-    model.backgroundImageUrl        = dic[@"imageURL"];
-    model.title                     = dic[@"title"];
-    model.subTitle                  = dic[@"subTitle"];
-    model.done                      = [NSString stringWithFormat:@"%d",[dic[@"done"]intValue]];
-    model.comment                   = [NSString stringWithFormat:@"%d",[dic[@"comment"]intValue]];
-    model.recipeId                  = [NSString stringWithFormat:@"%d" ,[dic[@"recipeId"]intValue]];
+    model.backgroundImageUrl        = VALIDATE_VALUE(dic[@"imageURL"]);
+    model.title                     = VALIDATE_VALUE(dic[@"title"]);
+    model.subTitle                  = VALIDATE_VALUE(dic[@"subTitle"]);
+    model.done                      = VALIDATE_VALUE(dic[@"done"]);
+    model.comment                   = VALIDATE_VALUE(dic[@"comment"]);
+    model.recipeId                  = VALIDATE_VALUE(dic[@"recipeId"]);
     
     return model;
 }

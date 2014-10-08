@@ -17,8 +17,24 @@
     }
     
     NSDictionary* dic = (NSDictionary*)info;
-    model.state = [NSString stringWithFormat:@"%d", [dic[@"result"]boolValue]] ;
-    
+    model.state = VALIDATE_VALUE(dic[@"result"]);
+
     return model;
+}
+
++(NSString *)validateStringValue:(id)val{
+    if ([val isKindOfClass:[NSNull class]]){
+        return @"";
+    }
+    
+    if ([val isKindOfClass:[NSString class]]){
+        return val;
+    }
+    
+    if ([val isKindOfClass:[NSNumber class]]){
+        return [val descriptionWithLocale:nil];
+    }
+    
+    return @"";
 }
 @end

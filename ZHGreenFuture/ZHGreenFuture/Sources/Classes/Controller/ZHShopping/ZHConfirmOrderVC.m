@@ -34,7 +34,7 @@
 - (void)viewDidLoad {
     
     [super viewDidLoad];
-    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(notifyAction:) name:NOTIFY_TRADE_SUCCESS object:nil];
+    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(notifyAction:) name:NOTIFY_TRADE_STATE object:nil];
     [self loadContent];
 }
 
@@ -472,25 +472,27 @@
 }
 
 -(void)notifyAction:(NSNotification*)notify{
-    /// 交易成功
-    if (isEmptyString(self.orderId)){
+    NSDictionary* info = notify.object;
+    if (![info isKindOfClass:[NSDictionary class]]){
         return;
     }
-    NSDictionary* info = @{@"userId":[ZHAuthorizationManager shareInstance].userId,
-                           @"orderId":self.orderId,
-                           @"operation":@"2",
-                           @"scene":@"22"};
-    [HttpClient postDataWithParamers:info success:^(id responseObject) {
-        BaseModel* model = [BaseModel praserModelWithInfo:responseObject];
-        if ([model.state boolValue]){
-            SHOW_MESSAGE(@"支付成功", 2);
-            [self jumpToOrderList];
+    
+    BaseModel* model = [BaseModel praserModelWithInfo:info];
+    if (![model.state boolValue]){
+        NSString* msg = info[@"msg"];
+        if (!isEmptyString(msg)){
+            msg = @"支付失败";
         }
-    } failure:^(NSError *error) {
-    }];
+        SHOW_MESSAGE(msg, 2);
+    }
+    else{
+        SHOW_MESSAGE(@"支付成功", 2);
+    }
+    [self jumpToOrderList];
 }
 
 -(void)jumpToOrderList{
+    [self.navigationCtl popWithAnimation:NO];
     [[MessageCenter instance]performActionWithUserInfo:@{@"controller":@"ZHOrderListVC"}];
 }
 @end

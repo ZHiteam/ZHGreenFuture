@@ -8,9 +8,13 @@
 
 #import <Foundation/Foundation.h>
 
+#define VALIDATE_VALUE(val) [BaseModel validateStringValue:val];
+
 @interface BaseModel : NSObject
 
 @property (nonatomic) NSString* state;
 
 +(id)praserModelWithInfo:(id)info;
+
++(NSString*)validateStringValue:(id)val;
 @end

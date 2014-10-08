@@ -244,21 +244,12 @@
 //#warning TEST SHARE
     //构造分享内容
     id<ISSContent> publishContent = [ShareSDK content:self.model.title
-                                       defaultContent:@"默认分享内容，没内容时显示"
+                                       defaultContent:self.model.title
                                                 image:[ShareSDK imageWithUrl:self.model.backgroundImageUrl]
                                                 title:self.model.title
                                                   url:@"http://www.baidu.com"
                                           description:self.model.title
                                             mediaType:SSPublishContentMediaTypeNews];
-//    
-//    + (id<ISSContent>)content:(NSString *)content
-//defaultContent:(NSString *)defaultContent
-//image:(id<ISSCAttachment>)image
-//title:(NSString *)title
-//url:(NSString *)url
-//description:(NSString *)description
-//mediaType:(SSPublishContentMediaType)mediaType
-//locationCoordinate:(SSCLocationCoordinate2D *)locationCoordinate;
     
     [ShareSDK showShareActionSheet:nil
                          shareList:nil

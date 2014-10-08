@@ -17,17 +17,8 @@
             self.title     = [dict objectForKey:@"title"];
             self.subTitle  = [dict objectForKey:@"subTitle"];
             self.price     = [dict objectForKey:@"price"];
-            if ([[dict objectForKey:@"buyCount"] isKindOfClass:[NSNumber class]]) {
-                self.buyCount = [NSString stringWithFormat:@"%d",[[dict objectForKey:@"buyCount"] integerValue]];
-            } else {
-                self.buyCount = [dict objectForKey:@"buyCount"];
-            }
-            
-            if ([[dict objectForKey:@"productId"] isKindOfClass:[NSNumber class]]) {
-                self.productId = [NSString stringWithFormat:@"%d",[[dict objectForKey:@"productId"] integerValue]];
-            } else {
-                self.productId = [dict objectForKey:@"productId"];
-            }
+            self.buyCount = VALIDATE_VALUE([dict objectForKey:@"buyCount"]);
+            self.productId = VALIDATE_VALUE([dict objectForKey:@"productId"]);
         }
     }
     return self;

@@ -37,12 +37,12 @@
     order.productName           = productTitle; //商品标题
     order.productDescription    = info; /// 商品描述
 #warning 测试做成一分钱
-#ifdef DEBUG
+//#ifdef DEBUG
     order.amount                = @"0.01";
-#else
-    order.amount                = totalPrice;    
-#endif
-    order.notifyURL             =  @"http%3A%2F%2Fwwww.greenFuture.com"; //回调URL
+//#else
+//    order.amount                = totalPrice;    
+//#endif
+    order.notifyURL             = [NSString stringWithFormat:@"%@?scene=22&userId=17&orderId=69&operation=2",BASE_URL];
     
     NSString* orderInfo = [order description];
     
@@ -109,7 +109,7 @@
             {
                 //验证签名成功，交易结果无篡改
                 FELOG(@"交易成功");
-                [[NSNotificationCenter defaultCenter]postNotificationName:NOTIFY_TRADE_SUCCESS object:nil];
+                [[NSNotificationCenter defaultCenter]postNotificationName:NOTIFY_TRADE_STATE object:@{@"result":@"1"}];
             }
             
         }
@@ -117,13 +117,17 @@
         {
             //交易失败
             NSString* status = [NSString stringWithFormat:@"Error:1002, %@",result.statusMessage];
-            SHOW_MESSAGE(status, 2);
+            NSDictionary* info = @{@"result":@"0"};
+            if (!isEmptyString(status)){
+                info = @{@"result":@"0",@"msg":status};
+            }
+            [[NSNotificationCenter defaultCenter]postNotificationName:NOTIFY_TRADE_STATE object:info];
         }
     }
     else
     {
         //失败
-        SHOW_MESSAGE(@"Error:1003, 交易失败", 2);
+        [[NSNotificationCenter defaultCenter]postNotificationName:NOTIFY_TRADE_STATE object:@{@"result":@"0",@"msg":@"Error:1003, 交易失败"}];
     }
 }
 

@@ -22,19 +22,19 @@
     model.page = 0;
     model.lastPage = NO;
     
-    model.title = dic[@"name"];
+    model.title         = VALIDATE_VALUE(dic[@"name"]);
     if (isEmptyString(model.title)){
-        model.title = dic[@"title"];
+        model.title     = VALIDATE_VALUE(dic[@"title"]);
     }
     
-    model.categoryId = [NSString stringWithFormat:@"%d",[dic[@"categoryId"]intValue]];
+    model.categoryId    = VALIDATE_VALUE(dic[@"categoryId"]);
     
-    model.descript = dic[@"description"];
+    model.descript      = VALIDATE_VALUE(dic[@"description"]);
     if (isEmptyString(model.descript)){
-        model.descript = dic[@"subTitle"];
+        model.descript  = VALIDATE_VALUE(dic[@"subTitle"]);
     }
     
-    model.imageUrl = dic[@"backgourndImageUrl"];
+    model.imageUrl      = VALIDATE_VALUE(dic[@"backgourndImageUrl"]);
     
     model.lastPage = [dic[@"lastPage"] boolValue];
     

@@ -18,8 +18,8 @@
     }
     NSDictionary* dic = (NSDictionary*)info;
     
-    model.tagName   = dic[@"name"];
-    model.tagId     = [NSString stringWithFormat:@"%d", [dic[@"tagId"]intValue]];
+    model.tagName   = VALIDATE_VALUE(dic[@"name"]);
+    model.tagId     = VALIDATE_VALUE(dic[@"tagId"]);
     
     return model;
 }

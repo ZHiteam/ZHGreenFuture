@@ -18,12 +18,12 @@
     
     NSDictionary* dic = (NSDictionary*)info;
     
-    model.contenet = dic[@"content"];
-    model.comment_date = dic[@"commentDate"];
-    model.userName = dic[@"nickName"];
-    model.userId = [NSString stringWithFormat:@"%d", [dic[@"userId"]intValue]];
-    model.userAvatarURL = dic[@"userAvatarURL"];
-    model.commentId = [NSString stringWithFormat:@"%d",[dic[@"commentId"]intValue]];
+    model.contenet          = VALIDATE_VALUE(dic[@"content"]);
+    model.comment_date      = VALIDATE_VALUE(dic[@"commentDate"]);
+    model.userName          = VALIDATE_VALUE(dic[@"nickName"]);
+    model.userId            = VALIDATE_VALUE(dic[@"userId"]);
+    model.userAvatarURL     = VALIDATE_VALUE(dic[@"userAvatarURL"]);
+    model.commentId         = VALIDATE_VALUE(dic[@"commentId"]);
     
     return model;
 }
