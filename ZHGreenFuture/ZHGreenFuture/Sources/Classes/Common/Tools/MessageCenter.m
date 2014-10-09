@@ -7,7 +7,8 @@
 //
 
 #import "MessageCenter.h"
-
+#import "ZHRootViewController.h"
+#import "TabbarViewController.h"
 
 @implementation MessageCenter
 
@@ -35,6 +36,9 @@
                 NSString*categoryId = [queryDict objectForKey:@"categoryId"];
                 NSString*type = [queryDict objectForKey:@"type"];
                 ZHGotoCategoryDetailVC(categoryId,type);
+            } else if ([host isEqualToString:@"tabbar"]) {
+                NSString*tabbarId = [queryDict objectForKey:@"tabbarId"];
+                ZHGotoTabbarVC(tabbarId);
             }
         }
     }

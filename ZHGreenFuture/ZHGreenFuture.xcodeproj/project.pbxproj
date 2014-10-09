@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		84088F0819E6E88A00F11FF4 /* category_more@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 84088F0719E6E88A00F11FF4 /* category_more@2x.png */; };
 		84260FC719CD2AC900216C78 /* ZHAuthorizationVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 84260FC619CD2AC900216C78 /* ZHAuthorizationVC.m */; };
 		84260FCB19CD2F1C00216C78 /* auth_account@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 84260FC919CD2F1C00216C78 /* auth_account@2x.png */; };
 		84260FCC19CD2F1C00216C78 /* auth_password@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 84260FCA19CD2F1C00216C78 /* auth_password@2x.png */; };
@@ -371,6 +372,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		84088F0719E6E88A00F11FF4 /* category_more@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "category_more@2x.png"; sourceTree = "<group>"; };
 		84260FC519CD2AC900216C78 /* ZHAuthorizationVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZHAuthorizationVC.h; sourceTree = "<group>"; };
 		84260FC619CD2AC900216C78 /* ZHAuthorizationVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZHAuthorizationVC.m; sourceTree = "<group>"; };
 		84260FC919CD2F1C00216C78 /* auth_account@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "auth_account@2x.png"; sourceTree = "<group>"; };
@@ -1175,6 +1177,7 @@
 		84A7A5AE19B2BE770050CACD /* homePage */ = {
 			isa = PBXGroup;
 			children = (
+				84088F0719E6E88A00F11FF4 /* category_more@2x.png */,
 				845C76B619D0871600CB3F5E /* home_qrcode@2x.png */,
 				84A7A5D219B313270050CACD /* productPlaceholder@2x.png */,
 				84A7A5CD19B2D7060050CACD /* bannerPlaceholder@2x.png */,
@@ -2291,6 +2294,7 @@
 				84F1FE4219BC47450002605A /* ZHDetailRecipeListCell.xib in Resources */,
 				84260FD619CD79A300216C78 /* auth_phone@2x.png in Resources */,
 				9C89857719BEB280009CB910 /* gradient_layer@2x.png in Resources */,
+				84088F0819E6E88A00F11FF4 /* category_more@2x.png in Resources */,
 				84F1FE3D19BC45B90002605A /* ZHDetailSKUInfoCell.xib in Resources */,
 				9C89838B19B56E61009CB910 /* banner_mask@2x.png in Resources */,
 				9CCB1DA619D14FED009BB25A /* check_black.png in Resources */,

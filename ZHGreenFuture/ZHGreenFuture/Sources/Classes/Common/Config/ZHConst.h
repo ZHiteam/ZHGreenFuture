@@ -65,4 +65,12 @@ CatagoryModel* model =  [[CatagoryModel alloc] init]; model.categoryId = categor
 [[MessageCenter instance]performActionWithUserInfo:@{@"controller": @"ZHCatagoryVC",@"userinfo":model}];                \
 }
 
+#define ZHGotoTabbarVC(tabbarId)                    {                                                                   \
+ZHRootViewController *rootVC = [[[UIApplication sharedApplication] delegate] performSelector:@selector(rootViewController)];                                                                                                                   \
+TabbarViewController *tabbarVC = [rootVC performSelector:@selector(tabCtl)];                                            \
+[tabbarVC selectAtIndex:[tabbarId integerValue] animation:YES];                                                         \
+}
+
+//更多
+#define ZHCategoryMoreUrl           @"greenfuture://tabbar?tabbarId=1"
 

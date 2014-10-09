@@ -208,6 +208,12 @@
         ZHCategoryItem * obj = [[ZHCategoryItem alloc] initWithDictionary:banner];
         [dstArray addObject:obj];
     }
+    //add more
+    ZHCategoryItem * obj = [[ZHCategoryItem alloc] init];
+    obj.title     = @"更多";
+    obj.innerURL  = ZHCategoryMoreUrl;
+    obj.imageName = @"category_more";
+    [dstArray addObject:obj];
     self.categoryItems = [dstArray copy];
     
     //calender

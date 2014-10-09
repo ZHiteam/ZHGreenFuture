@@ -48,7 +48,7 @@
     [self.tableView addInfiniteScrollingWithActionHandler:^{
         if (!weakSelf.homePageModel.isHaveMore) {
             //weakSelf.tableView.infiniteScrollingView.state = SVInfiniteScrollingStateStopped;
-            [FEToastView showWithTitle:@"没有更多了。" animation:YES interval:1.0];
+            [FEToastView showWithTitle:@"没有更多了" animation:YES interval:1.0];
             [weakSelf.tableView.infiniteScrollingView stopAnimating];
         } else {
             [weakSelf.homePageModel loadMoreWithCompletion:^(BOOL isSuccess) {

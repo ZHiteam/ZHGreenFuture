@@ -24,6 +24,7 @@
 @property(nonatomic ,strong)NSString *iconURL;
 @property(nonatomic ,strong)NSString *title;
 @property(nonatomic ,strong)NSString *innerURL;
+@property(nonatomic ,strong)NSString *imageName;//only use for more
 - (instancetype)initWithDictionary:(NSDictionary*)dict;
 @end
 

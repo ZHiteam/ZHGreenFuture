@@ -96,7 +96,7 @@
             index ++ ;
             button.imageView.contentMode = UIViewContentModeScaleToFill;
 //            __weak ZHCategoryButton *weakButton = button;
-            [button.imageView setImageWithUrlString:item.iconURL];
+            [button.imageView setImageWithUrlString:item.iconURL placeholderImage:[UIImage imageNamed:item.imageName]];
             [button setTitle:item.title forState:UIControlStateNormal];
             [button setTitleColor:RGB(119, 119, 119) forState:UIControlStateNormal];
             [button addTarget:self action:@selector(buttonPressed:) forControlEvents:UIControlEventTouchUpInside];
