@@ -114,6 +114,13 @@
             string = [NSString stringWithFormat:@"%@%@",BASE_SITE,string];
         }
     }
+
+    /// 获取最后一个 "http://" 的内容
+    NSArray* array = [string componentsSeparatedByString:@"http://"];
+    if (array.count > 0){
+        string = [NSString stringWithFormat:@"http://%@",array.lastObject];
+    }
+    
     return string;
 }
 
