@@ -345,6 +345,11 @@
  
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
-    NSLog(@">>>>>didSelectRowAtIndexPath %@",indexPath);
+    NSInteger rowCount = [[[[self.orderModel orderLists] objectAtIndex:indexPath.section] productLists] count] + 3;
+    if (indexPath.row >0 && (indexPath.row < (rowCount -2 )) ){
+        ZHOrderInfo *orderInfo = [self.orderModel.orderLists objectAtIndex:indexPath.section];
+        ZHOrderProduct *product = [orderInfo.productLists objectAtIndex:indexPath.row - 1];
+        ZHGotoDetailVC(product.productId);
+    }
 }
 @end
