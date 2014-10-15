@@ -105,6 +105,10 @@
     if ([url.scheme.lowercaseString isEqualToString:@"gf4alipay"]){
         [[NSNotificationCenter defaultCenter]postNotificationName:NOTIFY_ALI_PAY_BACK object:url];
     }
+
+    if ([url.scheme.lowercaseString isEqualToString:@"greenFuture"]) {
+        [[MessageCenter instance]performActionWithUrl:url.absoluteString];
+    }
     return YES;
 }
 @end
