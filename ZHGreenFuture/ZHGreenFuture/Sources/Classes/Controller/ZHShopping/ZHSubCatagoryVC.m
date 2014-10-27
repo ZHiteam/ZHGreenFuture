@@ -70,8 +70,8 @@
         _bannerView.contentMode = UIViewContentModeScaleAspectFill;
         _bannerView.clipsToBounds = YES;
         
-        [_bannerView addSubview:self.titleLabel];
-        [_bannerView addSubview:self.descriptionLabel];
+//        [_bannerView addSubview:self.titleLabel];
+//        [_bannerView addSubview:self.descriptionLabel];
         
         [_bannerView setImageWithUrlString:self.model.imageUrl];///[UIImage themeImageNamed:@"temp_banner_01"]];
         
