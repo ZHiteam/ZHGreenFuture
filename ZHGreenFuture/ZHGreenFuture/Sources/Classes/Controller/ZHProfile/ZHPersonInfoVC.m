@@ -147,7 +147,7 @@
                 [self.avatarView removeFromSuperview];
             }
             [cell.contentView addSubview:self.avatarView];
-            [self.avatarView setImageWithUrlString:self.profileModel.userAvatar];
+            [self.avatarView setImageWithUrlString:self.profileModel.userAvatar placeholderImage:self.profileModel.userAvatarImage];
         }else {
             if (self.userNameLabel.superview) {
                 [self.userNameLabel removeFromSuperview];
@@ -367,9 +367,9 @@
 - (void)imageCropViewController:(RSKImageCropViewController *)controller didCropImage:(UIImage *)croppedImage
 {
     __weak typeof(self) weakSelf = self;
-    [FEToastView showWithTitle:@"正在上传..." animation:YES];
+    //[FEToastView showWithTitle:@"正在上传..." animation:YES];
     [self.profileModel modifyProfileInfo:croppedImage progressBlock:nil completionBlock:^(BOOL isSuccess) {
-        [FEToastView dismissWithAnimation:YES];
+        //[FEToastView dismissWithAnimation:YES];
         NSString *message = isSuccess ? @"上传成功" : @"上传失败";
         [FEToastView showWithTitle:message animation:YES interval:2.0];
         if (isSuccess) {

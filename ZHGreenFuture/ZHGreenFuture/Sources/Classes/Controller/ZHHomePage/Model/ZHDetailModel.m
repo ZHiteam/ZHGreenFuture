@@ -149,9 +149,9 @@
     
     self.title          = [jsonDict objectForKey:@"title"];
     self.productId      = [NSString stringWithFormat:@"%d",[[jsonDict objectForKey:@"productId"] integerValue]];
-    self.marketPirce    = [NSString stringWithFormat:@"%.2f",[[jsonDict objectForKey:@"marketPirce"] floatValue]];
+    self.marketPirce    = [NSString stringWithFormat:@"%.2f",[[jsonDict objectForKey:@"marketPrice"] floatValue]];
     self.promotionPrice = [NSString stringWithFormat:@"%.2f",[[jsonDict objectForKey:@"promotionPrice"] floatValue]];
-    self.fromPlace      = [NSString stringWithFormat:@"%.2f",[[jsonDict objectForKey:@"fromPlace"] floatValue]];
+    self.fromPlace      = [jsonDict objectForKey:@"fromPlace"];
     self.skuInfo        = [jsonDict objectForKey:@"skuInfo"];
     if ([[jsonDict objectForKey:@"salesCount"] isKindOfClass:[NSNumber class]]) {
         self.salesCount = [NSString stringWithFormat:@"%d",[[jsonDict objectForKey:@"salesCount"] integerValue]];

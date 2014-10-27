@@ -38,15 +38,16 @@
         //[cell.segmentControl setFrame:CGRectMake(12, 12, 280, 28)];
         cell.segmentControl.segmentDelegate = cell;
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
-        cell.infoImageView.contentMode = UIViewContentModeScaleToFill;
         cell.contentView.clipsToBounds = YES;
+        cell.infoImageView.contentMode = UIViewContentModeScaleToFill;
+        cell.segmentControl.frame=  CGRectMake(12, 0, [UIScreen mainScreen].bounds.size.width - 24, 28);
         return cell;
     }
     return nil;
 }
 
 + (CGFloat)height{
-    return 960.0f;
+    return 640.0f;
 }
 
 - (void)setSegmentControlClickedBlock:(ZHSegmentControlClickedBlock)segmentClickedBlock{

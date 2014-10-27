@@ -13,6 +13,7 @@
 @interface ZHProfileModel ()
 @property(nonatomic, strong)NSString *avatarImagePath;
 @property(nonatomic, assign)BOOL isRuning;
+@property(nonatomic, assign)BOOL isChangeAvatar;
 @end
 
 @implementation ZHProfileModel
@@ -51,6 +52,7 @@
 }
 
 - (void)modifyProfileInfo:(UIImage *)avatarImage progressBlock:(ZHProgressBlock)progressBlock completionBlock:(ZHCompletionBlock)completeBlock{
+    self.isChangeAvatar = YES;
     [self modifyProfileInfo:avatarImage userName:self.userName progressBlock:progressBlock completionBlock:completeBlock];
 }
 
@@ -79,14 +81,18 @@
     [HttpClient upLoadDataWithParamers:dic datas:imageDic success:^(id responseObject) {
         BaseModel* model = [BaseModel praserModelWithInfo:responseObject];
         if ([model.state boolValue]) {
-            weakSelf.userAvatar = [[responseObject objectForKey:@"userAvatarURL"] greenFutureURLStr];
-            [weakSelf saveAvatarImage:avatarImage];
+            if (weakSelf.isChangeAvatar) {
+                weakSelf.userAvatar = [[responseObject objectForKey:@"userAvatarURL"] greenFutureURLStr];
+                [weakSelf saveAvatarImage:avatarImage];
+            }
+            weakSelf.isChangeAvatar = NO;
             [weakSelf saveUserName:userName];
             //weakSelf.userName = userName;
             //weakSelf.userAvatarImage = avatarImage;
         }
         completeBlock([model.state boolValue]);
     } failure:^(NSError *error) {
+        weakSelf.isChangeAvatar = NO;
         completeBlock(NO);
     } progress:^(NSUInteger bytesWritten, long long totalBytesWritten, long long totalBytesExpectedToWrite) {
         if (progressBlock) {

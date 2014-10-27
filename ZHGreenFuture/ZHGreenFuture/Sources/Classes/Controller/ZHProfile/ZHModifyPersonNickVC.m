@@ -97,11 +97,11 @@
     if ([self.textField.text length] >0) {
         [self.textField resignFirstResponder];
         
-        [FEToastView showWithTitle:@"正在修改..." animation:YES];
+        //[FEToastView showWithTitle:@"正在修改..." animation:YES];
         //__weak __typeof(self) weakSelf = self;
         [self.profileModel modifyProfileInfo:self.profileModel.userAvatarImage userName:self.textField.text progressBlock:^(float progress) {
         } completionBlock:^(BOOL isSuccess) {
-            [FEToastView dismissWithAnimation:YES];
+           // [FEToastView dismissWithAnimation:YES];
             NSString *message = isSuccess ? @"修改昵称成功" : @"修改昵称失败";
             [FEToastView showWithTitle:message animation:YES interval:2.0];
         }];
