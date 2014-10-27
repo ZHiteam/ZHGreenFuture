@@ -34,7 +34,7 @@
         model.descript  = VALIDATE_VALUE(dic[@"subTitle"]);
     }
     
-    model.imageUrl      = VALIDATE_VALUE(dic[@"backgourndImageUrl"]);
+    model.imageUrl      = VALIDATE_VALUE(dic[@"backgroundImageUrl"]);
     
     model.lastPage = [dic[@"lastPage"] boolValue];
     

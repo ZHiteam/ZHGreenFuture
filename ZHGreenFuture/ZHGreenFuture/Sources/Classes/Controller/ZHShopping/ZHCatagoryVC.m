@@ -294,14 +294,17 @@
     if (cell == nil){
         cell = [ZHProductTableViewCell tableViewCell];
     }
+    if (indexPath.row < self.productList.count){
+        ZHProductItem *item = [self.productList objectAtIndex:indexPath.row];
+        [cell.imageURL setImageWithUrlString:item.imageURL];
+        cell.title.text = item.title;
+        cell.subTitle.text = item.subTitle;
+        cell.priceTitle.text = item.price;
+        cell.buyCount.text = [item.buyCount length] >0 ? [NSString stringWithFormat:@"/%@人已买",item.buyCount] :@"1人已买";
+        [cell updateBuyCountLabelPositon];
+
+    }
     
-    ZHProductItem *item = [self.productList objectAtIndex:indexPath.row];
-    [cell.imageURL setImageWithUrlString:item.imageURL];
-    cell.title.text = item.title;
-    cell.subTitle.text = item.subTitle;
-    cell.priceTitle.text = item.price;
-    cell.buyCount.text = [item.buyCount length] >0 ? [NSString stringWithFormat:@"/%@人已买",item.buyCount] :@"1人已买";
-    [cell updateBuyCountLabelPositon];
     return cell;
 }
 

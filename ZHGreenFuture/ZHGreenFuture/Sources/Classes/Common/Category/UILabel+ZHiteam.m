@@ -22,13 +22,13 @@
 	label.textAlignment = textAlignment;
     
     label.adjustsFontSizeToFitWidth = YES;
-//    if (IOS_VERSION_6) {
-        label.minimumScaleFactor = 0.4;
-//    }
-//    else{
-//
-//        label.minimumFontSize = font.pointSize/2;
-//    }
+    
+#if __IPHONE_OS_VERSION_MAX_ALLOWED > __IPHONE_6_0
+    label.minimumScaleFactor = 0.4;
+#else
+    label.minimumFontSize = font.pointSize/2;
+#endif
+    
 	label.backgroundColor = backgroundColor;
     
     return label;

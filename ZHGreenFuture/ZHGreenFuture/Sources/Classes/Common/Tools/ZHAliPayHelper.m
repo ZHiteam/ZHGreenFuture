@@ -42,7 +42,9 @@
 //#else
 //    order.amount                = totalPrice;    
 //#endif
-    order.notifyURL             = [NSString stringWithFormat:@"%@?scene=22&userId=17&orderId=69&operation=2",BASE_URL];
+    order.notifyURL             = [NSString stringWithFormat:@"%@/%@/alipayNotify.action",BASE_SITE,SCHEME];
+    
+//    order.returnUrl             = @"http://115.195.137.24:9080/ZHiteam/payRequest.php";
     
     NSString* orderInfo = [order description];
     

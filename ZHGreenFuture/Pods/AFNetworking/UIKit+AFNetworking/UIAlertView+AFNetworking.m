@@ -85,7 +85,7 @@ static void AFGetAlertViewTitleAndMessageFromError(NSError *error, NSString * __
     [self showAlertViewForRequestOperationWithErrorOnCompletion:operation delegate:delegate cancelButtonTitle:NSLocalizedStringFromTable(@"Dismiss", @"AFNetworking", @"UIAlert View Cancel Button Title") otherButtonTitles:nil, nil];
 }
 
-+ (void)showAlertViewForRequestOperationWithErrorOnCompletion:(AFURLConnectionOperation *)operation
++ (void)                                                                                                                                                                    ViewForRequestOperationWithErrorOnCompletion:(AFURLConnectionOperation *)operation
                                                      delegate:(id)delegate
                                             cancelButtonTitle:(NSString *)cancelButtonTitle
                                             otherButtonTitles:(NSString *)otherButtonTitles, ... NS_REQUIRES_NIL_TERMINATION
