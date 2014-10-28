@@ -41,6 +41,8 @@
                 ZHGotoTabbarVC(tabbarId);
             }
         }
+    } else if ([url.scheme isEqualToString:@"http"]){
+        ZHGotoWebVC(urlStr);
     }
 }
 

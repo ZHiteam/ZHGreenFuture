@@ -44,6 +44,13 @@
     // Dispose of any resources that can be recreated.
 }
 
+- (void)setUserInfo:(id)userInfo{
+    [super setUserInfo:userInfo];
+    if (userInfo && [userInfo isKindOfClass:[NSString class]]) {
+        self.urlStr = userInfo;
+    }
+}
+
 #pragma mark - Private Method
 - (void)configureNaivBar{
     [self.navigationBar setTitle:self.urlStr];

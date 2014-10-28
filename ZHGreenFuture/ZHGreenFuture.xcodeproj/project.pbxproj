@@ -116,7 +116,6 @@
 		84F1FE4C19BD51130002605A /* detailProduct@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 84F1FE4B19BD51130002605A /* detailProduct@2x.png */; };
 		84F1FE4F19BD76840002605A /* ZHDetailProductHeadView.m in Sources */ = {isa = PBXBuildFile; fileRef = 84F1FE4E19BD76840002605A /* ZHDetailProductHeadView.m */; };
 		84F1FE5119BD76A10002605A /* ZHDetailProductHeadView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84F1FE5019BD76A10002605A /* ZHDetailProductHeadView.xib */; };
-		84F1FE5319BD7DE90002605A /* detailSKU@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 84F1FE5219BD7DE90002605A /* detailSKU@2x.png */; };
 		84F1FE5519BD7F180002605A /* detailMore@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 84F1FE5419BD7F180002605A /* detailMore@2x.png */; };
 		84F1FE5719BDDDB10002605A /* detailRecipe@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 84F1FE5619BDDDB10002605A /* detailRecipe@2x.png */; };
 		9C0E08AE19BF066D00ED8D87 /* RecipeCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C0E08AC19BF066D00ED8D87 /* RecipeCell.m */; };
@@ -537,7 +536,6 @@
 		84F1FE4D19BD76840002605A /* ZHDetailProductHeadView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZHDetailProductHeadView.h; sourceTree = "<group>"; };
 		84F1FE4E19BD76840002605A /* ZHDetailProductHeadView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZHDetailProductHeadView.m; sourceTree = "<group>"; };
 		84F1FE5019BD76A10002605A /* ZHDetailProductHeadView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ZHDetailProductHeadView.xib; sourceTree = "<group>"; };
-		84F1FE5219BD7DE90002605A /* detailSKU@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "detailSKU@2x.png"; sourceTree = "<group>"; };
 		84F1FE5419BD7F180002605A /* detailMore@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "detailMore@2x.png"; sourceTree = "<group>"; };
 		84F1FE5619BDDDB10002605A /* detailRecipe@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "detailRecipe@2x.png"; sourceTree = "<group>"; };
 		9C0E08AB19BF066D00ED8D87 /* RecipeCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RecipeCell.h; sourceTree = "<group>"; };
@@ -1355,7 +1353,6 @@
 			children = (
 				84F1FE5619BDDDB10002605A /* detailRecipe@2x.png */,
 				84F1FE5419BD7F180002605A /* detailMore@2x.png */,
-				84F1FE5219BD7DE90002605A /* detailSKU@2x.png */,
 				84F1FE4B19BD51130002605A /* detailProduct@2x.png */,
 				84F1FE4919BC58F80002605A /* detailBanner@2x.png */,
 			);
@@ -2331,7 +2328,6 @@
 				84F1FE4719BC4A150002605A /* ZHDetailProductCell.xib in Resources */,
 				9C89838919B56D23009CB910 /* temp_banner_01@2x.png in Resources */,
 				84260FCC19CD2F1C00216C78 /* auth_password@2x.png in Resources */,
-				84F1FE5319BD7DE90002605A /* detailSKU@2x.png in Resources */,
 				84260FD119CD603B00216C78 /* btn_back_login@2x.png in Resources */,
 				9C89837B19B49AF0009CB910 /* btn_back_green@2x.png in Resources */,
 				84927EBB19D6F45400805E22 /* ZHMyProductCell.xib in Resources */,
