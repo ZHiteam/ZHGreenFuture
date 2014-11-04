@@ -17,6 +17,7 @@
         if ([dict isKindOfClass:[NSDictionary class]]) {
             self.imageURL = [dict objectForKey:@"imageURL"];
             self.title    = [dict objectForKey:@"title"];
+            self.imageURL = [self.imageURL greenFutureURLStr];
         }
     }
     return self;
@@ -32,7 +33,8 @@
         if ([dict isKindOfClass:[NSDictionary class]]) {
             self.imageURL = [dict objectForKey:@"imageURL"];
             self.title    = [dict objectForKey:@"title"];
-            self.price    = [dict objectForKey:@"price"];
+            self.price    = [NSString stringWithFormat:@"%.2f",[[dict objectForKey:@"price"] floatValue]];
+            self.imageURL = [self.imageURL greenFutureURLStr];
         }
     }
     return self;

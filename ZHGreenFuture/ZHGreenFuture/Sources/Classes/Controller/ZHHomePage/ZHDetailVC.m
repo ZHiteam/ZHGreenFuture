@@ -359,7 +359,9 @@
                 weakCell.leftOverLayerView.backgroundColor = [UIColor clearColor];
             });
             NSLog(@">>>left productId = %@ %p", leftItem.productId,leftItem);
-            [weakSelf gotoDetailWithProductId:leftItem.productId];
+            if (leftItem.productId) {
+                [weakSelf gotoDetailWithProductId:leftItem.productId];
+            }
         }];
         
         //right item
@@ -377,7 +379,9 @@
                     weakCell.rightOverLayerView.backgroundColor = [UIColor clearColor];
                 });
                 NSLog(@">>>right productId = %@ %p", rightItem.productId,rightItem);
-                [weakSelf gotoDetailWithProductId:rightItem.productId];
+                if (rightItem.productId) {
+                    [weakSelf gotoDetailWithProductId:rightItem.productId];
+                }
             }];
         } else {
             cell.rightOverLayerView.backgroundColor = [UIColor colorWithRed:238/255.0 green:238/255.0 blue:238/255.0 alpha:1.0];
