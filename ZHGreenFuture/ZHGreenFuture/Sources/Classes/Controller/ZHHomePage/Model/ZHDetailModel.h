@@ -11,6 +11,7 @@
 @interface ZHRecommendRecipeItem : NSObject <FEImageItemProtocol>
 @property(nonatomic, strong)NSString *imageURL;
 @property(nonatomic, strong)NSString *title;
+@property(nonatomic, strong)NSString *recipeId;
 @property(nonatomic, assign)NSInteger tag;
 @property(nonatomic, strong)NSString *placeholderImage;
 - (instancetype)initWithDictionary:(NSDictionary*)dict;

@@ -17,6 +17,7 @@
         if ([dict isKindOfClass:[NSDictionary class]]) {
             self.imageURL = [dict objectForKey:@"imageURL"];
             self.title    = [dict objectForKey:@"title"];
+            self.recipeId = [dict objectForKey:@"recipeId"];
             self.imageURL = [self.imageURL greenFutureURLStr];
         }
     }

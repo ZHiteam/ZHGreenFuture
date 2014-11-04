@@ -16,6 +16,8 @@
 #import "ZHDetailRecipeListCell.h"
 #import "ZHDetailProductCell.h"
 #import "ZHDetailProductHeadView.h"
+#import "ZHRootViewController.h"
+#import "RecipeItemModel.h"
 
 
 @interface ZHDetailVC ()<UITableViewDelegate, UITableViewDataSource>
@@ -324,13 +326,28 @@
     else if (indexPath.section ==2){
         ZHDetailRecipeListCell *cell = self.recipeTableviewCell;
         cell.recipeCountLabel.text = [NSString stringWithFormat:@" (%d)",[self.detailModel.recommendRecipeList count]];
-        __weak typeof(self) weakSelf = self;
+        //__weak typeof(self) weakSelf = self;
         [cell setMoreItemClickedBlock:^(id sender) {
-           //TODO:more item
-            NSLog(@">>>more Item clicked %@",weakSelf);
+            NavigationViewController*   navi = [MemoryStorage valueForKey:k_NAVIGATIONCTL];
+            [navi popToRoot];
+            ZHRootViewController *rootVC = [[[UIApplication sharedApplication] delegate] performSelector:@selector(rootViewController)];
+            TabbarViewController *tabbarVC = [rootVC performSelector:@selector(tabCtl)];
+            [tabbarVC selectAtIndex:2 animation:YES];
         }];
         
-        [cell.recipeListView setImageItems:self.detailModel.recommendRecipeList selectedBlock:nil isAutoPlay:NO];
+        [cell.recipeListView setImageItems:self.detailModel.recommendRecipeList selectedBlock:^(FEImageItem *sender) {
+            if (sender && [sender isKindOfClass:[ZHRecommendRecipeItem class]]) {
+                ZHRecommendRecipeItem *item = (ZHRecommendRecipeItem*)sender;
+                if (item.recipeId) {
+                    NSMutableDictionary* dic = [[NSMutableDictionary alloc]initWithCapacity:2];
+                    [dic setObject:@"ZHRecipeDetailVC" forKey:@"controller"];
+                    RecipeItemModel* model = [[RecipeItemModel alloc] init];
+                    model.recipeId = item.recipeId;
+                    [dic setObject:model forKey:@"userinfo"];   
+                    [[MessageCenter instance]performActionWithUserInfo:dic];
+                }
+            }
+        } isAutoPlay:NO];
         [cell.recipeListView updateLayout];
         
         return cell;
