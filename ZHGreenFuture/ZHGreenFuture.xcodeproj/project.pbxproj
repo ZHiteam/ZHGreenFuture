@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2A2CDF091A07BE21009FA5B9 /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2A2CDF081A07BE21009FA5B9 /* Crashlytics.framework */; };
 		84088F0819E6E88A00F11FF4 /* category_more@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 84088F0719E6E88A00F11FF4 /* category_more@2x.png */; };
 		84260FC719CD2AC900216C78 /* ZHAuthorizationVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 84260FC619CD2AC900216C78 /* ZHAuthorizationVC.m */; };
 		84260FCB19CD2F1C00216C78 /* auth_account@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 84260FC919CD2F1C00216C78 /* auth_account@2x.png */; };
@@ -371,6 +372,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		2A2CDF081A07BE21009FA5B9 /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crashlytics.framework; sourceTree = "<group>"; };
 		84088F0719E6E88A00F11FF4 /* category_more@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "category_more@2x.png"; sourceTree = "<group>"; };
 		84260FC519CD2AC900216C78 /* ZHAuthorizationVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZHAuthorizationVC.h; sourceTree = "<group>"; };
 		84260FC619CD2AC900216C78 /* ZHAuthorizationVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZHAuthorizationVC.m; sourceTree = "<group>"; };
@@ -957,6 +959,7 @@
 				9C9778D419B1905F00D49E69 /* MobileCoreServices.framework in Frameworks */,
 				9C0E0A2819BF331300ED8D87 /* WhatsAppConnection.framework in Frameworks */,
 				9C0E0A2319BF331300ED8D87 /* TencentWeiboConnection.framework in Frameworks */,
+				2A2CDF091A07BE21009FA5B9 /* Crashlytics.framework in Frameworks */,
 				9CCB1D8219D08826009BB25A /* libcrypto.a in Frameworks */,
 				9C0E0A1F19BF331300ED8D87 /* SMSConnection.framework in Frameworks */,
 				9C0E0A2519BF331300ED8D87 /* TwitterConnection.framework in Frameworks */,
@@ -1108,6 +1111,7 @@
 		849F7F4919AB81EE00962BB1 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				2A2CDF081A07BE21009FA5B9 /* Crashlytics.framework */,
 				9C0E0A5919BF33B900ED8D87 /* MessageUI.framework */,
 				9C0E0A5719BF33AB00ED8D87 /* libsqlite3.dylib */,
 				9C0E0A5519BF33A000ED8D87 /* libstdc++.dylib */,
@@ -2191,6 +2195,7 @@
 				849F7F4419AB81EE00962BB1 /* Frameworks */,
 				849F7F4519AB81EE00962BB1 /* Resources */,
 				5EAA2A1EA92A45DA9E3D1CE8 /* Copy Pods Resources */,
+				2A2CDF071A07BDC0009FA5B9 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -2373,6 +2378,19 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		2A2CDF071A07BDC0009FA5B9 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "./Crashlytics.framework/run 10797bd1166be26204f7f84b2e8e72cda4d1af1a 2b14f3d92883722786b244760d397872a82d1d5f5e7a49ed8ded1c340ee49e0d";
+		};
 		46ADBE9FB9D24E55B80D0EC4 /* Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -2725,6 +2743,7 @@
 					"$(PROJECT_DIR)/ZHGreenFuture/Sources/Libraies/ShareSDK",
 					"$(PROJECT_DIR)/ZHGreenFuture/Sources/Libraies/ShareSDK/UI",
 					"$(PROJECT_DIR)/ZHGreenFuture/Sources/Libraies/Comment",
+					"$(PROJECT_DIR)",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "ZHGreenFuture/ZHGreenFuture-Prefix.pch";
@@ -2761,6 +2780,7 @@
 					"$(PROJECT_DIR)/ZHGreenFuture/Sources/Libraies/ShareSDK",
 					"$(PROJECT_DIR)/ZHGreenFuture/Sources/Libraies/ShareSDK/UI",
 					"$(PROJECT_DIR)/ZHGreenFuture/Sources/Libraies/Comment",
+					"$(PROJECT_DIR)",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "ZHGreenFuture/ZHGreenFuture-Prefix.pch";
