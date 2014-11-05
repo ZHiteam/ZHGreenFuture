@@ -35,6 +35,7 @@
             self.imageURL = [dict objectForKey:@"imageURL"];
             self.title    = [dict objectForKey:@"title"];
             self.price    = [NSString stringWithFormat:@"%.2f",[[dict objectForKey:@"price"] floatValue]];
+            self.productId = VALIDATE_VALUE([dict objectForKey:@"productId"]);
             self.imageURL = [self.imageURL greenFutureURLStr];
         }
     }
