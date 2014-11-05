@@ -14,6 +14,7 @@
 #import "WeiboApi.h"
 #import <TencentOpenAPI/QQApiInterface.h>
 #import <TencentOpenAPI/TencentOAuth.h>
+#import <Crashlytics/Crashlytics.h>
 
 @implementation AppDelegate
 
@@ -27,6 +28,7 @@
     // Override point for customization after application launch.
     
     [ShareSDK registerApp:SHARE_APPKEY];
+    [Crashlytics startWithAPIKey:@"10797bd1166be26204f7f84b2e8e72cda4d1af1a"];
     [self sharReg];
     
     return YES;

@@ -71,6 +71,11 @@ TabbarViewController *tabbarVC = [rootVC performSelector:@selector(tabCtl)];    
 [tabbarVC selectAtIndex:[tabbarId integerValue] animation:YES];                                                         \
 }
 
+#define ZHGotoWebVC(urlStr)      { urlStr = [urlStr length] > 0 ? urlStr : @"";                                         \
+[[MessageCenter instance]performActionWithUserInfo:@{@"controller": @"ZHWebVC",@"userinfo" : urlStr}];                  \
+}
+
+
 //更多
 #define ZHCategoryMoreUrl           @"greenfuture://tabbar?tabbarId=1"
 

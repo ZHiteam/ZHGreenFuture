@@ -17,6 +17,8 @@
         if ([dict isKindOfClass:[NSDictionary class]]) {
             self.imageURL = [dict objectForKey:@"imageURL"];
             self.title    = [dict objectForKey:@"title"];
+            self.recipeId = VALIDATE_VALUE([dict objectForKey:@"recipeId"]);
+            self.imageURL = [self.imageURL greenFutureURLStr];
         }
     }
     return self;
@@ -32,7 +34,9 @@
         if ([dict isKindOfClass:[NSDictionary class]]) {
             self.imageURL = [dict objectForKey:@"imageURL"];
             self.title    = [dict objectForKey:@"title"];
-            self.price    = [dict objectForKey:@"price"];
+            self.price    = [NSString stringWithFormat:@"%.2f",[[dict objectForKey:@"price"] floatValue]];
+            self.productId = VALIDATE_VALUE([dict objectForKey:@"productId"]);
+            self.imageURL = [self.imageURL greenFutureURLStr];
         }
     }
     return self;
