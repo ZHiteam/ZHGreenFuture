@@ -45,8 +45,8 @@
         
         cell.recipeListView.edgeInsets = UIEdgeInsetsMake(0, 12, 0, 12);//左右间距
         cell.recipeListView.margin    = 8.0;                            //每个item之间的间距
-        cell.recipeListView.itemWidth = 68.0;                           //每个item的宽度
-        cell.recipeListView.titleLabelRect = CGRectMake(0, 52, 68, 16); //每个item 的title Label的位置
+        cell.recipeListView.itemWidth = 92.0;                           //每个item的宽度
+        cell.recipeListView.titleLabelRect = CGRectMake(0, 74, 90, 16); //每个item 的title Label的位置
         
         return cell;
     }
@@ -54,7 +54,7 @@
 }
 
 + (CGFloat)height{
-    return 120.0f;
+    return 144.0f;
 }
 
 - (void)moreItemPressed:(id)sender{
