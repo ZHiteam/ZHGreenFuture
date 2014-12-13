@@ -20,7 +20,7 @@
 
 -(void)setImageWithUrlString:(NSString*)url{
 
-    UIImage* placeholderImage = [[DRImagePlaceholderHelper sharedInstance]placerholderImageWithSize:self.size text:@"放心粮" fillColor:GRAY_LINE];
+    UIImage* placeholderImage = nil;//[[DRImagePlaceholderHelper sharedInstance]placerholderImageWithSize:self.size text:@"放心粮" fillColor:GRAY_LINE];
     
     [self setImageWithUrlString:url placeholderImage:placeholderImage];
 }
