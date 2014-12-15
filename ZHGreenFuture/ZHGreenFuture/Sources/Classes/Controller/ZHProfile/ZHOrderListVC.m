@@ -13,6 +13,7 @@
 #import "ZHOrderProductCell.h"
 #import "ZHOrderSummaryCell.h"
 #import "PayHelper.h"
+#import "ZHCommentDetailVC.h"
 
 @interface ZHOrderListVC ()<UITableViewDelegate, UITableViewDataSource>
 @property(nonatomic, strong)HMSegmentedControl *segmentedControl;
@@ -53,7 +54,7 @@
 #pragma mark - Getter & Setter
 - (HMSegmentedControl *)segmentedControl{
     if (_segmentedControl == nil) {
-        _segmentedControl = [[HMSegmentedControl alloc] initWithSectionTitles:@[@"全部",@"待付款", @"待发货", @"待收货"]];
+        _segmentedControl = [[HMSegmentedControl alloc] initWithSectionTitles:@[@"全部",@"待付款", @"待发货", @"待收货", @"待评价"]];
         _segmentedControl.frame = CGRectMake(0, 64,[UIScreen mainScreen].bounds.size.width, 44);
         _segmentedControl.font = [UIFont systemFontOfSize:14.0];
         _segmentedControl.selectedTextColor = RGB(102, 170, 0);
@@ -206,16 +207,20 @@
         case ZHOrderTypeWaitComment:
         {
             ZHButton *button = [ZHButton buttonWithType:ZHButtonTypeStyle1 text:@"评价订单"  clickedBlock:^(ZHButton *button) {
-                NSLog(@">>>>>xxxAction %@",button);
+                ZHCommentDetailVC *commentDetailVC = [[ZHCommentDetailVC alloc] init];
+                commentDetailVC.orderInfo = orderInfo;
+                NavigationViewController*   navi = [MemoryStorage valueForKey:k_NAVIGATIONCTL];
+                [navi pushViewController:commentDetailVC animation:ANIMATE_TYPE_DEFAULT];
             }];
             [button setFrame:CGRectMake(cell.size.width - 80 -12, 8, 80, 28)];
             [cell.contentView addSubview:button];
             
+            /*
             button = [ZHButton buttonWithType:ZHButtonTypeDefault text:@"删除订单"  clickedBlock:^(ZHButton *button) {
                 NSLog(@">>>>>xxxAction %@",button);
             }];
             [button setFrame:CGRectMake(cell.size.width - 80 - 80 -24, 8, 80, 28)];
-            [cell.contentView addSubview:button];
+            [cell.contentView addSubview:button];*/
         }
             break;
         default:
@@ -239,7 +244,7 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    NSInteger items = self.currentOrderType == ZHOrderTypeWaitPay || self.currentOrderType == ZHOrderTypeWaitReceive;
+    NSInteger items = self.currentOrderType == ZHOrderTypeWaitPay || self.currentOrderType == ZHOrderTypeWaitReceive || self.currentOrderType == ZHOrderTypeWaitComment;
     return [[[[self.orderModel orderLists] objectAtIndex:section] productLists] count] + 2 + items;
 }
 

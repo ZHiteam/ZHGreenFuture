@@ -53,6 +53,31 @@
     }
     return self;
 }
+
+
+- (void)commentWithUserID:(NSString *)userID orderID:(NSString*)orderID productID:(NSString*)productID evaluateStatus:(NSInteger)status conent:(NSString*)content anonymous:(BOOL)isAnonymous  completionBlock:(ZHCompletionBlock)block{
+    
+    if (userID && orderID && productID && content) {
+        
+    //__weak __typeof(self) weakSelf = self;
+    NSString *userId = [[ZHAuthorizationManager shareInstance] userId];
+    userId = [userId length] > 0 ? userId : @"" ;
+    [HttpClient requestDataWithParamers:@{@"scene": @"35",@"userId": userId, @"orderId" :orderID,@"productId":productID,@"content":content,@"anonymous":(isAnonymous?@"true":@"false"),@"evaluateStatus":[NSString stringWithFormat:@"%d",status]} success:^(id responseObject) {
+            BOOL result = NO;
+            if ([responseObject isKindOfClass:[NSDictionary class]]) {
+                result =[[responseObject objectForKey:@"result"] isEqualToString:@"true"];
+            }
+            if (block) {
+                block(result);
+            }
+        } failure:^(NSError *error) {
+            if (block){
+                block(NO);
+            }
+        }];
+    }
+}
+
 @end
 
 

@@ -27,6 +27,7 @@
 @property(nonatomic, strong)NSArray *productLists;//ZHOrderProduct
 - (instancetype)initWithDictionary:(NSDictionary*)dict;
 
+- (void)commentWithUserID:(NSString *)userID orderID:(NSString*)orderID productID:(NSString*)productID evaluateStatus:(NSInteger)status conent:(NSString*)content anonymous:(BOOL)isAnonymous  completionBlock:(ZHCompletionBlock)block;
 @end
 
 typedef NS_ENUM(NSInteger, ZHOrderType) {
@@ -43,4 +44,5 @@ typedef NS_ENUM(NSInteger, ZHOrderType) {
 
 - (void)loadDataWithType:(ZHOrderType)type completionBlock:(ZHCompletionBlock)block;
 - (void)modifyOrderStatusWithOrderId:(NSString*)orderId operation:(NSString*)operation completionBlock:(ZHCompletionBlock)block;
+
 @end
