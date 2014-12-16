@@ -176,7 +176,7 @@
         {
             __weak __typeof(self) weakSelf = self;
             ZHButton *button = [ZHButton buttonWithType:ZHButtonTypeStyle1 text:@"确认收货"  clickedBlock:^(ZHButton *button) {
-                [weakSelf.orderModel modifyOrderStatusWithOrderId:orderInfo.orderId operation:@"6" completionBlock:^(BOOL isSuccess) {
+                [weakSelf.orderModel modifyOrderStatusWithOrderId:orderInfo.orderId operation:@"5" completionBlock:^(BOOL isSuccess) {
                     if (isSuccess) {
                         ZHALERTVIEW(nil,@"确认收货成功。",nil, @"确定" ,nil,nil);
                         [weakSelf loadAllContent];

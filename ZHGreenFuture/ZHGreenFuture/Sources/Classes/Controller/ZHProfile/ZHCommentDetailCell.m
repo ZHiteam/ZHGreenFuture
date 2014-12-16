@@ -14,6 +14,7 @@
     // Initialization code
     self.inputTextView.layer.cornerRadius = 6.0;
     self.inputTextView.layer.masksToBounds = YES;
+    self.goodButton.selected = YES;
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
@@ -26,16 +27,23 @@
 #pragma mark - Public Method
 - (IBAction)goodCommentPressed:(id)sender {
     self.commentType = 1;
+    self.goodButton.selected = YES;
+    self.badButton.selected = NO;
+    self.midButton.selected = NO;
 }
 
 - (IBAction)midCommentPressed:(id)sender {
     self.commentType = 2;
-
+    self.goodButton.selected = NO;
+    self.badButton.selected = NO;
+    self.midButton.selected = YES;
 }
 
 - (IBAction)badCommentPressed:(id)sender {
     self.commentType = 3;
-
+    self.goodButton.selected = NO;
+    self.badButton.selected = YES;
+    self.midButton.selected = NO;
 }
 
 + (instancetype)tableViewCell{

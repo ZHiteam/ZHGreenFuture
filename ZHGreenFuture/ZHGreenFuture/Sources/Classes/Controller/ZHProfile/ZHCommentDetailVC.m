@@ -10,6 +10,8 @@
 #import "ZHOrderProductCell.h"
 #import "ZHCommentDetailCell.h"
 #import "UITableView+FEAutoResizeKeyboard.h"
+#import "UIView+FEAutoResizeKeyboard.h"
+
 
 @interface ZHCommentDetailVC ()<UITableViewDelegate, UITableViewDataSource>
 @property(nonatomic, strong)UITableView          *tableView;
@@ -24,7 +26,7 @@
     [self configureNaivBar];
     [self.view addSubview:self.tableView];
     self.view.backgroundColor = RGB(234, 234, 234);
-    //[self.tableView setAutoResizeKeyboard:YES willShow:nil willHide:nil];
+    [self.tableView setAutoResizeKeyboard:YES willShow:nil willHide:nil];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -66,12 +68,22 @@
 }
 
 - (void)rightItemPressed:(UIButton*)button{
-    NSString* userId= [ZHAuthorizationManager shareInstance].userId;
-    ZHOrderProduct *product  = [self.orderInfo.productLists objectAtIndex:0];
+
     NSString *content = self.commentCell.inputTextView.text;
-    [self.orderInfo commentWithUserID:userId orderID:self.orderInfo.orderId productID:product.productId evaluateStatus:self.commentCell.commentType conent:content    anonymous:self.isAnonymous completionBlock:^(BOOL isSuccess) {
-        
-    }];
+    if ([content length] >0) {
+        [self.commentCell.inputTextView resignFirstResponder];
+        NSString* userId= [ZHAuthorizationManager shareInstance].userId;
+        ZHOrderProduct *product  = [self.orderInfo.productLists objectAtIndex:0];
+        [self.orderInfo commentWithUserID:userId orderID:self.orderInfo.orderId productID:product.productId evaluateStatus:self.commentCell.commentType conent:content    anonymous:self.isAnonymous completionBlock:^(BOOL isSuccess) {
+            if (isSuccess) {
+                [FEToastView showWithTitle:@"发布成功。" animation:YES interval:1.0];
+                NavigationViewController*   navi = [MemoryStorage valueForKey:k_NAVIGATIONCTL];
+                [navi popWithAnimation:YES];
+            } else {
+                [FEToastView showWithTitle:@"评价失败。" animation:YES interval:1.0];
+            }
+        }];
+    }
 }
 
 #pragma mark - UITableViewDataSource

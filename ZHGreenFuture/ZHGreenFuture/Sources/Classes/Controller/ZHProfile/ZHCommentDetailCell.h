@@ -9,6 +9,9 @@
 #import <UIKit/UIKit.h>
 
 @interface ZHCommentDetailCell : UITableViewCell
+@property (weak, nonatomic) IBOutlet UIButton *badButton;
+@property (weak, nonatomic) IBOutlet UIButton *midButton;
+@property (weak, nonatomic) IBOutlet UIButton *goodButton;
 - (IBAction)goodCommentPressed:(id)sender;
 - (IBAction)midCommentPressed:(id)sender;
 - (IBAction)badCommentPressed:(id)sender;
