@@ -76,7 +76,7 @@
         ZHOrderProduct *product  = [self.orderInfo.productLists objectAtIndex:0];
         [self.orderInfo commentWithUserID:userId orderID:self.orderInfo.orderId productID:product.productId evaluateStatus:self.commentCell.commentType conent:content    anonymous:self.isAnonymous completionBlock:^(BOOL isSuccess) {
             if (isSuccess) {
-                [FEToastView showWithTitle:@"发布成功。" animation:YES interval:1.0];
+                [FEToastView showWithTitle:@"评价成功。" animation:YES interval:1.0];
                 NavigationViewController*   navi = [MemoryStorage valueForKey:k_NAVIGATIONCTL];
                 [navi popWithAnimation:YES];
             } else {

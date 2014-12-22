@@ -8,6 +8,7 @@
 
 #import "ZHOrderModel.h"
 #import "ZHAuthorizationManager.h"
+#import "JSON.h"
 
 @implementation ZHOrderProduct
 - (instancetype)initWithDictionary:(NSDictionary*)dict
@@ -61,7 +62,16 @@
         //__weak __typeof(self) weakSelf = self;
         NSString *userId = [[ZHAuthorizationManager shareInstance] userId];
         userId = [userId length] > 0 ? userId : @"" ;
-        [HttpClient requestDataWithParamers:@{@"scene": @"35",@"userId": userId, @"orderId" :orderID,@"productId":productID,@"content":content,@"anonymous":(isAnonymous?@"true":@"false"),@"evaluateStatus":[NSString stringWithFormat:@"%d",status]} success:^(id responseObject) {
+        
+        NSMutableArray *evaluateList = [NSMutableArray arrayWithCapacity:0];
+        for (ZHOrderProduct *product in self.productLists) {
+            [evaluateList addObject:@{@"productId":product.productId,@"evaluateStatus":[NSString stringWithFormat:@"%d",status],@"content":content}];
+        }
+        NSDictionary* dic = @{@"userId": userId,@"evaluateList": evaluateList, @"orderId" :orderID,@"anonymous":(isAnonymous?@"true":@"false")};
+        
+        NSString* jsonStr = [dic JSONFragment];
+        dic = @{@"json":jsonStr,@"scene":@"35"};
+        [HttpClient requestDataWithParamers:dic success:^(id responseObject) {
                 BOOL result = NO;
                 if ([responseObject isKindOfClass:[NSDictionary class]]) {
                     result =[[responseObject objectForKey:@"result"] isEqualToString:@"true"];
