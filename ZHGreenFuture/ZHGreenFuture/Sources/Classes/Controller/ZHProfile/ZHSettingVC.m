@@ -128,6 +128,7 @@
             break;
         case 2://@"分享给朋友"
         {
+#warning appstore地址
             id<ISSContent> publishContent = [ShareSDK content:@"有好粮"
                                                defaultContent:@"健康粮食"
                                                         image:nil

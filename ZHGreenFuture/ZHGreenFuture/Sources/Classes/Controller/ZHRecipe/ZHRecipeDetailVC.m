@@ -243,11 +243,12 @@
 //    NSString *imagePath = [[NSBundle mainBundle] pathForResource:@"ShareSDK"  ofType:@"jpg"];
 //#warning TEST SHARE
     //构造分享内容
+    NSString* shareUrl = [NSString stringWithFormat:@"%@/%@/scanCodePage.action?recipeId=%@",BASE_SITE,SCHEME,self.model.recipeId];
     id<ISSContent> publishContent = [ShareSDK content:self.model.title
                                        defaultContent:self.model.title
                                                 image:[ShareSDK imageWithUrl:self.model.backgroundImageUrl]
                                                 title:self.model.title
-                                                  url:@"http://www.baidu.com"
+                                                  url:shareUrl
                                           description:self.model.title
                                             mediaType:SSPublishContentMediaTypeNews];
     

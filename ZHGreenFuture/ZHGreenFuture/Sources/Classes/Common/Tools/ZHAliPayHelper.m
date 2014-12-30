@@ -36,11 +36,11 @@
     order.tradeNO               = orderId;/// [self generateTradeNO]; //订单ID（由商家自行制定）
     order.productName           = productTitle; //商品标题
     order.productDescription    = info; /// 商品描述
-#warning 测试做成一分钱
+//#warning 测试做成一分钱
 //#ifdef DEBUG
-    order.amount                = @"0.01";
+//    order.amount                = @"0.01";
 //#else
-//    order.amount                = totalPrice;    
+    order.amount                = totalPrice;    
 //#endif
     order.notifyURL             = [NSString stringWithFormat:@"%@/%@/alipayNotify.action",BASE_SITE,SCHEME];
     
