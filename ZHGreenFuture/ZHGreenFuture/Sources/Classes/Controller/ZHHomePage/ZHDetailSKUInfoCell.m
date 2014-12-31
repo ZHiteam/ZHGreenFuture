@@ -39,7 +39,7 @@
         cell.segmentControl.segmentDelegate = cell;
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
         cell.contentView.clipsToBounds = YES;
-        cell.infoImageView.contentMode = UIViewContentModeScaleAspectFit;
+        cell.infoImageView.contentMode = UIViewContentModeScaleToFill;
         cell.segmentControl.frame=  CGRectMake(12, 0, [UIScreen mainScreen].bounds.size.width - 24, 28);
         return cell;
     }
