@@ -18,6 +18,8 @@
 #import "ZHDetailProductHeadView.h"
 #import "ZHRootViewController.h"
 #import "RecipeItemModel.h"
+#import "UIImageView+WebCache.h"
+#import "ZHDetailCommentViewController.h"
 
 
 @interface ZHDetailVC ()<UITableViewDelegate, UITableViewDataSource>
@@ -244,7 +246,7 @@
         }
         return 3;
     }
-    return 2;
+    return 3;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
@@ -256,6 +258,8 @@
         case 2:
             return 1;
         case 3:
+            return 1;
+        case 4:
             return  [self.detailModel.otherBuyList count] / 2.0 + ([self.detailModel.otherBuyList count] % 2);
         default:
             break;
@@ -310,20 +314,48 @@
         }
         }
     else if (indexPath.section ==1){
+        static NSString *CellIdentifier = @"kCommentProductTableViewCell";
+        UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+        if (cell == nil){
+            cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
+        }
+        cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+        cell.textLabel.text = @"评价详情";
+        return cell;
+    }
+    else if (indexPath.section ==2){
         ZHDetailSKUInfoCell *cell = self.skuInfoTableviewCell;
         __weak typeof(self) weakSelf = self;
         __weak typeof(cell) weakCell = cell;
         [cell setSegmentControlClickedBlock:^(NSInteger index) {
             NSString *imageURL = [weakSelf.detailModel.introduceImageList objectAtIndex:index];
-            [weakCell.infoImageView  setImageWithUrlString:imageURL];
+            [weakCell.infoImageView  setImageWithURL:[NSURL URLWithString:imageURL] completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType) {
+                if (image.size.height > [ZHDetailSKUInfoCell height]) {
+                    //weakCell.infoImageView.contentMode = UIViewContentModeScaleToFill;
+                } else {
+                    //weakCell.infoImageView.contentMode = UIViewContentModeScaleAspectFit;
+                }
+                [weakSelf.tableView reloadData];
+                CGRect rect = weakCell.infoImageView.frame ;
+                rect = CGRectMake(rect.origin.x, rect.origin.y, rect.size.width, image.size.height/2.0);
+                weakCell.infoImageView.frame = rect;
+            }];
         }];
         if (cell.segmentControl.selectedIndex < [self.detailModel.introduceImageList count]) {
             NSString *imageURL = [self.detailModel.introduceImageList objectAtIndex:cell.segmentControl.selectedIndex];
-            [cell.infoImageView setImageWithUrlString:imageURL];
+            [cell.infoImageView setImageWithURL:[NSURL URLWithString:imageURL] completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType) {
+                static dispatch_once_t onceToken;
+                dispatch_once(&onceToken, ^{
+                    [weakSelf.tableView reloadData];
+                    CGRect rect = weakCell.infoImageView.frame ;
+                    rect = CGRectMake(rect.origin.x, rect.origin.y, rect.size.width, image.size.height/2.0);
+                    weakCell.infoImageView.frame = rect;
+                });
+            }];
         }
         return cell;
     }
-    else if (indexPath.section ==2){
+    else if (indexPath.section ==3){
         ZHDetailRecipeListCell *cell = self.recipeTableviewCell;
         cell.recipeCountLabel.text = [NSString stringWithFormat:@" (%d)",[self.detailModel.recommendRecipeList count]];
         //__weak typeof(self) weakSelf = self;
@@ -429,12 +461,17 @@
         }
     }
     else if (indexPath.section ==1){
-        return [ZHDetailSKUInfoCell height];
+        return 44.0;
     }
     else if (indexPath.section ==2){
-        return [ZHDetailRecipeListCell height];
+        CGFloat height = 40.0 + roundf(self.skuInfoTableviewCell.infoImageView.image.size.height/2.0);
+        height = (height!=40) ? height : [ZHDetailSKUInfoCell height];
+        return height;
     }
     else if (indexPath.section ==3){
+        return [ZHDetailRecipeListCell height];
+    }
+    else if (indexPath.section ==4){
         return [ZHDetailProductCell height];
     }
     return 0.0;
@@ -475,13 +512,13 @@
  */
 
 - (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section{
-    if (section == 0 || section == 1){
+    if (section == 0 || section == 1 || section == 2){
         return 12.0;
     }
-    if (section == 2){
+    if (section == 3){
         return [ZHDetailProductHeadView height];
     }
-    if (section == 3) {
+    if (section == 4) {
         return 48.0;//placeHolder
     }
     
@@ -489,12 +526,12 @@
 }
 
 - (UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section{
-    if (section == 0 || section == 1) {
+    if (section == 0 || section == 1 || section == 2) {
         UIView *view = [[UIView alloc] initWithFrame:CGRectZero];
         view.backgroundColor = self.backColor;
         return view;
     }
-    if (section == 2) {
+    if (section == 3) {
         return [ZHDetailProductHeadView headView];
     }
     return nil;
@@ -504,8 +541,7 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     if (indexPath.section == 1) {
-       // ZHProductItem *item = [self.homePageModel.productItems objectAtIndex:indexPath.row];
-        
+        [[MessageCenter instance]performActionWithUserInfo:@{@"controller": @"ZHDetailCommentViewController",@"userinfo" : self.productId}];
     }
     NSLog(@">>>>>didSelectRowAtIndexPath %@",indexPath);
 }
