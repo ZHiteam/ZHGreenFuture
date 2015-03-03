@@ -7,7 +7,7 @@
 //
 
 #import "ZHAddressEditVC.h"
-#import "JSON.h"
+#import "JSONKit.h"
 
 @interface ZHAddressEditVC ()<UITableViewDataSource,UITableViewDelegate>
 @property (nonatomic,assign) NSInteger type;
@@ -184,7 +184,7 @@
         [userInfo setObject:[ZHAuthorizationManager shareInstance].userId forKey:@"userId"];
 //        [userInfo setObject:@"1" forKey:@"userId"];
     }
-    NSString* str = [@{@"receiveInfo":userInfo} JSONFragment];
+    NSString* str = [@{@"receiveInfo":userInfo} JSONString];
     [dic setObject:str forKey:@"json"];
     
     [HttpClient postDataWithParamers:dic success:^(id responseObject) {

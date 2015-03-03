@@ -31,6 +31,9 @@
     [Crashlytics startWithAPIKey:@"10797bd1166be26204f7f84b2e8e72cda4d1af1a"];
     [self sharReg];
     
+    /// 注册支付监听
+    [MessageCenter instance];
+    
     return YES;
 }
 							
@@ -111,6 +114,13 @@
     if ([url.scheme.lowercaseString isEqualToString:@"greenFuture"]) {
         [[MessageCenter instance]performActionWithUrl:url.absoluteString];
     }
+    return YES;
+}
+
+- (BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation {
+    
+    [PayHelper handleOpenUrl:url];
+    
     return YES;
 }
 @end

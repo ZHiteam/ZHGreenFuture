@@ -15,4 +15,6 @@
          totalPrice:(NSString*)totalPrice
             orderId:(NSString*)orderId;
 
++(void)handleOpenUrl:(NSURL*)url;
+
 @end

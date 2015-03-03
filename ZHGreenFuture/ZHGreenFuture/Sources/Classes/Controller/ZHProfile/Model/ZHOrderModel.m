@@ -8,7 +8,8 @@
 
 #import "ZHOrderModel.h"
 #import "ZHAuthorizationManager.h"
-#import "JSON.h"
+//#import "JSON.h"
+#import "JSONKit.h"
 
 @implementation ZHOrderProduct
 - (instancetype)initWithDictionary:(NSDictionary*)dict
@@ -69,7 +70,8 @@
         }
         NSDictionary* dic = @{@"userId": userId,@"evaluateList": evaluateList, @"orderId" :orderID,@"anonymous":(isAnonymous?@"true":@"false")};
         
-        NSString* jsonStr = [dic JSONFragment];
+//        NSString* jsonStr = [dic JSONFragment];
+        NSString* jsonStr = [dic JSONString];
         dic = @{@"json":jsonStr,@"scene":@"35"};
         [HttpClient requestDataWithParamers:dic success:^(id responseObject) {
                 BOOL result = NO;

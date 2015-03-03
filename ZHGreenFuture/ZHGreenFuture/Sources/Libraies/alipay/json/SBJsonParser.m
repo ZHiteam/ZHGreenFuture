@@ -354,7 +354,7 @@ static char ctrl[0x22];
 
 - (BOOL)scanUnicodeChar:(unichar *)x
 {
-    unichar hi, lo = 0;
+    unichar hi, lo;
     
     if (![self scanHexQuad:&hi]) {
         [self addErrorWithCode:EUNICODE description: @"Missing hex quad"];

@@ -34,12 +34,8 @@
 - (void)viewDidLoad {
     
     [super viewDidLoad];
-    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(notifyAction:) name:NOTIFY_TRADE_STATE object:nil];
-    [self loadContent];
-}
 
--(void)dealloc{
-    [[NSNotificationCenter defaultCenter]removeObserver:self];
+    [self loadContent];
 }
 
 -(void)viewWillAppear:(BOOL)animated{
@@ -469,30 +465,5 @@
     if ([address.receiveId isEqualToString:self.addressModel.receiveId]){
         self.addressModel = [ZHAddressManager instance].defaultAddress;
     }
-}
-
--(void)notifyAction:(NSNotification*)notify{
-    NSDictionary* info = notify.object;
-    if (![info isKindOfClass:[NSDictionary class]]){
-        return;
-    }
-    
-    BaseModel* model = [BaseModel praserModelWithInfo:info];
-    if (![model.state boolValue]){
-        NSString* msg = info[@"msg"];
-        if (!isEmptyString(msg)){
-            msg = @"支付失败";
-        }
-        SHOW_MESSAGE(msg, 2);
-    }
-    else{
-        SHOW_MESSAGE(@"支付成功", 2);
-    }
-    [self jumpToOrderList];
-}
-
--(void)jumpToOrderList{
-    [self.navigationCtl popWithAnimation:NO];
-    [[MessageCenter instance]performActionWithUserInfo:@{@"controller":@"ZHOrderListVC"}];
 }
 @end

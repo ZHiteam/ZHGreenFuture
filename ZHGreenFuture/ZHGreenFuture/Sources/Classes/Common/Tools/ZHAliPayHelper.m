@@ -7,7 +7,11 @@
 //
 
 #import "ZHAliPayHelper.h"
-
+#import "Order.h"
+#import "DataSigner.h"
+#import "DataVerifier.h"
+#import "AlixPayResult.h"
+#import "JSONKit.h"
 
 @implementation ZHAliPayHelper
 
@@ -26,38 +30,52 @@
 -(void)payWithTitle:(NSString *)productTitle productInfo:(NSString *)info totalPrice:(NSString *)totalPrice orderId:(NSString *)orderId{
     /*
      *生成订单信息及签名
-     *由于demo的局限性，采用了将私钥放在本地签名的方法，商户可以根据自身情况选择签名方法(为安全起见，在条件允许的前提下，我们推荐从商户服务器获取完整的订单信息)
      */
-    
-    AlixPayOrder *order = [[AlixPayOrder alloc] init];
+    //将商品信息赋予AlixPayOrder的成员变量
+    Order *order = [[Order alloc] init];
     order.partner = PartnerID;
     order.seller = SellerID;
-    
-    order.tradeNO               = orderId;/// [self generateTradeNO]; //订单ID（由商家自行制定）
-    order.productName           = productTitle; //商品标题
-    order.productDescription    = info; /// 商品描述
-//#warning 测试做成一分钱
+    order.tradeNO = [self generateTradeNO]; //订单ID（由商家自行制定）
+    order.productName = productTitle; //商品标题
+    order.productDescription = info; //商品描述
 //#ifdef DEBUG
 //    order.amount                = @"0.01";
 //#else
-    order.amount                = totalPrice;    
+    order.amount                = totalPrice;
 //#endif
-    order.notifyURL             = [NSString stringWithFormat:@"%@/%@/alipayNotify.action",BASE_SITE,SCHEME];
+
+    order.notifyURL =  [NSString stringWithFormat:@"%@/%@/alipayNotify.action",BASE_SITE,SCHEME]; //回调URL
     
-//    order.returnUrl             = @"http://115.195.137.24:9080/ZHiteam/payRequest.php";
+    order.service = @"mobile.securitypay.pay";
+    order.paymentType = @"1";
+    order.inputCharset = @"utf-8";
+    order.itBPay = @"30m";
+    order.showUrl = @"m.alipay.com";
     
-    NSString* orderInfo = [order description];
-    
+    //应用注册scheme,在AlixPayDemo-Info.plist定义URL types
     NSString *appScheme = @"gf4alipay";
 
-    NSString* signedStr = [self doRsa:orderInfo];
+    //将商品信息拼接成字符串
+    NSString *orderSpec = [order description];
+    NSLog(@"orderSpec = %@",orderSpec);
+
+    //获取私钥并将商户信息签名,外部商户可以根据情况存放私钥和签名,只需要遵循RSA签名规范,并将签名字符串base64编码和UrlEncode
+    id<DataSigner> signer = CreateRSADataSigner(PartnerPrivKey);
+    NSString *signedString = [signer signString:orderSpec];
     
-    NSLog(@"%@",signedStr);
-    
-    NSString *orderString = [NSString stringWithFormat:@"%@&sign=\"%@\"&sign_type=\"%@\"",
-                             orderInfo, signedStr, @"RSA"];
-    
-    [AlixLibService payOrder:orderString AndScheme:appScheme seletor:@selector(paymentResult:) target:self];
+    //将签名成功字符串格式化为订单字符串,请严格按照该格式
+    NSString *orderString = nil;
+    if (signedString != nil) {
+        orderString = [NSString stringWithFormat:@"%@&sign=\"%@\"&sign_type=\"%@\"",
+                       orderSpec, signedString, @"RSA"];
+        
+        [[AlipaySDK defaultService] payOrder:orderString fromScheme:appScheme callback:^(NSDictionary *resultDic) {
+//            NSLog(@"reslut = %@",resultDic);
+            [self payResult:resultDic];
+        }];
+        
+    }
+
 }
 
 - (NSString *)generateTradeNO
@@ -76,23 +94,18 @@
     return result;
 }
 
--(NSString*)doRsa:(NSString*)orderInfo
-{
-    id<DataSigner> signer;
-    signer = CreateRSADataSigner(PartnerPrivKey);
-    NSString *signedString = [signer signString:orderInfo];
-    return signedString;
-}
-
 #pragma -mark deal result
 -(void)notifyAction:(NSNotification*)notify{
     id val = notify.object;
     if ([val isKindOfClass:[NSURL class]]){
-        [self parse:val];
+        [self handleOpenUrl:val];
     }
 }
 
--(void)dealWithResult:(AlixPayResult*)result{
+-(void)payResult:(NSDictionary*)resultDic{
+//    NSLog(@"%@",result);
+    
+    AlixPayResult* result = [[AlixPayResult alloc]initWithString:[resultDic JSONString]];
     if (result)
     {
         
@@ -133,46 +146,20 @@
     }
 }
 
-//wap回调函数
--(void)paymentResult:(NSString *)resultd
-{
-    //结果处理
-#if ! __has_feature(objc_arc)
-    AlixPayResult* result = [[[AlixPayResult alloc] initWithString:resultd] autorelease];
-#else
-    AlixPayResult* result = [[AlixPayResult alloc] initWithString:resultd];
-#endif
-    [self dealWithResult:result];
-}
-
-- (void)parse:(NSURL *)url{
-    
-    //结果处理
-    AlixPayResult* result = [self handleOpenURL:url];
-    
-    [self dealWithResult:result];
-}
-
-- (AlixPayResult *)resultFromURL:(NSURL *)url {
-    NSString * query = [[url query] stringByReplacingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
-#if ! __has_feature(objc_arc)
-    return [[[AlixPayResult alloc] initWithString:query] autorelease];
-#else
-    return [[AlixPayResult alloc] initWithString:query];
-#endif
-}
-
-- (AlixPayResult *)handleOpenURL:(NSURL *)url {
-    AlixPayResult * result = nil;
-    
-    if (url != nil && [[url host] compare:@"safepay"] == 0) {
-        result = [self resultFromURL:url];
+-(void)handleOpenUrl:(NSURL *)url{
+    //如果极简 SDK 不可用,会跳转支付宝钱包进行支付,需要将支付宝钱包的支付结果回传给 SDK
+    if ([url.host isEqualToString:@"safepay"]) {
+        [[AlipaySDK defaultService] processOrderWithPaymentResult:url standbyCallback:^(NSDictionary *resultDic) {
+            NSLog(@"result = %@",resultDic);
+            [self payResult:resultDic];
+        }];
     }
-    
-    return result;
+    if ([url.host isEqualToString:@"platformapi"]){//支付宝钱包快登授权返回 authCode
+        [[AlipaySDK defaultService] processAuthResult:url standbyCallback:^(NSDictionary *resultDic) {
+            NSLog(@"result = %@",resultDic);
+            [self payResult:resultDic];
+        }];
+    }
 }
-
-
-
 
 @end

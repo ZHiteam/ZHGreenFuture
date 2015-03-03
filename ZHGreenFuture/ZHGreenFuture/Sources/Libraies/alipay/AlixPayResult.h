@@ -24,4 +24,7 @@
 @property(nonatomic, readonly) NSString *signType;
 
 - (id)initWithString:(NSString *)string;
+
++ (AlixPayResult *) itemWithDictory:(NSDictionary *) dict;
+
 @end

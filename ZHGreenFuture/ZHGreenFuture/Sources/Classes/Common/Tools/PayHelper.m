@@ -33,4 +33,9 @@
     
     [helper.alipay payWithTitle:productTitle productInfo:info totalPrice:totalPrice orderId:orderId];
 }
+
++(void)handleOpenUrl:(NSURL *)url{
+    PayHelper* helper = [PayHelper instance];
+    [helper.alipay handleOpenUrl:url];
+}
 @end

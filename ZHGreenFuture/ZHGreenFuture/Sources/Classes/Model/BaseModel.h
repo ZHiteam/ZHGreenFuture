@@ -12,7 +12,7 @@
 
 @interface BaseModel : NSObject
 
-@property (nonatomic) NSString* state;
+@property (nonatomic,strong) NSString* state;
 
 +(id)praserModelWithInfo:(id)info;
 

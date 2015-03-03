@@ -7,7 +7,6 @@
 //
 
 #import "ZHProductComment.h"
-#import "JSON.h"
 
 @implementation ZHCommentItem
 

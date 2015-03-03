@@ -47,18 +47,18 @@
         {
             do {
                 
-                NSDictionary * jsonMemo = [jsonQuery objectForKey:@"memo"];
-                if (jsonMemo == nil) {
+//                NSDictionary * jsonMemo = [jsonQuery objectForKey:@"memo"];
+                if (jsonQuery == nil) {
                     break;
                 }
                 
-                self.statusCode = [[jsonMemo objectForKey:@"ResultStatus"] intValue];
-                self.statusMessage = [jsonMemo objectForKey:@"memo"];
+                self.statusCode = [[jsonQuery objectForKey:@"resultStatus"] intValue];
+                self.statusMessage = [jsonQuery objectForKey:@"memo"];
                 if (self.statusCode != 9000) {
                     break;
                 }
                 
-                NSString *resultString = [jsonMemo objectForKey:@"result"];
+                NSString *resultString = [jsonQuery objectForKey:@"result"];
                 
                 //
                 // 签名类型
@@ -319,6 +319,15 @@
     //
     //    NSLog(@"resultStatus=%@",resultStatus);
     //    NSLog(@"memo=%@",memo);
+}
+
++ (AlixPayResult *) itemWithDictory:(NSDictionary *) dict{
+    AlixPayResult *temp = [[AlixPayResult alloc] init];
+    temp.statusCode = (int)[dict[@"resultStatus"] integerValue];
+//    temp.resultString = dict[@"result"];
+    
+    [temp parseFormStr:dict[@"result"]];
+    return temp;
 }
 
 @end

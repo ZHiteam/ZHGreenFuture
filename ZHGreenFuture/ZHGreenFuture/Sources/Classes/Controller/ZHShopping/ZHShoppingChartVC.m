@@ -10,8 +10,8 @@
 #import "ShoppingChartModel.h"
 #import "ZHShoppingChartCell.h"
 #import "ZHCheckbox.h"
-#import "JSON.h"
 #import "ConfirmOrderModel.h"
+#import "JSONKit.h"
 
 @interface ZHShoppingChartVC ()<UITableViewDataSource,UITableViewDelegate,ZHShoppingChartDelegate>
 
@@ -262,7 +262,7 @@
 //#warning 用户ID
     NSDictionary* dic = @{@"userId":[ZHAuthorizationManager shareInstance].userId,@"updateShoppingList":arrayData};
     
-    NSString* jsonStr = [dic JSONFragment];
+    NSString* jsonStr = [dic JSONString];
     dic = @{@"json":jsonStr,@"scene":@"12"};
     
     [HttpClient requestDataWithParamers:dic success:^(id responseObject) {
@@ -389,7 +389,7 @@
     }
     
     [dic setObject:list forKey:@"deleteShoppingList"];
-    NSString* str = [dic JSONFragment];
+    NSString* str = [dic JSONString];
     
     [dic removeAllObjects];
     

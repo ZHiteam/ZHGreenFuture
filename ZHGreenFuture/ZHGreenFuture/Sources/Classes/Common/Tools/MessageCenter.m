@@ -16,6 +16,19 @@
     return [MessageCenter instanceWithCLass:[MessageCenter class]];
 }
 
+-(instancetype)init{
+    self = [super init];
+    
+    if (self) {
+        [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(notifyAction:) name:NOTIFY_TRADE_STATE object:nil];
+    }
+    
+    return self;
+}
+
+-(void)dealloc{
+    [[NSNotificationCenter defaultCenter]removeObserver:self];
+}
 
 /**
  * @brief : 跳转URL
@@ -93,6 +106,33 @@
         [navi pushViewController:viewCtl animation:ANIMATE_TYPE_NONE];
     }
 
+}
+
+-(void)notifyAction:(NSNotification*)notify{
+    NSDictionary* info = notify.object;
+    if (![info isKindOfClass:[NSDictionary class]]){
+        return;
+    }
+    
+    BaseModel* model = [BaseModel praserModelWithInfo:info];
+    if (![model.state boolValue]){
+        NSString* msg = info[@"msg"];
+        if (!isEmptyString(msg)){
+            msg = @"支付失败";
+        }
+        SHOW_MESSAGE(msg, 2);
+    }
+    else{
+        SHOW_MESSAGE(@"支付成功", 2);
+    }
+    [self jumpToOrderList];
+}
+
+-(void)jumpToOrderList{
+    NavigationViewController*   navi = [MemoryStorage valueForKey:k_NAVIGATIONCTL];
+    [navi popWithAnimation:NO];
+//    [self.navigationCtl popWithAnimation:NO];
+    [[MessageCenter instance]performActionWithUserInfo:@{@"controller":@"ZHOrderListVC"}];
 }
 
 @end
