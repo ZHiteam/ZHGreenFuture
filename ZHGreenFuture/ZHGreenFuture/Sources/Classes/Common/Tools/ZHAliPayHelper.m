@@ -35,7 +35,7 @@
     Order *order = [[Order alloc] init];
     order.partner = PartnerID;
     order.seller = SellerID;
-    order.tradeNO = [self generateTradeNO]; //订单ID（由商家自行制定）
+    order.tradeNO = orderId;///[self generateTradeNO]; //订单ID（由商家自行制定）
     order.productName = productTitle; //商品标题
     order.productDescription = info; //商品描述
 //#ifdef DEBUG
@@ -70,7 +70,6 @@
                        orderSpec, signedString, @"RSA"];
         
         [[AlipaySDK defaultService] payOrder:orderString fromScheme:appScheme callback:^(NSDictionary *resultDic) {
-//            NSLog(@"reslut = %@",resultDic);
             [self payResult:resultDic];
         }];
         
@@ -78,21 +77,6 @@
 
 }
 
-- (NSString *)generateTradeNO
-{
-    const int N = 15;
-    
-    NSString *sourceString = @"0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-    NSMutableString *result = [[NSMutableString alloc] init] ;
-    srand(time(0));
-    for (int i = 0; i < N; i++)
-    {
-        unsigned index = rand() % [sourceString length];
-        NSString *s = [sourceString substringWithRange:NSMakeRange(index, 1)];
-        [result appendString:s];
-    }
-    return result;
-}
 
 #pragma -mark deal result
 -(void)notifyAction:(NSNotification*)notify{
@@ -103,7 +87,6 @@
 }
 
 -(void)payResult:(NSDictionary*)resultDic{
-//    NSLog(@"%@",result);
     
     AlixPayResult* result = [[AlixPayResult alloc]initWithString:[resultDic JSONString]];
     if (result)
